@@ -11287,7 +11287,7 @@ var _createClass3 = _interopRequireDefault(_createClass2);
 
 var cov_1nqd9talwx = function () {
     var path = "/home/travis/build/fiduswriter/biblatex-csl-converter/src/import/biblatex.js",
-        hash = "efd35436ec7587b541f800a0f2029d4bcbef3c1b",
+        hash = "9113bfbe1b4f9fdc3b663cefa46c1ab39719eea5",
         global = new Function('return this')(),
         gcv = "__coverage__",
         coverageData = {
@@ -13990,7 +13990,7 @@ var cov_1nqd9talwx = function () {
                 },
                 end: {
                     line: 635,
-                    column: 109
+                    column: 117
                 }
             },
             "270": {
@@ -14120,17 +14120,17 @@ var cov_1nqd9talwx = function () {
                 },
                 end: {
                     line: 649,
-                    column: 80
+                    column: 84
                 }
             },
             "283": {
                 start: {
                     line: 649,
-                    column: 71
+                    column: 75
                 },
                 end: {
                     line: 649,
-                    column: 74
+                    column: 78
                 }
             },
             "284": {
@@ -15129,21 +15129,21 @@ var cov_1nqd9talwx = function () {
                 decl: {
                     start: {
                         line: 649,
-                        column: 64
+                        column: 68
                     },
                     end: {
                         line: 649,
-                        column: 65
+                        column: 69
                     }
                 },
                 loc: {
                     start: {
                         line: 649,
-                        column: 71
+                        column: 75
                     },
                     end: {
                         line: 649,
-                        column: 74
+                        column: 78
                     }
                 }
             },
@@ -17596,7 +17596,7 @@ var cov_1nqd9talwx = function () {
                     },
                     end: {
                         line: 649,
-                        column: 80
+                        column: 84
                     }
                 },
                 type: "cond-expr",
@@ -17607,16 +17607,16 @@ var cov_1nqd9talwx = function () {
                     },
                     end: {
                         line: 649,
-                        column: 75
+                        column: 79
                     }
                 }, {
                     start: {
                         line: 649,
-                        column: 78
+                        column: 82
                     },
                     end: {
                         line: 649,
-                        column: 80
+                        column: 84
                     }
                 }]
             },
@@ -19352,7 +19352,7 @@ var BibLatexParser = exports.BibLatexParser = function () {
 
             // simplify parsing by taking the whole comment, throw away newlines, replace the escaped separators with tabs, and
             // then split on the remaining non-secaped separators
-            var lines = (++cov_1nqd9talwx.s[269], this.input.substring(this.pos, end).replace(/[\r\n]/g, '').replace(/\\;/g, '\t').split(';'));
+            var lines = (++cov_1nqd9talwx.s[269], this.input.substring(this.pos, end).replace(/[\r\n]/g, '') /*.replace(/\\;/g, '\u2004')*/.split(';'));
             ++cov_1nqd9talwx.s[270];
             this.pos = end;
 
@@ -19392,7 +19392,7 @@ var BibLatexParser = exports.BibLatexParser = function () {
                     var type = (++cov_1nqd9talwx.s[280], match[2]);
                     var references = (++cov_1nqd9talwx.s[281], match[3]);
                     ++cov_1nqd9talwx.s[282];
-                    references = references ? (++cov_1nqd9talwx.b[68][0], references.split('\t').filter(function (key) {
+                    references = references ? (++cov_1nqd9talwx.b[68][0], references.split("\u2004").filter(function (key) {
                         ++cov_1nqd9talwx.f[33];
                         ++cov_1nqd9talwx.s[283];
                         return key;
