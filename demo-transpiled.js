@@ -17945,7 +17945,7 @@ var BibLatexParser = exports.BibLatexParser = function () {
                 ++cov_1nqd9talwx.b[58][0];
                 ++cov_1nqd9talwx.s[223];
 
-                this.errors.push({
+                this.warnings.push({
                     type: 'unknown_type',
                     type_name: biblatexType
                 });
