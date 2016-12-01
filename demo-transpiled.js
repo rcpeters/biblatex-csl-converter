@@ -4279,7 +4279,7 @@ var _createClass3 = _interopRequireDefault(_createClass2);
 
 var cov_18eh2feipe = function () {
     var path = "/home/travis/build/fiduswriter/biblatex-csl-converter/src/export/biblatex.js",
-        hash = "68909a0cd29e63b774f7f0a09ef24df546f145eb",
+        hash = "00d46b3ea1c350c0aa257b17901f84c5fc778f17",
         global = new Function('return this')(),
         gcv = "__coverage__",
         coverageData = {
@@ -5712,7 +5712,7 @@ var cov_18eh2feipe = function () {
                 },
                 end: {
                     line: 257,
-                    column: 33
+                    column: 29
                 }
             },
             "143": {
@@ -5762,7 +5762,7 @@ var cov_18eh2feipe = function () {
                 },
                 end: {
                     line: 263,
-                    column: 48
+                    column: 46
                 }
             },
             "148": {
@@ -5772,7 +5772,7 @@ var cov_18eh2feipe = function () {
                 },
                 end: {
                     line: 265,
-                    column: 26
+                    column: 24
                 }
             },
             "149": {
@@ -8071,7 +8071,7 @@ var BibLatexExporter = exports.BibLatexExporter = function () {
                     ++cov_18eh2feipe.b[37][0];
                     ++cov_18eh2feipe.s[142];
 
-                    str += '\r\n\r\n';
+                    str += '\n\n';
                 } else {
                     ++cov_18eh2feipe.b[37][1];
                 }
@@ -8082,10 +8082,10 @@ var BibLatexExporter = exports.BibLatexExporter = function () {
                 for (var vKey in data.values) {
                     var value = (++cov_18eh2feipe.s[146], ("{" + data.values[vKey] + "}").replace(/\{\} \# /g, '').replace(/\# \{\}/g, ''));
                     ++cov_18eh2feipe.s[147];
-                    str += ",\r\n" + vKey + " = " + value;
+                    str += ",\n" + vKey + " = " + value;
                 }
                 ++cov_18eh2feipe.s[148];
-                str += "\r\n}";
+                str += "\n}";
             }
             ++cov_18eh2feipe.s[149];
             return str;
