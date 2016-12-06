@@ -4256,7 +4256,7 @@ var BibFieldTypes = exports.BibFieldTypes = (++cov_1w8ie4z90q.s[0], {
         csl: 'original-title'
     },
     'pages': {
-        type: 'f_range',
+        type: 'l_range',
         biblatex: 'pages',
         csl: 'page'
     },
@@ -9072,7 +9072,7 @@ var BibLatexExporter = exports.BibLatexExporter = function () {
                             fValues[key] = this._reformText(fValue);
                             ++cov_18eh2feipe.s[32];
                             break;
-                        case 'f_range':
+                        case 'l_range':
                             ++cov_18eh2feipe.b[5][6];
                             ++cov_18eh2feipe.s[33];
 
@@ -11730,7 +11730,7 @@ var CSLExporter = exports.CSLExporter = function () {
                                 fValues[key] = _this._reformText(fValue);
                                 ++cov_2dpcoexk8q.s[30];
                                 break;
-                            case 'f_range':
+                            case 'l_range':
                                 ++cov_2dpcoexk8q.b[4][6];
                                 ++cov_2dpcoexk8q.s[31];
 
@@ -21290,7 +21290,7 @@ var BibLatexParser = exports.BibLatexParser = function () {
                         oFields[fKey] = _this._reformLiteral(fValue);
                         ++cov_1nqd9talwx.s[200];
                         break;
-                    case 'f_range':
+                    case 'l_range':
                         ++cov_1nqd9talwx.b[58][5];
                         ++cov_1nqd9talwx.s[201];
 
