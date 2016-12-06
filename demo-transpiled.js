@@ -1,28 +1,26 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-"use strict";
+'use strict';
 
-var _keys = require("babel-runtime/core-js/object/keys");
+var _keys = require('babel-runtime/core-js/object/keys');
 
 var _keys2 = _interopRequireDefault(_keys);
 
-var _typeof2 = require("babel-runtime/helpers/typeof");
+var _typeof2 = require('babel-runtime/helpers/typeof');
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
-var _src = require("../src");
-
-var _parser = require("edtf/src/parser");
+var _src = require('../src');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 window.BibLatexParser = _src.BibLatexParser;
 window.BibLatexExporter = _src.BibLatexExporter;
 window.CSLExporter = _src.CSLExporter;
-window.edtfParse = _parser.parse;
+window.edtfParse = _src.edtfParse;
 
 var printObject = function printObject(object) {
     var html = '';
-    switch (typeof object === "undefined" ? "undefined" : (0, _typeof3.default)(object)) {
+    switch (typeof object === 'undefined' ? 'undefined' : (0, _typeof3.default)(object)) {
         case 'object':
             if (object instanceof Array) {
                 html += '[';
@@ -37,7 +35,7 @@ var printObject = function printObject(object) {
                 html += '<table>';
                 (0, _keys2.default)(object).forEach(function (key) {
                     var valueHtml = printObject(object[key]);
-                    html += "<tr><td>" + key + ": </td><td>" + valueHtml + "</td></tr>";
+                    html += '<tr><td>' + key + ': </td><td>' + valueHtml + '</td></tr>';
                 });
                 html += '</table>';
             }
@@ -97,7 +95,7 @@ var importBiblatex = function importBiblatex(bibString) {
     exportCSL(bibDB);
     exportBibLatex(bibDB);
     var t1 = performance.now();
-    console.log("Total: " + (t1 - t0) + " milliseconds");
+    console.log('Total: ' + (t1 - t0) + ' milliseconds');
 };
 
 var exportCSL = function exportCSL(bibDB) {
@@ -115,7 +113,7 @@ var exportBibLatex = function exportBibLatex(bibDB) {
 document.getElementById('file-upload').addEventListener('change', readBibFile);
 document.getElementById('paste-input').addEventListener('paste', readBibPaste, false);
 
-},{"../src":134,"babel-runtime/core-js/object/keys":11,"babel-runtime/helpers/typeof":20,"edtf/src/parser":122}],2:[function(require,module,exports){
+},{"../src":131,"babel-runtime/core-js/object/keys":11,"babel-runtime/helpers/typeof":20}],2:[function(require,module,exports){
 'use strict';
 
 var _slicedToArray2 = require('babel-runtime/helpers/slicedToArray');
@@ -804,7 +802,7 @@ module.exports = {
   }
 };
 
-},{"./grammar":3,"nearley":124}],5:[function(require,module,exports){
+},{"./grammar":3,"nearley":120}],5:[function(require,module,exports){
 'use strict';
 
 var _slicedToArray2 = require('babel-runtime/helpers/slicedToArray');
@@ -2763,818 +2761,6 @@ for(var collections = ['NodeList', 'DOMTokenList', 'MediaList', 'StyleSheetList'
   Iterators[NAME] = Iterators.Array;
 }
 },{"./_global":55,"./_hide":57,"./_iterators":69,"./_wks":103,"./es6.array.iterator":108}],120:[function(require,module,exports){
-'use strict'
-
-const DAY = /^days?$/i
-const MONTH = /^months?$/i
-const YEAR = /^years?$/i
-const SYMBOL = /^[xX]$/
-const SYMBOLS = /[xX]/g
-const PATTERN = /^[0-9xXdDmMyY]{8}$/
-const YYYYMMDD = 'YYYYMMDD'.split('')
-const MAXDAYS = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-
-const { pow, max, min } = Math
-
-
-/**
- * Bitmasks are used to set Unspecified, Uncertain and
- * Approximate flags for a Date. The bitmask for one
- * feature corresponds to a numeric value based on the
- * following pattern:
- *
- *           YYYYMMDD
- *           --------
- *   Day     00000011
- *   Month   00001100
- *   Year    11110000
- *
- */
-class Bitmask {
-
-  static test(a, b) {
-    return this.convert(a) & this.convert(b)
-  }
-
-  static convert(value = 0) { // eslint-disable-line complexity
-    value = value || 0
-
-    if (value instanceof Bitmask) return value.value
-
-    switch (typeof value) {
-    case 'number': return value
-
-    case 'boolean': return value ? Bitmask.YMD : 0
-
-    case 'string':
-      if (DAY.test(value)) return Bitmask.DAY
-      if (MONTH.test(value)) return Bitmask.MONTH
-      if (YEAR.test(value)) return Bitmask.YEAR
-      if (PATTERN.test(value)) return Bitmask.compute(value)
-      // fall through!
-
-    default:
-      throw new Error(`invalid value: ${value}`)
-    }
-  }
-
-  static compute(value) {
-    return value.split('').reduce((memo, c, idx) =>
-        (memo | (SYMBOL.test(c) ? pow(2, idx) : 0)), 0)
-  }
-
-  static values(mask, digit = 0) {
-    let num = Bitmask.numbers(mask, digit).split('')
-    let values = [Number(num.slice(0, 4).join(''))]
-
-    if (num.length > 4) values.push(Number(num.slice(4, 6).join('')))
-    if (num.length > 6) values.push(Number(num.slice(6, 8).join('')))
-
-    return Bitmask.normalize(values)
-  }
-
-  static numbers(mask, digit = 0) {
-    return mask.replace(SYMBOLS, digit)
-  }
-
-  static normalize(values) {
-    if (values.length > 1)
-      values[1] = min(11, max(0, values[1] - 1))
-
-    if (values.length > 2)
-      values[2] = min(MAXDAYS[values[1]] || NaN, max(1, values[2]))
-
-    return values
-  }
-
-
-  constructor(value = 0) {
-    this.value = Bitmask.convert(value)
-  }
-
-  test(value = 0) {
-    return this.value & Bitmask.convert(value)
-  }
-
-  bit(k) {
-    return this.value & pow(2, k)
-  }
-
-  get day() { return this.test(Bitmask.DAY) }
-
-  get month() { return this.test(Bitmask.MONTH) }
-
-  get year() { return this.test(Bitmask.YEAR) }
-
-
-  add(value) {
-    return (this.value = this.value | Bitmask.convert(value)), this
-  }
-
-  set(value = 0) {
-    return (this.value = Bitmask.convert(value)), this
-  }
-
-  mask(input = YYYYMMDD, offset = 0, symbol = 'X') {
-    return input.map((c, idx) => this.bit(offset + idx) ? symbol : c)
-  }
-
-  masks(values, symbol = 'X') {
-    let offset = 0
-
-    return values.map(value => {
-      let mask = this.mask(value.split(''), offset, symbol)
-      offset = offset + mask.length
-
-      return mask.join('')
-    })
-  }
-
-  max([year, month, day]) { // eslint-disable-line complexity
-    if (!year) return []
-
-    year = Number(
-      (this.test(Bitmask.YEAR)) ? this.masks([year], '9')[0] : year
-    )
-
-    if (!month) return [year]
-
-    month = Number(month) - 1
-
-    switch (this.test(Bitmask.MONTH)) {
-    case Bitmask.MONTH:
-      month = 11
-      break
-    case Bitmask.MX:
-      month = (month < 9) ? 8 : 11
-      break
-    case Bitmask.XM:
-      month = (month + 1) % 10
-      month = (month < 3) ? month + 9 : month - 1
-      break
-    }
-
-    if (!day) return [year, month]
-
-    day = Number(day)
-
-    switch (this.test(Bitmask.DAY)) {
-    case Bitmask.DAY:
-      day = MAXDAYS[month]
-      break
-    case Bitmask.DX:
-      day = min(MAXDAYS[month], day + (9 - (day % 10)))
-      break
-    case Bitmask.XD:
-      day = day % 10
-
-      if (month === 1) {
-        day = (day === 9 && !leap(year)) ? day + 10 : day + 20
-
-      } else {
-        day = (day < 2) ? day + 30 : day + 20
-        if (day > MAXDAYS[month]) day = day - 10
-      }
-
-      break
-    }
-
-    if (month === 1 && day > 28 && !leap(year)) {
-      day = 28
-    }
-
-    return [year, month, day]
-  }
-
-  marks(values, symbol = '?') {
-    return values
-      .map((value, idx) => [
-        this.qualified(idx * 2) ? symbol : '',
-        value,
-        this.qualified(idx * 2 + 1) ? symbol : ''
-      ].join(''))
-  }
-
-  qualified(idx) { // eslint-disable-line complexity
-    switch (idx) {
-    case 1:
-      return this.value === Bitmask.YEAR ||
-        (this.value & Bitmask.YEAR) && !(this.value & Bitmask.MONTH)
-    case 2:
-      return this.value === Bitmask.MONTH ||
-        (this.value & Bitmask.MONTH) && !(this.value & Bitmask.YEAR)
-    case 3:
-      return this.value === Bitmask.YM
-    case 4:
-      return this.value === Bitmask.DAY ||
-        (this.value & Bitmask.DAY) && (this.value !== Bitmask.YMD)
-    case 5:
-      return this.value === Bitmask.YMD
-    default:
-      return false
-    }
-  }
-
-  qualify(idx) {
-    return (this.value = this.value | Bitmask.UA[idx]), this
-  }
-
-  toJSON() {
-    return this.value
-  }
-
-  toString(symbol = 'X') {
-    return this.masks(['YYYY', 'MM', 'DD'], symbol).join('-')
-  }
-}
-
-Bitmask.prototype.is = Bitmask.prototype.test
-
-function leap(year) {
-  if (year % 4 > 0) return false
-  if (year % 100 > 0) return true
-  if (year % 400 > 0) return false
-  return true
-}
-
-Bitmask.DAY   = Bitmask.D = Bitmask.compute('yyyymmxx')
-Bitmask.MONTH = Bitmask.M = Bitmask.compute('yyyyxxdd')
-Bitmask.YEAR  = Bitmask.Y = Bitmask.compute('xxxxmmdd')
-
-Bitmask.MD  = Bitmask.M | Bitmask.D
-Bitmask.YMD = Bitmask.Y | Bitmask.MD
-Bitmask.YM  = Bitmask.Y | Bitmask.M
-
-Bitmask.YYXX = Bitmask.compute('yyxxmmdd')
-Bitmask.YYYX = Bitmask.compute('yyyxmmdd')
-Bitmask.XXXX = Bitmask.compute('xxxxmmdd')
-
-Bitmask.DX = Bitmask.compute('yyyymmdx')
-Bitmask.XD = Bitmask.compute('yyyymmxd')
-Bitmask.MX = Bitmask.compute('yyyymxdd')
-Bitmask.XM = Bitmask.compute('yyyyxmdd')
-
-/*
- * Map each UA symbol position to a mask.
- *
- *   ~YYYY~-~MM~-~DD~
- *   0    1 2  3 4  5
- */
-Bitmask.UA = [
-  Bitmask.YEAR,
-  Bitmask.YEAR,   // YEAR !DAY
-  Bitmask.MONTH,
-  Bitmask.YM,
-  Bitmask.DAY,    // YEARDAY
-  Bitmask.YMD
-]
-
-module.exports = Bitmask
-
-},{}],121:[function(require,module,exports){
-// Generated automatically by nearley
-// http://github.com/Hardmath123/nearley
-(function () {
-function id(x) {return x[0]; }
-
-  const {
-    num, zero, nothing, pick, pluck, join, concat, merge, century,
-    interval, list, masked, date, datetime, season, qualify, year, decade
-  } = require('./util')
-
-  const {
-    DAY, MONTH, YEAR, YMD, YM, MD, YYXX, YYYX, XXXX
-  } = require('./bitmask')
-var grammar = {
-    ParserRules: [
-    {"name": "edtf", "symbols": ["L0"], "postprocess": id},
-    {"name": "edtf", "symbols": ["L1"], "postprocess": id},
-    {"name": "edtf", "symbols": ["L2"], "postprocess": id},
-    {"name": "L0", "symbols": ["date_time"], "postprocess": id},
-    {"name": "L0", "symbols": ["century"], "postprocess": id},
-    {"name": "L0", "symbols": ["L0i"], "postprocess": id},
-    {"name": "L0i", "symbols": ["date_time", {"literal":"/"}, "date_time"], "postprocess": interval(0)},
-    {"name": "century", "symbols": ["positive_century"], "postprocess": data => century(data[0])},
-    {"name": "century$string$1", "symbols": [{"literal":"0"}, {"literal":"0"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "century", "symbols": ["century$string$1"], "postprocess": data => century(0)},
-    {"name": "century", "symbols": [{"literal":"-"}, "positive_century"], "postprocess": data => century(-data[1])},
-    {"name": "positive_century", "symbols": ["positive_digit", "digit"], "postprocess": num},
-    {"name": "positive_century", "symbols": [{"literal":"0"}, "positive_digit"], "postprocess": num},
-    {"name": "date_time", "symbols": ["date"], "postprocess": id},
-    {"name": "date_time", "symbols": ["datetime"], "postprocess": id},
-    {"name": "date", "symbols": ["year"], "postprocess": data => date(data)},
-    {"name": "date", "symbols": ["year_month"], "postprocess": data => date(data[0])},
-    {"name": "date", "symbols": ["year_month_day"], "postprocess": data => date(data[0])},
-    {"name": "year", "symbols": ["positive_year"], "postprocess": id},
-    {"name": "year", "symbols": ["negative_year"], "postprocess": id},
-    {"name": "year$string$1", "symbols": [{"literal":"0"}, {"literal":"0"}, {"literal":"0"}, {"literal":"0"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "year", "symbols": ["year$string$1"], "postprocess": join},
-    {"name": "positive_year", "symbols": ["positive_digit", "digit", "digit", "digit"], "postprocess": join},
-    {"name": "positive_year", "symbols": [{"literal":"0"}, "positive_digit", "digit", "digit"], "postprocess": join},
-    {"name": "positive_year$string$1", "symbols": [{"literal":"0"}, {"literal":"0"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "positive_year", "symbols": ["positive_year$string$1", "positive_digit", "digit"], "postprocess": join},
-    {"name": "positive_year$string$2", "symbols": [{"literal":"0"}, {"literal":"0"}, {"literal":"0"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "positive_year", "symbols": ["positive_year$string$2", "positive_digit"], "postprocess": join},
-    {"name": "negative_year", "symbols": [{"literal":"-"}, "positive_year"], "postprocess": join},
-    {"name": "year_month", "symbols": ["year", {"literal":"-"}, "month"], "postprocess": pick(0, 2)},
-    {"name": "year_month_day", "symbols": ["year", {"literal":"-"}, "month_day"], "postprocess": pick(0, 2)},
-    {"name": "month", "symbols": ["d01_12"], "postprocess": id},
-    {"name": "month_day", "symbols": ["m31", {"literal":"-"}, "day"], "postprocess": pick(0, 2)},
-    {"name": "month_day", "symbols": ["m30", {"literal":"-"}, "d01_30"], "postprocess": pick(0, 2)},
-    {"name": "month_day$string$1", "symbols": [{"literal":"0"}, {"literal":"2"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "month_day", "symbols": ["month_day$string$1", {"literal":"-"}, "d01_29"], "postprocess": pick(0, 2)},
-    {"name": "day", "symbols": ["d01_31"], "postprocess": id},
-    {"name": "datetime$ebnf$1$subexpression$1", "symbols": ["timezone"], "postprocess": id},
-    {"name": "datetime$ebnf$1", "symbols": ["datetime$ebnf$1$subexpression$1"], "postprocess": id},
-    {"name": "datetime$ebnf$1", "symbols": [], "postprocess": function(d) {return null;}},
-    {"name": "datetime", "symbols": ["year_month_day", {"literal":"T"}, "time", "datetime$ebnf$1"], "postprocess": datetime},
-    {"name": "time", "symbols": ["hours", {"literal":":"}, "minutes", {"literal":":"}, "seconds", "milliseconds"], "postprocess": pick(0, 2, 4, 5)},
-    {"name": "time$string$1", "symbols": [{"literal":"2"}, {"literal":"4"}, {"literal":":"}, {"literal":"0"}, {"literal":"0"}, {"literal":":"}, {"literal":"0"}, {"literal":"0"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "time", "symbols": ["time$string$1"], "postprocess": () => [24, 0, 0]},
-    {"name": "hours", "symbols": ["d00_23"], "postprocess": num},
-    {"name": "minutes", "symbols": ["d00_59"], "postprocess": num},
-    {"name": "seconds", "symbols": ["d00_59"], "postprocess": num},
-    {"name": "milliseconds", "symbols": []},
-    {"name": "milliseconds", "symbols": [{"literal":"."}, "d3"], "postprocess": data => num(data.slice(1))},
-    {"name": "timezone", "symbols": [{"literal":"Z"}], "postprocess": zero},
-    {"name": "timezone", "symbols": [{"literal":"-"}, "offset"], "postprocess": data => -data[1]},
-    {"name": "timezone", "symbols": [{"literal":"+"}, "positive_offset"], "postprocess": pick(1)},
-    {"name": "positive_offset", "symbols": ["offset"], "postprocess": id},
-    {"name": "positive_offset$string$1", "symbols": [{"literal":"0"}, {"literal":"0"}, {"literal":":"}, {"literal":"0"}, {"literal":"0"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "positive_offset", "symbols": ["positive_offset$string$1"], "postprocess": zero},
-    {"name": "positive_offset$subexpression$1$string$1", "symbols": [{"literal":"1"}, {"literal":"2"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "positive_offset$subexpression$1", "symbols": ["positive_offset$subexpression$1$string$1"]},
-    {"name": "positive_offset$subexpression$1$string$2", "symbols": [{"literal":"1"}, {"literal":"3"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "positive_offset$subexpression$1", "symbols": ["positive_offset$subexpression$1$string$2"]},
-    {"name": "positive_offset", "symbols": ["positive_offset$subexpression$1", {"literal":":"}, "minutes"], "postprocess": data => num(data[0]) * 60 + data[2]},
-    {"name": "positive_offset$string$2", "symbols": [{"literal":"1"}, {"literal":"4"}, {"literal":":"}, {"literal":"0"}, {"literal":"0"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "positive_offset", "symbols": ["positive_offset$string$2"], "postprocess": () => 840},
-    {"name": "positive_offset", "symbols": ["d00_14"], "postprocess": data => num(data[0]) * 60},
-    {"name": "offset", "symbols": ["d01_11", {"literal":":"}, "minutes"], "postprocess": data => num(data[0]) * 60 + data[2]},
-    {"name": "offset$string$1", "symbols": [{"literal":"0"}, {"literal":"0"}, {"literal":":"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "offset", "symbols": ["offset$string$1", "d01_59"], "postprocess": data => num(data[1])},
-    {"name": "offset$string$2", "symbols": [{"literal":"1"}, {"literal":"2"}, {"literal":":"}, {"literal":"0"}, {"literal":"0"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "offset", "symbols": ["offset$string$2"], "postprocess": () => 720},
-    {"name": "offset", "symbols": ["d01_12"], "postprocess": data => num(data[0]) * 60},
-    {"name": "L1", "symbols": ["L1d"], "postprocess": id},
-    {"name": "L1", "symbols": ["L1Y"], "postprocess": id},
-    {"name": "L1", "symbols": ["L1S"], "postprocess": id},
-    {"name": "L1", "symbols": ["L1i"], "postprocess": id},
-    {"name": "L1d", "symbols": ["date_ua"], "postprocess": id},
-    {"name": "L1d", "symbols": ["L1X"], "postprocess": merge(0, { type: 'Date', level: 1 })},
-    {"name": "date_ua", "symbols": ["date", "UA"], "postprocess": merge(0, 1, { level: 1 })},
-    {"name": "L1i", "symbols": ["L1i_date", {"literal":"/"}, "L1i_date"], "postprocess": interval(1)},
-    {"name": "L1i", "symbols": ["date_time", {"literal":"/"}, "L1i_date"], "postprocess": interval(1)},
-    {"name": "L1i", "symbols": ["L1i_date", {"literal":"/"}, "date_time"], "postprocess": interval(1)},
-    {"name": "L1i_date", "symbols": [], "postprocess": nothing},
-    {"name": "L1i_date", "symbols": ["date_ua"], "postprocess": id},
-    {"name": "L1i_date", "symbols": ["INFINITY"], "postprocess": id},
-    {"name": "INFINITY", "symbols": [{"literal":"*"}], "postprocess": () => Infinity},
-    {"name": "L1X$string$1", "symbols": [{"literal":"-"}, {"literal":"X"}, {"literal":"X"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "L1X", "symbols": ["d4", {"literal":"-"}, "md", "L1X$string$1"], "postprocess": masked()},
-    {"name": "L1X$string$2", "symbols": [{"literal":"-"}, {"literal":"X"}, {"literal":"X"}, {"literal":"-"}, {"literal":"X"}, {"literal":"X"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "L1X", "symbols": ["d4", "L1X$string$2"], "postprocess": masked()},
-    {"name": "L1X$string$3", "symbols": [{"literal":"X"}, {"literal":"X"}, {"literal":"X"}, {"literal":"X"}, {"literal":"-"}, {"literal":"X"}, {"literal":"X"}, {"literal":"-"}, {"literal":"X"}, {"literal":"X"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "L1X", "symbols": ["L1X$string$3"], "postprocess": masked()},
-    {"name": "L1X$string$4", "symbols": [{"literal":"-"}, {"literal":"X"}, {"literal":"X"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "L1X", "symbols": ["d4", "L1X$string$4"], "postprocess": masked()},
-    {"name": "L1X$string$5", "symbols": [{"literal":"X"}, {"literal":"X"}, {"literal":"X"}, {"literal":"X"}, {"literal":"-"}, {"literal":"X"}, {"literal":"X"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "L1X", "symbols": ["L1X$string$5"], "postprocess": masked()},
-    {"name": "L1X$string$6", "symbols": [{"literal":"X"}, {"literal":"X"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "L1X", "symbols": ["d2", "L1X$string$6"], "postprocess": masked()},
-    {"name": "L1X", "symbols": ["d3", {"literal":"X"}], "postprocess": masked()},
-    {"name": "L1X$string$7", "symbols": [{"literal":"X"}, {"literal":"X"}, {"literal":"X"}, {"literal":"X"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "L1X", "symbols": ["L1X$string$7"], "postprocess": masked()},
-    {"name": "L1Y", "symbols": [{"literal":"Y"}, "d5+"], "postprocess": data => year([num(data[1])], 1)},
-    {"name": "L1Y$string$1", "symbols": [{"literal":"Y"}, {"literal":"-"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "L1Y", "symbols": ["L1Y$string$1", "d5+"], "postprocess": data => year([-num(data[1])], 1)},
-    {"name": "UA", "symbols": [{"literal":"?"}], "postprocess": () => ({ uncertain: true })},
-    {"name": "UA", "symbols": [{"literal":"~"}], "postprocess": () => ({ approximate: true })},
-    {"name": "UA", "symbols": [{"literal":"%"}], "postprocess": () => ({ approximate: true, uncertain: true })},
-    {"name": "L1S", "symbols": ["year", {"literal":"-"}, "d21_24"], "postprocess": data => season(data, 1)},
-    {"name": "L2", "symbols": ["L2d"], "postprocess": id},
-    {"name": "L2", "symbols": ["L2Y"], "postprocess": id},
-    {"name": "L2", "symbols": ["L2S"], "postprocess": id},
-    {"name": "L2", "symbols": ["L2D"], "postprocess": id},
-    {"name": "L2", "symbols": ["L2i"], "postprocess": id},
-    {"name": "L2", "symbols": ["set"], "postprocess": id},
-    {"name": "L2", "symbols": ["list"], "postprocess": id},
-    {"name": "L2d", "symbols": ["ua_date"], "postprocess": id},
-    {"name": "L2d", "symbols": ["L2X"], "postprocess": merge(0, { type: 'Date', level: 2 })},
-    {"name": "L2D", "symbols": ["decade"], "postprocess": id},
-    {"name": "L2D", "symbols": ["decade", "UA"], "postprocess": merge(0, 1)},
-    {"name": "ua_date", "symbols": ["ua_year"], "postprocess": qualify},
-    {"name": "ua_date", "symbols": ["ua_year_month"], "postprocess": qualify},
-    {"name": "ua_date", "symbols": ["ua_year_month_day"], "postprocess": qualify},
-    {"name": "ua_year", "symbols": ["UA", "year"], "postprocess": data => [data]},
-    {"name": "ua_year_month$macrocall$2", "symbols": ["year"]},
-    {"name": "ua_year_month$macrocall$1$ebnf$1", "symbols": ["UA"], "postprocess": id},
-    {"name": "ua_year_month$macrocall$1$ebnf$1", "symbols": [], "postprocess": function(d) {return null;}},
-    {"name": "ua_year_month$macrocall$1$ebnf$2", "symbols": ["UA"], "postprocess": id},
-    {"name": "ua_year_month$macrocall$1$ebnf$2", "symbols": [], "postprocess": function(d) {return null;}},
-    {"name": "ua_year_month$macrocall$1", "symbols": ["ua_year_month$macrocall$1$ebnf$1", "ua_year_month$macrocall$2", "ua_year_month$macrocall$1$ebnf$2"]},
-    {"name": "ua_year_month$macrocall$4", "symbols": ["month"]},
-    {"name": "ua_year_month$macrocall$3$ebnf$1", "symbols": ["UA"], "postprocess": id},
-    {"name": "ua_year_month$macrocall$3$ebnf$1", "symbols": [], "postprocess": function(d) {return null;}},
-    {"name": "ua_year_month$macrocall$3$ebnf$2", "symbols": ["UA"], "postprocess": id},
-    {"name": "ua_year_month$macrocall$3$ebnf$2", "symbols": [], "postprocess": function(d) {return null;}},
-    {"name": "ua_year_month$macrocall$3", "symbols": ["ua_year_month$macrocall$3$ebnf$1", "ua_year_month$macrocall$4", "ua_year_month$macrocall$3$ebnf$2"]},
-    {"name": "ua_year_month", "symbols": ["ua_year_month$macrocall$1", {"literal":"-"}, "ua_year_month$macrocall$3"], "postprocess": pluck(0, 2)},
-    {"name": "ua_year_month_day$macrocall$2", "symbols": ["year"]},
-    {"name": "ua_year_month_day$macrocall$1$ebnf$1", "symbols": ["UA"], "postprocess": id},
-    {"name": "ua_year_month_day$macrocall$1$ebnf$1", "symbols": [], "postprocess": function(d) {return null;}},
-    {"name": "ua_year_month_day$macrocall$1$ebnf$2", "symbols": ["UA"], "postprocess": id},
-    {"name": "ua_year_month_day$macrocall$1$ebnf$2", "symbols": [], "postprocess": function(d) {return null;}},
-    {"name": "ua_year_month_day$macrocall$1", "symbols": ["ua_year_month_day$macrocall$1$ebnf$1", "ua_year_month_day$macrocall$2", "ua_year_month_day$macrocall$1$ebnf$2"]},
-    {"name": "ua_year_month_day", "symbols": ["ua_year_month_day$macrocall$1", {"literal":"-"}, "ua_month_day"], "postprocess": data => [data[0], ...data[2]]},
-    {"name": "ua_month_day$macrocall$2", "symbols": ["m31"]},
-    {"name": "ua_month_day$macrocall$1$ebnf$1", "symbols": ["UA"], "postprocess": id},
-    {"name": "ua_month_day$macrocall$1$ebnf$1", "symbols": [], "postprocess": function(d) {return null;}},
-    {"name": "ua_month_day$macrocall$1$ebnf$2", "symbols": ["UA"], "postprocess": id},
-    {"name": "ua_month_day$macrocall$1$ebnf$2", "symbols": [], "postprocess": function(d) {return null;}},
-    {"name": "ua_month_day$macrocall$1", "symbols": ["ua_month_day$macrocall$1$ebnf$1", "ua_month_day$macrocall$2", "ua_month_day$macrocall$1$ebnf$2"]},
-    {"name": "ua_month_day$macrocall$4", "symbols": ["day"]},
-    {"name": "ua_month_day$macrocall$3$ebnf$1", "symbols": ["UA"], "postprocess": id},
-    {"name": "ua_month_day$macrocall$3$ebnf$1", "symbols": [], "postprocess": function(d) {return null;}},
-    {"name": "ua_month_day$macrocall$3$ebnf$2", "symbols": ["UA"], "postprocess": id},
-    {"name": "ua_month_day$macrocall$3$ebnf$2", "symbols": [], "postprocess": function(d) {return null;}},
-    {"name": "ua_month_day$macrocall$3", "symbols": ["ua_month_day$macrocall$3$ebnf$1", "ua_month_day$macrocall$4", "ua_month_day$macrocall$3$ebnf$2"]},
-    {"name": "ua_month_day", "symbols": ["ua_month_day$macrocall$1", {"literal":"-"}, "ua_month_day$macrocall$3"], "postprocess": pluck(0, 2)},
-    {"name": "ua_month_day$macrocall$6", "symbols": ["m30"]},
-    {"name": "ua_month_day$macrocall$5$ebnf$1", "symbols": ["UA"], "postprocess": id},
-    {"name": "ua_month_day$macrocall$5$ebnf$1", "symbols": [], "postprocess": function(d) {return null;}},
-    {"name": "ua_month_day$macrocall$5$ebnf$2", "symbols": ["UA"], "postprocess": id},
-    {"name": "ua_month_day$macrocall$5$ebnf$2", "symbols": [], "postprocess": function(d) {return null;}},
-    {"name": "ua_month_day$macrocall$5", "symbols": ["ua_month_day$macrocall$5$ebnf$1", "ua_month_day$macrocall$6", "ua_month_day$macrocall$5$ebnf$2"]},
-    {"name": "ua_month_day$macrocall$8", "symbols": ["d01_30"]},
-    {"name": "ua_month_day$macrocall$7$ebnf$1", "symbols": ["UA"], "postprocess": id},
-    {"name": "ua_month_day$macrocall$7$ebnf$1", "symbols": [], "postprocess": function(d) {return null;}},
-    {"name": "ua_month_day$macrocall$7$ebnf$2", "symbols": ["UA"], "postprocess": id},
-    {"name": "ua_month_day$macrocall$7$ebnf$2", "symbols": [], "postprocess": function(d) {return null;}},
-    {"name": "ua_month_day$macrocall$7", "symbols": ["ua_month_day$macrocall$7$ebnf$1", "ua_month_day$macrocall$8", "ua_month_day$macrocall$7$ebnf$2"]},
-    {"name": "ua_month_day", "symbols": ["ua_month_day$macrocall$5", {"literal":"-"}, "ua_month_day$macrocall$7"], "postprocess": pluck(0, 2)},
-    {"name": "ua_month_day$macrocall$10$string$1", "symbols": [{"literal":"0"}, {"literal":"2"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "ua_month_day$macrocall$10", "symbols": ["ua_month_day$macrocall$10$string$1"]},
-    {"name": "ua_month_day$macrocall$9$ebnf$1", "symbols": ["UA"], "postprocess": id},
-    {"name": "ua_month_day$macrocall$9$ebnf$1", "symbols": [], "postprocess": function(d) {return null;}},
-    {"name": "ua_month_day$macrocall$9$ebnf$2", "symbols": ["UA"], "postprocess": id},
-    {"name": "ua_month_day$macrocall$9$ebnf$2", "symbols": [], "postprocess": function(d) {return null;}},
-    {"name": "ua_month_day$macrocall$9", "symbols": ["ua_month_day$macrocall$9$ebnf$1", "ua_month_day$macrocall$10", "ua_month_day$macrocall$9$ebnf$2"]},
-    {"name": "ua_month_day$macrocall$12", "symbols": ["d01_29"]},
-    {"name": "ua_month_day$macrocall$11$ebnf$1", "symbols": ["UA"], "postprocess": id},
-    {"name": "ua_month_day$macrocall$11$ebnf$1", "symbols": [], "postprocess": function(d) {return null;}},
-    {"name": "ua_month_day$macrocall$11$ebnf$2", "symbols": ["UA"], "postprocess": id},
-    {"name": "ua_month_day$macrocall$11$ebnf$2", "symbols": [], "postprocess": function(d) {return null;}},
-    {"name": "ua_month_day$macrocall$11", "symbols": ["ua_month_day$macrocall$11$ebnf$1", "ua_month_day$macrocall$12", "ua_month_day$macrocall$11$ebnf$2"]},
-    {"name": "ua_month_day", "symbols": ["ua_month_day$macrocall$9", {"literal":"-"}, "ua_month_day$macrocall$11"], "postprocess": pluck(0, 2)},
-    {"name": "L2X", "symbols": ["dx4"], "postprocess": masked()},
-    {"name": "L2X", "symbols": ["dx4", {"literal":"-"}, "mx"], "postprocess": masked()},
-    {"name": "L2X", "symbols": ["dx4", {"literal":"-"}, "mdx"], "postprocess": masked()},
-    {"name": "mdx", "symbols": ["m31x", {"literal":"-"}, "d31x"], "postprocess": join},
-    {"name": "mdx", "symbols": ["m30x", {"literal":"-"}, "d30x"], "postprocess": join},
-    {"name": "mdx$string$1", "symbols": [{"literal":"0"}, {"literal":"2"}, {"literal":"-"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "mdx", "symbols": ["mdx$string$1", "d29x"], "postprocess": join},
-    {"name": "L2i", "symbols": ["L2i_date", {"literal":"/"}, "L2i_date"], "postprocess": interval(2)},
-    {"name": "L2i", "symbols": ["date_time", {"literal":"/"}, "L2i_date"], "postprocess": interval(2)},
-    {"name": "L2i", "symbols": ["L2i_date", {"literal":"/"}, "date_time"], "postprocess": interval(2)},
-    {"name": "L2i_date", "symbols": [], "postprocess": nothing},
-    {"name": "L2i_date", "symbols": ["ua_date"], "postprocess": id},
-    {"name": "L2i_date", "symbols": ["L2X"], "postprocess": id},
-    {"name": "L2i_date", "symbols": ["INFINITY"], "postprocess": id},
-    {"name": "L2Y", "symbols": ["exp_year"], "postprocess": id},
-    {"name": "L2Y", "symbols": ["exp_year", "significant_digits"], "postprocess": merge(0, 1)},
-    {"name": "L2Y", "symbols": ["L1Y", "significant_digits"], "postprocess": merge(0, 1, { level: 2 })},
-    {"name": "L2Y", "symbols": ["year", "significant_digits"], "postprocess": data => year([data[0]], 2, data[1])},
-    {"name": "significant_digits", "symbols": [{"literal":"S"}, "positive_digit"], "postprocess": data => ({ significant: num(data[1]) })},
-    {"name": "exp_year", "symbols": [{"literal":"Y"}, "exp"], "postprocess": data => year([data[1]], 2)},
-    {"name": "exp_year$string$1", "symbols": [{"literal":"Y"}, {"literal":"-"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "exp_year", "symbols": ["exp_year$string$1", "exp"], "postprocess": data => year([-data[1]], 2)},
-    {"name": "exp", "symbols": ["digits", {"literal":"E"}, "digits"], "postprocess": data => num(data[0]) * Math.pow(10, num(data[2]))},
-    {"name": "L2S", "symbols": ["year", {"literal":"-"}, "d25_41"], "postprocess": data => season(data, 2)},
-    {"name": "decade", "symbols": ["positive_decade"], "postprocess": data => decade(data[0])},
-    {"name": "decade$string$1", "symbols": [{"literal":"0"}, {"literal":"0"}, {"literal":"0"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "decade", "symbols": ["decade$string$1"], "postprocess": () => decade(0)},
-    {"name": "decade", "symbols": [{"literal":"-"}, "positive_decade"], "postprocess": data => decade(-data[1])},
-    {"name": "positive_decade", "symbols": ["positive_digit", "digit", "digit"], "postprocess": num},
-    {"name": "positive_decade", "symbols": [{"literal":"0"}, "positive_digit", "digit"], "postprocess": num},
-    {"name": "positive_decade$string$1", "symbols": [{"literal":"0"}, {"literal":"0"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "positive_decade", "symbols": ["positive_decade$string$1", "positive_digit"], "postprocess": num},
-    {"name": "set", "symbols": ["LSB", "OL", "RSB"], "postprocess": list},
-    {"name": "list", "symbols": ["LLB", "OL", "RLB"], "postprocess": list},
-    {"name": "LSB", "symbols": [{"literal":"["}], "postprocess": () => ({ type: 'Set' })},
-    {"name": "LSB$string$1", "symbols": [{"literal":"["}, {"literal":"."}, {"literal":"."}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "LSB", "symbols": ["LSB$string$1"], "postprocess": () => ({ type: 'Set', earlier: true })},
-    {"name": "LLB", "symbols": [{"literal":"{"}], "postprocess": () => ({ type: 'List' })},
-    {"name": "RSB", "symbols": [{"literal":"]"}], "postprocess": nothing},
-    {"name": "RSB$string$1", "symbols": [{"literal":"."}, {"literal":"."}, {"literal":"]"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "RSB", "symbols": ["RSB$string$1"], "postprocess": () => ({ later: true })},
-    {"name": "RLB", "symbols": [{"literal":"}"}], "postprocess": nothing},
-    {"name": "OL", "symbols": ["LI"], "postprocess": data => [data[0]]},
-    {"name": "OL", "symbols": ["OL", "_", {"literal":","}, "_", "LI"], "postprocess": data => [...data[0], data[4]]},
-    {"name": "LI", "symbols": ["date"], "postprocess": id},
-    {"name": "LI", "symbols": ["ua_date"], "postprocess": id},
-    {"name": "LI", "symbols": ["L2X"], "postprocess": id},
-    {"name": "LI", "symbols": ["consecutives"], "postprocess": id},
-    {"name": "consecutives$string$1", "symbols": [{"literal":"."}, {"literal":"."}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "consecutives", "symbols": ["year_month_day", "consecutives$string$1", "year_month_day"], "postprocess": d => [date(d[0]), date(d[2])]},
-    {"name": "consecutives$string$2", "symbols": [{"literal":"."}, {"literal":"."}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "consecutives", "symbols": ["year_month", "consecutives$string$2", "year_month"], "postprocess": d => [date(d[0]), date(d[2])]},
-    {"name": "consecutives$string$3", "symbols": [{"literal":"."}, {"literal":"."}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "consecutives", "symbols": ["year", "consecutives$string$3", "year"], "postprocess": d => [date([d[0]]), date([d[2]])]},
-    {"name": "digit", "symbols": ["positive_digit"], "postprocess": id},
-    {"name": "digit", "symbols": [{"literal":"0"}], "postprocess": id},
-    {"name": "digits", "symbols": ["digit"], "postprocess": id},
-    {"name": "digits", "symbols": ["digits", "digit"], "postprocess": join},
-    {"name": "d4", "symbols": ["d2", "d2"], "postprocess": join},
-    {"name": "d3", "symbols": ["d2", "digit"], "postprocess": join},
-    {"name": "d2", "symbols": ["digit", "digit"], "postprocess": join},
-    {"name": "d5+", "symbols": ["positive_digit", "d3", "digits"], "postprocess": num},
-    {"name": "d1x", "symbols": [/[1-9X]/], "postprocess": id},
-    {"name": "dx", "symbols": ["d1x"], "postprocess": id},
-    {"name": "dx", "symbols": [{"literal":"0"}], "postprocess": id},
-    {"name": "dx2", "symbols": ["dx", "dx"], "postprocess": join},
-    {"name": "dx4", "symbols": ["dx2", "dx2"], "postprocess": join},
-    {"name": "md", "symbols": ["m31"], "postprocess": id},
-    {"name": "md", "symbols": ["m30"], "postprocess": id},
-    {"name": "md$string$1", "symbols": [{"literal":"0"}, {"literal":"2"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "md", "symbols": ["md$string$1"], "postprocess": id},
-    {"name": "mx", "symbols": [{"literal":"0"}, "d1x"], "postprocess": join},
-    {"name": "mx", "symbols": [/[1X]/, /[012X]/], "postprocess": join},
-    {"name": "m31x", "symbols": [/[0X]/, /[13578X]/], "postprocess": join},
-    {"name": "m31x", "symbols": [/[1X]/, /[02]/], "postprocess": join},
-    {"name": "m31x$string$1", "symbols": [{"literal":"1"}, {"literal":"X"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "m31x", "symbols": ["m31x$string$1"], "postprocess": id},
-    {"name": "m30x", "symbols": [/[0X]/, /[469]/], "postprocess": join},
-    {"name": "m30x$string$1", "symbols": [{"literal":"1"}, {"literal":"1"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "m30x", "symbols": ["m30x$string$1"], "postprocess": join},
-    {"name": "d29x", "symbols": [{"literal":"0"}, "d1x"], "postprocess": join},
-    {"name": "d29x", "symbols": [/[1-2X]/, "dx"], "postprocess": join},
-    {"name": "d30x", "symbols": ["d29x"], "postprocess": join},
-    {"name": "d30x$string$1", "symbols": [{"literal":"3"}, {"literal":"0"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "d30x", "symbols": ["d30x$string$1"], "postprocess": id},
-    {"name": "d31x", "symbols": ["d30x"], "postprocess": id},
-    {"name": "d31x", "symbols": [{"literal":"3"}, /[1X]/], "postprocess": join},
-    {"name": "positive_digit", "symbols": [/[1-9]/], "postprocess": id},
-    {"name": "m31$subexpression$1$string$1", "symbols": [{"literal":"0"}, {"literal":"1"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "m31$subexpression$1", "symbols": ["m31$subexpression$1$string$1"]},
-    {"name": "m31$subexpression$1$string$2", "symbols": [{"literal":"0"}, {"literal":"3"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "m31$subexpression$1", "symbols": ["m31$subexpression$1$string$2"]},
-    {"name": "m31$subexpression$1$string$3", "symbols": [{"literal":"0"}, {"literal":"5"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "m31$subexpression$1", "symbols": ["m31$subexpression$1$string$3"]},
-    {"name": "m31$subexpression$1$string$4", "symbols": [{"literal":"0"}, {"literal":"7"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "m31$subexpression$1", "symbols": ["m31$subexpression$1$string$4"]},
-    {"name": "m31$subexpression$1$string$5", "symbols": [{"literal":"0"}, {"literal":"8"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "m31$subexpression$1", "symbols": ["m31$subexpression$1$string$5"]},
-    {"name": "m31$subexpression$1$string$6", "symbols": [{"literal":"1"}, {"literal":"0"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "m31$subexpression$1", "symbols": ["m31$subexpression$1$string$6"]},
-    {"name": "m31$subexpression$1$string$7", "symbols": [{"literal":"1"}, {"literal":"2"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "m31$subexpression$1", "symbols": ["m31$subexpression$1$string$7"]},
-    {"name": "m31", "symbols": ["m31$subexpression$1"], "postprocess": id},
-    {"name": "m30$subexpression$1$string$1", "symbols": [{"literal":"0"}, {"literal":"4"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "m30$subexpression$1", "symbols": ["m30$subexpression$1$string$1"]},
-    {"name": "m30$subexpression$1$string$2", "symbols": [{"literal":"0"}, {"literal":"6"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "m30$subexpression$1", "symbols": ["m30$subexpression$1$string$2"]},
-    {"name": "m30$subexpression$1$string$3", "symbols": [{"literal":"0"}, {"literal":"9"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "m30$subexpression$1", "symbols": ["m30$subexpression$1$string$3"]},
-    {"name": "m30$subexpression$1$string$4", "symbols": [{"literal":"1"}, {"literal":"1"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "m30$subexpression$1", "symbols": ["m30$subexpression$1$string$4"]},
-    {"name": "m30", "symbols": ["m30$subexpression$1"], "postprocess": id},
-    {"name": "d01_11", "symbols": [{"literal":"0"}, "positive_digit"], "postprocess": join},
-    {"name": "d01_11", "symbols": [{"literal":"1"}, /[0-1]/], "postprocess": join},
-    {"name": "d01_12", "symbols": ["d01_11"], "postprocess": id},
-    {"name": "d01_12$string$1", "symbols": [{"literal":"1"}, {"literal":"2"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "d01_12", "symbols": ["d01_12$string$1"], "postprocess": id},
-    {"name": "d01_13", "symbols": ["d01_12"], "postprocess": id},
-    {"name": "d01_13$string$1", "symbols": [{"literal":"1"}, {"literal":"3"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "d01_13", "symbols": ["d01_13$string$1"], "postprocess": id},
-    {"name": "d00_14$string$1", "symbols": [{"literal":"0"}, {"literal":"0"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "d00_14", "symbols": ["d00_14$string$1"], "postprocess": id},
-    {"name": "d00_14", "symbols": ["d01_13"], "postprocess": id},
-    {"name": "d00_14$string$2", "symbols": [{"literal":"1"}, {"literal":"4"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "d00_14", "symbols": ["d00_14$string$2"], "postprocess": id},
-    {"name": "d00_23$string$1", "symbols": [{"literal":"0"}, {"literal":"0"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "d00_23", "symbols": ["d00_23$string$1"], "postprocess": id},
-    {"name": "d00_23", "symbols": ["d01_23"], "postprocess": id},
-    {"name": "d01_23", "symbols": [{"literal":"0"}, "positive_digit"], "postprocess": join},
-    {"name": "d01_23", "symbols": [{"literal":"1"}, "digit"], "postprocess": join},
-    {"name": "d01_23", "symbols": [{"literal":"2"}, /[0-3]/], "postprocess": join},
-    {"name": "d01_29", "symbols": [{"literal":"0"}, "positive_digit"], "postprocess": join},
-    {"name": "d01_29", "symbols": [/[1-2]/, "digit"], "postprocess": join},
-    {"name": "d01_30", "symbols": ["d01_29"], "postprocess": id},
-    {"name": "d01_30$string$1", "symbols": [{"literal":"3"}, {"literal":"0"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "d01_30", "symbols": ["d01_30$string$1"], "postprocess": id},
-    {"name": "d01_31", "symbols": ["d01_30"], "postprocess": id},
-    {"name": "d01_31$string$1", "symbols": [{"literal":"3"}, {"literal":"1"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "d01_31", "symbols": ["d01_31$string$1"], "postprocess": id},
-    {"name": "d00_59$string$1", "symbols": [{"literal":"0"}, {"literal":"0"}], "postprocess": function joiner(d) {return d.join('');}},
-    {"name": "d00_59", "symbols": ["d00_59$string$1"], "postprocess": id},
-    {"name": "d00_59", "symbols": ["d01_59"], "postprocess": id},
-    {"name": "d01_59", "symbols": ["d01_29"], "postprocess": id},
-    {"name": "d01_59", "symbols": [/[345]/, "digit"], "postprocess": join},
-    {"name": "d21_24", "symbols": [{"literal":"2"}, /[1-4]/], "postprocess": join},
-    {"name": "d25_41", "symbols": [{"literal":"2"}, /[5-9]/], "postprocess": join},
-    {"name": "d25_41", "symbols": [{"literal":"3"}, "digit"], "postprocess": join},
-    {"name": "d25_41", "symbols": [{"literal":"4"}, /[01]/], "postprocess": join},
-    {"name": "_$ebnf$1", "symbols": []},
-    {"name": "_$ebnf$1", "symbols": [{"literal":" "}, "_$ebnf$1"], "postprocess": function arrconcat(d) {return [d[0]].concat(d[1]);}},
-    {"name": "_", "symbols": ["_$ebnf$1"]}
-]
-  , ParserStart: "edtf"
-}
-if (typeof module !== 'undefined'&& typeof module.exports !== 'undefined') {
-   module.exports = grammar;
-} else {
-   window.grammar = grammar;
-}
-})();
-
-},{"./bitmask":120,"./util":123}],122:[function(require,module,exports){
-'use strict'
-
-const nearley = require('nearley')
-const grammar = require('./grammar')
-
-function byLevel(a, b) {
-  return a.level < b.level ? -1 : a.level > b.level ? 1 : 0
-}
-
-function limit(results, { level, types }) {
-  if (!results.length) return results
-  if (typeof level !== 'number') level = 2
-
-  return results.filter(res =>
-    (level >= res.level) && (!types || types.includes(res.type)))
-}
-
-function best(results) {
-  if (results.length < 2) return results[0]
-
-  // If there are multiple results, pick the first
-  // one on the lowest level!
-  return results.sort(byLevel)[0]
-}
-
-module.exports = {
-
-  parse(input, constraints = {}) {
-    try {
-      let nep = module.exports.parser()
-      let res = best(limit(nep.feed(input).results, constraints))
-
-      if (!res) throw new Error('edtf: No possible parsings (@EOS)')
-
-      return res
-
-    } catch (error) {
-      error.message += ` for "${input}"`
-      throw error
-    }
-  },
-
-  parser() {
-    return new nearley.Parser(grammar.ParserRules, grammar.ParserStart)
-  }
-}
-
-},{"./grammar":121,"nearley":124}],123:[function(require,module,exports){
-'use strict'
-
-const Bitmask = require('./bitmask')
-const { assign } = Object
-
-const util = {
-
-  num(data) {
-    return Number(Array.isArray(data) ? data.join('') : data)
-  },
-
-  join(data) {
-    return data.join('')
-  },
-
-  zero() { return 0 },
-
-  nothing() { return null },
-
-  pick(...args) {
-    return args.length === 1 ?
-      data => data[args[0]] :
-      data => util.concat(data, args)
-  },
-
-  pluck(...args) {
-    return data => args.map(i => data[i])
-  },
-
-  concat(data, idx = data.keys()) {
-    return Array.from(idx)
-      .reduce((memo, i) => data[i] !== null ? memo.concat(data[i]) : memo, [])
-  },
-
-  merge(...args) {
-    if (typeof args[args.length - 1] === 'object')
-      var extra = args.pop()
-
-    return data => assign(args.reduce((a, i) => assign(a, data[i]), {}), extra)
-  },
-
-  interval(level) {
-    return data => ({
-      values: [data[0], data[2]],
-      type: 'Interval',
-      level
-    })
-  },
-
-  masked(type = 'unspecified', symbol = 'X') {
-    return (data, _, reject) => {
-      let mask = data.join('').replace(/-/g, '')
-
-      return mask.indexOf(symbol) === -1 ? reject : {
-        values: Bitmask.values(mask),
-        [type]: Bitmask.compute(mask)
-      }
-    }
-  },
-
-  date(values, level = 0, extra = null) {
-    return assign({
-      type: 'Date',
-      level,
-      values: Bitmask.normalize(values.map(Number))
-    }, extra)
-  },
-
-  year(values, level = 1, extra = null) {
-    return assign({
-      type: 'Year',
-      level,
-      values: values.map(Number)
-    }, extra)
-  },
-
-  century(century, level = 0) {
-    return {
-      type: 'Century',
-      level,
-      values: [century]
-    }
-  },
-
-  decade(decade, level = 2) {
-    return {
-      type: 'Decade',
-      level,
-      values: [decade]
-    }
-  },
-
-  datetime(data) {
-    return {
-      values: Bitmask.normalize(data[0].map(Number)).concat(data[2]),
-      offset: data[3],
-      type: 'Date',
-      level: 0
-    }
-  },
-
-  season(data, level = 1) {
-    return {
-      type: 'Season',
-      level,
-      values: [Number(data[0]), Number(data[2])]
-    }
-  },
-
-  list(data) {
-    return assign({ values: data[1], level: 2 }, data[0], data[2])
-  },
-
-  qualify([parts], _, reject) {
-    let q = {
-      uncertain: new Bitmask(), approximate: new Bitmask()
-    }
-
-    let values = parts
-      .map(([lhs, part, rhs], idx) => {
-        for (let ua in lhs) q[ua].qualify(idx * 2)
-        for (let ua in rhs) q[ua].qualify(1 + idx * 2)
-        return part
-      })
-
-    return (!q.uncertain.value && !q.approximate.value) ?
-      reject :
-      assign(util.date(values, 2), {
-        uncertain: q.uncertain.value,
-        approximate: q.approximate.value
-      })
-  }
-
-}
-
-module.exports = util
-
-},{"./bitmask":120}],124:[function(require,module,exports){
 (function () {
 function Rule(name, symbols, postprocess) {
     this.name = name;
@@ -3887,7 +3073,7 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 }
 })();
 
-},{}],125:[function(require,module,exports){
+},{}],121:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -4851,7 +4037,91 @@ var BibTypes = exports.BibTypes = (++cov_1w8ie4z90q.s[2], {
     }
 });
 
-},{}],126:[function(require,module,exports){
+},{}],122:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var cov_pryn4smbr = function () {
+    var path = '/home/travis/build/fiduswriter/biblatex-csl-converter/src/edtf.js',
+        hash = '020d10b26a1eafd65a3b3330966d5767e8708eca',
+        global = new Function('return this')(),
+        gcv = '__coverage__',
+        coverageData = {
+        path: '/home/travis/build/fiduswriter/biblatex-csl-converter/src/edtf.js',
+        statementMap: {
+            '0': {
+                start: {
+                    line: 4,
+                    column: 4
+                },
+                end: {
+                    line: 11,
+                    column: 5
+                }
+            }
+        },
+        fnMap: {
+            '0': {
+                name: 'edtfParse',
+                decl: {
+                    start: {
+                        line: 3,
+                        column: 16
+                    },
+                    end: {
+                        line: 3,
+                        column: 25
+                    }
+                },
+                loc: {
+                    start: {
+                        line: 3,
+                        column: 38
+                    },
+                    end: {
+                        line: 12,
+                        column: 1
+                    }
+                }
+            }
+        },
+        branchMap: {},
+        s: {
+            '0': 0
+        },
+        f: {
+            '0': 0
+        },
+        b: {},
+        _coverageSchema: '332fd63041d2c1bcb487cc26dd0d5f7d97098a6c'
+    },
+        coverage = global[gcv] || (global[gcv] = {});
+
+    if (coverage[path] && coverage[path].hash === hash) {
+        return coverage[path];
+    }
+
+    coverageData.hash = hash;
+    return coverage[path] = coverageData;
+}();
+
+exports.edtfParse = edtfParse;
+
+var _parser = require('../lib/edtf/src/parser');
+
+function edtfParse(dateString) {
+    ++cov_pryn4smbr.f[0];
+    ++cov_pryn4smbr.s[0];
+
+    return (0, _parser.parse)(
+    // Convert to edtf draft spec format supported by edtf.js
+    dateString.replace(/^y/, 'Y').replace(/unknown/g, '*').replace(/open/g, '').replace(/u/g, 'X').replace(/\?~/g, '%'));
+}
+
+},{"../lib/edtf/src/parser":4}],123:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9153,7 +8423,7 @@ var BibLatexExporter = exports.BibLatexExporter = function () {
     return BibLatexExporter;
 }();
 
-},{"../const":125,"./const":127,"babel-runtime/core-js/object/keys":11,"babel-runtime/helpers/classCallCheck":15,"babel-runtime/helpers/createClass":16}],127:[function(require,module,exports){
+},{"../const":121,"./const":124,"babel-runtime/core-js/object/keys":11,"babel-runtime/helpers/classCallCheck":15,"babel-runtime/helpers/createClass":16}],124:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -9201,7 +8471,7 @@ var cov_12577grdop = function () {
 // A much smaller list for export than for import, as biblatex does understand utf8
 var TexSpecialChars = exports.TexSpecialChars = (++cov_12577grdop.s[0], [[/\\/g, '\\textbackslash '], [/\{/g, '\\{ '], [/\}/g, '\\} '], [/&/g, '{\\&}'], [/%/g, '{\\%}'], [/\$/g, '{\\$}'], [/#/g, '{\\#}'], [/_/g, '{\\_}'], [/~/g, '{\\textasciitilde}'], [/\^/g, '{\\textasciicircum}'], [/ and /g, ' {and} ']]);
 
-},{}],128:[function(require,module,exports){
+},{}],125:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9223,7 +8493,7 @@ var _createClass3 = _interopRequireDefault(_createClass2);
 
 var cov_2dpcoexk8q = function () {
     var path = "/home/travis/build/fiduswriter/biblatex-csl-converter/src/export/csl.js",
-        hash = "c7a0b7725a3525fd9efe4bf1106fbef406b5aa41",
+        hash = "cf8dafaf1f0467a899f83bfcd66367fc47b62023",
         global = new Function('return this')(),
         gcv = "__coverage__",
         coverageData = {
@@ -10135,207 +9405,237 @@ var cov_2dpcoexk8q = function () {
                     column: 22
                 },
                 end: {
-                    line: 190,
-                    column: 9
+                    line: 184,
+                    column: 40
                 }
             },
             "91": {
                 start: {
-                    line: 191,
+                    line: 185,
                     column: 8
                 },
                 end: {
-                    line: 202,
+                    line: 196,
                     column: 9
                 }
             },
             "92": {
                 start: {
-                    line: 192,
+                    line: 186,
                     column: 12
                 },
                 end: {
-                    line: 197,
+                    line: 191,
                     column: 13
                 }
             },
             "93": {
                 start: {
-                    line: 199,
+                    line: 193,
                     column: 12
                 },
                 end: {
-                    line: 201,
+                    line: 195,
                     column: 13
                 }
             },
             "94": {
                 start: {
-                    line: 206,
-                    column: 28
+                    line: 201,
+                    column: 8
                 },
                 end: {
-                    line: 206,
-                    column: 30
+                    line: 203,
+                    column: 9
                 }
             },
             "95": {
                 start: {
-                    line: 206,
-                    column: 39
+                    line: 202,
+                    column: 12
                 },
                 end: {
-                    line: 206,
+                    line: 202,
                     column: 43
                 }
             },
             "96": {
                 start: {
-                    line: 207,
+                    line: 204,
                     column: 8
                 },
                 end: {
-                    line: 227,
-                    column: 10
+                    line: 204,
+                    column: 24
                 }
             },
             "97": {
                 start: {
                     line: 208,
-                    column: 31
+                    column: 28
                 },
                 end: {
                     line: 208,
-                    column: 33
+                    column: 30
                 }
             },
             "98": {
                 start: {
-                    line: 209,
-                    column: 12
+                    line: 208,
+                    column: 39
                 },
                 end: {
-                    line: 225,
-                    column: 13
+                    line: 208,
+                    column: 43
                 }
             },
             "99": {
                 start: {
-                    line: 210,
-                    column: 16
+                    line: 209,
+                    column: 8
                 },
                 end: {
-                    line: 210,
-                    column: 72
+                    line: 229,
+                    column: 10
                 }
             },
             "100": {
                 start: {
-                    line: 212,
-                    column: 16
+                    line: 210,
+                    column: 31
                 },
                 end: {
-                    line: 212,
-                    column: 68
+                    line: 210,
+                    column: 33
                 }
             },
             "101": {
                 start: {
-                    line: 213,
-                    column: 16
+                    line: 211,
+                    column: 12
                 },
                 end: {
-                    line: 213,
-                    column: 70
+                    line: 227,
+                    column: 13
                 }
             },
             "102": {
+                start: {
+                    line: 212,
+                    column: 16
+                },
+                end: {
+                    line: 212,
+                    column: 72
+                }
+            },
+            "103": {
                 start: {
                     line: 214,
                     column: 16
                 },
                 end: {
-                    line: 216,
-                    column: 17
-                }
-            },
-            "103": {
-                start: {
-                    line: 215,
-                    column: 20
-                },
-                end: {
-                    line: 215,
-                    column: 74
+                    line: 214,
+                    column: 68
                 }
             },
             "104": {
                 start: {
-                    line: 217,
+                    line: 215,
                     column: 16
                 },
                 end: {
-                    line: 223,
-                    column: 17
+                    line: 215,
+                    column: 70
                 }
             },
             "105": {
                 start: {
-                    line: 218,
-                    column: 20
+                    line: 216,
+                    column: 16
                 },
                 end: {
-                    line: 222,
-                    column: 21
+                    line: 218,
+                    column: 17
                 }
             },
             "106": {
                 start: {
-                    line: 219,
-                    column: 24
+                    line: 217,
+                    column: 20
                 },
                 end: {
-                    line: 219,
-                    column: 93
+                    line: 217,
+                    column: 74
                 }
             },
             "107": {
                 start: {
+                    line: 219,
+                    column: 16
+                },
+                end: {
+                    line: 225,
+                    column: 17
+                }
+            },
+            "108": {
+                start: {
+                    line: 220,
+                    column: 20
+                },
+                end: {
+                    line: 224,
+                    column: 21
+                }
+            },
+            "109": {
+                start: {
                     line: 221,
                     column: 24
                 },
                 end: {
                     line: 221,
-                    column: 89
-                }
-            },
-            "108": {
-                start: {
-                    line: 224,
-                    column: 16
-                },
-                end: {
-                    line: 224,
-                    column: 73
-                }
-            },
-            "109": {
-                start: {
-                    line: 226,
-                    column: 12
-                },
-                end: {
-                    line: 226,
-                    column: 44
+                    column: 93
                 }
             },
             "110": {
                 start: {
+                    line: 223,
+                    column: 24
+                },
+                end: {
+                    line: 223,
+                    column: 89
+                }
+            },
+            "111": {
+                start: {
+                    line: 226,
+                    column: 16
+                },
+                end: {
+                    line: 226,
+                    column: 73
+                }
+            },
+            "112": {
+                start: {
                     line: 228,
-                    column: 8
+                    column: 12
                 },
                 end: {
                     line: 228,
+                    column: 44
+                }
+            },
+            "113": {
+                start: {
+                    line: 230,
+                    column: 8
+                },
+                end: {
+                    line: 230,
                     column: 28
                 }
             }
@@ -10727,7 +10027,7 @@ var cov_2dpcoexk8q = function () {
                         column: 25
                     },
                     end: {
-                        line: 203,
+                        line: 197,
                         column: 5
                     }
                 }
@@ -10736,21 +10036,21 @@ var cov_2dpcoexk8q = function () {
                 name: "(anonymous_17)",
                 decl: {
                     start: {
-                        line: 205,
+                        line: 199,
                         column: 4
                     },
                     end: {
-                        line: 205,
+                        line: 199,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 205,
+                        line: 199,
                         column: 26
                     },
                     end: {
-                        line: 229,
+                        line: 205,
                         column: 5
                     }
                 }
@@ -10760,20 +10060,43 @@ var cov_2dpcoexk8q = function () {
                 decl: {
                     start: {
                         line: 207,
-                        column: 25
+                        column: 4
                     },
                     end: {
                         line: 207,
-                        column: 26
+                        column: 5
                     }
                 },
                 loc: {
                     start: {
                         line: 207,
+                        column: 26
+                    },
+                    end: {
+                        line: 231,
+                        column: 5
+                    }
+                }
+            },
+            "19": {
+                name: "(anonymous_19)",
+                decl: {
+                    start: {
+                        line: 209,
+                        column: 25
+                    },
+                    end: {
+                        line: 209,
+                        column: 26
+                    }
+                },
+                loc: {
+                    start: {
+                        line: 209,
                         column: 35
                     },
                     end: {
-                        line: 227,
+                        line: 229,
                         column: 9
                     }
                 }
@@ -11293,31 +10616,31 @@ var cov_2dpcoexk8q = function () {
             "12": {
                 loc: {
                     start: {
-                        line: 191,
+                        line: 185,
                         column: 8
                     },
                     end: {
-                        line: 202,
+                        line: 196,
                         column: 9
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 191,
+                        line: 185,
                         column: 8
                     },
                     end: {
-                        line: 202,
+                        line: 196,
                         column: 9
                     }
                 }, {
                     start: {
-                        line: 191,
+                        line: 185,
                         column: 8
                     },
                     end: {
-                        line: 202,
+                        line: 196,
                         column: 9
                     }
                 }]
@@ -11325,95 +10648,95 @@ var cov_2dpcoexk8q = function () {
             "13": {
                 loc: {
                     start: {
-                        line: 209,
-                        column: 12
+                        line: 201,
+                        column: 8
                     },
                     end: {
-                        line: 225,
-                        column: 13
+                        line: 203,
+                        column: 9
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 209,
-                        column: 12
+                        line: 201,
+                        column: 8
                     },
                     end: {
-                        line: 225,
-                        column: 13
+                        line: 203,
+                        column: 9
                     }
                 }, {
                     start: {
-                        line: 209,
-                        column: 12
+                        line: 201,
+                        column: 8
                     },
                     end: {
-                        line: 225,
-                        column: 13
+                        line: 203,
+                        column: 9
                     }
                 }]
             },
             "14": {
                 loc: {
                     start: {
-                        line: 214,
-                        column: 16
+                        line: 211,
+                        column: 12
                     },
                     end: {
-                        line: 216,
-                        column: 17
+                        line: 227,
+                        column: 13
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 214,
-                        column: 16
+                        line: 211,
+                        column: 12
                     },
                     end: {
-                        line: 216,
-                        column: 17
+                        line: 227,
+                        column: 13
                     }
                 }, {
                     start: {
-                        line: 214,
-                        column: 16
+                        line: 211,
+                        column: 12
                     },
                     end: {
-                        line: 216,
-                        column: 17
+                        line: 227,
+                        column: 13
                     }
                 }]
             },
             "15": {
                 loc: {
                     start: {
-                        line: 217,
+                        line: 216,
                         column: 16
                     },
                     end: {
-                        line: 223,
+                        line: 218,
                         column: 17
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 217,
+                        line: 216,
                         column: 16
                     },
                     end: {
-                        line: 223,
+                        line: 218,
                         column: 17
                     }
                 }, {
                     start: {
-                        line: 217,
+                        line: 216,
                         column: 16
                     },
                     end: {
-                        line: 223,
+                        line: 218,
                         column: 17
                     }
                 }]
@@ -11421,31 +10744,63 @@ var cov_2dpcoexk8q = function () {
             "16": {
                 loc: {
                     start: {
-                        line: 218,
+                        line: 219,
+                        column: 16
+                    },
+                    end: {
+                        line: 225,
+                        column: 17
+                    }
+                },
+                type: "if",
+                locations: [{
+                    start: {
+                        line: 219,
+                        column: 16
+                    },
+                    end: {
+                        line: 225,
+                        column: 17
+                    }
+                }, {
+                    start: {
+                        line: 219,
+                        column: 16
+                    },
+                    end: {
+                        line: 225,
+                        column: 17
+                    }
+                }]
+            },
+            "17": {
+                loc: {
+                    start: {
+                        line: 220,
                         column: 20
                     },
                     end: {
-                        line: 222,
+                        line: 224,
                         column: 21
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 218,
+                        line: 220,
                         column: 20
                     },
                     end: {
-                        line: 222,
+                        line: 224,
                         column: 21
                     }
                 }, {
                     start: {
-                        line: 218,
+                        line: 220,
                         column: 20
                     },
                     end: {
-                        line: 222,
+                        line: 224,
                         column: 21
                     }
                 }]
@@ -11562,7 +10917,10 @@ var cov_2dpcoexk8q = function () {
             "107": 0,
             "108": 0,
             "109": 0,
-            "110": 0
+            "110": 0,
+            "111": 0,
+            "112": 0,
+            "113": 0
         },
         f: {
             "0": 0,
@@ -11583,7 +10941,8 @@ var cov_2dpcoexk8q = function () {
             "15": 0,
             "16": 0,
             "17": 0,
-            "18": 0
+            "18": 0,
+            "19": 0
         },
         b: {
             "0": [0, 0],
@@ -11602,7 +10961,8 @@ var cov_2dpcoexk8q = function () {
             "13": [0, 0],
             "14": [0, 0],
             "15": [0, 0],
-            "16": [0, 0]
+            "16": [0, 0],
+            "17": [0, 0]
         },
         _coverageSchema: "332fd63041d2c1bcb487cc26dd0d5f7d97098a6c"
     },
@@ -11618,7 +10978,7 @@ var cov_2dpcoexk8q = function () {
 
 var _const = require("../const");
 
-var _parser = require("../../lib/edtf/src/parser");
+var _edtf = require("../edtf");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -11979,85 +11339,102 @@ var CSLExporter = exports.CSLExporter = function () {
         value: function _reformDate(dateStr) {
             ++cov_2dpcoexk8q.f[16];
 
-            var dateObj = (++cov_2dpcoexk8q.s[90], (0, _parser.parse)(dateStr.replace(/^y/, 'Y') // Convert to edtf draft spec format supported by edtf.js
-            .replace(/unknown/g, '*').replace(/open/g, '').replace(/u/g, 'X').replace(/\?~/g, '%')));
+            var dateObj = (++cov_2dpcoexk8q.s[90], (0, _edtf.edtfParse)(dateStr));
             ++cov_2dpcoexk8q.s[91];
             if (dateObj.type === 'Interval') {
                 ++cov_2dpcoexk8q.b[12][0];
                 ++cov_2dpcoexk8q.s[92];
 
                 return {
-                    'date-parts': [dateObj.values[0].values.slice(0, 3), dateObj.values[1].values.slice(0, 3)]
+                    'date-parts': [this._edtfToCSL(dateObj.values[0].values.slice(0, 3)), this._edtfToCSL(dateObj.values[1].values.slice(0, 3))]
                 };
             } else {
                 ++cov_2dpcoexk8q.b[12][1];
                 ++cov_2dpcoexk8q.s[93];
 
                 return {
-                    'date-parts': dateObj.values.slice(0, 3)
+                    'date-parts': this._edtfToCSL(dateObj.values.slice(0, 3))
                 };
             }
         }
     }, {
+        key: "_edtfToCSL",
+        value: function _edtfToCSL(dateArray) {
+            ++cov_2dpcoexk8q.f[17];
+            ++cov_2dpcoexk8q.s[94];
+
+            // Add 1 to month (0-11 in edtf.js, 1-12 in CSL json)
+            if (dateArray.length > 1) {
+                ++cov_2dpcoexk8q.b[13][0];
+                ++cov_2dpcoexk8q.s[95];
+
+                dateArray[1] = dateArray[1] + 1;
+            } else {
+                ++cov_2dpcoexk8q.b[13][1];
+            }
+            ++cov_2dpcoexk8q.s[96];
+            return dateArray;
+        }
+    }, {
         key: "_reformName",
         value: function _reformName(theNames) {
-            ++cov_2dpcoexk8q.f[17];
+            ++cov_2dpcoexk8q.f[18];
 
-            var reformedNames = (++cov_2dpcoexk8q.s[94], []),
-                that = (++cov_2dpcoexk8q.s[95], this);
-            ++cov_2dpcoexk8q.s[96];
+            var reformedNames = (++cov_2dpcoexk8q.s[97], []),
+                that = (++cov_2dpcoexk8q.s[98], this);
+            ++cov_2dpcoexk8q.s[99];
             theNames.forEach(function (name) {
-                ++cov_2dpcoexk8q.f[18];
+                ++cov_2dpcoexk8q.f[19];
 
-                var reformedName = (++cov_2dpcoexk8q.s[97], {});
-                ++cov_2dpcoexk8q.s[98];
+                var reformedName = (++cov_2dpcoexk8q.s[100], {});
+                ++cov_2dpcoexk8q.s[101];
                 if (name.literal) {
-                    ++cov_2dpcoexk8q.b[13][0];
-                    ++cov_2dpcoexk8q.s[99];
+                    ++cov_2dpcoexk8q.b[14][0];
+                    ++cov_2dpcoexk8q.s[102];
 
                     reformedName['literal'] = that._reformText(name.literal);
                 } else {
-                    ++cov_2dpcoexk8q.b[13][1];
-                    ++cov_2dpcoexk8q.s[100];
+                    ++cov_2dpcoexk8q.b[14][1];
+                    ++cov_2dpcoexk8q.s[103];
 
                     reformedName['given'] = that._reformText(name.given);
-                    ++cov_2dpcoexk8q.s[101];
+                    ++cov_2dpcoexk8q.s[104];
                     reformedName['family'] = that._reformText(name.family);
-                    ++cov_2dpcoexk8q.s[102];
+                    ++cov_2dpcoexk8q.s[105];
                     if (name.suffix) {
-                        ++cov_2dpcoexk8q.b[14][0];
-                        ++cov_2dpcoexk8q.s[103];
+                        ++cov_2dpcoexk8q.b[15][0];
+                        ++cov_2dpcoexk8q.s[106];
 
                         reformedName['suffix'] = that._reformText(name.suffix);
                     } else {
-                        ++cov_2dpcoexk8q.b[14][1];
+                        ++cov_2dpcoexk8q.b[15][1];
                     }
-                    ++cov_2dpcoexk8q.s[104];
+                    ++cov_2dpcoexk8q.s[107];
                     if (name.prefix) {
-                        ++cov_2dpcoexk8q.b[15][0];
-                        ++cov_2dpcoexk8q.s[105];
+                        ++cov_2dpcoexk8q.b[16][0];
+                        ++cov_2dpcoexk8q.s[108];
 
                         if (name.useprefix === true) {
-                            ++cov_2dpcoexk8q.b[16][0];
-                            ++cov_2dpcoexk8q.s[106];
+                            ++cov_2dpcoexk8q.b[17][0];
+                            ++cov_2dpcoexk8q.s[109];
 
                             reformedName['non-dropping-particle'] = that._reformText(name.prefix);
                         } else {
-                            ++cov_2dpcoexk8q.b[16][1];
-                            ++cov_2dpcoexk8q.s[107];
+                            ++cov_2dpcoexk8q.b[17][1];
+                            ++cov_2dpcoexk8q.s[110];
 
                             reformedName['dropping-particle'] = that._reformText(name.prefix);
                         }
                     } else {
-                        ++cov_2dpcoexk8q.b[15][1];
+                        ++cov_2dpcoexk8q.b[16][1];
                     }
-                    ++cov_2dpcoexk8q.s[108];
+                    ++cov_2dpcoexk8q.s[111];
                     reformedName['family'] = that._reformText(name['family']);
                 }
-                ++cov_2dpcoexk8q.s[109];
+                ++cov_2dpcoexk8q.s[112];
                 reformedNames.push(reformedName);
             });
-            ++cov_2dpcoexk8q.s[110];
+            ++cov_2dpcoexk8q.s[113];
             return reformedNames;
         }
     }, {
@@ -12087,7 +11464,7 @@ var CSLExporter = exports.CSLExporter = function () {
     return CSLExporter;
 }();
 
-},{"../../lib/edtf/src/parser":4,"../const":125,"babel-runtime/core-js/object/keys":11,"babel-runtime/helpers/classCallCheck":15,"babel-runtime/helpers/createClass":16}],129:[function(require,module,exports){
+},{"../const":121,"../edtf":122,"babel-runtime/core-js/object/keys":11,"babel-runtime/helpers/classCallCheck":15,"babel-runtime/helpers/createClass":16}],126:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12125,7 +11502,7 @@ var _createClass3 = _interopRequireDefault(_createClass2);
 
 var cov_1nqd9talwx = function () {
     var path = "/home/travis/build/fiduswriter/biblatex-csl-converter/src/import/biblatex.js",
-        hash = "edd5124ce8e6fd160b0cde5ae3d879bc69fe7aa6",
+        hash = "9479f76d5fdd6c558c9ab7ed823671d6dbac4264",
         global = new Function('return this')(),
         gcv = "__coverage__",
         coverageData = {
@@ -14647,7 +14024,7 @@ var cov_1nqd9talwx = function () {
                     column: 8
                 },
                 end: {
-                    line: 599,
+                    line: 593,
                     column: 9
                 }
             },
@@ -14657,1117 +14034,1117 @@ var cov_1nqd9talwx = function () {
                     column: 26
                 },
                 end: {
-                    line: 585,
-                    column: 13
+                    line: 579,
+                    column: 44
                 }
             },
             "253": {
                 start: {
-                    line: 586,
+                    line: 580,
                     column: 12
                 },
                 end: {
-                    line: 596,
+                    line: 590,
                     column: 13
                 }
             },
             "254": {
                 start: {
-                    line: 593,
+                    line: 587,
                     column: 16
                 },
                 end: {
-                    line: 593,
+                    line: 587,
                     column: 27
                 }
             },
             "255": {
                 start: {
-                    line: 595,
+                    line: 589,
                     column: 16
                 },
                 end: {
-                    line: 595,
+                    line: 589,
                     column: 28
                 }
             },
             "256": {
                 start: {
-                    line: 598,
+                    line: 592,
                     column: 12
                 },
                 end: {
-                    line: 598,
+                    line: 592,
                     column: 24
                 }
             },
             "257": {
                 start: {
-                    line: 604,
+                    line: 598,
                     column: 21
                 },
                 end: {
-                    line: 604,
+                    line: 598,
                     column: 64
                 }
             },
             "258": {
                 start: {
-                    line: 605,
+                    line: 599,
                     column: 8
                 },
                 end: {
-                    line: 605,
+                    line: 599,
                     column: 28
                 }
             },
             "259": {
                 start: {
-                    line: 609,
+                    line: 603,
                     column: 21
                 },
                 end: {
-                    line: 609,
+                    line: 603,
                     column: 39
                 }
             },
             "260": {
                 start: {
-                    line: 610,
+                    line: 604,
                     column: 8
                 },
                 end: {
-                    line: 612,
+                    line: 606,
                     column: 9
                 }
             },
             "261": {
                 start: {
-                    line: 611,
+                    line: 605,
                     column: 12
                 },
                 end: {
-                    line: 611,
+                    line: 605,
                     column: 22
                 }
             },
             "262": {
                 start: {
-                    line: 613,
+                    line: 607,
                     column: 8
                 },
                 end: {
-                    line: 613,
+                    line: 607,
                     column: 21
                 }
             },
             "263": {
                 start: {
-                    line: 617,
+                    line: 611,
                     column: 27
                 },
                 end: {
-                    line: 617,
+                    line: 611,
                     column: 43
                 }
             },
             "264": {
                 start: {
-                    line: 618,
+                    line: 612,
                     column: 8
                 },
                 end: {
-                    line: 620,
+                    line: 614,
                     column: 9
                 }
             },
             "265": {
                 start: {
-                    line: 619,
+                    line: 613,
                     column: 12
                 },
                 end: {
-                    line: 619,
+                    line: 613,
                     column: 59
                 }
             },
             "266": {
                 start: {
-                    line: 622,
+                    line: 616,
                     column: 22
                 },
                 end: {
-                    line: 624,
+                    line: 618,
                     column: 10
                 }
             },
             "267": {
                 start: {
-                    line: 623,
+                    line: 617,
                     column: 12
                 },
                 end: {
-                    line: 623,
+                    line: 617,
                     column: 63
                 }
             },
             "268": {
                 start: {
-                    line: 626,
+                    line: 620,
                     column: 8
                 },
                 end: {
-                    line: 632,
+                    line: 626,
                     column: 9
                 }
             },
             "269": {
                 start: {
-                    line: 627,
+                    line: 621,
                     column: 12
                 },
                 end: {
-                    line: 630,
+                    line: 624,
                     column: 14
                 }
             },
             "270": {
                 start: {
-                    line: 631,
+                    line: 625,
                     column: 12
                 },
                 end: {
-                    line: 631,
+                    line: 625,
                     column: 28
                 }
             },
             "271": {
                 start: {
-                    line: 634,
+                    line: 628,
                     column: 8
                 },
                 end: {
-                    line: 634,
+                    line: 628,
                     column: 22
                 }
             },
             "272": {
                 start: {
-                    line: 638,
+                    line: 632,
                     column: 8
                 },
                 end: {
-                    line: 642,
+                    line: 636,
                     column: 9
                 }
             },
             "273": {
                 start: {
-                    line: 643,
+                    line: 637,
                     column: 8
                 },
                 end: {
-                    line: 643,
+                    line: 637,
                     column: 34
                 }
             },
             "274": {
                 start: {
-                    line: 644,
+                    line: 638,
                     column: 8
                 },
                 end: {
-                    line: 646,
+                    line: 640,
                     column: 9
                 }
             },
             "275": {
                 start: {
-                    line: 645,
+                    line: 639,
                     column: 12
                 },
                 end: {
-                    line: 645,
+                    line: 639,
                     column: 67
                 }
             },
             "276": {
                 start: {
-                    line: 647,
+                    line: 641,
                     column: 8
                 },
                 end: {
-                    line: 647,
+                    line: 641,
                     column: 44
                 }
             },
             "277": {
                 start: {
-                    line: 648,
+                    line: 642,
                     column: 8
                 },
                 end: {
-                    line: 650,
+                    line: 644,
                     column: 9
                 }
             },
             "278": {
                 start: {
-                    line: 649,
+                    line: 643,
                     column: 12
                 },
                 end: {
-                    line: 649,
+                    line: 643,
                     column: 27
                 }
             },
             "279": {
                 start: {
-                    line: 651,
+                    line: 645,
                     column: 8
                 },
                 end: {
-                    line: 651,
+                    line: 645,
                     column: 27
                 }
             },
             "280": {
                 start: {
-                    line: 652,
+                    line: 646,
                     column: 8
                 },
                 end: {
-                    line: 654,
+                    line: 648,
                     column: 9
                 }
             },
             "281": {
                 start: {
-                    line: 653,
+                    line: 647,
                     column: 12
                 },
                 end: {
-                    line: 653,
+                    line: 647,
                     column: 47
                 }
             },
             "282": {
                 start: {
-                    line: 655,
+                    line: 649,
                     column: 8
                 },
                 end: {
-                    line: 655,
+                    line: 649,
                     column: 28
                 }
             },
             "283": {
                 start: {
-                    line: 659,
+                    line: 653,
                     column: 8
                 },
                 end: {
-                    line: 659,
+                    line: 653,
                     column: 23
                 }
             },
             "284": {
                 start: {
-                    line: 660,
+                    line: 654,
                     column: 8
                 },
                 end: {
-                    line: 660,
+                    line: 654,
                     column: 51
                 }
             },
             "285": {
                 start: {
-                    line: 661,
+                    line: 655,
                     column: 8
                 },
                 end: {
-                    line: 661,
+                    line: 655,
                     column: 37
                 }
             },
             "286": {
                 start: {
-                    line: 665,
+                    line: 659,
                     column: 17
                 },
                 end: {
-                    line: 665,
+                    line: 659,
                     column: 38
                 }
             },
             "287": {
                 start: {
-                    line: 666,
+                    line: 660,
                     column: 8
                 },
                 end: {
-                    line: 666,
+                    line: 660,
                     column: 51
                 }
             },
             "288": {
                 start: {
-                    line: 670,
+                    line: 664,
                     column: 8
                 },
                 end: {
-                    line: 670,
+                    line: 664,
                     column: 20
                 }
             },
             "289": {
                 start: {
-                    line: 675,
+                    line: 669,
                     column: 20
                 },
                 end: {
-                    line: 675,
+                    line: 669,
                     column: 30
                 }
             },
             "290": {
                 start: {
-                    line: 676,
+                    line: 670,
                     column: 18
                 },
                 end: {
-                    line: 676,
+                    line: 670,
                     column: 40
                 }
             },
             "291": {
                 start: {
-                    line: 677,
+                    line: 671,
                     column: 8
                 },
                 end: {
-                    line: 681,
+                    line: 675,
                     column: 9
                 }
             },
             "292": {
                 start: {
-                    line: 678,
+                    line: 672,
                     column: 26
                 },
                 end: {
-                    line: 678,
+                    line: 672,
                     column: 44
                 }
             },
             "293": {
                 start: {
-                    line: 679,
+                    line: 673,
                     column: 28
                 },
                 end: {
-                    line: 679,
+                    line: 673,
                     column: 77
                 }
             },
             "294": {
                 start: {
-                    line: 680,
+                    line: 674,
                     column: 12
                 },
                 end: {
-                    line: 680,
+                    line: 674,
                     column: 56
                 }
             },
             "295": {
                 start: {
-                    line: 683,
+                    line: 677,
                     column: 8
                 },
                 end: {
-                    line: 683,
+                    line: 677,
                     column: 50
                 }
             },
             "296": {
                 start: {
-                    line: 684,
+                    line: 678,
                     column: 8
                 },
                 end: {
-                    line: 684,
+                    line: 678,
                     column: 14
                 }
             },
             "297": {
                 start: {
-                    line: 688,
+                    line: 682,
                     column: 8
                 },
                 end: {
-                    line: 701,
+                    line: 695,
                     column: 9
                 }
             },
             "298": {
                 start: {
-                    line: 689,
+                    line: 683,
                     column: 20
                 },
                 end: {
-                    line: 689,
+                    line: 683,
                     column: 36
                 }
             },
             "299": {
                 start: {
-                    line: 690,
+                    line: 684,
                     column: 12
                 },
                 end: {
-                    line: 690,
+                    line: 684,
                     column: 27
                 }
             },
             "300": {
                 start: {
-                    line: 691,
+                    line: 685,
                     column: 12
                 },
                 end: {
-                    line: 699,
+                    line: 693,
                     column: 13
                 }
             },
             "301": {
                 start: {
-                    line: 692,
+                    line: 686,
                     column: 16
                 },
                 end: {
-                    line: 692,
+                    line: 686,
                     column: 29
                 }
             },
             "302": {
                 start: {
-                    line: 693,
+                    line: 687,
                     column: 19
                 },
                 end: {
-                    line: 699,
+                    line: 693,
                     column: 13
                 }
             },
             "303": {
                 start: {
-                    line: 694,
+                    line: 688,
                     column: 16
                 },
                 end: {
-                    line: 694,
+                    line: 688,
                     column: 31
                 }
             },
             "304": {
                 start: {
-                    line: 695,
+                    line: 689,
                     column: 19
                 },
                 end: {
-                    line: 699,
+                    line: 693,
                     column: 13
                 }
             },
             "305": {
                 start: {
-                    line: 696,
+                    line: 690,
                     column: 16
                 },
                 end: {
-                    line: 696,
+                    line: 690,
                     column: 34
                 }
             },
             "306": {
                 start: {
-                    line: 698,
+                    line: 692,
                     column: 16
                 },
                 end: {
-                    line: 698,
+                    line: 692,
                     column: 37
                 }
             },
             "307": {
                 start: {
-                    line: 700,
+                    line: 694,
                     column: 12
                 },
                 end: {
-                    line: 700,
+                    line: 694,
                     column: 27
                 }
             },
             "308": {
                 start: {
-                    line: 705,
+                    line: 699,
                     column: 21
                 },
                 end: {
-                    line: 705,
+                    line: 699,
                     column: 47
                 }
             },
             "309": {
                 start: {
-                    line: 706,
+                    line: 700,
                     column: 16
                 },
                 end: {
-                    line: 706,
+                    line: 700,
                     column: 52
                 }
             },
             "310": {
                 start: {
-                    line: 707,
+                    line: 701,
                     column: 6
                 },
                 end: {
-                    line: 707,
+                    line: 701,
                     column: 29
                 }
             },
             "311": {
                 start: {
-                    line: 707,
+                    line: 701,
                     column: 21
                 },
                 end: {
-                    line: 707,
+                    line: 701,
                     column: 27
                 }
             },
             "312": {
                 start: {
-                    line: 708,
+                    line: 702,
                     column: 6
                 },
                 end: {
-                    line: 708,
+                    line: 702,
                     column: 36
                 }
             },
             "313": {
                 start: {
-                    line: 725,
+                    line: 719,
                     column: 6
                 },
                 end: {
-                    line: 725,
+                    line: 719,
                     column: 107
                 }
             },
             "314": {
                 start: {
-                    line: 725,
+                    line: 719,
                     column: 95
                 },
                 end: {
-                    line: 725,
+                    line: 719,
                     column: 105
                 }
             },
             "315": {
                 start: {
-                    line: 727,
+                    line: 721,
                     column: 18
                 },
                 end: {
-                    line: 727,
+                    line: 721,
                     column: 26
                 }
             },
             "316": {
                 start: {
-                    line: 728,
+                    line: 722,
                     column: 19
                 },
                 end: {
-                    line: 728,
+                    line: 722,
                     column: 20
                 }
             },
             "317": {
                 start: {
-                    line: 729,
+                    line: 723,
                     column: 6
                 },
                 end: {
-                    line: 738,
+                    line: 732,
                     column: 7
                 }
             },
             "318": {
                 start: {
-                    line: 730,
+                    line: 724,
                     column: 8
                 },
                 end: {
-                    line: 736,
+                    line: 730,
                     column: 9
                 }
             },
             "319": {
                 start: {
-                    line: 732,
+                    line: 726,
                     column: 12
                 },
                 end: {
-                    line: 732,
+                    line: 726,
                     column: 23
                 }
             },
             "320": {
                 start: {
-                    line: 733,
+                    line: 727,
                     column: 12
                 },
                 end: {
-                    line: 733,
+                    line: 727,
                     column: 17
                 }
             },
             "321": {
                 start: {
-                    line: 735,
+                    line: 729,
                     column: 12
                 },
                 end: {
-                    line: 735,
+                    line: 729,
                     column: 23
                 }
             },
             "322": {
                 start: {
-                    line: 737,
+                    line: 731,
                     column: 8
                 },
                 end: {
-                    line: 737,
+                    line: 731,
                     column: 18
                 }
             },
             "323": {
                 start: {
-                    line: 741,
+                    line: 735,
                     column: 6
                 },
                 end: {
-                    line: 741,
+                    line: 735,
                     column: 34
                 }
             },
             "324": {
                 start: {
-                    line: 741,
+                    line: 735,
                     column: 26
                 },
                 end: {
-                    line: 741,
+                    line: 735,
                     column: 32
                 }
             },
             "325": {
                 start: {
-                    line: 744,
+                    line: 738,
                     column: 6
                 },
                 end: {
-                    line: 744,
+                    line: 738,
                     column: 16
                 }
             },
             "326": {
                 start: {
-                    line: 749,
+                    line: 743,
                     column: 18
                 },
                 end: {
-                    line: 749,
+                    line: 743,
                     column: 145
                 }
             },
             "327": {
                 start: {
-                    line: 750,
+                    line: 744,
                     column: 6
                 },
                 end: {
-                    line: 752,
+                    line: 746,
                     column: 8
                 }
             },
             "328": {
                 start: {
-                    line: 751,
+                    line: 745,
                     column: 10
                 },
                 end: {
-                    line: 751,
+                    line: 745,
                     column: 44
                 }
             },
             "329": {
                 start: {
-                    line: 753,
+                    line: 747,
                     column: 19
                 },
                 end: {
-                    line: 753,
+                    line: 747,
                     column: 58
                 }
             },
             "330": {
                 start: {
-                    line: 754,
+                    line: 748,
                     column: 6
                 },
                 end: {
-                    line: 794,
+                    line: 788,
                     column: 7
                 }
             },
             "331": {
                 start: {
-                    line: 755,
+                    line: 749,
                     column: 8
                 },
                 end: {
-                    line: 755,
+                    line: 749,
                     column: 37
                 }
             },
             "332": {
                 start: {
-                    line: 755,
+                    line: 749,
                     column: 27
                 },
                 end: {
-                    line: 755,
+                    line: 749,
                     column: 35
                 }
             },
             "333": {
                 start: {
-                    line: 756,
+                    line: 750,
                     column: 20
                 },
                 end: {
-                    line: 756,
+                    line: 750,
                     column: 57
                 }
             },
             "334": {
                 start: {
-                    line: 757,
+                    line: 751,
                     column: 8
                 },
                 end: {
-                    line: 757,
+                    line: 751,
                     column: 30
                 }
             },
             "335": {
                 start: {
-                    line: 757,
+                    line: 751,
                     column: 22
                 },
                 end: {
-                    line: 757,
+                    line: 751,
                     column: 28
                 }
             },
             "336": {
                 start: {
-                    line: 758,
+                    line: 752,
                     column: 20
                 },
                 end: {
-                    line: 758,
+                    line: 752,
                     column: 38
                 }
             },
             "337": {
                 start: {
-                    line: 759,
+                    line: 753,
                     column: 19
                 },
                 end: {
-                    line: 759,
+                    line: 753,
                     column: 27
                 }
             },
             "338": {
                 start: {
-                    line: 760,
+                    line: 754,
                     column: 25
                 },
                 end: {
-                    line: 760,
+                    line: 754,
                     column: 33
                 }
             },
             "339": {
                 start: {
-                    line: 761,
+                    line: 755,
                     column: 8
                 },
                 end: {
-                    line: 761,
+                    line: 755,
                     column: 84
                 }
             },
             "340": {
                 start: {
-                    line: 761,
+                    line: 755,
                     column: 75
                 },
                 end: {
-                    line: 761,
+                    line: 755,
                     column: 78
                 }
             },
             "341": {
                 start: {
-                    line: 762,
+                    line: 756,
                     column: 19
                 },
                 end: {
-                    line: 762,
+                    line: 756,
                     column: 37
                 }
             },
             "342": {
                 start: {
-                    line: 763,
+                    line: 757,
                     column: 27
                 },
                 end: {
-                    line: 763,
+                    line: 757,
                     column: 45
                 }
             },
             "343": {
                 start: {
-                    line: 766,
+                    line: 760,
                     column: 8
                 },
                 end: {
-                    line: 766,
+                    line: 760,
                     column: 37
                 }
             },
             "344": {
                 start: {
-                    line: 766,
+                    line: 760,
                     column: 27
                 },
                 end: {
-                    line: 766,
+                    line: 760,
                     column: 35
                 }
             },
             "345": {
                 start: {
-                    line: 769,
+                    line: 763,
                     column: 8
                 },
                 end: {
-                    line: 769,
+                    line: 763,
                     column: 56
                 }
             },
             "346": {
                 start: {
-                    line: 771,
+                    line: 765,
                     column: 8
                 },
                 end: {
-                    line: 771,
+                    line: 765,
                     column: 52
                 }
             },
             "347": {
                 start: {
-                    line: 774,
+                    line: 768,
                     column: 8
                 },
                 end: {
-                    line: 779,
+                    line: 773,
                     column: 9
                 }
             },
             "348": {
                 start: {
-                    line: 775,
+                    line: 769,
                     column: 12
                 },
                 end: {
-                    line: 778,
+                    line: 772,
                     column: 14
                 }
             },
             "349": {
                 start: {
-                    line: 781,
+                    line: 775,
                     column: 8
                 },
                 end: {
-                    line: 793,
+                    line: 787,
                     column: 9
                 }
             },
             "350": {
                 start: {
-                    line: 784,
+                    line: 778,
                     column: 12
                 },
                 end: {
-                    line: 784,
+                    line: 778,
                     column: 17
                 }
             },
             "351": {
                 start: {
-                    line: 787,
+                    line: 781,
                     column: 12
                 },
                 end: {
-                    line: 787,
-                    column: 114
+                    line: 781,
+                    column: 121
                 }
             },
             "352": {
                 start: {
-                    line: 787,
+                    line: 781,
                     column: 78
                 },
                 end: {
-                    line: 787,
-                    column: 113
+                    line: 781,
+                    column: 120
                 }
             },
             "353": {
                 start: {
-                    line: 788,
+                    line: 782,
                     column: 12
                 },
                 end: {
-                    line: 788,
+                    line: 782,
                     column: 17
                 }
             },
             "354": {
                 start: {
-                    line: 791,
+                    line: 785,
                     column: 12
                 },
                 end: {
-                    line: 791,
+                    line: 785,
                     column: 115
                 }
             },
             "355": {
                 start: {
-                    line: 792,
+                    line: 786,
                     column: 12
                 },
                 end: {
-                    line: 792,
+                    line: 786,
                     column: 17
                 }
             },
             "356": {
                 start: {
-                    line: 796,
+                    line: 790,
                     column: 6
                 },
                 end: {
-                    line: 796,
+                    line: 790,
                     column: 38
                 }
             },
             "357": {
                 start: {
-                    line: 800,
+                    line: 794,
                     column: 19
                 },
                 end: {
-                    line: 800,
+                    line: 794,
                     column: 23
                 }
             },
             "358": {
                 start: {
-                    line: 801,
+                    line: 795,
                     column: 8
                 },
                 end: {
-                    line: 803,
+                    line: 797,
                     column: 10
                 }
             },
             "359": {
                 start: {
-                    line: 802,
+                    line: 796,
                     column: 12
                 },
                 end: {
-                    line: 802,
+                    line: 796,
                     column: 37
                 }
             },
             "360": {
                 start: {
-                    line: 807,
+                    line: 801,
                     column: 8
                 },
                 end: {
-                    line: 807,
+                    line: 801,
                     column: 30
                 }
             },
             "361": {
                 start: {
-                    line: 808,
+                    line: 802,
                     column: 8
                 },
                 end: {
-                    line: 808,
+                    line: 802,
                     column: 32
                 }
             },
             "362": {
                 start: {
-                    line: 809,
+                    line: 803,
                     column: 8
                 },
                 end: {
-                    line: 809,
+                    line: 803,
                     column: 26
                 }
             },
             "363": {
                 start: {
-                    line: 810,
+                    line: 804,
                     column: 8
                 },
                 end: {
-                    line: 810,
+                    line: 804,
                     column: 25
                 }
             }
@@ -16435,7 +15812,7 @@ var cov_1nqd9talwx = function () {
                         column: 24
                     },
                     end: {
-                        line: 600,
+                        line: 594,
                         column: 5
                     }
                 }
@@ -16444,21 +15821,21 @@ var cov_1nqd9talwx = function () {
                 name: "(anonymous_29)",
                 decl: {
                     start: {
-                        line: 603,
+                        line: 597,
                         column: 4
                     },
                     end: {
-                        line: 603,
+                        line: 597,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 603,
+                        line: 597,
                         column: 37
                     },
                     end: {
-                        line: 606,
+                        line: 600,
                         column: 5
                     }
                 }
@@ -16467,21 +15844,21 @@ var cov_1nqd9talwx = function () {
                 name: "(anonymous_30)",
                 decl: {
                     start: {
-                        line: 608,
+                        line: 602,
                         column: 4
                     },
                     end: {
-                        line: 608,
+                        line: 602,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 608,
+                        line: 602,
                         column: 29
                     },
                     end: {
-                        line: 614,
+                        line: 608,
                         column: 5
                     }
                 }
@@ -16490,21 +15867,21 @@ var cov_1nqd9talwx = function () {
                 name: "(anonymous_31)",
                 decl: {
                     start: {
-                        line: 616,
+                        line: 610,
                         column: 4
                     },
                     end: {
-                        line: 616,
+                        line: 610,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 616,
+                        line: 610,
                         column: 14
                     },
                     end: {
-                        line: 635,
+                        line: 629,
                         column: 5
                     }
                 }
@@ -16513,21 +15890,21 @@ var cov_1nqd9talwx = function () {
                 name: "(anonymous_32)",
                 decl: {
                     start: {
-                        line: 622,
+                        line: 616,
                         column: 49
                     },
                     end: {
-                        line: 622,
+                        line: 616,
                         column: 50
                     }
                 },
                 loc: {
                     start: {
-                        line: 622,
+                        line: 616,
                         column: 60
                     },
                     end: {
-                        line: 624,
+                        line: 618,
                         column: 9
                     }
                 }
@@ -16536,21 +15913,21 @@ var cov_1nqd9talwx = function () {
                 name: "(anonymous_33)",
                 decl: {
                     start: {
-                        line: 637,
+                        line: 631,
                         column: 4
                     },
                     end: {
-                        line: 637,
+                        line: 631,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 637,
+                        line: 631,
                         column: 21
                     },
                     end: {
-                        line: 656,
+                        line: 650,
                         column: 5
                     }
                 }
@@ -16559,21 +15936,21 @@ var cov_1nqd9talwx = function () {
                 name: "(anonymous_34)",
                 decl: {
                     start: {
-                        line: 658,
+                        line: 652,
                         column: 4
                     },
                     end: {
-                        line: 658,
+                        line: 652,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 658,
+                        line: 652,
                         column: 16
                     },
                     end: {
-                        line: 662,
+                        line: 656,
                         column: 5
                     }
                 }
@@ -16582,21 +15959,21 @@ var cov_1nqd9talwx = function () {
                 name: "(anonymous_35)",
                 decl: {
                     start: {
-                        line: 664,
+                        line: 658,
                         column: 4
                     },
                     end: {
-                        line: 664,
+                        line: 658,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 664,
+                        line: 658,
                         column: 13
                     },
                     end: {
-                        line: 667,
+                        line: 661,
                         column: 5
                     }
                 }
@@ -16605,21 +15982,21 @@ var cov_1nqd9talwx = function () {
                 name: "(anonymous_36)",
                 decl: {
                     start: {
-                        line: 669,
+                        line: 663,
                         column: 4
                     },
                     end: {
-                        line: 669,
+                        line: 663,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 669,
+                        line: 663,
                         column: 15
                     },
                     end: {
-                        line: 671,
+                        line: 665,
                         column: 5
                     }
                 }
@@ -16628,21 +16005,21 @@ var cov_1nqd9talwx = function () {
                 name: "(anonymous_37)",
                 decl: {
                     start: {
-                        line: 674,
+                        line: 668,
                         column: 4
                     },
                     end: {
-                        line: 674,
+                        line: 668,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 674,
+                        line: 668,
                         column: 22
                     },
                     end: {
-                        line: 685,
+                        line: 679,
                         column: 5
                     }
                 }
@@ -16651,21 +16028,21 @@ var cov_1nqd9talwx = function () {
                 name: "(anonymous_38)",
                 decl: {
                     start: {
-                        line: 687,
+                        line: 681,
                         column: 4
                     },
                     end: {
-                        line: 687,
+                        line: 681,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 687,
+                        line: 681,
                         column: 24
                     },
                     end: {
-                        line: 702,
+                        line: 696,
                         column: 5
                     }
                 }
@@ -16674,21 +16051,21 @@ var cov_1nqd9talwx = function () {
                 name: "(anonymous_39)",
                 decl: {
                     start: {
-                        line: 704,
+                        line: 698,
                         column: 4
                     },
                     end: {
-                        line: 704,
+                        line: 698,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 704,
+                        line: 698,
                         column: 18
                     },
                     end: {
-                        line: 797,
+                        line: 791,
                         column: 5
                     }
                 }
@@ -16697,21 +16074,21 @@ var cov_1nqd9talwx = function () {
                 name: "(anonymous_40)",
                 decl: {
                     start: {
-                        line: 750,
+                        line: 744,
                         column: 24
                     },
                     end: {
-                        line: 750,
+                        line: 744,
                         column: 25
                     }
                 },
                 loc: {
                     start: {
-                        line: 750,
+                        line: 744,
                         column: 32
                     },
                     end: {
-                        line: 752,
+                        line: 746,
                         column: 7
                     }
                 }
@@ -16720,21 +16097,21 @@ var cov_1nqd9talwx = function () {
                 name: "(anonymous_41)",
                 decl: {
                     start: {
-                        line: 761,
+                        line: 755,
                         column: 68
                     },
                     end: {
-                        line: 761,
+                        line: 755,
                         column: 69
                     }
                 },
                 loc: {
                     start: {
-                        line: 761,
+                        line: 755,
                         column: 75
                     },
                     end: {
-                        line: 761,
+                        line: 755,
                         column: 78
                     }
                 }
@@ -16743,22 +16120,22 @@ var cov_1nqd9talwx = function () {
                 name: "(anonymous_42)",
                 decl: {
                     start: {
-                        line: 787,
+                        line: 781,
                         column: 71
                     },
                     end: {
-                        line: 787,
+                        line: 781,
                         column: 72
                     }
                 },
                 loc: {
                     start: {
-                        line: 787,
+                        line: 781,
                         column: 78
                     },
                     end: {
-                        line: 787,
-                        column: 113
+                        line: 781,
+                        column: 120
                     }
                 }
             },
@@ -16766,21 +16143,21 @@ var cov_1nqd9talwx = function () {
                 name: "(anonymous_43)",
                 decl: {
                     start: {
-                        line: 799,
+                        line: 793,
                         column: 4
                     },
                     end: {
-                        line: 799,
+                        line: 793,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 799,
+                        line: 793,
                         column: 18
                     },
                     end: {
-                        line: 804,
+                        line: 798,
                         column: 5
                     }
                 }
@@ -16789,21 +16166,21 @@ var cov_1nqd9talwx = function () {
                 name: "(anonymous_44)",
                 decl: {
                     start: {
-                        line: 801,
+                        line: 795,
                         column: 29
                     },
                     end: {
-                        line: 801,
+                        line: 795,
                         column: 30
                     }
                 },
                 loc: {
                     start: {
-                        line: 801,
+                        line: 795,
                         column: 46
                     },
                     end: {
-                        line: 803,
+                        line: 797,
                         column: 9
                     }
                 }
@@ -16812,21 +16189,21 @@ var cov_1nqd9talwx = function () {
                 name: "(anonymous_45)",
                 decl: {
                     start: {
-                        line: 806,
+                        line: 800,
                         column: 4
                     },
                     end: {
-                        line: 806,
+                        line: 800,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 806,
+                        line: 800,
                         column: 17
                     },
                     end: {
-                        line: 811,
+                        line: 805,
                         column: 5
                     }
                 }
@@ -19115,31 +18492,31 @@ var cov_1nqd9talwx = function () {
             "67": {
                 loc: {
                     start: {
-                        line: 586,
+                        line: 580,
                         column: 12
                     },
                     end: {
-                        line: 596,
+                        line: 590,
                         column: 13
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 586,
+                        line: 580,
                         column: 12
                     },
                     end: {
-                        line: 596,
+                        line: 590,
                         column: 13
                     }
                 }, {
                     start: {
-                        line: 586,
+                        line: 580,
                         column: 12
                     },
                     end: {
-                        line: 596,
+                        line: 590,
                         column: 13
                     }
                 }]
@@ -19147,85 +18524,85 @@ var cov_1nqd9talwx = function () {
             "68": {
                 loc: {
                     start: {
-                        line: 587,
+                        line: 581,
                         column: 16
                     },
                     end: {
-                        line: 591,
+                        line: 585,
                         column: 17
                     }
                 },
                 type: "binary-expr",
                 locations: [{
                     start: {
-                        line: 587,
+                        line: 581,
                         column: 16
                     },
                     end: {
-                        line: 587,
+                        line: 581,
                         column: 33
                     }
                 }, {
                     start: {
-                        line: 588,
+                        line: 582,
                         column: 21
                     },
                     end: {
-                        line: 588,
+                        line: 582,
                         column: 42
                     }
                 }, {
                     start: {
-                        line: 588,
+                        line: 582,
                         column: 46
                     },
                     end: {
-                        line: 588,
+                        line: 582,
                         column: 60
                     }
                 }, {
                     start: {
-                        line: 589,
+                        line: 583,
                         column: 21
                     },
                     end: {
-                        line: 589,
+                        line: 583,
                         column: 44
                     }
                 }, {
                     start: {
-                        line: 589,
+                        line: 583,
                         column: 48
                     },
                     end: {
-                        line: 589,
+                        line: 583,
                         column: 62
                     }
                 }, {
                     start: {
-                        line: 590,
+                        line: 584,
                         column: 21
                     },
                     end: {
-                        line: 590,
+                        line: 584,
                         column: 46
                     }
                 }, {
                     start: {
-                        line: 590,
+                        line: 584,
                         column: 50
                     },
                     end: {
-                        line: 590,
+                        line: 584,
                         column: 74
                     }
                 }, {
                     start: {
-                        line: 590,
+                        line: 584,
                         column: 78
                     },
                     end: {
-                        line: 590,
+                        line: 584,
                         column: 102
                     }
                 }]
@@ -19233,31 +18610,31 @@ var cov_1nqd9talwx = function () {
             "69": {
                 loc: {
                     start: {
-                        line: 610,
+                        line: 604,
                         column: 8
                     },
                     end: {
-                        line: 612,
+                        line: 606,
                         column: 9
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 610,
+                        line: 604,
                         column: 8
                     },
                     end: {
-                        line: 612,
+                        line: 606,
                         column: 9
                     }
                 }, {
                     start: {
-                        line: 610,
+                        line: 604,
                         column: 8
                     },
                     end: {
-                        line: 612,
+                        line: 606,
                         column: 9
                     }
                 }]
@@ -19265,31 +18642,31 @@ var cov_1nqd9talwx = function () {
             "70": {
                 loc: {
                     start: {
-                        line: 618,
+                        line: 612,
                         column: 8
                     },
                     end: {
-                        line: 620,
+                        line: 614,
                         column: 9
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 618,
+                        line: 612,
                         column: 8
                     },
                     end: {
-                        line: 620,
+                        line: 614,
                         column: 9
                     }
                 }, {
                     start: {
-                        line: 618,
+                        line: 612,
                         column: 8
                     },
                     end: {
-                        line: 620,
+                        line: 614,
                         column: 9
                     }
                 }]
@@ -19297,31 +18674,31 @@ var cov_1nqd9talwx = function () {
             "71": {
                 loc: {
                     start: {
-                        line: 626,
+                        line: 620,
                         column: 8
                     },
                     end: {
-                        line: 632,
+                        line: 626,
                         column: 9
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 626,
+                        line: 620,
                         column: 8
                     },
                     end: {
-                        line: 632,
+                        line: 626,
                         column: 9
                     }
                 }, {
                     start: {
-                        line: 626,
+                        line: 620,
                         column: 8
                     },
                     end: {
-                        line: 632,
+                        line: 626,
                         column: 9
                     }
                 }]
@@ -19329,31 +18706,31 @@ var cov_1nqd9talwx = function () {
             "72": {
                 loc: {
                     start: {
-                        line: 644,
+                        line: 638,
                         column: 8
                     },
                     end: {
-                        line: 646,
+                        line: 640,
                         column: 9
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 644,
+                        line: 638,
                         column: 8
                     },
                     end: {
-                        line: 646,
+                        line: 640,
                         column: 9
                     }
                 }, {
                     start: {
-                        line: 644,
+                        line: 638,
                         column: 8
                     },
                     end: {
-                        line: 646,
+                        line: 640,
                         column: 9
                     }
                 }]
@@ -19361,31 +18738,31 @@ var cov_1nqd9talwx = function () {
             "73": {
                 loc: {
                     start: {
-                        line: 648,
+                        line: 642,
                         column: 8
                     },
                     end: {
-                        line: 650,
+                        line: 644,
                         column: 9
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 648,
+                        line: 642,
                         column: 8
                     },
                     end: {
-                        line: 650,
+                        line: 644,
                         column: 9
                     }
                 }, {
                     start: {
-                        line: 648,
+                        line: 642,
                         column: 8
                     },
                     end: {
-                        line: 650,
+                        line: 644,
                         column: 9
                     }
                 }]
@@ -19393,31 +18770,31 @@ var cov_1nqd9talwx = function () {
             "74": {
                 loc: {
                     start: {
-                        line: 652,
+                        line: 646,
                         column: 8
                     },
                     end: {
-                        line: 654,
+                        line: 648,
                         column: 9
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 652,
+                        line: 646,
                         column: 8
                     },
                     end: {
-                        line: 654,
+                        line: 648,
                         column: 9
                     }
                 }, {
                     start: {
-                        line: 652,
+                        line: 646,
                         column: 8
                     },
                     end: {
-                        line: 654,
+                        line: 648,
                         column: 9
                     }
                 }]
@@ -19425,31 +18802,31 @@ var cov_1nqd9talwx = function () {
             "75": {
                 loc: {
                     start: {
-                        line: 691,
+                        line: 685,
                         column: 12
                     },
                     end: {
-                        line: 699,
+                        line: 693,
                         column: 13
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 691,
+                        line: 685,
                         column: 12
                     },
                     end: {
-                        line: 699,
+                        line: 693,
                         column: 13
                     }
                 }, {
                     start: {
-                        line: 691,
+                        line: 685,
                         column: 12
                     },
                     end: {
-                        line: 699,
+                        line: 693,
                         column: 13
                     }
                 }]
@@ -19457,31 +18834,31 @@ var cov_1nqd9talwx = function () {
             "76": {
                 loc: {
                     start: {
-                        line: 693,
+                        line: 687,
                         column: 19
                     },
                     end: {
-                        line: 699,
+                        line: 693,
                         column: 13
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 693,
+                        line: 687,
                         column: 19
                     },
                     end: {
-                        line: 699,
+                        line: 693,
                         column: 13
                     }
                 }, {
                     start: {
-                        line: 693,
+                        line: 687,
                         column: 19
                     },
                     end: {
-                        line: 699,
+                        line: 693,
                         column: 13
                     }
                 }]
@@ -19489,31 +18866,31 @@ var cov_1nqd9talwx = function () {
             "77": {
                 loc: {
                     start: {
-                        line: 695,
+                        line: 689,
                         column: 19
                     },
                     end: {
-                        line: 699,
+                        line: 693,
                         column: 13
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 695,
+                        line: 689,
                         column: 19
                     },
                     end: {
-                        line: 699,
+                        line: 693,
                         column: 13
                     }
                 }, {
                     start: {
-                        line: 695,
+                        line: 689,
                         column: 19
                     },
                     end: {
-                        line: 699,
+                        line: 693,
                         column: 13
                     }
                 }]
@@ -19521,31 +18898,31 @@ var cov_1nqd9talwx = function () {
             "78": {
                 loc: {
                     start: {
-                        line: 707,
+                        line: 701,
                         column: 6
                     },
                     end: {
-                        line: 707,
+                        line: 701,
                         column: 29
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 707,
+                        line: 701,
                         column: 6
                     },
                     end: {
-                        line: 707,
+                        line: 701,
                         column: 29
                     }
                 }, {
                     start: {
-                        line: 707,
+                        line: 701,
                         column: 6
                     },
                     end: {
-                        line: 707,
+                        line: 701,
                         column: 29
                     }
                 }]
@@ -19553,31 +18930,31 @@ var cov_1nqd9talwx = function () {
             "79": {
                 loc: {
                     start: {
-                        line: 725,
+                        line: 719,
                         column: 13
                     },
                     end: {
-                        line: 725,
+                        line: 719,
                         column: 91
                     }
                 },
                 type: "binary-expr",
                 locations: [{
                     start: {
-                        line: 725,
+                        line: 719,
                         column: 14
                     },
                     end: {
-                        line: 725,
+                        line: 719,
                         column: 42
                     }
                 }, {
                     start: {
-                        line: 725,
+                        line: 719,
                         column: 48
                     },
                     end: {
-                        line: 725,
+                        line: 719,
                         column: 90
                     }
                 }]
@@ -19585,31 +18962,31 @@ var cov_1nqd9talwx = function () {
             "80": {
                 loc: {
                     start: {
-                        line: 729,
+                        line: 723,
                         column: 13
                     },
                     end: {
-                        line: 729,
+                        line: 723,
                         column: 55
                     }
                 },
                 type: "binary-expr",
                 locations: [{
                     start: {
-                        line: 729,
+                        line: 723,
                         column: 13
                     },
                     end: {
-                        line: 729,
+                        line: 723,
                         column: 41
                     }
                 }, {
                     start: {
-                        line: 729,
+                        line: 723,
                         column: 45
                     },
                     end: {
-                        line: 729,
+                        line: 723,
                         column: 55
                     }
                 }]
@@ -19617,31 +18994,31 @@ var cov_1nqd9talwx = function () {
             "81": {
                 loc: {
                     start: {
-                        line: 730,
+                        line: 724,
                         column: 8
                     },
                     end: {
-                        line: 736,
+                        line: 730,
                         column: 9
                     }
                 },
                 type: "switch",
                 locations: [{
                     start: {
-                        line: 731,
+                        line: 725,
                         column: 10
                     },
                     end: {
-                        line: 733,
+                        line: 727,
                         column: 17
                     }
                 }, {
                     start: {
-                        line: 734,
+                        line: 728,
                         column: 10
                     },
                     end: {
-                        line: 735,
+                        line: 729,
                         column: 23
                     }
                 }]
@@ -19649,31 +19026,31 @@ var cov_1nqd9talwx = function () {
             "82": {
                 loc: {
                     start: {
-                        line: 741,
+                        line: 735,
                         column: 6
                     },
                     end: {
-                        line: 741,
+                        line: 735,
                         column: 34
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 741,
+                        line: 735,
                         column: 6
                     },
                     end: {
-                        line: 741,
+                        line: 735,
                         column: 34
                     }
                 }, {
                     start: {
-                        line: 741,
+                        line: 735,
                         column: 6
                     },
                     end: {
-                        line: 741,
+                        line: 735,
                         column: 34
                     }
                 }]
@@ -19681,31 +19058,31 @@ var cov_1nqd9talwx = function () {
             "83": {
                 loc: {
                     start: {
-                        line: 755,
+                        line: 749,
                         column: 8
                     },
                     end: {
-                        line: 755,
+                        line: 749,
                         column: 37
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 755,
+                        line: 749,
                         column: 8
                     },
                     end: {
-                        line: 755,
+                        line: 749,
                         column: 37
                     }
                 }, {
                     start: {
-                        line: 755,
+                        line: 749,
                         column: 8
                     },
                     end: {
-                        line: 755,
+                        line: 749,
                         column: 37
                     }
                 }]
@@ -19713,31 +19090,31 @@ var cov_1nqd9talwx = function () {
             "84": {
                 loc: {
                     start: {
-                        line: 757,
+                        line: 751,
                         column: 8
                     },
                     end: {
-                        line: 757,
+                        line: 751,
                         column: 30
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 757,
+                        line: 751,
                         column: 8
                     },
                     end: {
-                        line: 757,
+                        line: 751,
                         column: 30
                     }
                 }, {
                     start: {
-                        line: 757,
+                        line: 751,
                         column: 8
                     },
                     end: {
-                        line: 757,
+                        line: 751,
                         column: 30
                     }
                 }]
@@ -19745,31 +19122,31 @@ var cov_1nqd9talwx = function () {
             "85": {
                 loc: {
                     start: {
-                        line: 761,
+                        line: 755,
                         column: 21
                     },
                     end: {
-                        line: 761,
+                        line: 755,
                         column: 84
                     }
                 },
                 type: "cond-expr",
                 locations: [{
                     start: {
-                        line: 761,
+                        line: 755,
                         column: 34
                     },
                     end: {
-                        line: 761,
+                        line: 755,
                         column: 79
                     }
                 }, {
                     start: {
-                        line: 761,
+                        line: 755,
                         column: 82
                     },
                     end: {
-                        line: 761,
+                        line: 755,
                         column: 84
                     }
                 }]
@@ -19777,31 +19154,31 @@ var cov_1nqd9talwx = function () {
             "86": {
                 loc: {
                     start: {
-                        line: 766,
+                        line: 760,
                         column: 8
                     },
                     end: {
-                        line: 766,
+                        line: 760,
                         column: 37
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 766,
+                        line: 760,
                         column: 8
                     },
                     end: {
-                        line: 766,
+                        line: 760,
                         column: 37
                     }
                 }, {
                     start: {
-                        line: 766,
+                        line: 760,
                         column: 8
                     },
                     end: {
-                        line: 766,
+                        line: 760,
                         column: 37
                     }
                 }]
@@ -19809,31 +19186,31 @@ var cov_1nqd9talwx = function () {
             "87": {
                 loc: {
                     start: {
-                        line: 774,
+                        line: 768,
                         column: 8
                     },
                     end: {
-                        line: 779,
+                        line: 773,
                         column: 9
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 774,
+                        line: 768,
                         column: 8
                     },
                     end: {
-                        line: 779,
+                        line: 773,
                         column: 9
                     }
                 }, {
                     start: {
-                        line: 774,
+                        line: 768,
                         column: 8
                     },
                     end: {
-                        line: 779,
+                        line: 773,
                         column: 9
                     }
                 }]
@@ -19841,40 +19218,40 @@ var cov_1nqd9talwx = function () {
             "88": {
                 loc: {
                     start: {
-                        line: 781,
+                        line: 775,
                         column: 8
                     },
                     end: {
-                        line: 793,
+                        line: 787,
                         column: 9
                     }
                 },
                 type: "switch",
                 locations: [{
                     start: {
+                        line: 776,
+                        column: 10
+                    },
+                    end: {
+                        line: 778,
+                        column: 17
+                    }
+                }, {
+                    start: {
+                        line: 779,
+                        column: 10
+                    },
+                    end: {
                         line: 782,
-                        column: 10
-                    },
-                    end: {
-                        line: 784,
                         column: 17
                     }
                 }, {
                     start: {
-                        line: 785,
+                        line: 783,
                         column: 10
                     },
                     end: {
-                        line: 788,
-                        column: 17
-                    }
-                }, {
-                    start: {
-                        line: 789,
-                        column: 10
-                    },
-                    end: {
-                        line: 792,
+                        line: 786,
                         column: 17
                     }
                 }]
@@ -20407,7 +19784,7 @@ var _literalParser = require("./literal-parser");
 
 var _tools = require("./tools");
 
-var _parser = require("../../lib/edtf/src/parser");
+var _edtf = require("../edtf");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21528,8 +20905,7 @@ var BibLatexParser = exports.BibLatexParser = function () {
 
             // check if date is valid edtf string (level 0 or 1).
             try {
-                var dateObj = (++cov_1nqd9talwx.s[252], (0, _parser.parse)(dateStr.replace(/^y/, 'Y') // Convert to edtf draft spec format supported by edtf.js
-                .replace(/unknown/g, '*').replace(/open/g, '').replace(/u/g, 'X').replace(/\?~/g, '%')));
+                var dateObj = (++cov_1nqd9talwx.s[252], (0, _edtf.edtfParse)(dateStr));
                 ++cov_1nqd9talwx.s[253];
                 if ((++cov_1nqd9talwx.b[68][0], dateObj.level < 2) && ((++cov_1nqd9talwx.b[68][1], dateObj.type === 'Date') && (++cov_1nqd9talwx.b[68][2], dateObj.values) || (++cov_1nqd9talwx.b[68][3], dateObj.type === 'Season') && (++cov_1nqd9talwx.b[68][4], dateObj.values) || (++cov_1nqd9talwx.b[68][5], dateObj.type === 'Interval') && (++cov_1nqd9talwx.b[68][6], dateObj.values[0].values) && (++cov_1nqd9talwx.b[68][7], dateObj.values[1].values))) {
                     ++cov_1nqd9talwx.b[67][0];
@@ -21931,7 +21307,7 @@ var BibLatexParser = exports.BibLatexParser = function () {
                             levels[level].references = levels[level].references.filter(function (key) {
                                 ++cov_1nqd9talwx.f[42];
                                 ++cov_1nqd9talwx.s[352];
-                                return levels[level - 1].indexOf(key) >= 0;
+                                return levels[level - 1].references.includes(key);
                             });
                             ++cov_1nqd9talwx.s[353];
                             break;
@@ -22007,7 +21383,7 @@ var BibLatexParser = exports.BibLatexParser = function () {
     return BibLatexParser;
 }();
 
-},{"../../lib/edtf/src/parser":4,"../const":125,"./const":130,"./literal-parser":131,"./name-parser":132,"./tools":133,"babel-runtime/core-js/get-iterator":7,"babel-runtime/core-js/object/keys":11,"babel-runtime/core-js/set":12,"babel-runtime/helpers/classCallCheck":15,"babel-runtime/helpers/createClass":16,"babel-runtime/helpers/toConsumableArray":19,"babel-runtime/helpers/typeof":20}],130:[function(require,module,exports){
+},{"../const":121,"../edtf":122,"./const":127,"./literal-parser":128,"./name-parser":129,"./tools":130,"babel-runtime/core-js/get-iterator":7,"babel-runtime/core-js/object/keys":11,"babel-runtime/core-js/set":12,"babel-runtime/helpers/classCallCheck":15,"babel-runtime/helpers/createClass":16,"babel-runtime/helpers/toConsumableArray":19,"babel-runtime/helpers/typeof":20}],127:[function(require,module,exports){
 'use strict';Object.defineProperty(exports,"__esModule",{value:true});var cov_1eryzo4kra=function(){var path='/home/travis/build/fiduswriter/biblatex-csl-converter/src/import/const.js',hash='20cfd84e7ef291a1c4bbd4d4933535a967ff5b1f',global=new Function('return this')(),gcv='__coverage__',coverageData={path:'/home/travis/build/fiduswriter/biblatex-csl-converter/src/import/const.js',statementMap:{'0':{start:{line:2,column:39},end:{line:10,column:1}},'1':{start:{line:13,column:34},end:{line:20,column:1}},'2':{start:{line:23,column:38},end:{line:36,column:1}},'3':{start:{line:38,column:33},end:{line:60,column:1}},'4':{start:{line:73,column:31},end:{line:3013,column:1}}},fnMap:{},branchMap:{},s:{'0':0,'1':0,'2':0,'3':0,'4':0},f:{},b:{},_coverageSchema:'332fd63041d2c1bcb487cc26dd0d5f7d97098a6c'},coverage=global[gcv]||(global[gcv]={});if(coverage[path]&&coverage[path].hash===hash){return coverage[path];}coverageData.hash=hash;return coverage[path]=coverageData;}();/** A list of all field aliases and what they refer to. */var BiblatexFieldAliasTypes=exports.BiblatexFieldAliasTypes=(++cov_1eryzo4kra.s[0],{'address':'location','annote':'annotation','archiveprefix':'eprinttype','journal':'journaltitle','pdf':'file','primaryclass':'eprintclass','school':'institution'});/** A list of all bibentry aliases and what they refer to. */var BiblatexAliasTypes=exports.BiblatexAliasTypes=(++cov_1eryzo4kra.s[1],{'conference':'inproceedings','electronic':'online','mastersthesis':'thesis','phdthesis':'thesis','techreport':'thesis','www':'online'});/** A list of aliases for languages known by biblatex/babel/polyglosia and what they refer to. */var BiblatexAliasLanguages=exports.BiblatexAliasLanguages=(++cov_1eryzo4kra.s[2],{'english':'usenglish','american':'usenglish','british':'ukenglish','en':'usenglish','anglais':'usenglish','francais':'french','austrian':'naustrian','german':'ngerman','germanb':'german','polutonikogreek':'greek','brazil':'brazilian','portugues':'portuguese'});var BiblatexAliasKeys=exports.BiblatexAliasKeys=(++cov_1eryzo4kra.s[3],{"langamerican":"american","langbrazilian":"brazilian","langcatalan":"catalan","langcroation":"croation","langczech":"czech","langdanish":"danish","langdutch":"dutch","langenglish":"english","langfinnish":"finnish","langfrench":"french","langgerman":"german","langgreek":"greek","langitalian":"italian","langlatin":"latin","langnorwegian":"norwegian","langpolish":"polish","langportuguese":"portuguese","langrussian":"russian","langslovene":"slovene","langspanish":"spanish","langswedish":"swedish"});/** A list of special chars in Tex and their unicode equivalent. *//* The copyright holder of the below composition is Emiliano Heyns, and it is made available under the MIT license.
 
 Data sources for the composition are:
@@ -22017,7 +21393,7 @@ http://www.w3.org/2003/entities/2007xml/unicode.xml
 http://www.w3.org/Math/characters/unicode.xml
 */var TeXSpecialChars=exports.TeXSpecialChars=(++cov_1eryzo4kra.s[4],[["\\{\\\\fontencoding\\{LECO\\}\\\\selectfont\\\\char220\\}|\\\\fontencoding\\{LECO\\}\\\\selectfont\\\\char220",'\u033C'],["\\{\\\\fontencoding\\{LECO\\}\\\\selectfont\\\\char225\\}|\\\\fontencoding\\{LECO\\}\\\\selectfont\\\\char225",'\u0361'],["\\{\\\\fontencoding\\{LELA\\}\\\\selectfont\\\\char201\\}|\\\\fontencoding\\{LELA\\}\\\\selectfont\\\\char201",'\u013F'],["\\{\\\\fontencoding\\{LECO\\}\\\\selectfont\\\\char218\\}|\\\\fontencoding\\{LECO\\}\\\\selectfont\\\\char218",'\u033A'],["\\{\\\\fontencoding\\{LELA\\}\\\\selectfont\\\\char202\\}|\\\\fontencoding\\{LELA\\}\\\\selectfont\\\\char202",'\u0140'],["\\{\\\\fontencoding\\{LECO\\}\\\\selectfont\\\\char207\\}|\\\\fontencoding\\{LECO\\}\\\\selectfont\\\\char207",'\u032F'],["\\{\\\\fontencoding\\{LECO\\}\\\\selectfont\\\\char203\\}|\\\\fontencoding\\{LECO\\}\\\\selectfont\\\\char203",'\u032B'],["\\{\\\\fontencoding\\{LECO\\}\\\\selectfont\\\\char185\\}|\\\\fontencoding\\{LECO\\}\\\\selectfont\\\\char185",'\u0319'],["\\{\\\\fontencoding\\{LEIP\\}\\\\selectfont\\\\char202\\}|\\\\fontencoding\\{LEIP\\}\\\\selectfont\\\\char202",'\u027F'],["\\{\\\\fontencoding\\{LECO\\}\\\\selectfont\\\\char184\\}|\\\\fontencoding\\{LECO\\}\\\\selectfont\\\\char184",'\u0318'],["\\{\\\\fontencoding\\{LECO\\}\\\\selectfont\\\\char177\\}|\\\\fontencoding\\{LECO\\}\\\\selectfont\\\\char177",'\u0311'],["\\{\\\\fontencoding\\{LELA\\}\\\\selectfont\\\\char195\\}|\\\\fontencoding\\{LELA\\}\\\\selectfont\\\\char195",'\u01BA'],["\\{\\\\fontencoding\\{LECO\\}\\\\selectfont\\\\char215\\}|\\\\fontencoding\\{LECO\\}\\\\selectfont\\\\char215",'\u0337'],["\\{\\\\fontencoding\\{LECO\\}\\\\selectfont\\\\char216\\}|\\\\fontencoding\\{LECO\\}\\\\selectfont\\\\char216",'\u0338'],["\\{\\\\fontencoding\\{LECO\\}\\\\selectfont\\\\char219\\}|\\\\fontencoding\\{LECO\\}\\\\selectfont\\\\char219",'\u033B'],["\\{\\\\fontencoding\\{LECO\\}\\\\selectfont\\\\char221\\}|\\\\fontencoding\\{LECO\\}\\\\selectfont\\\\char221",'\u033D'],["\\{\\\\fontencoding\\{LEIP\\}\\\\selectfont\\\\char61\\}|\\\\fontencoding\\{LEIP\\}\\\\selectfont\\\\char61",'\u0258'],["\\{\\\\fontencoding\\{LELA\\}\\\\selectfont\\\\char63\\}|\\\\fontencoding\\{LELA\\}\\\\selectfont\\\\char63",'\u0167'],["\\{\\\\fontencoding\\{LELA\\}\\\\selectfont\\\\char91\\}|\\\\fontencoding\\{LELA\\}\\\\selectfont\\\\char91",'\u0138'],["\\{\\\\fontencoding\\{LELA\\}\\\\selectfont\\\\char40\\}|\\\\fontencoding\\{LELA\\}\\\\selectfont\\\\char40",'\u0126'],["\\{\\\\fontencoding\\{LELA\\}\\\\selectfont\\\\char47\\}|\\\\fontencoding\\{LELA\\}\\\\selectfont\\\\char47",'\u0166'],["\\\\mathbin\\{\\{:\\}\\\\!\\\\!\\{\\-\\}\\\\!\\\\!\\{:\\}\\}",'\u223A'],["\\\\cyrchar\\\\cyrhundredthousands",'\u0488'],['\\\\acute\\{\\\\ddot\\{\\\\upsilon\\}\\}','\u03B0'],["\\\\Pisymbol\\{ppi020\\}\\{105\\}",'\u2A9E'],["\\\\acute\\{\\\\ddot\\{\\\\iota\\}\\}",'\u0390'],["\\\\Pisymbol\\{ppi020\\}\\{117\\}",'\u2A9D'],["\\\\mathsfbfsl\\{\\\\varkappa\\}",'\uD835\uDFC6'],["\\\\barleftarrowrightarrowba",'\u21B9'],["\\\\mathsfbfsl\\{\\\\vartheta\\}",'\uD835\uDF97'],["\\\\not\\\\kern\\-0\\.3em\\\\times",'\u226D'],["\\\\leftarrowshortrightarrow",'\u2943'],["\\\\mathsfbfsl\\{\\\\varsigma\\}",'\uD835\uDFBB'],["\\\\Pisymbol\\{ppi022\\}\\{87\\}",'\u03D0'],["\\\\concavediamondtickright",'\u27E3'],["\\\\invwhiteupperhalfcircle",'\u25DA'],['\\\\mathsfbfsl\\{\\\\Upsilon\\}','\uD835\uDFA4'],["\\\\nvtwoheadrightarrowtail",'\u2917'],["\\\\nVtwoheadrightarrowtail",'\u2918'],["\\\\invwhitelowerhalfcircle",'\u25DB'],["\\\\leftrightarrowtriangle",'\u21FF'],["\\\\partialmeetcontraction",'\u2AA3'],['\\\\updownharpoonleftright','\u294D'],["\\\\ensuremath\\{\\\\Elzpes\\}",'\u20A7'],["\\\\texteuro|\\{\\\\mbox\\{\\\\texteuro\\}\\}|\\\\mbox\\{\\\\texteuro\\}",'\u20AC'],["\\\\cyrchar\\\\CYROMEGATITLO",'\u047C'],["\\\\mathsfbfsl\\{\\\\varrho\\}",'\uD835\uDFC8'],["\\\\cyrchar\\\\cyromegatitlo",'\u047D'],["\\\\nVtwoheadleftarrowtail",'\u2B3D'],["\\\\concavediamondtickleft",'\u27E2'],['\\\\updownharpoonrightleft','\u294C'],["\\\\blackcircleulquadwhite",'\u25D5'],["\\\\mathsfbfsl\\{\\\\Lambda\\}",'\uD835\uDF9A'],["\\\\mathsfbf\\{\\\\varsigma\\}",'\uD835\uDF81'],["\\\\mathsfbf\\{\\\\varkappa\\}",'\uD835\uDF8C'],["\\\\nvtwoheadleftarrowtail",'\u2B3C'],["\\\\mathsfbf\\{\\\\vartheta\\}",'\uD835\uDF67'],["\\\\downtrianglerightblack",'\u29E9'],["\\\\ElsevierGlyph\\{E838\\}",'\u233D'],["\\\\ElsevierGlyph\\{2129\\}",'\u2129'],["\\\\ElsevierGlyph\\{E219\\}",'\u2937'],["\\\\rangledownzigzagarrow",'\u237C'],["\\\\mathsfbfsl\\{\\\\Omega\\}",'\uD835\uDFA8'],["\\\\mathrm\\{\\\\ddot\\{Y\\}\\}",'\u03AB'],["\\\\mathsfbfsl\\{\\\\nabla\\}",'\uD835\uDFA9'],["\\\\mathrm\\{\\\\ddot\\{I\\}\\}",'\u03AA'],["\\\\mathsfbfsl\\{\\\\Gamma\\}",'\uD835\uDF92'],["\\\\ElsevierGlyph\\{2275\\}",'\u2275'],["\\\\ElsevierGlyph\\{E21A\\}",'\u2936'],["\\\\ElsevierGlyph\\{E214\\}",'\u297C'],["\\\\ElsevierGlyph\\{E215\\}",'\u297D'],["\\\\ElsevierGlyph\\{2274\\}",'\u2274'],["\\\\ElsevierGlyph\\{2232\\}",'\u2232'],["\\\\ElsevierGlyph\\{E212\\}",'\u2905'],["\\\\ElsevierGlyph\\{2233\\}",'\u2233'],["\\\\ElsevierGlyph\\{3018\\}",'\u2985'],["\\\\sim\\\\joinrel\\\\leadsto",'\u27FF'],["\\\\ElsevierGlyph\\{2238\\}",'\u2238'],["\\\\ElsevierGlyph\\{E291\\}",'\u2994'],["\\\\ElsevierGlyph\\{E21C\\}",'\u2933'],['\\\\underrightharpoondown','\u20EC'],["\\\\ElsevierGlyph\\{2242\\}",'\u2242'],["\\\\ElsevierGlyph\\{E260\\}",'\u29B5'],["\\\\ElsevierGlyph\\{E61B\\}",'\u29B6'],["\\\\cyrchar\\\\cyrsemisftsn",'\u048D'],["\\\\cyrchar\\\\CYRSEMISFTSN",'\u048C'],["\\\\cyrchar\\\\cyrthousands",'\u0482'],["\\\\ElsevierGlyph\\{3019\\}",'\u3019'],["\\\\ElsevierGlyph\\{300B\\}",'\u300B'],["\\\\leftrightharpoonsdown",'\u2967'],["\\\\rightleftharpoonsdown",'\u2969'],["\\\\ElsevierGlyph\\{E210\\}",'\u292A'],["\\\\ElsevierGlyph\\{300A\\}",'\u300A'],["\\\\ElsevierGlyph\\{E372\\}",'\u29DC'],["\\\\ElsevierGlyph\\{22C0\\}",'\u22C0'],["\\\\downtriangleleftblack",'\u29E8'],["\\\\blackdiamonddownarrow",'\u29EA'],["\\\\ElsevierGlyph\\{E20F\\}",'\u2929'],["\\\\ElsevierGlyph\\{E20E\\}",'\u2928'],["\\\\ElsevierGlyph\\{E211\\}",'\u2927'],["\\\\ElsevierGlyph\\{E20A\\}",'\u2926'],["\\\\ElsevierGlyph\\{225A\\}",'\u225A'],["\\\\ElsevierGlyph\\{225F\\}",'\u225F'],["\\\\ElsevierGlyph\\{E20B\\}",'\u2925'],["\\\\ElsevierGlyph\\{E20D\\}",'\u2924'],['\\\\mathsfbf\\{\\\\Upsilon\\}','\uD835\uDF6A'],["\\\\ElsevierGlyph\\{22C1\\}",'\u22C1'],["\\\\mathbit\\{\\\\varkappa\\}",'\uD835\uDF52'],["\\\\mathbit\\{\\\\vartheta\\}",'\uD835\uDF51'],["\\\\mathbit\\{\\\\varsigma\\}",'\uD835\uDF47'],["\\\\ElsevierGlyph\\{E20C\\}",'\u2923'],["\\\\ElsevierGlyph\\{E395\\}",'\u2A10'],["\\\\ElsevierGlyph\\{E25A\\}",'\u2A25'],["\\\\ElsevierGlyph\\{21B3\\}",'\u21B3'],["\\\\ElsevierGlyph\\{E25B\\}",'\u2A2A'],["\\\\ElsevierGlyph\\{E25C\\}",'\u2A2D'],["\\\\ElsevierGlyph\\{E25D\\}",'\u2A2E'],["\\\\ElsevierGlyph\\{E25E\\}",'\u2A34'],["\\\\ElsevierGlyph\\{E259\\}",'\u2A3C'],["\\\\ElsevierGlyph\\{E381\\}",'\u25B1'],["\\\\closedvarcupsmashprod",'\u2A50'],["\\\\ElsevierGlyph\\{E36E\\}",'\u2A55'],["\\\\barovernorthwestarrow",'\u21B8'],["\\\\mathsfbfsl\\{\\\\Delta\\}",'\uD835\uDF93'],["\\\\ElsevierGlyph\\{E30D\\}",'\u2AEB'],["\\\\mathsfbfsl\\{\\\\Sigma\\}",'\uD835\uDFA2'],["\\\\mathsfbfsl\\{\\\\varpi\\}",'\uD835\uDFC9'],['\\\\mathbit\\{\\\\Upsilon\\}','\uD835\uDF30'],["\\\\whiteinwhitetriangle",'\u27C1'],["\\\\cyrchar\\\\cyromegarnd",'\u047B'],["\\\\cyrchar\\\\CYRABHCHDSC",'\u04BE'],["\\\\cyrchar\\\\CYROMEGARND",'\u047A'],["\\\\twoheadleftarrowtail",'\u2B3B'],["\\\\mathsl\\{\\\\varkappa\\}",'\uD835\uDF18'],["\\\\mathsl\\{\\\\varsigma\\}",'\uD835\uDF0D'],["\\\\cyrchar\\\\cyrabhchdsc",'\u04BF'],["\\\\cyrchar\\\\CYRpalochka",'\u04C0'],["\\\\mathbf\\{\\\\varkappa\\}",'\uD835\uDEDE'],["\\\\CapitalDifferentialD",'\u2145'],["\\\\mathbf\\{\\\\varsigma\\}",'\uD835\uDED3'],["\\\\mathsfbf\\{\\\\varrho\\}",'\uD835\uDF8E'],["\\\\twoheaduparrowcircle",'\u2949'],["\\\\rightarrowbackapprox",'\u2B48'],["\\\\curvearrowrightminus",'\u293C'],["\\\\barrightarrowdiamond",'\u2920'],["\\\\leftrightarrowcircle",'\u2948'],["\\\\downrightcurvedarrow",'\u2935'],["\\\\NestedGreaterGreater",'\u2AA2'],["\\\\cyrchar\\{\\\\'\\\\CYRK\\}",'\u040C'],["\\\\mathsl\\{\\\\vartheta\\}",'\uD835\uDEF3'],["\\\\mathsfbf\\{\\\\Lambda\\}",'\uD835\uDF60'],['\\\\underleftharpoondown','\u20ED'],["\\\\mathbf\\{\\\\vartheta\\}",'\uD835\uDEB9'],["\\\\cyrchar\\{\\\\'\\\\cyrk\\}",'\u045C'],["\\\\blackcircledrightdot",'\u2688'],["\\\\whitesquaretickright",'\u27E5'],["\\\\cyrchar\\{\\\\'\\\\cyrg\\}",'\u0453'],["\\\\cyrchar\\{\\\\'\\\\CYRG\\}",'\u0403'],["\\\\cyrchar\\\\cyrmillions",'\u0489'],["\\\\ReverseUpEquilibrium",'\u296F'],["\\\\blackcircledownarrow",'\u29ED'],["\\\\int\\\\!\\\\int\\\\!\\\\int",'\u222D'],["\\\\leftrightsquigarrow",'\u21AD'],["\\\\leftarrowbackapprox",'\u2B42'],["\\\\mathbit\\{\\\\Lambda\\}",'\uD835\uDF26'],["\\\\mathsfbfsl\\{\\\\phi\\}",'\uD835\uDFC7'],["\\\\blockthreeqtrshaded",'\u2593'],["\\\\whitesquaretickleft",'\u27E4'],["\\\\blackcircledtwodots",'\u2689'],["\\\\stackrel\\{\\*\\}\\{=\\}",'\u2A6E'],["\\\\whitearrowupfrombar",'\u21EA'],["\\\\mathsfbfsl\\{\\\\Phi\\}",'\uD835\uDFA5'],["\\\\mathsfbf\\{\\\\Theta\\}",'\uD835\uDF5D'],["\\\\leftrightharpoonsup",'\u2966'],["\\\\mathsfbf\\{\\\\varpi\\}",'\uD835\uDF8F'],["\\\\blackinwhitediamond",'\u25C8'],["\\\\cyrchar\\\\cyriotbyus",'\u046D'],["\\\\mathsfbf\\{\\\\Omega\\}",'\uD835\uDF6E'],["\\\\cyrchar\\\\CYRIOTBYUS",'\u046C'],['\\\\mathbf\\{\\\\Upsilon\\}','\uD835\uDEBC'],["\\\\mathsfbf\\{\\\\Delta\\}",'\uD835\uDF59'],["\\\\mathsfbfsl\\{\\\\Psi\\}",'\uD835\uDFA7'],["\\\\DownLeftRightVector",'\u2950'],["\\\\cyrchar\\\\textnumero",'\u2116'],["\\\\twoheadleftdbkarrow",'\u2B37'],["\\\\mathsfbf\\{\\\\Gamma\\}",'\uD835\uDF58'],["\\\\rightleftharpoonsup",'\u2968'],['\\\\mathsl\\{\\\\Upsilon\\}','\uD835\uDEF6'],["\\\\cyrchar\\\\cyriotlyus",'\u0469'],["\\\\nVtwoheadrightarrow",'\u2901'],["\\\\mathbit\\{\\\\varrho\\}",'\uD835\uDF54'],["\\\\mathsfbf\\{\\\\nabla\\}",'\uD835\uDF6F'],["\\\\mathsfbf\\{\\\\Sigma\\}",'\uD835\uDF68'],["\\\\cyrchar\\\\CYRIOTLYUS",'\u0468'],["\\\\diamondleftarrowbar",'\u291F'],["\\\\cyrchar\\\\CYRCHLDSC",'\u04CB'],["\\\\longleftsquigarrow",'\u2B33'],["\\\\textfrac\\{2\\}\\{5\\}",'\u2156'],["\\\\RightDownTeeVector",'\u295D'],["\\\\textfrac\\{7\\}\\{8\\}",'\u215E'],["\\\\DownRightVectorBar",'\u2957'],["\\\\mathrm\\{'\\\\Omega\\}",'\u038F'],["\\\\textfrac\\{5\\}\\{8\\}",'\u215D'],["\\\\rightpentagonblack",'\u2B53'],["\\\\rightarrowbsimilar",'\u2B4C'],["\\\\textfrac\\{3\\}\\{8\\}",'\u215C'],["\\\\blackinwhitesquare",'\u25A3'],["\\\\bsimilarrightarrow",'\u2B47'],["\\\\textfrac\\{1\\}\\{8\\}",'\u215B'],["\\\\textfrac\\{5\\}\\{6\\}",'\u215A'],["\\\\errbarblackdiamond",'\u29F1'],["\\\\mathbf\\{\\\\varrho\\}",'\uD835\uDEE0'],["\\\\textfrac\\{1\\}\\{6\\}",'\u2159'],["\\\\parallelogramblack",'\u25B0'],["\\\\precedesnotsimilar",'\u22E8'],["\\\\ccwundercurvearrow",'\u293F'],["\\\\textfrac\\{4\\}\\{5\\}",'\u2158'],["\\\\inversewhitecircle",'\u25D9'],["\\\\textfrac\\{3\\}\\{5\\}",'\u2157'],["\\\\textfrac\\{1\\}\\{5\\}",'\u2155'],["\\\\mathbit\\{\\\\varpi\\}",'\uD835\uDF55'],["\\\\DownRightTeeVector",'\u295F'],["\\{\\{/\\}\\\\!\\\\!\\{/\\}\\}",'\u2AFD'],["\\\\textfrac\\{1\\}\\{3\\}",'\u2153'],["\\\\mathbit\\{\\\\nabla\\}",'\uD835\uDF35'],["\\\\mathbit\\{\\\\Omega\\}",'\uD835\uDF34'],["\\\\overleftrightarrow",'\u20E1'],["\\\\acute\\{\\\\epsilon\\}",'\u03AD'],["\\\\mathbit\\{\\\\Sigma\\}",'\uD835\uDF2E'],["\\\\mathbf\\{\\\\Lambda\\}",'\uD835\uDEB2'],['\\\\acute\\{\\\\upsilon\\}','\u03CD'],["\\\\mathbit\\{\\\\Theta\\}",'\uD835\uDF23'],["\\\\mathbit\\{\\\\Delta\\}",'\uD835\uDF1F'],["\\\\mathbit\\{\\\\Gamma\\}",'\uD835\uDF1E'],["\\\\mathsfbfsl\\{\\\\Xi\\}",'\uD835\uDF9D'],["\\\\mathsl\\{\\\\varrho\\}",'\uD835\uDF1A'],["\\\\RightDownVectorBar",'\u2955'],["\\\\textperiodcentered",'\u02D9'],["\\\\textfrac\\{2\\}\\{3\\}",'\u2154'],["\\\\hspace\\{0\\.166em\\}",'\u2006'],["\\\\,|\\\\hspace\\{0\\.167em\\}",'\u2009'],["\\\\circletophalfblack",'\u25D3'],["\\\\rule\\{1em\\}\\{1pt\\}",'\u2015'],["\\\\curvearrowleftplus",'\u293D'],["\\\\rightarrowtriangle",'\u21FE'],["\\\\Longleftrightarrow",'\u27FA'],["\\\\cyrchar\\\\cyrabhdze",'\u04E1'],["\\\\longleftrightarrow",'\u27F7'],["\\\\blacktriangleright",'\u25B8'],["\\\\circleonrightarrow",'\u21F4'],["\\\\cyrchar\\\\CYRABHDZE",'\u04E0'],["\\\\nVtwoheadleftarrow",'\u2B35'],["\\\\rightrightharpoons",'\u2964'],["\\\\cyrchar\\\\CYRCHRDSC",'\u04B6'],["\\\\trianglerightblack",'\u25EE'],["\\\\cyrchar\\\\cyrchldsc",'\u04CC'],["\\\\cyrchar\\\\cyrchrdsc",'\u04B7'],["\\\\mathsfbfsl\\{\\\\Pi\\}",'\uD835\uDF9F'],["\\\\nvtwoheadleftarrow",'\u2B34'],["\\\\textpertenthousand",'\u2031'],["\\\\circledwhitebullet",'\u29BE'],["\\\\cyrchar\\\\CYRCHVCRS",'\u04B8'],["\\\\cyrchar\\\\cyrchvcrs",'\u04B9'],["\\\\mathsl\\{\\\\Lambda\\}",'\uD835\uDEEC'],["\\\\blacktriangleleft",'\u25C2'],["\\\\mathsl\\{\\\\Theta\\}",'\uD835\uDEE9'],["\\\\blacktriangledown",'\u25BE'],["\\\\mathsl\\{\\\\Delta\\}",'\uD835\uDEE5'],["\\\\whitepointerright",'\u25BB'],["\\\\blackpointerright",'\u25BA'],["\\\\mathsl\\{\\\\Gamma\\}",'\uD835\uDEE4'],["\\\\mathbf\\{\\\\Gamma\\}",'\uD835\uDEAA'],["\\\\mathbf\\{\\\\varpi\\}",'\uD835\uDEE1'],["\\\\mathbf\\{\\\\Delta\\}",'\uD835\uDEAB'],["\\\\mathbf\\{\\\\Theta\\}",'\uD835\uDEAF'],["\\\\mathbf\\{\\\\theta\\}",'\uD835\uDEC9'],["\\\\mathbf\\{\\\\nabla\\}",'\uD835\uDEC1'],["\\\\mathbf\\{\\\\Omega\\}",'\uD835\uDEC0'],['\\\\uprightcurvearrow','\u2934'],["\\\\mathbf\\{\\\\Sigma\\}",'\uD835\uDEBA'],["\\\\similarrightarrow",'\u2972'],["\\\\rightarrowdiamond",'\u291E'],["\\\\rightarrowsimilar",'\u2974'],["\\\\cyrchar\\\\CYRKBEAK",'\u04A0'],["\\\\LeftDownVectorBar",'\u2959'],["\\\\cyrchar\\\\CYRABHHA",'\u04A8'],["\\\\cyrchar\\\\cyrabhha",'\u04A9'],["\\\\cyrchar\\\\cyrkhcrs",'\u049F'],["\\\\cyrchar\\\\CYRKHCRS",'\u049E'],["\\\\cyrchar\\\\cyrkvcrs",'\u049D'],["\\\\downslopeellipsis",'\u22F1'],["\\\\cyrchar\\\\CYRKVCRS",'\u049C'],["\\\\cyrchar\\\\cyrzhdsc",'\u0497'],["\\\\cyrchar\\\\CYRZHDSC",'\u0496'],["\\\\cyrchar\\\\cyrghcrs",'\u0493'],["\\\\cyrchar\\\\CYRGHCRS",'\u0492'],["\\\\rightarrowonoplus",'\u27F4'],["\\\\acwgapcirclearrow",'\u27F2'],["\\\\measuredangleleft",'\u299B'],["\\\\cyrchar\\\\CYRYHCRS",'\u04B0'],["\\\\cyrchar\\\\cyryhcrs",'\u04B1'],["\\\\cyrchar\\\\CYRTETSE",'\u04B4'],["\\\\cyrchar\\\\cyrtetse",'\u04B5'],["\\\\cyrchar\\\\cyrrtick",'\u048F'],["\\\\cyrchar\\\\CYRRTICK",'\u048E'],["\\\\cyrchar\\\\CYRABHCH",'\u04BC'],["\\\\cyrchar\\\\cyrabhch",'\u04BD'],["\\\\cyrchar\\\\cyrkoppa",'\u0481'],["\\\\cyrchar\\\\CYRKOPPA",'\u0480'],["\\\\RightUpDownVector",'\u294F'],["\\\\errbarblacksquare",'\u29EF'],["\\\\errbarblackcircle",'\u29F3'],["\\\\cyrchar\\\\cyromega",'\u0461'],["\\\\cyrchar\\\\CYROMEGA",'\u0460'],["\\\\mathsfbf\\{\\\\Psi\\}",'\uD835\uDF6D'],["\\\\mathsfbf\\{\\\\Phi\\}",'\uD835\uDF6B'],["\\\\mathsl\\{\\\\varpi\\}",'\uD835\uDF1B'],["\\\\mathsl\\{\\\\nabla\\}",'\uD835\uDEFB'],["\\\\mathsl\\{\\\\Omega\\}",'\uD835\uDEFA'],["\\\\mathsl\\{\\\\Sigma\\}",'\uD835\uDEF4'],["\\\\cyrchar\\\\cyrkbeak",'\u04A1'],["\\\\cyrchar\\\\cyrushrt",'\u045E'],["\\\\cyrchar\\\\cyrsftsn",'\u044C'],["\\\\cyrchar\\\\cyrhrdsn",'\u044A'],["\\\\cyrchar\\\\cyrishrt",'\u0439'],["\\\\cyrchar\\\\CYRSFTSN",'\u042C'],["\\\\cyrchar\\\\CYRHRDSN",'\u042A'],["\\\\twoheadrightarrow",'\u21A0'],["\\\\cyrchar\\\\CYRISHRT",'\u0419'],["\\\\cyrchar\\\\CYRUSHRT",'\u040E'],["\\\\varhexagonlrbonds",'\u232C'],["\\\\DownLeftTeeVector",'\u295E'],["\\\\mathbb\\{\\\\Gamma\\}",'\u213E'],["\\\\mathbb\\{\\\\gamma\\}",'\u213D'],['\\\\ddot\\{\\\\upsilon\\}','\u03CB'],["\\\\varcarriagereturn",'\u23CE'],["\\\\cyrchar\\\\CYRSCHWA",'\u04D8'],["\\\\cyrchar\\\\cyrschwa",'\u04D9'],["\\\\hspace\\{0\\.33em\\}",'\u2004'],["\\\\hspace\\{0\\.25em\\}",'\u2005'],["\\\\textquotedblright",'\u201D'],["\\\\textthreequarters",'\xBE'],["\\\\textasciidieresis",'\xA8'],["\\\\diamondrightblack",'\u2B17'],["\\\\circleonleftarrow",'\u2B30'],["\\\\bsimilarleftarrow",'\u2B41'],["\\\\LeftDownTeeVector",'\u2961'],["\\\\leftarrowbsimilar",'\u2B4B'],["\\\\triangleleftblack",'\u25ED'],["\\\\leftrightharpoons",'\u21CB'],["\\\\cwundercurvearrow",'\u293E'],["\\\\DownLeftVectorBar",'\u2956'],["\\\\rightleftharpoons",'\u21CC'],["\\\\circleurquadblack",'\u25D4'],["\\\\mathsfbf\\{\\\\phi\\}",'\uD835\uDF8D'],["\\\\leftarrowtriangle",'\u21FD'],["\\\\mathbb\\{\\\\Sigma\\}",'\u2140'],["\\\\textordmasculine",'\xBA'],["\\\\nvleftrightarrow",'\u21F9'],["\\\\twoheadleftarrow",'\u219E'],["\\\\diamondleftblack",'\u2B16'],["\\\\cyrchar\\\\CYRSHCH",'\u0429'],["\\\\leftarrowsimilar",'\u2973'],["\\\\cyrchar\\\\CYREREV",'\u042D'],["\\\\downdownharpoons",'\u2965'],["\\\\leftarrowonoplus",'\u2B32'],["\\\\cyrchar\\\\cyrshch",'\u0449'],["\\\\cyrchar\\\\cyrerev",'\u044D'],["\\\\cyrchar\\\\cyrtshe",'\u045B'],["\\\\leftrightharpoon",'\u294A'],["\\\\rightleftharpoon",'\u294B'],["\\\\mathbit\\{\\\\Phi\\}",'\uD835\uDF31'],["\\\\mathbit\\{\\\\Psi\\}",'\uD835\uDF33'],["\\\\mathbit\\{\\\\phi\\}",'\uD835\uDF53'],["\\\\cyrchar\\\\cyrdzhe",'\u045F'],["\\\\mathsfbf\\{\\\\Xi\\}",'\uD835\uDF63'],["\\\\leftleftharpoons",'\u2962'],["\\\\RightUpVectorBar",'\u2954'],["\\\\mathsfbf\\{\\\\Pi\\}",'\uD835\uDF65'],["\\\\rightrightarrows",'\u21C9'],["\\\\cyrchar\\\\CYRIOTE",'\u0464'],["\\\\rightarrowsupset",'\u2B44'],["\\\\cyrchar\\\\cyriote",'\u0465'],["\\\\cyrchar\\\\CYRLYUS",'\u0466'],["\\\\cyrchar\\\\cyrlyus",'\u0467'],["\\\\cyrchar\\\\CYRBYUS",'\u046A'],["\\\\similarleftarrow",'\u2B49'],["\\\\DownArrowUpArrow",'\u21F5'],["\\\\cyrchar\\\\CYRFITA",'\u0472'],["\\\\RightTriangleBar",'\u29D0'],["\\\\twoheaddownarrow",'\u21A1'],["\\\\cyrchar\\\\cyrshha",'\u04BB'],["\\\\cyrchar\\\\CYRSHHA",'\u04BA'],["\\\\openbracketright",'\u301B'],["\\\\sphericalangleup",'\u29A1'],["\\\\whitepointerleft",'\u25C5'],["\\\\cyrchar\\\\cyrhdsc",'\u04B3'],["\\\\cyrchar\\\\CYRHDSC",'\u04B2'],["\\\\cwgapcirclearrow",'\u27F3'],["\\\\blackpointerleft",'\u25C4'],["<\\\\kern\\-0\\.58em\\(",'\u2993'],["\\\\rightthreearrows",'\u21F6'],["\\\\ntrianglerighteq",'\u22ED'],["\\\\cyrchar\\\\CYRZDSC",'\u0498'],["\\\\cyrchar\\\\cyrzdsc",'\u0499'],["\\\\acwunderarcarrow",'\u293B'],["\\\\nVleftrightarrow",'\u21FC'],["\\\\cyrchar\\\\CYRKDSC",'\u049A'],["\\\\nvLeftrightarrow",'\u2904'],["\\\\cyrchar\\\\cyrkdsc",'\u049B'],["\\\\cyrchar\\\\cyrtdsc",'\u04AD'],["\\\\cyrchar\\\\CYRTDSC",'\u04AC'],["\\\\cyrchar\\\\cyrsdsc",'\u04AB'],["\\\\cyrchar\\\\CYRSDSC",'\u04AA'],["\\\\LeftUpDownVector",'\u2951'],["\\\\RightUpTeeVector",'\u295C'],["\\\\rightarrowapprox",'\u2975'],["\\\\hermitconjmatrix",'\u22B9'],["\\\\downharpoonright",'\u21C2'],["\\\\rightharpoondown",'\u21C1'],["\\\\hspace\\{0\\.6em\\}",'\u2002'],["\\\\cyrchar\\\\cyrotld",'\u04E9'],["\\\\cyrchar\\\\CYROTLD",'\u04E8'],["\\\\circlearrowright",'\u21BB'],["\\\\textquotedblleft",'\u201C'],["\\\\vartriangleright",'\u22B3'],["\\\\cyrchar\\\\CYRNDSC",'\u04A2'],["\\\\acute\\{\\\\omega\\}",'\u03CE'],["\\\\textvisiblespace",'\u2423'],["\\\\cyrchar\\\\cyrndsc",'\u04A3'],["\\\\APLrightarrowbox",'\u2348'],["\\\\cyrchar\\\\CYRTSHE",'\u040B'],["\\\\textquestiondown",'\xBF'],["\\\\diamondleftarrow",'\u291D'],["\\\\cyrchar\\\\CYRDZHE",'\u040F'],["\\\\LeftRightVector",'\u294E'],["\\\\acwoverarcarrow",'\u293A'],["\\\\acwleftarcarrow",'\u2939'],["\\\\cwrightarcarrow",'\u2938'],["\\\\cyrchar\\\\CYRPHK",'\u04A6'],["\\\\cyrchar\\\\cyrphk",'\u04A7'],['\\\\upslopeellipsis','\u22F0'],["\\\\downarrowbarred",'\u2908'],["\\\\cyrchar\\\\CYRKHK",'\u04C3'],["\\\\cyrchar\\\\cyrkhk",'\u04C4'],["\\\\mathbit\\{\\\\Pi\\}",'\uD835\uDF2B'],["\\\\mathbit\\{\\\\Xi\\}",'\uD835\uDF29'],["\\\\mathsl\\{\\\\phi\\}",'\uD835\uDF19'],["\\\\mathsl\\{\\\\Psi\\}",'\uD835\uDEF9'],["\\\\mathsl\\{\\\\Phi\\}",'\uD835\uDEF7'],["\\\\cyrchar\\\\CYRNHK",'\u04C7'],["\\\\cyrchar\\\\cyrnhk",'\u04C8'],["\\\\perspcorrespond",'\u2306'],["\\\\APLleftarrowbox",'\u2347'],["\\\\APLdownarrowbox",'\u2357'],["\\\\circledrightdot",'\u2686'],["\\\\textperthousand",'\u2030'],["\\\\enclosetriangle",'\u20E4'],["\\\\widebridgeabove",'\u20E9'],["\\\\blockhalfshaded",'\u2592'],['\\\\underrightarrow','\u20EF'],['\\\\urblacktriangle','\u25E5'],['\\\\ulblacktriangle','\u25E4'],["\\\\llblacktriangle",'\u25E3'],["\\\\lrblacktriangle",'\u25E2'],["\\\\bigtriangledown",'\u25BD'],["\\\\mathbf\\{\\\\phi\\}",'\uD835\uDEDF'],["\\\\vrectangleblack",'\u25AE'],["\\\\hrectangleblack",'\u25AC'],["\\\\squarecrossfill",'\u25A9'],["\\\\mathbf\\{\\\\Psi\\}",'\uD835\uDEBF'],["\\\\mathbf\\{\\\\Phi\\}",'\uD835\uDEBD'],["\\\\rightsquigarrow",'\u21DD'],["\\\\vartriangleleft",'\u22B2'],["\\\\trianglerighteq",'\u22B5'],["\\\\nLeftrightarrow",'\u21CE'],["\\\\greaterequivlnt",'\u2273'],["\\\\rightwhitearrow",'\u21E8'],["\\\\mathsfbfsl\\{z\\}",'\uD835\uDE6F'],["\\\\mathsfbfsl\\{y\\}",'\uD835\uDE6E'],["\\\\mathsfbfsl\\{x\\}",'\uD835\uDE6D'],["\\\\mathsfbfsl\\{w\\}",'\uD835\uDE6C'],["\\\\mathsfbfsl\\{v\\}",'\uD835\uDE6B'],["\\\\mathsfbfsl\\{u\\}",'\uD835\uDE6A'],["\\\\mathsfbfsl\\{t\\}",'\uD835\uDE69'],["\\\\mathsfbfsl\\{s\\}",'\uD835\uDE68'],["\\\\mathsfbfsl\\{r\\}",'\uD835\uDE67'],["\\\\mathsfbfsl\\{q\\}",'\uD835\uDE66'],["\\\\mathsfbfsl\\{p\\}",'\uD835\uDE65'],["\\\\mathsfbfsl\\{o\\}",'\uD835\uDE64'],["\\\\mathsfbfsl\\{n\\}",'\uD835\uDE63'],["\\\\mathsfbfsl\\{m\\}",'\uD835\uDE62'],["\\\\mathsfbfsl\\{l\\}",'\uD835\uDE61'],["\\\\mathsfbfsl\\{k\\}",'\uD835\uDE60'],["\\\\mathsfbfsl\\{j\\}",'\uD835\uDE5F'],["\\\\mathsfbfsl\\{i\\}",'\uD835\uDE5E'],["\\\\mathsfbfsl\\{h\\}",'\uD835\uDE5D'],["\\\\mathsfbfsl\\{g\\}",'\uD835\uDE5C'],["\\\\mathsfbfsl\\{f\\}",'\uD835\uDE5B'],["\\\\mathsfbfsl\\{e\\}",'\uD835\uDE5A'],["\\\\mathsfbfsl\\{d\\}",'\uD835\uDE59'],["\\\\mathsfbfsl\\{c\\}",'\uD835\uDE58'],["\\\\mathsfbfsl\\{b\\}",'\uD835\uDE57'],["\\\\mathsfbfsl\\{a\\}",'\uD835\uDE56'],["\\\\mathsfbfsl\\{Z\\}",'\uD835\uDE55'],["\\\\mathsfbfsl\\{Y\\}",'\uD835\uDE54'],["\\\\mathsfbfsl\\{X\\}",'\uD835\uDE53'],["\\\\mathsfbfsl\\{W\\}",'\uD835\uDE52'],["\\\\mathsfbfsl\\{V\\}",'\uD835\uDE51'],["\\\\mathsfbfsl\\{U\\}",'\uD835\uDE50'],["\\\\mathsfbfsl\\{T\\}",'\uD835\uDE4F'],["\\\\mathsfbfsl\\{S\\}",'\uD835\uDE4E'],["\\\\mathsfbfsl\\{R\\}",'\uD835\uDE4D'],["\\\\mathsfbfsl\\{Q\\}",'\uD835\uDE4C'],["\\\\mathsfbfsl\\{P\\}",'\uD835\uDE4B'],["\\\\mathsfbfsl\\{O\\}",'\uD835\uDE4A'],["\\\\mathsfbfsl\\{N\\}",'\uD835\uDE49'],["\\\\mathsfbfsl\\{M\\}",'\uD835\uDE48'],["\\\\mathsfbfsl\\{L\\}",'\uD835\uDE47'],["\\\\mathsfbfsl\\{K\\}",'\uD835\uDE46'],["\\\\mathsfbfsl\\{J\\}",'\uD835\uDE45'],["\\\\mathsfbfsl\\{I\\}",'\uD835\uDE44'],["\\\\mathsfbfsl\\{H\\}",'\uD835\uDE43'],["\\\\mathsfbfsl\\{G\\}",'\uD835\uDE42'],["\\\\mathsfbfsl\\{F\\}",'\uD835\uDE41'],["\\\\mathsfbfsl\\{E\\}",'\uD835\uDE40'],["\\\\mathsfbfsl\\{D\\}",'\uD835\uDE3F'],["\\\\mathsfbfsl\\{C\\}",'\uD835\uDE3E'],["\\\\mathsfbfsl\\{B\\}",'\uD835\uDE3D'],["\\\\mathsfbfsl\\{A\\}",'\uD835\uDE3C'],["\\\\textquotesingle","'"],["\\\\openbracketleft",'\u301A'],["\\\\leftarrowapprox",'\u2B4A'],["\\\\leftcurvedarrow",'\u2B3F'],["\\\\nVleftarrowtail",'\u2B3A'],["\\\\nvleftarrowtail",'\u2B39'],["\\\\twoheadmapsfrom",'\u2B36'],["\\\\leftthreearrows",'\u2B31'],["\\\\varhexagonblack",'\u2B22'],["\\\\diamondbotblack",'\u2B19'],["\\\\diamondtopblack",'\u2B18'],["\\\\leftrightarrows",'\u21C6'],["\\\\textordfeminine",'\xAA'],["\\\\textasciimacron",'\xAF'],["\\\\rightleftarrows",'\u21C4'],["\\\\downharpoonleft",'\u21C3'],["\\\\rightthreetimes",'\u22CC'],["\\\\leftharpoondown",'\u21BD'],["\\\\acute\\{\\\\iota\\}",'\u03AF'],["\\\\circlearrowleft",'\u21BA'],["\\\\cyrchar\\\\CYRDJE",'\u0402'],["\\\\cyrchar\\\\CYRDZE",'\u0405'],["\\\\verymuchgreater",'\u22D9'],["\\\\cyrchar\\\\CYRLJE",'\u0409'],["\\\\cyrchar\\\\CYRNJE",'\u040A'],["\\\\cyrchar\\\\CYRERY",'\u042B'],["\\\\curvearrowright",'\u21B7'],["\\\\not\\\\sqsubseteq",'\u22E2'],["\\\\not\\\\sqsupseteq",'\u22E3'],["\\\\bigtriangleleft",'\u2A1E'],["\\\\cyrchar\\\\cyrery",'\u044B'],["\\\\cyrchar\\\\cyrdje",'\u0452'],["\\\\cyrchar\\\\cyrdze",'\u0455'],["\\\\cyrchar\\\\cyrlje",'\u0459'],["\\\\cyrchar\\\\cyrnje",'\u045A'],["\\\\nleftrightarrow",'\u21AE'],["\\\\cyrchar\\\\CYRYAT",'\u0462'],["\\\\circledownarrow",'\u29EC'],["\\\\cyrchar\\\\CYRKSI",'\u046E'],["\\\\cyrchar\\\\cyrksi",'\u046F'],["\\\\cyrchar\\\\CYRPSI",'\u0470'],["\\\\cyrchar\\\\cyrpsi",'\u0471'],["\\\\cyrchar\\\\CYRIZH",'\u0474'],["\\\\LeftTriangleBar",'\u29CF'],['\\\\uparrowoncircle','\u29BD'],["\\\\circledparallel",'\u29B7'],["\\\\measangledltosw",'\u29AF'],["\\\\measangledrtose",'\u29AE'],["\\\\measangleultonw",'\u29AD'],["\\\\measangleurtone",'\u29AC'],["\\\\measangleldtosw",'\u29AB'],["\\\\measanglerdtose",'\u29AA'],["\\\\measanglelutonw",'\u29A9'],["\\\\measanglerutone",'\u29A8'],["\\\\cyrchar\\\\CYRGUP",'\u0490'],["\\\\cyrchar\\\\cyrgup",'\u0491'],["\\\\ntrianglelefteq",'\u22EC'],["\\\\cyrchar\\\\CYRGHK",'\u0494'],["\\\\cyrchar\\\\cyrghk",'\u0495'],["\\\\leftarrowsubset",'\u297A'],["\\\\equalrightarrow",'\u2971'],["\\\\barrightharpoon",'\u296D'],["\\\\rightbarharpoon",'\u296C'],["\\\\LeftUpTeeVector",'\u2960'],["\\\\LeftUpVectorBar",'\u2958'],["\\\\notgreaterless",'\u2279'],["\\\\rightouterjoin",'\u27D6'],["\\\\mathbf\\{\\\\Pi\\}",'\uD835\uDEB7'],["\\\\rightarrowtail",'\u21A3'],["\\\\cyrchar\\\\cyrot",'\u047F'],["\\\\cyrchar\\\\CYRUK",'\u0478'],["\\\\cyrchar\\\\CYROT",'\u047E'],['\\\\underleftarrow','\u20EE'],["\\\\triangleserifs",'\u29CD'],["\\\\blackhourglass",'\u29D7'],["\\\\downdownarrows",'\u21CA'],["\\\\approxnotequal",'\u2246'],["\\\\leftsquigarrow",'\u21DC'],["\\\\mathsl\\{\\\\Pi\\}",'\uD835\uDEF1'],["\\\\mathsl\\{\\\\Xi\\}",'\uD835\uDEEF'],["\\\\cyrchar\\\\cyrje",'\u0458'],["\\\\cyrchar\\\\cyryi",'\u0457'],["\\\\cyrchar\\\\cyrii",'\u0456'],["\\\\cyrchar\\\\cyrie",'\u0454'],["\\\\cyrchar\\\\cyryo",'\u0451'],["\\\\cyrchar\\\\cyrya",'\u044F'],["\\\\cyrchar\\\\cyryu",'\u044E'],["\\\\cyrchar\\\\cyrsh",'\u0448'],["\\\\cyrchar\\\\cyrch",'\u0447'],["\\\\carriagereturn",'\u21B5'],["\\\\cyrchar\\\\cyrzh",'\u0436'],["\\\\cyrchar\\\\CYRYA",'\u042F'],["\\\\cyrchar\\\\CYRYU",'\u042E'],["\\\\curvearrowleft",'\u21B6'],["\\\\cyrchar\\\\CYRSH",'\u0428'],["\\\\cyrchar\\\\CYRCH",'\u0427'],["\\\\bigslopedwedge",'\u2A58'],["\\\\wedgedoublebar",'\u2A60'],["\\\\twoheaduparrow",'\u219F'],["\\\\arrowwaveleft|\\\\arrowwaveright",'\u219C'],["\\\\cyrchar\\\\CYRZH",'\u0416'],["\\\\leftrightarrow",'\u2194'],["\\\\cyrchar\\\\CYRJE",'\u0408'],["\\\\cyrchar\\\\CYRYI",'\u0407'],["\\\\cyrchar\\\\CYRII",'\u0406'],["\\\\cyrchar\\\\CYRIE",'\u0404'],["\\\\mathbb\\{\\\\Pi\\}",'\u213F'],["\\\\cyrchar\\\\CYRYO",'\u0401'],["\\\\APLboxquestion",'\u2370'],["\\\\ddot\\{\\\\iota\\}",'\u03CA'],["\\\\mathbb\\{\\\\pi\\}",'\u213C'],["\\\\hookrightarrow",'\u21AA'],["\\\\lparenextender",'\u239C'],["\\\\rparenextender",'\u239F'],["\\\\acute\\{\\\\eta\\}",'\u03AE'],["\\\\lbrackextender",'\u23A2'],["\\\\NestedLessLess",'\u2AA1'],["\\\\rbrackextender",'\u23A5'],["\\\\vbraceextender",'\u23AA'],["\\\\harrowextender",'\u23AF'],["\\\\cyrchar\\\\CYRAE",'\u04D4'],["\\\\cyrchar\\\\cyrae",'\u04D5'],["\\\\circledtwodots",'\u2687'],['\\\\upharpoonright','\u21BE'],["\\\\ocommatopright",'\u0315'],["\\\\rightharpoonup",'\u21C0'],["\\\\leftthreetimes",'\u22CB'],["\\\\rightarrowplus",'\u2945'],["\\\\textasciibreve",'\u02D8'],["\\\\textasciicaron",'\u02C7'],["\\\\textdoublepipe",'\u01C2'],["\\\\textonequarter",'\xBC'],["\\\\guillemotright",'\xBB'],["\\\\mathrm\\{\\\\mu\\}",'\xB5'],["\\\\textasciiacute",'\xB4'],["\\\\guilsinglright",'\u203A'],["\\\\cyrchar\\\\CYRNG",'\u04A4'],["\\\\looparrowright",'\u21AC'],["\\\\textregistered",'\xAE'],["\\\\dblarrowupdown",'\u21C5'],["\\\\textexclamdown",'\xA1'],["\\\\squaretopblack",'\u2B12'],["\\\\squarebotblack",'\u2B13'],["\\\\textasciigrave",'`'],["\\\\leftleftarrows",'\u21C7'],["\\\\enclosediamond",'\u20DF'],["\\\\Longrightarrow",'\u27F9'],["\\\\equalleftarrow",'\u2B40'],["\\\\blockrighthalf",'\u2590'],["\\\\blockqtrshaded",'\u2591'],["\\\\RightVectorBar",'\u2953'],["\\\\ntriangleright",'\u22EB'],["\\\\longrightarrow",'\u27F6'],['\\\\updownarrowbar','\u21A8'],["\\\\cyrchar\\\\cyrng",'\u04A5'],["\\\\rightanglemdot",'\u299D'],["\\\\concavediamond",'\u27E1'],["\\\\rdiagovsearrow",'\u2930'],["\\\\fdiagovnearrow",'\u292F'],["\\\\leftbarharpoon",'\u296A'],["\\\\trianglelefteq",'\u22B4'],["\\\\circlevertfill",'\u25CD'],["\\\\barleftharpoon",'\u296B'],["\\\\dashrightarrow",'\u21E2'],["\\\\RightTeeVector",'\u295B'],["\\\\cyrchar\\\\cyruk",'\u0479'],["\\\\downwhitearrow",'\u21E9'],["\\\\squarenwsefill",'\u25A7'],["\\\\Leftrightarrow",'\u21D4'],["\\\\squareneswfill",'\u25A8'],["\\\\leftwhitearrow",'\u21E6'],["\\\\mathbf\\{\\\\Xi\\}",'\uD835\uDEB5'],["\\\\sphericalangle",'\u2222'],["\\\\notlessgreater",'\u2278'],["\\\\downdasharrow",'\u21E3'],["\\\\mathsfbf\\{R\\}",'\uD835\uDDE5'],["\\\\mathslbb\\{D\\}",'\uD835\uDD6F'],["\\\\mathfrak\\{H\\}",'\u210C'],["\\\\mathslbb\\{E\\}",'\uD835\uDD70'],["\\\\RightArrowBar",'\u21E5'],["\\\\measuredangle",'\u2221'],["\\\\mathslbb\\{F\\}",'\uD835\uDD71'],["\\\\mathsfbf\\{S\\}",'\uD835\uDDE6'],["\\\\mathslbb\\{O\\}",'\uD835\uDD7A'],["\\\\biginterleave",'\u2AFC'],["\\\\mathsfsl\\{Y\\}",'\uD835\uDE20'],["\\\\mathsfsl\\{X\\}",'\uD835\uDE1F'],["\\\\textbrokenbar",'\xA6'],["\\\\mathsfsl\\{W\\}",'\uD835\uDE1E'],["\\\\textcopyright",'\xA9'],["\\\\guillemotleft",'\xAB'],["\\\\textparagraph",'\xB6'],["\\\\guilsinglleft",'\u2039'],["\\\\mathsfsl\\{V\\}",'\uD835\uDE1D'],["\\\\mathslbb\\{P\\}",'\uD835\uDD7B'],["\\\\mathslbb\\{Q\\}",'\uD835\uDD7C'],["\\\\mathfrak\\{Z\\}",'\u2128'],["\\\\mathsfsl\\{U\\}",'\uD835\uDE1C'],["\\\\shortdowntack",'\u2ADF'],["\\\\shortlefttack",'\u2ADE'],["\\\\textdaggerdbl",'\u2021'],["\\\\mathfrak\\{C\\}",'\u212D'],["\\\\mathslbb\\{R\\}",'\uD835\uDD7D'],["\\\\mathslbb\\{S\\}",'\uD835\uDD7E'],["\\\\mathslbb\\{T\\}",'\uD835\uDD7F'],["\\\\divideontimes",'\u22C7'],["\\\\mathslbb\\{U\\}",'\uD835\uDD80'],["\\\\mathslbb\\{V\\}",'\uD835\uDD81'],["\\\\mathslbb\\{W\\}",'\uD835\uDD82'],["\\\\hookleftarrow",'\u21A9'],["\\\\mathslbb\\{X\\}",'\uD835\uDD83'],["\\\\mathsfsl\\{T\\}",'\uD835\uDE1B'],["\\\\mathsfsl\\{S\\}",'\uD835\uDE1A'],['\\\\upharpoonleft','\u21BF'],["\\\\mathslbb\\{Y\\}",'\uD835\uDD84'],["\\\\mathsfsl\\{R\\}",'\uD835\uDE19'],["\\\\mathsfsl\\{Q\\}",'\uD835\uDE18'],["\\\\mathslbb\\{Z\\}",'\uD835\uDD85'],["\\\\hphantom\\{,\\}",'\u2008'],["\\\\mathsfsl\\{P\\}",'\uD835\uDE17'],["\\\\mathsfsl\\{O\\}",'\uD835\uDE16'],["\\\\sixteenthnote",'\u266C'],["\\\\hphantom\\{0\\}",'\u2007'],["\\\\hspace\\{1em\\}",'\u2003'],["\\\\Hermaphrodite",'\u26A5'],["\\\\mathslbb\\{a\\}",'\uD835\uDD86'],["\\\\mdsmwhtcircle",'\u26AC'],["\\\\leftharpoonup",'\u21BC'],["\\\\mathsfsl\\{N\\}",'\uD835\uDE15'],["\\\\mathsfsl\\{M\\}",'\uD835\uDE14'],["\\\\cyrchar\\\\cyry",'\u04AF'],["\\\\mathsfsl\\{L\\}",'\uD835\uDE13'],["\\\\APLboxupcaret",'\u2353'],["\\\\APLuparrowbox",'\u2350'],["\\\\mathsfsl\\{K\\}",'\uD835\uDE12'],["\\\\mathsfbf\\{b\\}",'\uD835\uDDEF'],["\\\\sansLmirrored",'\u2143'],["\\\\mathsfsl\\{J\\}",'\uD835\uDE11'],["\\\\mathsfbf\\{l\\}",'\uD835\uDDF9'],["\\\\cyrchar\\\\CYRY",'\u04AE'],['\\\\uparrowbarred','\u2909'],["\\\\DifferentialD",'\u2146'],["\\\\mathchar\"2208",'\u2316'],["\\\\cyrchar\\\\CYRA",'\u0410'],["\\\\cyrchar\\\\CYRB",'\u0411'],["\\\\cyrchar\\\\CYRV",'\u0412'],["\\\\cyrchar\\\\CYRG",'\u0413'],["\\\\cyrchar\\\\CYRD",'\u0414'],["\\\\cyrchar\\\\CYRE",'\u0415'],["\\\\cyrchar\\\\CYRZ",'\u0417'],["\\\\cyrchar\\\\CYRI",'\u0418'],["\\\\cyrchar\\\\CYRK",'\u041A'],["\\\\cyrchar\\\\CYRL",'\u041B'],["\\\\cyrchar\\\\CYRM",'\u041C'],["\\\\mathsfsl\\{I\\}",'\uD835\uDE10'],["\\\\mathsfsl\\{H\\}",'\uD835\uDE0F'],["\\\\cyrchar\\\\CYRN",'\u041D'],["\\\\mathsfsl\\{G\\}",'\uD835\uDE0E'],["\\\\cyrchar\\\\CYRO",'\u041E'],["\\\\cyrchar\\\\CYRP",'\u041F'],["\\\\mathslbb\\{b\\}",'\uD835\uDD87'],["\\\\mathsfbf\\{9\\}",'\uD835\uDFF5'],["\\\\cyrchar\\\\CYRR",'\u0420'],["\\\\cyrchar\\\\CYRS",'\u0421'],["\\\\cyrchar\\\\CYRT",'\u0422'],["\\\\cyrchar\\\\CYRU",'\u0423'],["\\\\mathsfbf\\{8\\}",'\uD835\uDFF4'],["\\\\mathsfbf\\{7\\}",'\uD835\uDFF3'],["\\\\mathsfbf\\{6\\}",'\uD835\uDFF2'],["\\\\mathslbb\\{c\\}",'\uD835\uDD88'],["\\\\mathslbb\\{d\\}",'\uD835\uDD89'],["\\\\cyrchar\\\\CYRF",'\u0424'],["\\\\mathslbb\\{e\\}",'\uD835\uDD8A'],["\\\\cyrchar\\\\CYRH",'\u0425'],["\\\\cyrchar\\\\CYRC",'\u0426'],["\\\\mathsfbf\\{5\\}",'\uD835\uDFF1'],["\\\\mathslbb\\{f\\}",'\uD835\uDD8B'],["\\\\mathslbb\\{g\\}",'\uD835\uDD8C'],["\\\\mathslbb\\{h\\}",'\uD835\uDD8D'],["\\\\mathsfbf\\{4\\}",'\uD835\uDFF0'],["\\\\mathsfbf\\{3\\}",'\uD835\uDFEF'],["\\\\looparrowleft",'\u21AB'],["\\\\mathslbb\\{i\\}",'\uD835\uDD8E'],["\\\\mathslbb\\{j\\}",'\uD835\uDD8F'],["\\\\cyrchar\\\\cyra",'\u0430'],["\\\\cyrchar\\\\cyrb",'\u0431'],["\\\\cyrchar\\\\cyrv",'\u0432'],["\\\\cyrchar\\\\cyrg",'\u0433'],["\\\\cyrchar\\\\cyrd",'\u0434'],["\\\\mathslbb\\{k\\}",'\uD835\uDD90'],["\\\\triangletimes",'\u2A3B'],["\\\\triangleminus",'\u2A3A'],["\\\\cyrchar\\\\cyre",'\u0435'],["\\\\mathsfbf\\{2\\}",'\uD835\uDFEE'],["\\\\mathslbb\\{l\\}",'\uD835\uDD91'],["\\\\cyrchar\\\\cyrz",'\u0437'],["\\\\cyrchar\\\\cyri",'\u0438'],["\\\\mathslbb\\{m\\}",'\uD835\uDD92'],["\\\\cyrchar\\\\cyrk",'\u043A'],["\\\\mathslbb\\{n\\}",'\uD835\uDD93'],["\\\\mathslbb\\{o\\}",'\uD835\uDD94'],["\\\\mathsfbf\\{c\\}",'\uD835\uDDF0'],["\\\\mathslbb\\{p\\}",'\uD835\uDD95'],["\\\\mathslbb\\{q\\}",'\uD835\uDD96'],["\\\\cyrchar\\\\cyrl",'\u043B'],["\\\\mathslbb\\{r\\}",'\uD835\uDD97'],["\\\\cyrchar\\\\cyrm",'\u043C'],["\\\\mathslbb\\{s\\}",'\uD835\uDD98'],["\\\\cyrchar\\\\cyrn",'\u043D'],["\\\\cyrchar\\\\cyro",'\u043E'],["\\\\cyrchar\\\\cyrp",'\u043F'],["\\\\cyrchar\\\\cyrr",'\u0440'],["\\\\cyrchar\\\\cyrs",'\u0441'],["\\\\cyrchar\\\\cyrt",'\u0442'],["\\\\cyrchar\\\\cyru",'\u0443'],["\\\\cyrchar\\\\cyrf",'\u0444'],["\\\\cyrchar\\\\cyrh",'\u0445'],["\\\\cyrchar\\\\cyrc",'\u0446'],["\\\\mathslbb\\{t\\}",'\uD835\uDD99'],["\\\\mathslbb\\{u\\}",'\uD835\uDD9A'],["\\\\leftarrowplus",'\u2946'],["\\\\mathslbb\\{v\\}",'\uD835\uDD9B'],["\\\\mathslbb\\{w\\}",'\uD835\uDD9C'],["\\\\mathslbb\\{x\\}",'\uD835\uDD9D'],["\\\\mathsfbf\\{1\\}",'\uD835\uDFED'],["\\\\rightdotarrow",'\u2911'],["\\\\mathslbb\\{y\\}",'\uD835\uDD9E'],["\\\\mathsfbf\\{0\\}",'\uD835\uDFEC'],["\\\\leftarrowless",'\u2977'],["\\\\mathsfbf\\{d\\}",'\uD835\uDDF1'],["\\\\mathsfsl\\{E\\}",'\uD835\uDE0C'],["\\\\mathsfsl\\{D\\}",'\uD835\uDE0B'],["\\\\mathslbb\\{z\\}",'\uD835\uDD9F'],["\\\\mathsfsl\\{C\\}",'\uD835\uDE0A'],["\\\\mathsfsl\\{B\\}",'\uD835\uDE09'],["\\\\mathsfbf\\{e\\}",'\uD835\uDDF2'],["\\\\fallingdotseq",'\u2252'],["\\\\mathsfsl\\{A\\}",'\uD835\uDE08'],["\\\\mathsfbf\\{A\\}",'\uD835\uDDD4'],["\\\\errbardiamond",'\u29F0'],["\\\\mathsfbf\\{B\\}",'\uD835\uDDD5'],["\\\\mathsfbf\\{C\\}",'\uD835\uDDD6'],["\\\\mathsfbf\\{f\\}",'\uD835\uDDF3'],["\\\\mathsfbf\\{D\\}",'\uD835\uDDD7'],["\\\\mathsfbf\\{E\\}",'\uD835\uDDD8'],["\\\\mathsfbf\\{F\\}",'\uD835\uDDD9'],["\\\\mathsfbf\\{G\\}",'\uD835\uDDDA'],["\\\\mathsfbf\\{z\\}",'\uD835\uDE07'],["\\\\mathsfbf\\{H\\}",'\uD835\uDDDB'],["\\\\mathsfbf\\{I\\}",'\uD835\uDDDC'],["\\\\mathsfbf\\{J\\}",'\uD835\uDDDD'],["\\\\mathsfbf\\{K\\}",'\uD835\uDDDE'],["\\\\mathsfbf\\{L\\}",'\uD835\uDDDF'],["\\\\mathsfbf\\{M\\}",'\uD835\uDDE0'],["\\\\mathsfbf\\{N\\}",'\uD835\uDDE1'],["\\\\mathsfbf\\{O\\}",'\uD835\uDDE2'],["\\\\mathsfbf\\{g\\}",'\uD835\uDDF4'],["\\\\LeftVectorBar",'\u2952'],["\\\\mathsfbf\\{y\\}",'\uD835\uDE06'],["\\\\mathsfbf\\{P\\}",'\uD835\uDDE3'],['\\\\UpEquilibrium','\u296E'],["\\\\bigtriangleup",'\u25B3'],["\\\\blacktriangle",'\u25B4'],["\\\\rightanglearc",'\u22BE'],["\\\\dashleftarrow",'\u21E0'],["\\\\triangleright",'\u25B9'],["\\\\mathslbb\\{A\\}",'\uD835\uDD6C'],["\\\\mathsfbf\\{Q\\}",'\uD835\uDDE4'],["\\\\mathfrak\\{I\\}",'\u2111'],["\\\\mathslbb\\{B\\}",'\uD835\uDD6D'],["\\\\not\\\\supseteq",'\u2289'],["\\\\not\\\\subseteq",'\u2288'],["\\\\mathslbb\\{C\\}",'\uD835\uDD6E'],["\\\\mathfrak\\{z\\}",'\uD835\uDD37'],["\\\\mathfrak\\{y\\}",'\uD835\uDD36'],["\\\\mathfrak\\{x\\}",'\uD835\uDD35'],["\\\\mathfrak\\{w\\}",'\uD835\uDD34'],["\\\\mathfrak\\{v\\}",'\uD835\uDD33'],["\\\\mathfrak\\{u\\}",'\uD835\uDD32'],["\\\\mathfrak\\{t\\}",'\uD835\uDD31'],["\\\\mathfrak\\{s\\}",'\uD835\uDD30'],["\\\\mathfrak\\{r\\}",'\uD835\uDD2F'],["\\\\mathfrak\\{q\\}",'\uD835\uDD2E'],["\\\\mathfrak\\{p\\}",'\uD835\uDD2D'],["\\\\mathfrak\\{o\\}",'\uD835\uDD2C'],["\\\\mathfrak\\{n\\}",'\uD835\uDD2B'],["\\\\mathfrak\\{m\\}",'\uD835\uDD2A'],["\\\\mathfrak\\{l\\}",'\uD835\uDD29'],["\\\\mathfrak\\{k\\}",'\uD835\uDD28'],["\\\\mathfrak\\{j\\}",'\uD835\uDD27'],["\\\\mathfrak\\{i\\}",'\uD835\uDD26'],["\\\\mathfrak\\{h\\}",'\uD835\uDD25'],["\\\\mathfrak\\{g\\}",'\uD835\uDD24'],["\\\\mathfrak\\{f\\}",'\uD835\uDD23'],["\\\\mathfrak\\{e\\}",'\uD835\uDD22'],["\\\\mathfrak\\{d\\}",'\uD835\uDD21'],["\\\\mathfrak\\{c\\}",'\uD835\uDD20'],["\\\\mathfrak\\{b\\}",'\uD835\uDD1F'],["\\\\mathfrak\\{a\\}",'\uD835\uDD1E'],["\\\\mathfrak\\{Y\\}",'\uD835\uDD1C'],["\\\\mathfrak\\{X\\}",'\uD835\uDD1B'],["\\\\mathfrak\\{W\\}",'\uD835\uDD1A'],["\\\\mathfrak\\{V\\}",'\uD835\uDD19'],["\\\\mathfrak\\{U\\}",'\uD835\uDD18'],["\\\\mathfrak\\{T\\}",'\uD835\uDD17'],["\\\\mathfrak\\{S\\}",'\uD835\uDD16'],["\\\\mathfrak\\{Q\\}",'\uD835\uDD14'],["\\\\mathfrak\\{P\\}",'\uD835\uDD13'],["\\\\mathfrak\\{O\\}",'\uD835\uDD12'],["\\\\mathfrak\\{N\\}",'\uD835\uDD11'],["\\\\mathfrak\\{M\\}",'\uD835\uDD10'],["\\\\mathfrak\\{L\\}",'\uD835\uDD0F'],["\\\\mathfrak\\{K\\}",'\uD835\uDD0E'],["\\\\mathfrak\\{J\\}",'\uD835\uDD0D'],["\\\\mathfrak\\{G\\}",'\uD835\uDD0A'],["\\\\mathfrak\\{F\\}",'\uD835\uDD09'],["\\\\mathfrak\\{E\\}",'\uD835\uDD08'],["\\\\mathfrak\\{D\\}",'\uD835\uDD07'],["\\\\mathfrak\\{B\\}",'\uD835\uDD05'],["\\\\mathfrak\\{A\\}",'\uD835\uDD04'],["\\\\mathsfsl\\{F\\}",'\uD835\uDE0D'],["\\\\mathslbb\\{G\\}",'\uD835\uDD72'],["\\\\mathslbb\\{H\\}",'\uD835\uDD73'],["\\\\topsemicircle",'\u25E0'],["\\\\botsemicircle",'\u25E1'],["\\\\mathslbb\\{I\\}",'\uD835\uDD74'],["\\\\squareulblack",'\u25E9'],["\\\\mathsfbf\\{x\\}",'\uD835\uDE05'],["\\\\mathsfbf\\{T\\}",'\uD835\uDDE7'],["\\\\leftarrowtail",'\u21A2'],["\\\\mathsfbf\\{w\\}",'\uD835\uDE04'],["\\\\mathsfbf\\{v\\}",'\uD835\uDE03'],["\\\\leftouterjoin",'\u27D5'],["\\\\fullouterjoin",'\u27D7'],["\\\\mathsfbf\\{u\\}",'\uD835\uDE02'],["\\\\circledbullet",'\u29BF'],["\\\\mathsfbf\\{U\\}",'\uD835\uDDE8'],["\\\\LeftTeeVector",'\u295A'],["\\\\mathsfbf\\{V\\}",'\uD835\uDDE9'],["\\\\mathsfbf\\{W\\}",'\uD835\uDDEA'],["\\\\mathsfbf\\{X\\}",'\uD835\uDDEB'],["\\\\circledbslash",'\u29B8'],["\\\\mathsfbf\\{Y\\}",'\uD835\uDDEC'],["\\\\emptysetoarrl",'\u29B4'],["\\\\emptysetocirc",'\u29B2'],["\\\\mathsfbf\\{t\\}",'\uD835\uDE01'],["\\\\mathsfbf\\{h\\}",'\uD835\uDDF5'],["\\\\mathsfbf\\{i\\}",'\uD835\uDDF6'],["\\\\mathsfbf\\{j\\}",'\uD835\uDDF7'],["\\\\mathsfbf\\{s\\}",'\uD835\uDE00'],["\\\\wideangledown",'\u29A6'],["\\\\mathsfbf\\{r\\}",'\uD835\uDDFF'],["\\\\mathsfbf\\{q\\}",'\uD835\uDDFE'],["\\\\mathsfbf\\{Z\\}",'\uD835\uDDED'],["\\\\mathsfbf\\{p\\}",'\uD835\uDDFD'],["\\\\mathsfbf\\{a\\}",'\uD835\uDDEE'],["\\\\mathsfbf\\{k\\}",'\uD835\uDDF8'],["\\\\longleftarrow",'\u27F5'],["\\\\mathsfsl\\{z\\}",'\uD835\uDE3B'],["\\\\mathsfsl\\{y\\}",'\uD835\uDE3A'],["\\\\mathsfsl\\{x\\}",'\uD835\uDE39'],["\\\\mathsfsl\\{w\\}",'\uD835\uDE38'],["\\\\mathsfsl\\{v\\}",'\uD835\uDE37'],["\\\\mathsfsl\\{u\\}",'\uD835\uDE36'],["\\\\mathsfsl\\{t\\}",'\uD835\uDE35'],["\\\\mathsfsl\\{s\\}",'\uD835\uDE34'],["\\\\mathsfsl\\{r\\}",'\uD835\uDE33'],["\\\\mathsfsl\\{q\\}",'\uD835\uDE32'],["\\\\mathsfsl\\{p\\}",'\uD835\uDE31'],["\\\\mathsfsl\\{o\\}",'\uD835\uDE30'],["\\\\mathsfsl\\{n\\}",'\uD835\uDE2F'],["\\\\mathsfsl\\{m\\}",'\uD835\uDE2E'],["\\\\mathsfsl\\{l\\}",'\uD835\uDE2D'],["\\\\mathsfsl\\{k\\}",'\uD835\uDE2C'],["\\\\mathsfsl\\{j\\}",'\uD835\uDE2B'],["\\\\mathsfsl\\{i\\}",'\uD835\uDE2A'],["\\\\mathsfsl\\{h\\}",'\uD835\uDE29'],["\\\\mathsfsl\\{g\\}",'\uD835\uDE28'],["\\\\ntriangleleft",'\u22EA'],["\\\\backslash|\\\\textbackslash",'\\'],["\\\\varlrtriangle",'\u22BF'],["\\\\rightpentagon",'\u2B54'],["\\\\mathsfsl\\{f\\}",'\uD835\uDE27'],["\\\\mathfrak\\{R\\}",'\u211C'],["\\\\mathsfsl\\{e\\}",'\uD835\uDE26'],["\\\\mdsmwhtsquare",'\u25FD'],["\\\\mdsmblksquare",'\u25FE'],["\\\\rightarrowgtr",'\u2B43'],["\\\\mathsfbf\\{o\\}",'\uD835\uDDFC'],["\\\\threeunderdot",'\u20E8'],["\\\\blocklefthalf",'\u258C'],["\\\\texttrademark",'\u2122'],["\\\\Longleftarrow",'\u27F8'],["\\\\mathsfbf\\{n\\}",'\uD835\uDDFB'],["\\\\enclosesquare",'\u20DE'],["\\\\mathslbb\\{J\\}",'\uD835\uDD75'],["\\\\mathslbb\\{K\\}",'\uD835\uDD76'],["\\\\enclosecircle",'\u20DD'],["\\\\mathsfbf\\{m\\}",'\uD835\uDDFA'],["\\\\mathslbb\\{L\\}",'\uD835\uDD77'],["\\\\mathsfsl\\{d\\}",'\uD835\uDE25'],["\\\\mathsfsl\\{c\\}",'\uD835\uDE24'],["\\\\mathsfsl\\{b\\}",'\uD835\uDE23'],["\\\\mathsfsl\\{a\\}",'\uD835\uDE22'],["\\\\mathsfsl\\{Z\\}",'\uD835\uDE21'],["\\\\pentagonblack",'\u2B1F'],["\\\\vysmwhtsquare",'\u2B1E'],["\\\\vysmblksquare",'\u2B1D'],["\\\\mathslbb\\{M\\}",'\uD835\uDD78'],["\\\\mathslbb\\{N\\}",'\uD835\uDD79'],["\\\\squarellblack",'\u2B15'],["\\\\squareurblack",'\u2B14'],["\\\\bigtalloblong",'\u2AFF'],["\\\\mathscr\\{c\\}",'\uD835\uDCB8'],["\\\\'\\$\\\\alpha\\$",'\u03AC'],["\\\\mathbit\\{q\\}",'\uD835\uDC92'],["\\\\mathbit\\{r\\}",'\uD835\uDC93'],["\\\\mathbit\\{s\\}",'\uD835\uDC94'],["\\\\surfintegral",'\u222F'],["\\\\mathbit\\{t\\}",'\uD835\uDC95'],["\\\\trianglecdot",'\u25EC'],["\\\\mathbit\\{u\\}",'\uD835\uDC96'],["\\\\mathbit\\{v\\}",'\uD835\uDC97'],["\\\\mathbit\\{w\\}",'\uD835\uDC98'],["\\\\lessequivlnt",'\u2272'],["\\\\mathscr\\{g\\}",'\u210A'],["\\\\mathscr\\{d\\}",'\uD835\uDCB9'],["\\\\longdivision",'\u27CC'],["\\\\eqqslantless",'\u2A9B'],["\\\\mathscr\\{H\\}",'\u210B'],["\\\\mathbit\\{x\\}",'\uD835\uDC99'],['\\\\upwhitearrow','\u21E7'],["\\\\mathbit\\{y\\}",'\uD835\uDC9A'],["\\\\mathbit\\{z\\}",'\uD835\uDC9B'],["\\\\mathscr\\{A\\}",'\uD835\uDC9C'],["\\\\dottedcircle",'\u25CC'],["\\\\mathmit\\{D\\}",'\uD835\uDCD3'],["\\\\odotslashdot",'\u29BC'],["\\\\cupleftarrow",'\u228C'],["\\\\mathscr\\{I\\}",'\u2110'],["\\\\notbackslash",'\u2340'],["\\\\textvartheta",'\u03D1'],["\\\\LeftArrowBar",'\u21E4'],["\\\\mathmit\\{I\\}",'\uD835\uDCD8'],["\\\\lozengeminus",'\u27E0'],["\\\\mathscr\\{C\\}",'\uD835\uDC9E'],["\\\\emptysetoarr",'\u29B3'],["\\\\mathscr\\{f\\}",'\uD835\uDCBB'],["\\\\emptysetobar",'\u29B1'],["\\\\mathscr\\{D\\}",'\uD835\uDC9F'],["\\\\mathbit\\{A\\}",'\uD835\uDC68'],["\\\\fdiagovrdiag",'\u292C'],["\\\\mathscr\\{h\\}",'\uD835\uDCBD'],["\\\\verymuchless",'\u22D8'],["\\\\mathbit\\{B\\}",'\uD835\uDC69'],["\\\\mathbit\\{C\\}",'\uD835\uDC6A'],["\\\\mathscr\\{G\\}",'\uD835\uDCA2'],['\\\\upupharpoons','\u2963'],["\\\\nvRightarrow",'\u2903'],["\\\\mathscr\\{J\\}",'\uD835\uDCA5'],["\\\\revangleubar",'\u29A5'],["\\\\mathscr\\{K\\}",'\uD835\uDCA6'],["\\\\mathbit\\{D\\}",'\uD835\uDC6B'],["\\\\mathmit\\{H\\}",'\uD835\uDCD7'],["\\\\mathmit\\{G\\}",'\uD835\uDCD6'],["\\\\mathscr\\{N\\}",'\uD835\uDCA9'],["\\\\mathscr\\{i\\}",'\uD835\uDCBE'],["\\\\mathmit\\{F\\}",'\uD835\uDCD5'],["\\\\mathbit\\{E\\}",'\uD835\uDC6C'],["\\\\mathbit\\{F\\}",'\uD835\uDC6D'],["\\\\mathbit\\{G\\}",'\uD835\uDC6E'],["\\\\mathmit\\{z\\}",'\uD835\uDD03'],["\\\\mathbit\\{H\\}",'\uD835\uDC6F'],["\\\\PropertyLine",'\u214A'],["\\\\mathscr\\{j\\}",'\uD835\uDCBF'],["\\\\mathscr\\{O\\}",'\uD835\uDCAA'],["\\\\mathmit\\{y\\}",'\uD835\uDD02'],["\\\\DownArrowBar",'\u2913'],["\\\\mathscr\\{k\\}",'\uD835\uDCC0'],["\\\\mathscr\\{m\\}",'\uD835\uDCC2'],["\\\\mathscr\\{n\\}",'\uD835\uDCC3'],["\\\\mathmit\\{x\\}",'\uD835\uDD01'],["\\\\mathscr\\{P\\}",'\uD835\uDCAB'],["\\\\mathmit\\{w\\}",'\uD835\uDD00'],["\\\\mathmit\\{v\\}",'\uD835\uDCFF'],["\\\\mathscr\\{Q\\}",'\uD835\uDCAC'],["\\\\mathmit\\{u\\}",'\uD835\uDCFE'],["\\\\mathmit\\{t\\}",'\uD835\uDCFD'],["\\\\mathscr\\{p\\}",'\uD835\uDCC5'],["\\\\mathscr\\{q\\}",'\uD835\uDCC6'],["\\\\mathscr\\{r\\}",'\uD835\uDCC7'],["\\\\mathscr\\{S\\}",'\uD835\uDCAE'],["\\\\mathmit\\{s\\}",'\uD835\uDCFC'],["\\\\mathmit\\{r\\}",'\uD835\uDCFB'],["\\\\mathmit\\{q\\}",'\uD835\uDCFA'],["\\\\squareulquad",'\u25F0'],["\\\\mathbit\\{I\\}",'\uD835\uDC70'],["\\\\squarellquad",'\u25F1'],["\\\\risingdotseq",'\u2253'],["\\\\squarelrquad",'\u25F2'],["\\\\squareurquad",'\u25F3'],["\\\\mathmit\\{p\\}",'\uD835\uDCF9'],["\\\\circleulquad",'\u25F4'],["\\\\circledequal",'\u229C'],["\\\\medblackstar",'\u2B51'],["\\\\medwhitestar",'\u2B50'],["\\\\circlellquad",'\u25F5'],["\\\\circlelrquad",'\u25F6'],["\\\\mathbit\\{J\\}",'\uD835\uDC71'],["\\\\circleurquad",'\u25F7'],["\\\\squarehvfill",'\u25A6'],["\\\\rightdbltail",'\u291C'],["\\\\mathscr\\{s\\}",'\uD835\uDCC8'],["\\\\mathmit\\{o\\}",'\uD835\uDCF8'],["\\\\mathscr\\{t\\}",'\uD835\uDCC9'],["\\\\doublebarvee",'\u2A62'],["\\\\mathbit\\{K\\}",'\uD835\uDC72'],["\\\\mathbit\\{L\\}",'\uD835\uDC73'],["\\\\mathbit\\{M\\}",'\uD835\uDC74'],["\\\\errbarcircle",'\u29F2'],["\\\\mathscr\\{T\\}",'\uD835\uDCAF'],["\\\\mathmit\\{n\\}",'\uD835\uDCF7'],["\\\\blocklowhalf",'\u2584'],["\\\\mathmit\\{m\\}",'\uD835\uDCF6'],["\\\\mathmit\\{E\\}",'\uD835\uDCD4'],["\\\\mathbit\\{N\\}",'\uD835\uDC75'],["\\\\leftdotarrow",'\u2B38'],["\\\\mathbit\\{O\\}",'\uD835\uDC76'],["\\\\mathmit\\{l\\}",'\uD835\uDCF5'],["\\\\wedgemidvert",'\u2A5A'],["\\\\errbarsquare",'\u29EE'],["\\\\mathscr\\{U\\}",'\uD835\uDCB0'],["\\\\bigslopedvee",'\u2A57'],["\\\\mathmit\\{k\\}",'\uD835\uDCF4'],["\\\\mathmit\\{j\\}",'\uD835\uDCF3'],["\\\\blacklozenge",'\u29EB'],["\\\\mathmit\\{i\\}",'\uD835\uDCF2'],["\\\\mathscr\\{V\\}",'\uD835\uDCB1'],["\\\\mathmit\\{h\\}",'\uD835\uDCF1'],["\\\\smwhtlozenge",'\u2B2B'],["\\\\smblklozenge",'\u2B2A'],["\\\\smblkdiamond",'\u2B29'],["\\\\mdwhtlozenge",'\u2B28'],["\\\\mdblklozenge",'\u2B27'],["\\\\mdwhtdiamond",'\u2B26'],["\\\\mdblkdiamond",'\u2B25'],["\\\\mathmit\\{g\\}",'\uD835\uDCF0'],["\\\\hexagonblack",'\u2B23'],["\\\\rbrackurtick",'\u2990'],["\\\\mathbit\\{P\\}",'\uD835\uDC77'],["\\\\mathbit\\{Q\\}",'\uD835\uDC78'],["\\\\mathscr\\{W\\}",'\uD835\uDCB2'],["\\\\mathmit\\{f\\}",'\uD835\uDCEF'],["\\\\closedvarcap",'\u2A4D'],["\\\\dottedsquare",'\u2B1A'],["\\\\lbracklltick",'\u298F'],["\\\\rbracklrtick",'\u298E'],["\\\\closedvarcup",'\u2A4C'],["\\\\mathmit\\{e\\}",'\uD835\uDCEE'],["\\\\downfishtail",'\u297F'],["\\\\mathmit\\{d\\}",'\uD835\uDCED'],["\\\\mathbit\\{R\\}",'\uD835\uDC79'],["\\\\mathbit\\{S\\}",'\uD835\uDC7A'],["\\\\mathmit\\{c\\}",'\uD835\uDCEC'],["\\\\lbrackultick",'\u298D'],["\\\\mathmit\\{b\\}",'\uD835\uDCEB'],["\\\\mathscr\\{X\\}",'\uD835\uDCB3'],["\\\\mathbit\\{T\\}",'\uD835\uDC7B'],["\\\\mathmit\\{a\\}",'\uD835\uDCEA'],["\\\\lrtriangleeq",'\u29E1'],["\\\\mathbit\\{U\\}",'\uD835\uDC7C'],["\\\\textsterling",'\xA3'],["\\\\textcurrency",'\xA4'],["\\\\mathscr\\{Y\\}",'\uD835\uDCB4'],["\\\\mathbit\\{V\\}",'\uD835\uDC7D'],["\\\\mathscr\\{Z\\}",'\uD835\uDCB5'],["\\\\hyphenbullet",'\u2043'],["\\\\mathmit\\{Z\\}",'\uD835\uDCE9'],["\\\\longmapsfrom",'\u27FB'],["\\\\multimapboth",'\u29DF'],["\\\\mathbit\\{W\\}",'\uD835\uDC7E'],["\\\\mathbit\\{X\\}",'\uD835\uDC7F'],["\\\\mathbit\\{Y\\}",'\uD835\uDC80'],["\\\\mathbit\\{Z\\}",'\uD835\uDC81'],["\\\\mathbit\\{a\\}",'\uD835\uDC82'],["\\\\mathbit\\{b\\}",'\uD835\uDC83'],["\\\\mathmit\\{Y\\}",'\uD835\uDCE8'],["\\\\mathmit\\{X\\}",'\uD835\uDCE7'],["\\\\mathbit\\{c\\}",'\uD835\uDC84'],["\\\\mathbit\\{d\\}",'\uD835\uDC85'],["\\\\mathmit\\{W\\}",'\uD835\uDCE6'],["\\\\mathmit\\{V\\}",'\uD835\uDCE5'],["\\\\mathmit\\{U\\}",'\uD835\uDCE4'],["\\\\RoundImplies",'\u2970'],["\\\\triangleplus",'\u2A39'],["\\\\rdiagovfdiag",'\u292B'],["\\\\mathscr\\{a\\}",'\uD835\uDCB6'],["\\\\mathscr\\{u\\}",'\uD835\uDCCA'],["\\\\mathscr\\{B\\}",'\u212C'],["\\\\mathmit\\{T\\}",'\uD835\uDCE3'],["\\\\mathscr\\{b\\}",'\uD835\uDCB7'],["\\\\mathmit\\{S\\}",'\uD835\uDCE2'],["\\\\mathscr\\{e\\}",'\u212F'],["\\\\mathbit\\{e\\}",'\uD835\uDC86'],["\\\\mathmit\\{R\\}",'\uD835\uDCE1'],["\\\\mathscr\\{v\\}",'\uD835\uDCCB'],["\\\\mathscr\\{w\\}",'\uD835\uDCCC'],["\\\\mathbit\\{f\\}",'\uD835\uDC87'],["\\\\mathbit\\{g\\}",'\uD835\uDC88'],["\\\\mathscr\\{x\\}",'\uD835\uDCCD'],["\\\\texttildelow",'\u02DC'],["\\\\mathbit\\{h\\}",'\uD835\uDC89'],["\\\\varspadesuit",'\u2664'],["\\\\mathscr\\{y\\}",'\uD835\uDCCE'],["\\\\mathbit\\{i\\}",'\uD835\uDC8A'],["\\\\mathmit\\{Q\\}",'\uD835\uDCE0'],["\\\\supsetapprox",'\u2ACA'],["\\\\subsetapprox",'\u2AC9'],["\\\\rightbkarrow",'\u290D'],["\\\\mathbit\\{j\\}",'\uD835\uDC8B'],["\\\\mathmit\\{P\\}",'\uD835\uDCDF'],["\\\\mathscr\\{R\\}",'\u211B'],["\\\\mathmit\\{O\\}",'\uD835\uDCDE'],["\\\\mathscr\\{z\\}",'\uD835\uDCCF'],["\\\\oturnedcomma",'\u0312'],["\\\\mathbit\\{k\\}",'\uD835\uDC8C'],["\\\\mathbit\\{l\\}",'\uD835\uDC8D'],["\\\\Longmapsfrom",'\u27FD'],["\\\\mathmit\\{N\\}",'\uD835\uDCDD'],["\\\\mathmit\\{A\\}",'\uD835\uDCD0'],["\\\\mathmit\\{M\\}",'\uD835\uDCDC'],["\\\\triangledown",'\u25BF'],["\\\\triangleleft",'\u25C3'],["\\\\mathmit\\{L\\}",'\uD835\uDCDB'],["\\\\mathmit\\{B\\}",'\uD835\uDCD1'],["\\\\mathscr\\{l\\}",'\u2113'],["\\\\leftdbkarrow",'\u290E'],["\\\\mathbit\\{m\\}",'\uD835\uDC8E'],["\\\\mathbit\\{n\\}",'\uD835\uDC8F'],["\\\\mathbit\\{o\\}",'\uD835\uDC90'],["\\\\mathmit\\{K\\}",'\uD835\uDCDA'],["\\\\mathscr\\{L\\}",'\u2112'],["\\\\mathmit\\{C\\}",'\uD835\uDCD2'],["\\\\mathmit\\{J\\}",'\uD835\uDCD9'],["\\\\mathscr\\{E\\}",'\u2130'],["\\\\mathrm\\{'Y\\}",'\u038E'],["\\\\mathscr\\{F\\}",'\u2131'],["\\\\mathscr\\{M\\}",'\u2133'],['\\\\underbracket','\u23B5'],["\\\\mathscr\\{o\\}",'\u2134'],["\\\\mathbit\\{p\\}",'\uD835\uDC91'],["\\\\nHdownarrow",'\u21DF'],["\\\\forcesextra",'\u22A8'],['\\\\updasharrow','\u21E1'],["\\\\circleddash",'\u229D'],["\\\\circledcirc",'\u229A'],["\\\\nvleftarrow",'\u21F7'],["\\\\nVleftarrow",'\u21FA'],["\\\\not\\\\supset",'\u2285'],["\\\\not\\\\subset",'\u2284'],["\\\\succcurlyeq",'\u227D'],["\\\\preccurlyeq",'\u227C'],["\\\\int\\\\!\\\\int",'\u222C'],["\\\\volintegral",'\u2230'],["\\\\clwintegral",'\u2231'],["\\\\not\\\\approx",'\u2249'],["\\\\mathtt\\{z\\}",'\uD835\uDEA3'],["\\\\mathtt\\{y\\}",'\uD835\uDEA2'],["\\\\mathtt\\{x\\}",'\uD835\uDEA1'],["\\\\mathtt\\{w\\}",'\uD835\uDEA0'],["\\\\mathtt\\{v\\}",'\uD835\uDE9F'],["\\\\mathtt\\{u\\}",'\uD835\uDE9E'],["\\\\mathtt\\{t\\}",'\uD835\uDE9D'],["\\\\mathtt\\{s\\}",'\uD835\uDE9C'],["\\\\mathtt\\{r\\}",'\uD835\uDE9B'],["\\\\mathtt\\{q\\}",'\uD835\uDE9A'],["\\\\mathtt\\{p\\}",'\uD835\uDE99'],["\\\\mathtt\\{o\\}",'\uD835\uDE98'],["\\\\mathtt\\{n\\}",'\uD835\uDE97'],["\\\\mathtt\\{m\\}",'\uD835\uDE96'],["\\\\mathtt\\{l\\}",'\uD835\uDE95'],["\\\\mathtt\\{k\\}",'\uD835\uDE94'],["\\\\mathtt\\{j\\}",'\uD835\uDE93'],["\\\\mathtt\\{i\\}",'\uD835\uDE92'],["\\\\mathtt\\{h\\}",'\uD835\uDE91'],["\\\\mathtt\\{g\\}",'\uD835\uDE90'],["\\\\mathtt\\{f\\}",'\uD835\uDE8F'],["\\\\mathtt\\{e\\}",'\uD835\uDE8E'],["\\\\mathtt\\{d\\}",'\uD835\uDE8D'],["\\\\mathtt\\{c\\}",'\uD835\uDE8C'],["\\\\mathtt\\{b\\}",'\uD835\uDE8B'],["\\\\mathtt\\{a\\}",'\uD835\uDE8A'],["\\\\mathtt\\{Z\\}",'\uD835\uDE89'],["\\\\mathtt\\{Y\\}",'\uD835\uDE88'],["\\\\mathtt\\{X\\}",'\uD835\uDE87'],["\\\\mathtt\\{W\\}",'\uD835\uDE86'],["\\\\mathtt\\{V\\}",'\uD835\uDE85'],["\\\\mathtt\\{U\\}",'\uD835\uDE84'],["\\\\mathtt\\{T\\}",'\uD835\uDE83'],["\\\\mathtt\\{S\\}",'\uD835\uDE82'],["\\\\mathtt\\{R\\}",'\uD835\uDE81'],["\\\\mathtt\\{Q\\}",'\uD835\uDE80'],["\\\\mathtt\\{P\\}",'\uD835\uDE7F'],["\\\\mathtt\\{O\\}",'\uD835\uDE7E'],["\\\\mathtt\\{N\\}",'\uD835\uDE7D'],["\\\\mathtt\\{M\\}",'\uD835\uDE7C'],["\\\\mathtt\\{L\\}",'\uD835\uDE7B'],["\\\\mathtt\\{K\\}",'\uD835\uDE7A'],["\\\\mathtt\\{J\\}",'\uD835\uDE79'],["\\\\mathtt\\{I\\}",'\uD835\uDE78'],["\\\\mathtt\\{H\\}",'\uD835\uDE77'],["\\\\mathtt\\{G\\}",'\uD835\uDE76'],["\\\\mathtt\\{F\\}",'\uD835\uDE75'],["\\\\mathtt\\{E\\}",'\uD835\uDE74'],["\\\\mathtt\\{D\\}",'\uD835\uDE73'],["\\\\mathtt\\{C\\}",'\uD835\uDE72'],["\\\\mathtt\\{B\\}",'\uD835\uDE71'],["\\\\mathtt\\{A\\}",'\uD835\uDE70'],["\\\\mathsf\\{z\\}",'\uD835\uDDD3'],["\\\\mathsf\\{y\\}",'\uD835\uDDD2'],["\\\\mathsf\\{x\\}",'\uD835\uDDD1'],["\\\\mathsf\\{w\\}",'\uD835\uDDD0'],["\\\\mathsf\\{v\\}",'\uD835\uDDCF'],["\\\\mathsf\\{u\\}",'\uD835\uDDCE'],["\\\\mathsf\\{t\\}",'\uD835\uDDCD'],["\\\\mathsf\\{s\\}",'\uD835\uDDCC'],["\\\\mathsf\\{r\\}",'\uD835\uDDCB'],["\\\\mathsf\\{q\\}",'\uD835\uDDCA'],["\\\\mathsf\\{p\\}",'\uD835\uDDC9'],["\\\\mathsf\\{o\\}",'\uD835\uDDC8'],["\\\\mathsf\\{n\\}",'\uD835\uDDC7'],["\\\\mathsf\\{m\\}",'\uD835\uDDC6'],["\\\\mathsf\\{l\\}",'\uD835\uDDC5'],["\\\\mathsf\\{k\\}",'\uD835\uDDC4'],["\\\\mathsf\\{j\\}",'\uD835\uDDC3'],["\\\\mathsf\\{i\\}",'\uD835\uDDC2'],["\\\\mathsf\\{h\\}",'\uD835\uDDC1'],["\\\\mathsf\\{g\\}",'\uD835\uDDC0'],["\\\\mathsf\\{f\\}",'\uD835\uDDBF'],["\\\\mathsf\\{e\\}",'\uD835\uDDBE'],["\\\\mathsf\\{d\\}",'\uD835\uDDBD'],["\\\\mathsf\\{c\\}",'\uD835\uDDBC'],["\\\\mathsf\\{b\\}",'\uD835\uDDBB'],["\\\\mathsf\\{a\\}",'\uD835\uDDBA'],["\\\\mathsf\\{Z\\}",'\uD835\uDDB9'],["\\\\mathsf\\{Y\\}",'\uD835\uDDB8'],["\\\\mathsf\\{X\\}",'\uD835\uDDB7'],["\\\\mathsf\\{W\\}",'\uD835\uDDB6'],["\\\\mathsf\\{V\\}",'\uD835\uDDB5'],["\\\\mathsf\\{U\\}",'\uD835\uDDB4'],["\\\\mathsf\\{T\\}",'\uD835\uDDB3'],["\\\\mathsf\\{S\\}",'\uD835\uDDB2'],["\\\\mathsf\\{R\\}",'\uD835\uDDB1'],["\\\\mathsf\\{Q\\}",'\uD835\uDDB0'],["\\\\mathsf\\{P\\}",'\uD835\uDDAF'],["\\\\mathsf\\{O\\}",'\uD835\uDDAE'],["\\\\mathsf\\{N\\}",'\uD835\uDDAD'],["\\\\mathsf\\{M\\}",'\uD835\uDDAC'],["\\\\mathsf\\{L\\}",'\uD835\uDDAB'],["\\\\mathsf\\{K\\}",'\uD835\uDDAA'],["\\\\mathsf\\{J\\}",'\uD835\uDDA9'],["\\\\mathsf\\{I\\}",'\uD835\uDDA8'],["\\\\mathsf\\{H\\}",'\uD835\uDDA7'],["\\\\mathsf\\{G\\}",'\uD835\uDDA6'],["\\\\mathsf\\{F\\}",'\uD835\uDDA5'],["\\\\mathsf\\{E\\}",'\uD835\uDDA4'],["\\\\mathsf\\{D\\}",'\uD835\uDDA3'],["\\\\mathsf\\{C\\}",'\uD835\uDDA2'],["\\\\mathsf\\{B\\}",'\uD835\uDDA1'],["\\\\mathsf\\{A\\}",'\uD835\uDDA0'],["\\\\mathbb\\{z\\}",'\uD835\uDD6B'],["\\\\mathbb\\{y\\}",'\uD835\uDD6A'],["\\\\mathbb\\{x\\}",'\uD835\uDD69'],["\\\\mathbb\\{w\\}",'\uD835\uDD68'],["\\\\mathbb\\{v\\}",'\uD835\uDD67'],["\\\\mathbb\\{u\\}",'\uD835\uDD66'],["\\\\mathbb\\{t\\}",'\uD835\uDD65'],["\\\\mathbb\\{s\\}",'\uD835\uDD64'],["\\\\mathbb\\{r\\}",'\uD835\uDD63'],["\\\\mathbb\\{q\\}",'\uD835\uDD62'],["\\\\mathbb\\{p\\}",'\uD835\uDD61'],["\\\\mathbb\\{o\\}",'\uD835\uDD60'],["\\\\mathbb\\{n\\}",'\uD835\uDD5F'],["\\\\mathbb\\{m\\}",'\uD835\uDD5E'],["\\\\mathbb\\{l\\}",'\uD835\uDD5D'],["\\\\mathbb\\{k\\}",'\uD835\uDD5C'],["\\\\mathbb\\{j\\}",'\uD835\uDD5B'],["\\\\mathbb\\{i\\}",'\uD835\uDD5A'],["\\\\mathbb\\{h\\}",'\uD835\uDD59'],["\\\\mathbb\\{g\\}",'\uD835\uDD58'],["\\\\mathbb\\{f\\}",'\uD835\uDD57'],["\\\\mathbb\\{e\\}",'\uD835\uDD56'],["\\\\mathbb\\{d\\}",'\uD835\uDD55'],["\\\\mathbb\\{c\\}",'\uD835\uDD54'],["\\\\mathbb\\{b\\}",'\uD835\uDD53'],["\\\\mathbb\\{a\\}",'\uD835\uDD52'],["\\\\mathbb\\{Y\\}",'\uD835\uDD50'],["\\\\mathbb\\{X\\}",'\uD835\uDD4F'],["\\\\mathbb\\{W\\}",'\uD835\uDD4E'],["\\\\mathbb\\{V\\}",'\uD835\uDD4D'],["\\\\mathbb\\{U\\}",'\uD835\uDD4C'],["\\\\mathbb\\{T\\}",'\uD835\uDD4B'],["\\\\mathbb\\{S\\}",'\uD835\uDD4A'],["\\\\mathbb\\{O\\}",'\uD835\uDD46'],["\\\\mathbb\\{M\\}",'\uD835\uDD44'],["\\\\mathbb\\{L\\}",'\uD835\uDD43'],["\\\\mathbb\\{K\\}",'\uD835\uDD42'],["\\\\mathbb\\{J\\}",'\uD835\uDD41'],["\\\\mathbb\\{I\\}",'\uD835\uDD40'],["\\\\mathbb\\{G\\}",'\uD835\uDD3E'],["\\\\mathbb\\{F\\}",'\uD835\uDD3D'],["\\\\mathbb\\{E\\}",'\uD835\uDD3C'],["\\\\mathbb\\{D\\}",'\uD835\uDD3B'],["\\\\mathbb\\{B\\}",'\uD835\uDD39'],["\\\\mathbb\\{A\\}",'\uD835\uDD38'],["\\\\mathsl\\{z\\}",'\uD835\uDC67'],["\\\\mathsl\\{y\\}",'\uD835\uDC66'],["\\\\mathsl\\{x\\}",'\uD835\uDC65'],["\\\\mathsl\\{w\\}",'\uD835\uDC64'],["\\\\mathsl\\{v\\}",'\uD835\uDC63'],["\\\\mathsl\\{u\\}",'\uD835\uDC62'],["\\\\mathsl\\{t\\}",'\uD835\uDC61'],["\\\\mathsl\\{s\\}",'\uD835\uDC60'],["\\\\mathsl\\{r\\}",'\uD835\uDC5F'],["\\\\mathsl\\{q\\}",'\uD835\uDC5E'],["\\\\mathsl\\{p\\}",'\uD835\uDC5D'],["\\\\mathsl\\{o\\}",'\uD835\uDC5C'],["\\\\mathsl\\{n\\}",'\uD835\uDC5B'],["\\\\mathsl\\{m\\}",'\uD835\uDC5A'],["\\\\mathsl\\{l\\}",'\uD835\uDC59'],["\\\\mathsl\\{k\\}",'\uD835\uDC58'],["\\\\mathsl\\{j\\}",'\uD835\uDC57'],["\\\\mathsl\\{i\\}",'\uD835\uDC56'],["\\\\mathsl\\{g\\}",'\uD835\uDC54'],["\\\\mathsl\\{f\\}",'\uD835\uDC53'],["\\\\mathsl\\{e\\}",'\uD835\uDC52'],["\\\\mathsl\\{d\\}",'\uD835\uDC51'],["\\\\mathsl\\{c\\}",'\uD835\uDC50'],["\\\\mathsl\\{b\\}",'\uD835\uDC4F'],["\\\\mathsl\\{a\\}",'\uD835\uDC4E'],["\\\\mathsl\\{Z\\}",'\uD835\uDC4D'],["\\\\mathsl\\{Y\\}",'\uD835\uDC4C'],["\\\\mathsl\\{X\\}",'\uD835\uDC4B'],["\\\\mathsl\\{W\\}",'\uD835\uDC4A'],["\\\\mathsl\\{V\\}",'\uD835\uDC49'],["\\\\mathsl\\{U\\}",'\uD835\uDC48'],["\\\\mathsl\\{T\\}",'\uD835\uDC47'],["\\\\mathsl\\{S\\}",'\uD835\uDC46'],["\\\\mathsl\\{R\\}",'\uD835\uDC45'],["\\\\mathsl\\{Q\\}",'\uD835\uDC44'],["\\\\mathsl\\{P\\}",'\uD835\uDC43'],["\\\\mathsl\\{O\\}",'\uD835\uDC42'],["\\\\mathsl\\{N\\}",'\uD835\uDC41'],["\\\\mathsl\\{M\\}",'\uD835\uDC40'],["\\\\mathsl\\{L\\}",'\uD835\uDC3F'],["\\\\mathsl\\{K\\}",'\uD835\uDC3E'],["\\\\mathsl\\{J\\}",'\uD835\uDC3D'],["\\\\mathsl\\{I\\}",'\uD835\uDC3C'],["\\\\mathsl\\{H\\}",'\uD835\uDC3B'],["\\\\mathsl\\{G\\}",'\uD835\uDC3A'],["\\\\mathsl\\{F\\}",'\uD835\uDC39'],["\\\\mathsl\\{E\\}",'\uD835\uDC38'],["\\\\mathsl\\{D\\}",'\uD835\uDC37'],["\\\\mathsl\\{C\\}",'\uD835\uDC36'],["\\\\mathsl\\{B\\}",'\uD835\uDC35'],["\\\\mathsl\\{A\\}",'\uD835\uDC34'],["\\\\mathbf\\{z\\}",'\uD835\uDC33'],["\\\\mathbf\\{y\\}",'\uD835\uDC32'],["\\\\mathbf\\{x\\}",'\uD835\uDC31'],["\\\\mathbf\\{w\\}",'\uD835\uDC30'],["\\\\mathbf\\{v\\}",'\uD835\uDC2F'],["\\\\mathbf\\{u\\}",'\uD835\uDC2E'],["\\\\mathbf\\{t\\}",'\uD835\uDC2D'],["\\\\mathbf\\{s\\}",'\uD835\uDC2C'],["\\\\mathbf\\{r\\}",'\uD835\uDC2B'],["\\\\mathbf\\{q\\}",'\uD835\uDC2A'],["\\\\mathbf\\{p\\}",'\uD835\uDC29'],["\\\\mathbf\\{o\\}",'\uD835\uDC28'],["\\\\mathbf\\{n\\}",'\uD835\uDC27'],["\\\\mathbf\\{m\\}",'\uD835\uDC26'],["\\\\mathbf\\{l\\}",'\uD835\uDC25'],["\\\\mathbf\\{k\\}",'\uD835\uDC24'],["\\\\mathbf\\{j\\}",'\uD835\uDC23'],["\\\\mathbf\\{i\\}",'\uD835\uDC22'],["\\\\mathbf\\{h\\}",'\uD835\uDC21'],["\\\\mathbf\\{g\\}",'\uD835\uDC20'],["\\\\mathbf\\{f\\}",'\uD835\uDC1F'],["\\\\mathbf\\{e\\}",'\uD835\uDC1E'],["\\\\mathbf\\{d\\}",'\uD835\uDC1D'],["\\\\mathbf\\{c\\}",'\uD835\uDC1C'],["\\\\mathbf\\{b\\}",'\uD835\uDC1B'],["\\\\mathbf\\{a\\}",'\uD835\uDC1A'],["\\\\mathbf\\{Z\\}",'\uD835\uDC19'],["\\\\mathbf\\{Y\\}",'\uD835\uDC18'],["\\\\mathbf\\{X\\}",'\uD835\uDC17'],["\\\\mathbf\\{W\\}",'\uD835\uDC16'],["\\\\mathbf\\{V\\}",'\uD835\uDC15'],["\\\\mathbf\\{U\\}",'\uD835\uDC14'],["\\\\mathbf\\{T\\}",'\uD835\uDC13'],["\\\\mathbf\\{S\\}",'\uD835\uDC12'],["\\\\mathbf\\{R\\}",'\uD835\uDC11'],["\\\\mathbf\\{Q\\}",'\uD835\uDC10'],["\\\\mathbf\\{P\\}",'\uD835\uDC0F'],["\\\\mathbf\\{O\\}",'\uD835\uDC0E'],["\\\\mathbf\\{N\\}",'\uD835\uDC0D'],["\\\\mathbf\\{M\\}",'\uD835\uDC0C'],["\\\\mathbf\\{L\\}",'\uD835\uDC0B'],["\\\\mathbf\\{K\\}",'\uD835\uDC0A'],["\\\\mathbf\\{J\\}",'\uD835\uDC09'],["\\\\mathbf\\{I\\}",'\uD835\uDC08'],["\\\\mathbf\\{H\\}",'\uD835\uDC07'],["\\\\mathbf\\{G\\}",'\uD835\uDC06'],["\\\\mathbf\\{F\\}",'\uD835\uDC05'],["\\\\mathbf\\{E\\}",'\uD835\uDC04'],["\\\\mathbf\\{D\\}",'\uD835\uDC03'],["\\\\mathbf\\{C\\}",'\uD835\uDC02'],["\\\\mathbf\\{B\\}",'\uD835\uDC01'],["\\\\mathbf\\{A\\}",'\uD835\uDC00'],["\\\\smwhitestar",'\u2B52'],["\\\\RRightarrow",'\u2B46'],["\\\\whtvertoval",'\u2B2F'],["\\\\blkvertoval",'\u2B2E'],["\\\\whthorzoval",'\u2B2D'],["\\\\blkhorzoval",'\u2B2C'],["\\\\lgblkcircle",'\u2B24'],["\\\\mathtt\\{9\\}",'\uD835\uDFFF'],["\\\\mathtt\\{8\\}",'\uD835\uDFFE'],["\\\\textsection",'\xA7'],["\\\\textonehalf",'\xBD'],["\\\\shortuptack",'\u2AE0'],["\\\\mathtt\\{7\\}",'\uD835\uDFFD'],["\\\\mathtt\\{6\\}",'\uD835\uDFFC'],["\\\\mathtt\\{5\\}",'\uD835\uDFFB'],["\\\\mathtt\\{4\\}",'\uD835\uDFFA'],["\\\\succnapprox",'\u2ABA'],["\\\\precnapprox",'\u2AB9'],["\\\\mathtt\\{3\\}",'\uD835\uDFF9'],["\\\\eqqslantgtr",'\u2A9C'],["\\\\eqslantless",'\u2A95'],["\\\\backepsilon",'\u03F6'],["\\\\mathtt\\{2\\}",'\uD835\uDFF8'],["\\\\mathtt\\{1\\}",'\uD835\uDFF7'],["\\\\mathtt\\{0\\}",'\uD835\uDFF6'],["\\\\simminussim",'\u2A6C'],["\\\\midbarwedge",'\u2A5C'],["\\\\mathsf\\{9\\}",'\uD835\uDFEB'],["\\\\mathsf\\{8\\}",'\uD835\uDFEA'],["\\\\rcurvyangle",'\u29FD'],["\\\\lcurvyangle",'\u29FC'],["\\\\RuleDelayed",'\u29F4'],["\\\\gleichstark",'\u29E6'],["\\\\mathsf\\{7\\}",'\uD835\uDFE9'],["\\\\mathsf\\{6\\}",'\uD835\uDFE8'],["\\\\mathsf\\{5\\}",'\uD835\uDFE7'],["\\\\mathsf\\{4\\}",'\uD835\uDFE6'],["\\\\circledless",'\u29C0'],["\\\\revemptyset",'\u29B0'],["\\\\wideangleup",'\u29A7'],["\\\\mathsf\\{3\\}",'\uD835\uDFE5'],["\\\\mathsf\\{2\\}",'\uD835\uDFE4'],["\\\\mathsf\\{1\\}",'\uD835\uDFE3'],["\\\\mathsf\\{0\\}",'\uD835\uDFE2'],["\\\\mathbb\\{9\\}",'\uD835\uDFE1'],["\\\\mathbb\\{8\\}",'\uD835\uDFE0'],["\\\\mathbb\\{7\\}",'\uD835\uDFDF'],["\\\\nwovnearrow",'\u2932'],["\\\\neovnwarrow",'\u2931'],["\\\\neovsearrow",'\u292E'],["\\\\seovnearrow",'\u292D'],["\\\\mathbb\\{6\\}",'\uD835\uDFDE'],["\\\\mathbb\\{5\\}",'\uD835\uDFDD'],["\\\\leftdbltail",'\u291B'],["\\\\mathbb\\{4\\}",'\uD835\uDFDC'],["\\\\leftbkarrow",'\u290C'],["\\\\nvLeftarrow",'\u2902'],["\\\\mathbb\\{3\\}",'\uD835\uDFDB'],["\\\\mathbb\\{2\\}",'\uD835\uDFDA'],["\\\\mathbb\\{1\\}",'\uD835\uDFD9'],["\\\\mathbb\\{0\\}",'\uD835\uDFD8'],["\\\\multimapinv",'\u27DC'],["\\\\mathbf\\{9\\}",'\uD835\uDFD7'],["\\\\mathbf\\{8\\}",'\uD835\uDFD6'],["\\\\threedangle",'\u27C0'],["\\\\ding\\{254\\}",'\u27BE'],["\\\\ding\\{253\\}",'\u27BD'],["\\\\ding\\{252\\}",'\u27BC'],["\\\\ding\\{251\\}",'\u27BB'],["\\\\ding\\{250\\}",'\u27BA'],["\\\\ding\\{249\\}",'\u27B9'],["\\\\ding\\{248\\}",'\u27B8'],["\\\\ding\\{247\\}",'\u27B7'],["\\\\ding\\{246\\}",'\u27B6'],["\\\\ding\\{245\\}",'\u27B5'],["\\\\ding\\{244\\}",'\u27B4'],["\\\\ding\\{243\\}",'\u27B3'],["\\\\ding\\{242\\}",'\u27B2'],["\\\\ding\\{241\\}",'\u27B1'],["\\\\ding\\{239\\}",'\u27AF'],["\\\\ding\\{238\\}",'\u27AE'],["\\\\ding\\{237\\}",'\u27AD'],["\\\\ding\\{236\\}",'\u27AC'],["\\\\ding\\{235\\}",'\u27AB'],["\\\\ding\\{234\\}",'\u27AA'],["\\\\ding\\{233\\}",'\u27A9'],["\\\\ding\\{232\\}",'\u27A8'],["\\\\ding\\{231\\}",'\u27A7'],["\\\\ding\\{230\\}",'\u27A6'],["\\\\ding\\{229\\}",'\u27A5'],["\\\\ding\\{228\\}",'\u27A4'],["\\\\ding\\{227\\}",'\u27A3'],["\\\\ding\\{226\\}",'\u27A2'],["\\\\ding\\{225\\}",'\u27A1'],["\\\\ding\\{224\\}",'\u27A0'],["\\\\ding\\{223\\}",'\u279F'],["\\\\ding\\{222\\}",'\u279E'],["\\\\ding\\{221\\}",'\u279D'],["\\\\ding\\{220\\}",'\u279C'],["\\\\ding\\{219\\}",'\u279B'],["\\\\ding\\{218\\}",'\u279A'],["\\\\ding\\{216\\}",'\u2798'],["\\\\ding\\{212\\}",'\u2794'],["\\\\ding\\{211\\}",'\u2793'],["\\\\ding\\{210\\}",'\u2792'],["\\\\ding\\{209\\}",'\u2791'],["\\\\ding\\{208\\}",'\u2790'],["\\\\ding\\{207\\}",'\u278F'],["\\\\ding\\{206\\}",'\u278E'],["\\\\ding\\{205\\}",'\u278D'],["\\\\ding\\{204\\}",'\u278C'],["\\\\ding\\{203\\}",'\u278B'],["\\\\ding\\{202\\}",'\u278A'],["\\\\ding\\{201\\}",'\u2789'],["\\\\ding\\{200\\}",'\u2788'],["\\\\ding\\{199\\}",'\u2787'],["\\\\ding\\{198\\}",'\u2786'],["\\\\ding\\{197\\}",'\u2785'],["\\\\ding\\{196\\}",'\u2784'],["\\\\ding\\{195\\}",'\u2783'],["\\\\ding\\{194\\}",'\u2782'],["\\\\ding\\{193\\}",'\u2781'],["\\\\ding\\{192\\}",'\u2780'],["\\\\ding\\{191\\}",'\u277F'],["\\\\ding\\{190\\}",'\u277E'],["\\\\ding\\{189\\}",'\u277D'],["\\\\ding\\{188\\}",'\u277C'],["\\\\ding\\{187\\}",'\u277B'],["\\\\ding\\{186\\}",'\u277A'],["\\\\ding\\{185\\}",'\u2779'],["\\\\ding\\{184\\}",'\u2778'],["\\\\ding\\{183\\}",'\u2777'],["\\\\ding\\{182\\}",'\u2776'],["\\\\ding\\{167\\}",'\u2767'],["\\\\ding\\{166\\}",'\u2766'],["\\\\ding\\{165\\}",'\u2765'],["\\\\ding\\{164\\}",'\u2764'],["\\\\ding\\{163\\}",'\u2763'],["\\\\ding\\{162\\}",'\u2762'],["\\\\ding\\{161\\}",'\u2761'],["\\\\ding\\{126\\}",'\u275E'],["\\\\ding\\{125\\}",'\u275D'],["\\\\ding\\{124\\}",'\u275C'],["\\\\ding\\{123\\}",'\u275B'],["\\\\ding\\{122\\}",'\u275A'],["\\\\ding\\{121\\}",'\u2759'],["\\\\ding\\{120\\}",'\u2758'],["\\\\ding\\{118\\}",'\u2756'],["\\\\ding\\{114\\}",'\u2752'],["\\\\ding\\{113\\}",'\u2751'],["\\\\ding\\{112\\}",'\u2750'],["\\\\ding\\{111\\}",'\u274F'],["\\\\ding\\{109\\}",'\u274D'],["\\\\ding\\{107\\}",'\u274B'],["\\\\ding\\{106\\}",'\u274A'],["\\\\ding\\{105\\}",'\u2749'],["\\\\ding\\{104\\}",'\u2748'],["\\\\ding\\{103\\}",'\u2747'],["\\\\ding\\{102\\}",'\u2746'],["\\\\ding\\{101\\}",'\u2745'],["\\\\ding\\{100\\}",'\u2744'],["\\\\mathbf\\{7\\}",'\uD835\uDFD5'],["\\\\quarternote",'\u2669'],["\\\\varclubsuit",'\u2667'],["\\\\ding\\{169\\}",'\u2666'],["\\\\ding\\{170\\}",'\u2665'],["\\\\ding\\{168\\}",'\u2663'],["\\\\mathbf\\{6\\}",'\uD835\uDFD4'],["\\\\ding\\{171\\}",'\u2660'],["\\\\capricornus",'\u2651'],["\\\\sagittarius",'\u2650'],["\\\\backtrprime",'\u2037'],["\\\\caretinsert",'\u2038'],["\\\\nolinebreak",'\u2060'],["\\\\mathbf\\{5\\}",'\uD835\uDFD3'],["\\\\blacksmiley",'\u263B'],["\\\\vertoverlay",'\u20D2'],["\\\\mathbf\\{4\\}",'\uD835\uDFD2'],["\\\\mathbf\\{3\\}",'\uD835\uDFD1'],["\\\\smwhtcircle",'\u25E6'],["\\\\asteraccent",'\u20F0'],["\\\\mathbb\\{C\\}",'\u2102'],["\\\\mathbf\\{2\\}",'\uD835\uDFD0'],["\\\\ding\\{119\\}",'\u25D7'],["\\\\mathbb\\{H\\}",'\u210D'],["\\\\Planckconst",'\u210E'],["\\\\ding\\{108\\}",'\u25CF'],["\\\\mathbb\\{N\\}",'\u2115'],["\\\\ding\\{117\\}",'\u25C6'],["\\\\mathbb\\{P\\}",'\u2119'],["\\\\ding\\{116\\}",'\u25BC'],["\\\\mathbb\\{Q\\}",'\u211A'],["\\\\vartriangle",'\u25B5'],["\\\\ding\\{115\\}",'\u25B2'],["\\\\mathbf\\{1\\}",'\uD835\uDFCF'],["\\\\smwhtsquare",'\u25AB'],["\\\\blacksquare",'\u25AA'],["\\\\squarevfill",'\u25A5'],["\\\\squarehfill",'\u25A4'],["\\\\mathbb\\{R\\}",'\u211D'],["\\\\ding\\{110\\}",'\u25A0'],["\\\\mathbf\\{0\\}",'\uD835\uDFCE'],["\\\\blockuphalf",'\u2580'],["\\\\mathbb\\{Z\\}",'\u2124'],["\\\\ding\\{181\\}",'\u2469'],["\\\\ding\\{180\\}",'\u2468'],["\\\\ding\\{179\\}",'\u2467'],["\\\\ding\\{178\\}",'\u2466'],["\\\\ding\\{177\\}",'\u2465'],["\\\\ding\\{176\\}",'\u2464'],["\\\\ding\\{175\\}",'\u2463'],["\\\\ding\\{174\\}",'\u2462'],["\\\\ding\\{173\\}",'\u2461'],["\\\\ding\\{172\\}",'\u2460'],["\\\\overbracket",'\u23B4'],["\\\\intextender",'\u23AE'],["\\\\sansLturned",'\u2142'],["\\\\ExponetialE",'\u2147'],["\\\\wasylozenge",'\u2311'],['\\\\updownarrow','\u2195'],["\\\\nrightarrow",'\u219B'],["\\\\sqsubsetneq",'\u22E4'],["\\\\curlyeqsucc",'\u22DF'],["\\\\curlyeqprec",'\u22DE'],["\\\\nRightarrow",'\u21CF'],['\\\\Updownarrow','\u21D5'],["\\\\Rrightarrow",'\u21DB'],["\\\\ding\\{217\\}",'\u2799'],["\\\\precapprox",'\u227E'],["\\\\textdagger",'\u2020'],["\\\\mbfDigamma",'\uD835\uDFCA'],["\\\\twolowline",'\u2017'],["\\\\textemdash",'\u2014'],["\\\\textendash",'\u2013'],["\\\\eighthnote",'\u266A'],["\\\\ding\\{33\\}",'\u2701'],["\\\\ding\\{34\\}",'\u2702'],['\\\\underbrace','\u23DF'],["\\\\ding\\{35\\}",'\u2703'],['\\\\underparen','\u23DD'],["\\\\ding\\{36\\}",'\u2704'],["\\\\ding\\{38\\}",'\u2706'],["\\\\ding\\{39\\}",'\u2707'],["\\\\ding\\{40\\}",'\u2708'],["\\\\sqrtbottom",'\u23B7'],["\\\\ding\\{41\\}",'\u2709'],["\\\\ding\\{44\\}",'\u270C'],["\\\\succapprox",'\u227F'],["\\\\ding\\{45\\}",'\u270D'],["\\\\ding\\{46\\}",'\u270E'],["\\\\rmoustache",'\u23B1'],["\\\\lmoustache",'\u23B0'],["\\\\ding\\{47\\}",'\u270F'],["\\\\nLeftarrow",'\u21CD'],["\\\\rbracelend",'\u23AD'],["\\\\ding\\{48\\}",'\u2710'],["\\\\rbraceuend",'\u23AB'],["\\\\ding\\{49\\}",'\u2711'],["\\\\lbracelend",'\u23A9'],["\\\\ding\\{50\\}",'\u2712'],["\\\\lbraceuend",'\u23A7'],["\\\\rbracklend",'\u23A6'],["\\\\ding\\{51\\}",'\u2713'],["\\\\rbrackuend",'\u23A4'],["\\\\ding\\{52\\}",'\u2714'],["\\\\ding\\{53\\}",'\u2715'],["\\\\lbrackuend",'\u23A1'],["\\\\rparenlend",'\u23A0'],["\\\\ding\\{54\\}",'\u2716'],["\\\\rparenuend",'\u239E'],["\\\\lparenlend",'\u239D'],["\\\\ding\\{55\\}",'\u2717'],["\\\\lparenuend",'\u239B'],["\\\\ding\\{56\\}",'\u2718'],["\\\\ding\\{57\\}",'\u2719'],["\\\\ding\\{58\\}",'\u271A'],["\\\\ding\\{59\\}",'\u271B'],["\\\\ding\\{60\\}",'\u271C'],["\\\\APLcomment",'\u235D'],["\\\\ding\\{61\\}",'\u271D'],["\\\\ding\\{62\\}",'\u271E'],["\\\\ding\\{63\\}",'\u271F'],["\\\\ding\\{64\\}",'\u2720'],["\\\\ding\\{65\\}",'\u2721'],["\\\\ding\\{66\\}",'\u2722'],["\\\\ding\\{67\\}",'\u2723'],["\\\\ding\\{68\\}",'\u2724'],["\\\\ding\\{69\\}",'\u2725'],["\\\\rightangle",'\u221F'],["\\\\conictaper",'\u2332'],["\\\\ding\\{70\\}",'\u2726'],["\\\\ding\\{71\\}",'\u2727'],["\\\\ding\\{74\\}",'\u272A'],["\\\\ding\\{75\\}",'\u272B'],["\\\\varnothing",'\u2205'],["\\\\ding\\{76\\}",'\u272C'],["\\\\ding\\{77\\}",'\u272D'],["\\\\ding\\{78\\}",'\u272E'],["\\\\ding\\{79\\}",'\u272F'],["\\\\ding\\{80\\}",'\u2730'],["\\\\ding\\{81\\}",'\u2731'],["\\\\ding\\{82\\}",'\u2732'],["\\\\ding\\{83\\}",'\u2733'],["\\\\ding\\{84\\}",'\u2734'],["\\\\ding\\{85\\}",'\u2735'],["\\\\ding\\{86\\}",'\u2736'],["\\\\ding\\{87\\}",'\u2737'],["\\\\complement",'\u2201'],["\\\\ding\\{88\\}",'\u2738'],["\\\\ding\\{89\\}",'\u2739'],["\\\\ding\\{90\\}",'\u273A'],["\\\\ding\\{91\\}",'\u273B'],["\\\\rightarrow",'\u2192'],["\\\\ding\\{92\\}",'\u273C'],["\\\\ding\\{93\\}",'\u273D'],["\\\\sqsubseteq",'\u2291'],["\\\\ding\\{94\\}",'\u273E'],["\\\\nleftarrow",'\u219A'],["\\\\ding\\{95\\}",'\u273F'],["\\\\sqsupseteq",'\u2292'],["\\\\ding\\{96\\}",'\u2740'],["\\\\ding\\{97\\}",'\u2741'],["\\\\ding\\{98\\}",'\u2742'],["\\\\ding\\{99\\}",'\u2743'],["\\\\subsetcirc",'\u27C3'],["\\\\supsetcirc",'\u27C4'],["\\\\Diamonddot",'\u27D0'],["\\\\DDownarrow",'\u27F1'],["\\\\longmapsto",'\u27FC'],["\\\\Longmapsto",'\u27FE'],["\\\\Ddownarrow",'\u290B'],['\\\\UpArrowBar','\u2912'],['\\\\upfishtail','\u297E'],["\\\\lbrackubar",'\u298B'],["\\\\rbrackubar",'\u298C'],["\\\\Rparenless",'\u2996'],["\\\\lblkbrbrak",'\u2997'],["\\\\rblkbrbrak",'\u2998'],["\\\\circledgtr",'\u29C1'],["\\\\doubleplus",'\u29FA'],["\\\\tripleplus",'\u29FB'],["\\\\plussubtwo",'\u2A27'],["\\\\commaminus",'\u2A29'],["\\\\Lleftarrow",'\u21DA'],["\\\\minusfdots",'\u2A2B'],["\\\\minusrdots",'\u2A2C'],["\\\\smashtimes",'\u2A33'],["\\\\cupovercap",'\u2A46'],["\\\\Rightarrow",'\u21D2'],["\\\\circledast",'\u229B'],["\\\\capovercup",'\u2A47'],["\\\\veeonwedge",'\u2A59'],["\\\\veemidvert",'\u2A5B'],["\\\\equivVvert",'\u2A69'],["\\\\lessapprox",'\u2A85'],["\\\\lesseqqgtr",'\u2A8B'],["\\\\gtreqqless",'\u2A8C'],["\\\\eqslantgtr",'\u2A96'],["\\\\rightslice",'\u2AA7'],["\\{\\\\'\\{\\}O\\}|\\\\'\\{\\}O",'\u038C'],["\\\\'\\{\\}\\{I\\}",'\u038A'],["\\\\subsetplus",'\u2ABF'],["\\\\supsetplus",'\u2AC0'],["\\\\cyrchar\\\\C",'\u030F'],["\\\\curlywedge",'\u22CF'],["\\\\tone\\{11\\}",'\u02E9'],["\\\\tone\\{22\\}",'\u02E8'],["\\\\subsetneqq",'\u2ACB'],["\\\\supsetneqq",'\u2ACC'],["\\\\fbox\\{~~\\}",'\u25AD'],["\\\\LEFTCIRCLE",'\u25D6'],['\\\\ultriangle','\u25F8'],["\\\\tone\\{33\\}",'\u02E7'],["\\\\tone\\{44\\}",'\u02E6'],['\\\\urtriangle','\u25F9'],["\\\\lltriangle",'\u25FA'],["\\\\tone\\{55\\}",'\u02E5'],["\\\\varepsilon",'\u025B'],["\\\\lrtriangle",'\u25FF'],["\\\\ding\\{72\\}",'\u2605'],["\\\\ding\\{73\\}",'\u2606'],["\\\\ding\\{37\\}",'\u260E'],["\\\\CheckedBox",'\u2611'],["\\^\\\\circ|\\\\textdegree",'\xB0'],["\\\\ding\\{42\\}",'\u261B'],["\\\\interleave",'\u2AF4'],["\\\\ding\\{43\\}",'\u261E'],["\\\\talloblong",'\u2AFE'],["\\\\mbfdigamma",'\uD835\uDFCB'],["\\\\backdprime",'\u2036'],["\\\\varhexagon",'\u2B21'],["\\\\leftarrowx",'\u2B3E'],["\\\\LLeftarrow",'\u2B45'],["\\\\postalmark",'\u3012'],["\\\\textdollar",'\\$'],['\\\\upuparrows','\u21C8'],["\\\\not\\\\equiv",'\u2262'],["\\\\not\\\\simeq",'\u2244'],["\\\\homothetic",'\u223B'],["\\\\textbullet",'\u2022'],["\\\\geqqslant",'\u2AFA'],["\\\\leqqslant",'\u2AF9'],["\\\\supseteqq",'\u2AC6'],["\\\\subseteqq",'\u2AC5'],["\\\\supsetdot",'\u2ABE'],["\\\\subsetdot",'\u2ABD'],["\\\\leftslice",'\u2AA6'],["\\\\gtrapprox",'\u2A86'],["\\\\approxeqq",'\u2A70'],["\\\\hatapprox",'\u2A6F'],["\\\\equivVert",'\u2A68'],["\\\\varveebar",'\u2A61'],["\\\\Elzminhat",'\u2A5F'],["\\\\midbarvee",'\u2A5D'],["\\\\wedgeodot",'\u2A51'],["\\\\capbarcup",'\u2A49'],["\\\\cupbarcap",'\u2A48'],["\\\\otimeshat",'\u2A36'],["\\\\clockoint",'\u2A0F'],["\\\\modtwosum",'\u2A0A'],["\\\\bigcupdot",'\u2A03'],["\\\\bigotimes",'\u2A02'],["\\\\hourglass",'\u29D6'],["\\\\triangles",'\u29CC'],["\\\\boxcircle",'\u29C7'],["\\\\boxbslash",'\u29C5'],["\\\\angleubar",'\u29A4'],["\\\\turnangle",'\u29A2'],["\\\\Elzlpargt",'\u29A0'],["\\\\Lparengtr",'\u2995'],["\\\\rangledot",'\u2992'],["\\\\langledot",'\u2991'],["\\\\typecolon",'\u2982'],["\\\\neswarrow",'\u2922'],["\\\\nwsearrow",'\u2921'],["\\\\righttail",'\u291A'],["\\\\rrbracket",'\u27E7'],["\\\\llbracket",'\u27E6'],["\\\\longdashv",'\u27DE'],["\\\\vlongdash",'\u27DD'],["\\\\dashVdash",'\u27DB'],["\\\\DashVDash",'\u27DA'],["\\\\medbullet",'\u26AB'],["\\\\heartsuit",'\u2661'],["\\\\rightmoon",'\u263D'],["\\\\biohazard",'\u2623'],["\\\\radiation",'\u2622'],["\\\\Elzrvbull",'\u25D8'],["\\\\Elzvrecto",'\u25AF'],["\\\\blockfull",'\u2588'],["\\\\Elzdshfnc",'\u2506'],["\\\\accurrent",'\u23E6'],["\\\\trapezium",'\u23E2'],["\\\\overbrace",'\u23DE'],["\\\\overparen",'\u23DC'],["\\\\rvboxline",'\u23B9'],["\\\\lvboxline",'\u23B8'],["\\\\sumbottom",'\u23B3'],["\\\\rbracemid",'\u23AC'],["\\\\lbracemid",'\u23A8'],["\\\\Elzdlcorn",'\u23A3'],["\\\\intbottom",'\u2321'],["\\\\turnednot",'\u2319'],["\\\\bagmember",'\u22FF'],["\\\\varniobar",'\u22FD'],["\\\\Elzsqspne",'\u22E5'],["\\\\gtreqless",'\u22DB'],["\\\\lesseqgtr",'\u22DA'],["\\\\pitchfork",'\u22D4'],["\\\\backsimeq",'\u22CD'],["\\\\truestate",'\u22A7'],["\\\\supsetneq",'\u228B'],["\\\\subsetneq",'\u228A'],["\\\\not\\\\succ",'\u2281'],["\\\\not\\\\prec",'\u2280'],["\\\\triangleq",'\u225C'],["\\\\starequal",'\u225B'],["\\\\estimates",'\u2259'],["\\\\tildetrpl",'\u224B'],["\\\\not\\\\cong",'\u2247'],["\\\\therefore",'\u2234'],["\\\\nparallel",'\u2226'],["\\\\sqrt\\[4\\]",'\u221C'],["\\\\sqrt\\[3\\]",'\u221B'],["\\\\increment",'\u2206'],["\\\\nHuparrow",'\u21DE'],["\\\\Downarrow",'\u21D3'],["\\\\Leftarrow",'\u21D0'],["\\\\lightning",'\u21AF'],["\\\\downarrow",'\u2193'],["\\\\leftarrow",'\u2190'],["\\\\fracslash",'\u2044'],["\\\\backprime",'\u2035'],["\\\\Elzreapos",'\u201B'],["\\\\textTheta",'\u03F4'],['\\\\underline','\u0332'],["\\\\textturnk",'\u029E'],["\\\\Elzinglst",'\u0296'],["\\\\Elzreglst",'\u0295'],["\\\\Elzpupsil",'\u028A'],["\\\\Elzrttrnr",'\u027B'],["\\\\Elzclomeg",'\u0277'],["\\\\Elztrnmlr",'\u0270'],["\\\\Elzpgamma",'\u0263'],["\\\\textnrleg",'\u019E'],["\\\\texthvlig",'\u0195'],["\\\\texttimes",'\xD7'],["\\\\texttheta",'\u03B8'],["\\\\Elzpscrv",'\u028B'],["\\\\succnsim",'\u22E9'],["\\\\Elzsqfnw",'\u2519'],["\\\\circledS",'\u24C8'],["\\\\elinters",'\u23E7'],["\\\\varisins",'\u22F3'],["\\\\bbrktbrk",'\u23B6'],["\\\\MapsDown",'\u21A7'],["\\\\APLinput",'\u235E'],["\\\\notslash",'\u233F'],["\\\\mapsfrom",'\u21A4'],["\\\\pentagon",'\u2B20'],["\\\\ComplexI",'\u2148'],["\\\\isinobar",'\u22F7'],["\\\\ComplexJ",'\u2149'],["\\\\lrcorner",'\u231F'],["\\\\llcorner",'\u231E'],['\\\\urcorner','\u231D'],['\\\\ulcorner','\u231C'],["\\\\viewdata",'\u2317'],["\\\\Elzdyogh",'\u02A4'],["\\\\Elzverts",'\u02C8'],["\\\\Elzverti",'\u02CC'],["\\\\Elzhlmrk",'\u02D1'],["\\\\diameter",'\u2300'],["\\\\recorder",'\u2315'],["\\\\Elzsbrhr",'\u02D2'],["\\\\profsurf",'\u2313'],["\\\\Elzsblhr",'\u02D3'],["\\\\Elztdcol",'\u2AF6'],["\\\\profline",'\u2312'],["\\\\overline",'\u0305'],["\\\\Elzsbbrg",'\u032A'],["\\\\succneqq",'\u2AB6'],["\\\\precneqq",'\u2AB5'],['\\\\underbar','\u0331'],["\\\\varsigma",'\u03C2'],["\\\\setminus",'\u2216'],["\\\\varkappa",'\u03F0'],["\\\\not\\\\sim",'\u2241'],["\\\\gnapprox",'\u2A8A'],["\\\\lnapprox",'\u2A89'],["\\\\gesdotol",'\u2A84'],["\\\\lesdotor",'\u2A83'],["\\\\geqslant",'\u2A7E'],["\\\\approxeq",'\u224A'],["\\\\lazysinv",'\u223E'],["\\\\leqslant",'\u2A7D'],["\\\\varVdash",'\u2AE6'],["\\\\=\\{\\\\i\\}",'\u012B'],["\\\\Coloneqq",'\u2A74'],["\\\\simrdots",'\u2A6B'],["\\\\dotequiv",'\u2A67'],["\\\\capwedge",'\u2A44'],["\\\\not\\\\leq",'\u2270'],["\\\\intprodr",'\u2A3D'],["\\\\not\\\\geq",'\u2271'],["\\\\subseteq",'\u2286'],["\\\\timesbar",'\u2A31'],["\\\\supseteq",'\u2287'],["\\\\dottimes",'\u2A30'],["\\\\ElzTimes",'\u2A2F'],["\\\\sqsubset",'\u228F'],["\\\\plustrif",'\u2A28'],["\\\\sqsupset",'\u2290'],["\\\\ringplus",'\u2A22'],["\\\\zproject",'\u2A21'],["\\\\intlarhk",'\u2A17'],["\\\\pointint",'\u2A15'],["\\\\scpolint",'\u2A13'],["\\\\rppolint",'\u2A12'],["\\\\Elxsqcup",'\u2A06'],["\\\\Elxuplus",'\u2A04'],["\\\\forksnot",'\u2ADD'],["\\\\boxminus",'\u229F'],["\\\\boxtimes",'\u22A0'],["\\\\bigoplus",'\u2A01'],["\\\\eqvparsl",'\u29E5'],["\\\\smeparsl",'\u29E4'],["\\\\tieinfty",'\u29DD'],["\\\\Rvzigzag",'\u29DB'],["\\\\Lvzigzag",'\u29DA'],["\\\\rvzigzag",'\u29D9'],["\\\\lvzigzag",'\u29D8'],["\\\\rfbowtie",'\u29D2'],["\\\\lfbowtie",'\u29D1'],["\\\\rtriltri",'\u29CE'],["\\\\Elzdefas",'\u29CB'],["\\\\allequal",'\u224C'],["\\\\doteqdot",'\u2251'],["\\\\Elztrnsa",'\u0252'],["\\\\Elzopeno",'\u0254'],["\\\\boxonbox",'\u29C9'],["\\\\boxslash",'\u29C4'],["\\\\revangle",'\u29A3'],["\\\\Elzddfnc",'\u2999'],["\\\\Elzschwa",'\u0259'],["\\\\Elzrarrx",'\u2947'],["\\\\ElzrLarr",'\u2944'],["\\\\original",'\u22B6'],["\\\\ElzRlarr",'\u2942'],["\\\\multimap",'\u22B8'],["\\\\intercal",'\u22BA'],["\\\\lefttail",'\u2919'],["\\\\barwedge",'\u22BC'],["\\\\drbkarow",'\u2910'],['\\\\Uuparrow','\u290A'],["\\\\Mapsfrom",'\u2906'],["\\\\Elzpbgam",'\u0264'],['\\\\UUparrow','\u27F0'],["\\\\pullback",'\u27D3'],["\\\\wedgedot",'\u27D1'],["\\\\bsolhsub",'\u27C8'],["\\\\curlyvee",'\u22CE'],["\\\\acidfree",'\u267E'],["\\\\twonotes",'\u266B'],["\\\\mkern1mu",'\u200A'],["\\\\aquarius",'\u2652'],["\\\\textcent",'\xA2'],["\\\\Elzltlmr",'\u0271'],["\\\\Question",'\u2047'],["\\\\:|\\\\mkern4mu",'\u205F'],["\\\\steaming",'\u2615'],["\\\\Elztrnrl",'\u027A'],["\\\\parallel",'\u2225'],["\\\\linefeed",'\u21B4'],["\\\\Elzsqfse",'\u25EA'],["\\\\Elzcirfb",'\u25D2'],["\\\\Elzcirfr",'\u25D1'],["\\\\Elzcirfl",'\u25D0'],["\\\\bullseye",'\u25CE'],["\\\\vphantom\\\\{",''],["\\\\eqcolon",'\u2239'],["\\\\because",'\u2235'],["\\\\revnmid",'\u2AEE'],["\\\\between",'\u226C'],["\\\\lessgtr",'\u2276'],["\\\\gtrless",'\u2277'],["\\\\dotplus",'\u2214'],["\\\\smallni",'\u220D'],["\\\\not\\\\ni",'\u220C'],["\\\\smallin",'\u220A'],["\\\\not\\\\in",'\u2209'],["\\\\nexists",'\u2204'],["\\\\partial",'\u2202'],["\\\\boxplus",'\u229E'],["\\\\Swarrow",'\u21D9'],["\\\\Searrow",'\u21D8'],["\\\\Nearrow",'\u21D7'],["\\\\Nwarrow",'\u21D6'],['\\\\Uparrow','\u21D1'],["\\\\diamond",'\u22C4'],["\\\\lessdot",'\u22D6'],["\\\\npreceq",'\u22E0'],["\\\\nsucceq",'\u22E1'],["\\\\nhVvert",'\u2AF5'],["\\\\isindot",'\u22F5'],["\\\\swarrow",'\u2199'],["\\\\searrow",'\u2198'],["\\\\nearrow",'\u2197'],["\\\\nwarrow",'\u2196'],["\\\\textyen",'\xA5'],['\\\\uparrow','\u2191'],["\\\\hexagon",'\u2394'],["\\\\obrbrak",'\u23E0'],['\\\\ubrbrak','\u23E1'],["\\\\benzenr",'\u23E3'],["\\\\Elzxrat",'\u211E'],["\\\\squoval",'\u25A2'],["\\\\Diamond",'\u25C7'],["\\\\fisheye",'\u25C9'],["\\\\lozenge",'\u25CA'],["\\\\bigcirc",'\u25CB'],["\\\\Elzsqfl",'\u25E7'],["\\\\Elzsqfr",'\u25E8'],["\\\\annuity",'\u20E7'],["\\\\yinyang",'\u262F'],["\\\\frownie",'\u2639'],["\\\\mercury",'\u263F'],["\\\\closure",'\u2050'],["\\\\lllnest",'\u2AF7'],["\\\\jupiter",'\u2643'],["\\\\neptune",'\u2646'],["\\\\gggnest",'\u2AF8'],["\\\\scorpio",'\u264F'],["\\\\natural",'\u266E'],["\\\\recycle",'\u267B'],["\\\\diceiii",'\u2682'],["\\\\warning",'\u26A0'],["\\\\medcirc",'\u26AA'],["\\\\lbrbrak",'\u2772'],["\\\\rbrbrak",'\u2773'],["\\\\suphsol",'\u27C9'],["\\\\pushout",'\u27D4'],["\\\\Lbrbrak",'\u27EC'],["\\\\Rbrbrak",'\u27ED'],["\\\\dbkarow",'\u290F'],["\\\\Elolarr",'\u2940'],["\\\\Elorarr",'\u2941'],["\\\\subrarr",'\u2979'],["\\\\suplarr",'\u297B'],["\\\\Elztfnc",'\u2980'],["\\\\Elroang",'\u2986'],["\\\\vzigzag",'\u299A'],["\\\\olcross",'\u29BB'],["\\\\cirscir",'\u29C2'],["\\\\fbowtie",'\u29D3'],["\\\\lftimes",'\u29D4'],["\\\\rftimes",'\u29D5'],["\\\\nvinfty",'\u29DE'],["\\\\shuffle",'\u29E2'],["\\\\thermod",'\u29E7'],["\\\\rsolbar",'\u29F7'],["\\\\bigodot",'\u2A00'],["\\\\varprod",'\u2A09'],["\\\\ElzCint",'\u2A0D'],["\\\\npolint",'\u2A14'],["\\\\plushat",'\u2A23'],["\\\\simplus",'\u2A24'],["\\\\plussim",'\u2A26'],["\\\\twocups",'\u2A4A'],["\\\\twocaps",'\u2A4B'],["\\\\veeodot",'\u2A52'],["\\\\congdot",'\u2A6D'],["\\\\eqqplus",'\u2A71'],["\\\\pluseqq",'\u2A72'],["\\\\ddotseq",'\u2A77'],["\\\\equivDD",'\u2A78'],["\\\\ltquest",'\u2A7B'],["\\\\gtquest",'\u2A7C'],["\\\\lesdoto",'\u2A81'],["\\\\gesdoto",'\u2A82'],["\\\\digamma",'\u03DD'],["\\\\Digamma",'\u03DC'],['\\\\upsilon','\u03C5'],["\\\\epsilon",'\u03B5'],["\\\\eqqless",'\u2A99'],['\\\\Upsilon','\u03A5'],["\\\\bumpeqq",'\u2AAE'],["\\\\backsim",'\u223D'],["\\\\succneq",'\u2AB2'],["\\\\preceqq",'\u2AB3'],["\\\\succeqq",'\u2AB4'],["\\\\trslash",'\u2AFB'],["\\\\Elzpalh",'\u0321'],["\\\\llcurly",'\u2ABB'],["\\\\ggcurly",'\u2ABC'],["\\\\submult",'\u2AC1'],["\\\\supmult",'\u2AC2'],["\\\\subedot",'\u2AC3'],["\\\\supedot",'\u2AC4'],["\\\\lsqhook",'\u2ACD'],["\\\\rsqhook",'\u2ACE'],["\\\\Elzrais",'\u02D4'],["\\\\Elzlmrk",'\u02D0'],["\\\\Elztesh",'\u02A7'],["\\\\Elzglst",'\u0294'],["\\\\Elzyogh",'\u0292'],["\\\\Elzrtlz",'\u0290'],["\\\\Elztrny",'\u028E'],["\\\\Elzinvw",'\u028D'],["\\\\Elzinvv",'\u028C'],["\\\\Elzrtlt",'\u0288'],["\\\\Elztrnt",'\u0287'],["\\\\Elzrtls",'\u0282'],["\\\\Elzrtlr",'\u027D'],["\\\\Elztrnr",'\u0279'],["\\\\textphi",'\u0278'],["\\\\hzigzag",'\u3030'],["\\\\Elzrtln",'\u0273'],["\\\\Elzltln",'\u0272'],["\\\\Elztrnm",'\u026F'],["\\\\Elzrtll",'\u026D'],["\\\\Elzbtdl",'\u026C'],["\\\\Elztrnh",'\u0265'],["\\\\Elzrtld",'\u0256'],["\\\\Elztrna",'\u0250'],["\\\\suphsub",'\u2AD7'],["\\\\supdsub",'\u2AD8'],["\\\\\\.z|\\\\\\.\\{z\\}",'\u017C'],["\\\\\\.Z|\\\\\\.\\{Z\\}",'\u017B'],["\\\\\\^y|\\\\\\^\\{y\\}",'\u0177'],["\\\\\\^Y|\\\\\\^\\{Y\\}",'\u0176'],["\\\\\\^w|\\\\\\^\\{w\\}",'\u0175'],["\\\\\\^W|\\\\\\^\\{W\\}",'\u0174'],["\\\\topfork",'\u2ADA'],["\\\\\\^s|\\\\\\^\\{s\\}",'\u015D'],["\\\\\\^S|\\\\\\^\\{S\\}",'\u015C'],["\\\\\\^J|\\\\\\^\\{J\\}",'\u0134'],["\\\\\\.I|\\\\\\.\\{I\\}",'\u0130'],["\\\\\\^h|\\\\\\^\\{h\\}",'\u0125'],["\\\\\\^H|\\\\\\^\\{H\\}",'\u0124'],["\\\\\\.g|\\\\\\.\\{g\\}",'\u0121'],["\\\\\\.G|\\\\\\.\\{G\\}",'\u0120'],["\\\\\\^g|\\\\\\^\\{g\\}",'\u011D'],["\\\\\\^G|\\\\\\^\\{G\\}",'\u011C'],["\\\\\\.e|\\\\\\.\\{e\\}",'\u0117'],["\\\\\\.E|\\\\\\.\\{E\\}",'\u0116'],["\\\\\\.c|\\\\\\.\\{c\\}",'\u010B'],["\\\\\\.C|\\\\\\.\\{C\\}",'\u010A'],["\\\\\\^c|\\\\\\^\\{c\\}",'\u0109'],["\\\\\\^C|\\\\\\^\\{C\\}",'\u0108'],["\\\\\\^u|\\\\\\^\\{u\\}",'\xFB'],["\\\\\\^o|\\\\\\^\\{o\\}",'\xF4'],["\\\\\\^e|\\\\\\^\\{e\\}",'\xEA'],["\\\\\\^a|\\\\\\^\\{a\\}",'\xE2'],["\\\\\\^U|\\\\\\^\\{U\\}",'\xDB'],["\\\\\\^O|\\\\\\^\\{O\\}",'\xD4'],["\\\\\\^I|\\\\\\^\\{I\\}",'\xCE'],["\\\\\\^E|\\\\\\^\\{E\\}",'\xCA'],["\\\\\\^A|\\\\\\^\\{A\\}",'\xC2'],["\\\\precneq",'\u2AB1'],["\\\\bigtop",'\u27D9'],["\\\\lgroup",'\u27EE'],["\\\\rgroup",'\u27EF'],["\\\\bigcup",'\u22C3'],["\\\\Mapsto",'\u2907'],["\\\\bigcap",'\u22C2'],["\\\\approx",'\u2248'],["\\\\barvee",'\u22BD'],["\\\\veebar",'\u22BB'],["\\\\'c|\\\\'\\{c\\}",'\u0107'],["\\\\scurel",'\u22B1'],["\\\\parsim",'\u2AF3'],["\\\\ltlarr",'\u2976'],["\\\\gtrarr",'\u2978'],["\\\\'C|\\\\'\\{C\\}",'\u0106'],["\\\\k\\{a\\}",'\u0105'],["\\\\k\\{A\\}",'\u0104'],["\\\\lBrace",'\u2983'],["\\\\rBrace",'\u2984'],["\\\\prurel",'\u22B0'],["\\\\angles",'\u299E'],["\\\\angdnr",'\u299F'],["\\\\=a|\\\\=\\{a\\}",'\u0101'],["\\\\=A|\\\\=\\{A\\}",'\u0100'],["\\\\nVDash",'\u22AF'],["\\\\boxast",'\u29C6'],["\\\\boxbox",'\u29C8'],["\\\\nVdash",'\u22AE'],["\\\\ElzLap",'\u29CA'],["\\\\nvDash",'\u22AD'],["\\\\nvdash",'\u22AC'],["\\\\Vvdash",'\u22AA'],["\\\\\"y|\\\\\"\\{y\\}",'\xFF'],["\\\\'y|\\\\'\\{y\\}",'\xFD'],["\\\\topcir",'\u2AF1'],["\\\\assert",'\u22A6'],["\\\\\"u|\\\\\"\\{u\\}",'\xFC'],["\\\\laplac",'\u29E0'],["\\\\eparsl",'\u29E3'],["\\\\'u|\\\\'\\{u\\}",'\xFA'],["\\\\`u|\\\\`\\{u\\}",'\xF9'],["\\\\tminus",'\u29FF'],["\\\\boxdot",'\u22A1'],["\\\\ElzThr",'\u2A05'],["\\\\oslash",'\u2298'],["\\\\ElzInf",'\u2A07'],["\\\\ElzSup",'\u2A08'],["\\\\sumint",'\u2A0B'],["\\\\iiiint",'\u2A0C'],["\\\\\"o|\\\\\"\\{o\\}",'\xF6'],["\\\\intBar",'\u2A0E'],["\\\\otimes",'\u2297'],["\\\\ominus",'\u2296'],["\\\\~o|\\\\~\\{o\\}",'\xF5'],["\\\\sqrint",'\u2A16'],["\\\\intcap",'\u2A19'],["\\\\intcup",'\u2A1A'],["\\\\lowint",'\u2A1C'],["\\\\'o|\\\\'\\{o\\}",'\xF3'],["\\\\`o|\\\\`\\{o\\}",'\xF2'],["\\\\cupdot",'\u228D'],["\\\\forall",'\u2200'],["\\\\btimes",'\u2A32'],["\\\\Otimes",'\u2A37'],["\\\\exists",'\u2203'],["\\\\capdot",'\u2A40'],['\\\\uminus','\u2A41'],["\\\\barcup",'\u2A42'],["\\\\barcap",'\u2A43'],["\\\\supset",'\u2283'],["\\\\cupvee",'\u2A45'],["\\\\~n|\\\\~\\{n\\}",'\xF1'],["\\\\ElzAnd",'\u2A53'],["\\\\midcir",'\u2AF0'],["\\\\dotsim",'\u2A6A'],["\\\\eqqsim",'\u2A73'],["\\\\\"e|\\\\\"\\{e\\}",'\xEB'],["\\\\'e|\\\\'\\{e\\}",'\xE9'],["\\\\`e|\\\\`\\{e\\}",'\xE8'],["\\\\lesdot",'\u2A7F'],["\\\\gesdot",'\u2A80'],["\\\\coprod",'\u2210'],["\\\\varrho",'\u03F1'],["\\\\\"a|\\\\\"\\{a\\}",'\xE4'],["\\\\stigma",'\u03DB'],["\\\\Stigma",'\u03DA'],["\\\\lesges",'\u2A93'],["\\\\gesles",'\u2A94'],["\\\\elsdot",'\u2A97'],["\\\\egsdot",'\u2A98'],["\\\\varphi",'\u03C6'],["\\\\~a|\\\\~\\{a\\}",'\xE3'],["\\\\lambda",'\u03BB'],["\\\\'a|\\\\'\\{a\\}",'\xE1'],["\\\\eqqgtr",'\u2A9A'],["\\\\`a|\\\\`\\{a\\}",'\xE0'],["\\\\Pi|\\\\P\\{i\\}",'\u03A0'],["\\\\Xi|\\\\X\\{i\\}",'\u039E'],["\\\\Lambda",'\u039B'],["\\\\'H|\\\\'\\{H\\}",'\u0389'],["\\\\preceq",'\u2AAF'],["\\\\succeq",'\u2AB0'],["\\\\TH|\\\\T\\{H\\}",'\xDE'],["\\\\'Y|\\\\'\\{Y\\}",'\xDD'],["\\\\\"U|\\\\\"\\{U\\}",'\xDC'],["\\\\Elzbar",'\u0336'],["\\\\'U|\\\\'\\{U\\}",'\xDA'],['\\\\utilde','\u0330'],["\\\\bullet",'\u2219'],["\\\\cirmid",'\u2AEF'],["\\\\`U|\\\\`\\{U\\}",'\xD9'],["\\\\droang",'\u031A'],["\\\\\"O|\\\\\"\\{O\\}",'\xD6'],["\\\\~O|\\\\~\\{O\\}",'\xD5'],["\\\\candra",'\u0310'],["\\\\'O|\\\\'\\{O\\}",'\xD3'],["\\\\ovhook",'\u0309'],["\\\\subsim",'\u2AC7'],["\\\\supsim",'\u2AC8'],["\\\\`O|\\\\`\\{O\\}",'\xD2'],["\\\\~N|\\\\~\\{N\\}",'\xD1'],["\\\\Elzlow",'\u02D5'],["\\\\DH|\\\\D\\{H\\}",'\xD0'],["\\\\propto",'\u221D'],["\\\\subset",'\u2282'],["\\\\\"I|\\\\\"\\{I\\}",'\xCF'],["\\\\subsup",'\u2AD3'],["\\\\rbrace",'\\}'],["\\\\lbrace",'\\{'],["\\\\'I|\\\\'\\{I\\}",'\xCD'],["\\\\`I|\\\\`\\{I\\}",'\xCC'],["\\\\\"E|\\\\\"\\{E\\}",'\xCB'],["\\\\AC|\\\\A\\{C\\}",'\u223F'],["\\\\'E|\\\\'\\{E\\}",'\xC9'],["\\\\`E|\\\\`\\{E\\}",'\xC8'],["\\\\AE|\\\\A\\{E\\}",'\xC6'],["\\\\Elzesh",'\u0283'],["\\\\AA|\\\\A\\{A\\}",'\xC5'],["\\\\supsub",'\u2AD4'],["\\\\Elzfhr",'\u027E'],["\\\\\"A|\\\\\"\\{A\\}",'\xC4'],["\\\\~A|\\\\~\\{A\\}",'\xC3'],["\\\\'A|\\\\'\\{A\\}",'\xC1'],["\\\\`A|\\\\`\\{A\\}",'\xC0'],["\\\\vDdash",'\u2AE2'],["\\\\subsub",'\u2AD5'],["\\\\supsup",'\u2AD6'],["\\\\'g|\\\\'\\{g\\}",'\u01F5'],["\\\\not\\ =",'\u2260'],["\\\\measeq",'\u225E'],["\\\\'z|\\\\'\\{z\\}",'\u017A'],["\\\\'Z|\\\\'\\{Z\\}",'\u0179'],["\\\\\"Y|\\\\\"\\{Y\\}",'\u0178'],["\\\\k\\{u\\}",'\u0173'],["\\\\k\\{U\\}",'\u0172'],["\\\\r\\{u\\}",'\u016F'],["\\\\r\\{U\\}",'\u016E'],["\\\\=u|\\\\=\\{u\\}",'\u016B'],["\\\\=U|\\\\=\\{U\\}",'\u016A'],["\\\\~u|\\\\~\\{u\\}",'\u0169'],["\\\\~U|\\\\~\\{U\\}",'\u0168'],["\\\\circeq",'\u2257'],["\\\\'s|\\\\'\\{s\\}",'\u015B'],["\\\\'S|\\\\'\\{S\\}",'\u015A'],["\\\\'r|\\\\'\\{r\\}",'\u0155'],["\\\\'R|\\\\'\\{R\\}",'\u0154'],["\\\\OE|\\\\O\\{E\\}",'\u0152'],["\\\\=o|\\\\=\\{o\\}",'\u014D'],["\\\\=O|\\\\=\\{O\\}",'\u014C'],["\\\\NG|\\\\N\\{G\\}",'\u014A'],["\\\\'n|\\\\'\\{n\\}",'\u0144'],["\\\\'N|\\\\'\\{N\\}",'\u0143'],["\\\\'l|\\\\'\\{l\\}",'\u013A'],["\\\\'L|\\\\'\\{L\\}",'\u0139'],["\\\\eqcirc",'\u2256'],["\\\\k\\{i\\}",'\u012F'],["\\\\k\\{I\\}",'\u012E'],['\\\\u\\ \\\\i','\u012D'],["\\\\lfloor",'\u230A'],["\\\\rfloor",'\u230B'],["\\\\invneg",'\u2310'],["\\\\niobar",'\u22FE'],["\\\\varnis",'\u22FB'],["\\\\invamp",'\u214B'],["\\\\inttop",'\u2320'],["\\\\isinvb",'\u22F8'],["\\\\langle",'\u2329'],["\\\\rangle",'\u232A'],["\\\\topbot",'\u2336'],["\\\\APLinv",'\u2339'],["\\\\MapsUp",'\u21A5'],["\\\\mapsto",'\u21A6'],["\\\\APLlog",'\u235F'],["\\\\=I|\\\\=\\{I\\}",'\u012A'],["\\\\daleth",'\u2138'],["\\\\sumtop",'\u23B2'],["\\\\~I|\\\\~\\{I\\}",'\u0128'],["\\\\diagup",'\u2571'],["\\\\square",'\u25A1'],["\\\\hslash",'\u210F'],["\\\\bumpeq",'\u224F'],["\\\\boxbar",'\u25EB'],["\\\\Square",'\u2610'],["\\\\danger",'\u2621'],["\\\\Bumpeq",'\u224E'],["\\\\ddddot",'\u20DC'],["\\\\smiley",'\u263A'],["\\\\eqless",'\u22DC'],["\\\\gtrdot",'\u22D7'],["\\\\k\\{e\\}",'\u0119'],["\\\\Exclam",'\u203C'],["\\\\k\\{E\\}",'\u0118'],["\\\\saturn",'\u2644'],['\\\\uranus','\u2645'],["\\\\taurus",'\u2649'],["\\\\gemini",'\u264A'],["\\\\cancer",'\u264B'],["\\\\pisces",'\u2653'],["\\\\Supset",'\u22D1'],["\\\\=e|\\\\=\\{e\\}",'\u0113'],["\\\\Subset",'\u22D0'],["\\\\diceii",'\u2681'],["\\\\=E|\\\\=\\{E\\}",'\u0112'],["\\\\diceiv",'\u2683'],["\\\\dicevi",'\u2685'],["\\\\anchor",'\u2693'],["\\\\swords",'\u2694'],["\\\\DJ|\\\\D\\{J\\}",'\u0110'],["\\\\neuter",'\u26B2'],["\\\\veedot",'\u27C7'],["\\\\rtimes",'\u22CA'],["\\\\ltimes",'\u22C9'],["\\\\bowtie",'\u22C8'],["\\\\bigbot",'\u27D8'],["\\\\cirbot",'\u27DF'],["\\\\LaTeX",'L$^A$T$_E$X'],["\\\\delta",'\u03B4'],["\\\\image",'\u22B7'],["\\\\llarc",'\u25DF'],["\\\\simeq",'\u2243'],["\\\\eqdef",'\u225D'],["\\\\vBarv",'\u2AE9'],["\\\\ElzOr",'\u2A54'],["\\\\equiv",'\u2261'],["\\\\space",' '],["\\\\isins",'\u22F4'],["\\\\lnsim",'\u22E6'],["\\\\Elzxl",'\u0335'],["\\\\Theta",'\u0398'],["\\\\barin",'\u22F6'],["\\\\kappa",'\u03BA'],["\\\\lblot",'\u2989'],["\\\\rblot",'\u298A'],["\\\\frown",'\u2322'],["\\\\earth",'\u2641'],["\\\\Angle",'\u299C'],["\\\\Sqcup",'\u2A4F'],["\\\\Sqcap",'\u2A4E'],["\\\\nhpar",'\u2AF2'],["\\\\operp",'\u29B9'],["\\\\sigma",'\u03C3'],["\\\\csube",'\u2AD1'],["\\\\csupe",'\u2AD2'],["\\\\house",'\u2302'],["\\\\forks",'\u2ADC'],["\\\\Elzxh",'\u0127'],["\\\\strns",'\u23E4'],["\\\\eqgtr",'\u22DD'],["\\\\forkv",'\u2AD9'],["\\\\amalg",'\u2A3F'],["\\\\infty",'\u221E'],["\\\\VDash",'\u22AB'],["\\\\fltns",'\u23E5'],["\\\\disin",'\u22F2'],['\\\\uplus','\u228E'],["\\\\angle",'\u2220'],["\\\\pluto",'\u2647'],["\\\\Vdash",'\u22A9'],["\\\\cdots",'\u22EF'],["\\\\lceil",'\u2308'],["\\\\sqcap",'\u2293'],["\\\\smile",'\u2323'],["\\\\omega",'\u03C9'],["\\\\vdots",'\u22EE'],["\\\\arceq",'\u2258'],["\\\\dashv",'\u22A3'],["\\\\vdash",'\u22A2'],["\\\\skull",'\u2620'],["\\\\rceil",'\u2309'],["\\\\virgo",'\u264D'],["\\\\perps",'\u2AE1'],["\\\\zhide",'\u29F9'],["\\\\tplus",'\u29FE'],["\\\\ldots",'\u2026'],["\\\\zpipe",'\u2A20'],["\\\\dicei",'\u2680'],["\\\\venus",'\u2640'],["\\\\varpi",'\u03D6'],["\\\\Elzrh",'\u0322'],["\\\\Qoppa",'\u03D8'],["\\\\aries",'\u2648'],['\\\\upint','\u2A1B'],["\\\\dddot",'\u20DB'],["\\\\sqcup",'\u2294'],["\\\\qoppa",'\u03D9'],["\\\\Koppa",'\u03DE'],["\\\\awint",'\u2A11'],["\\\\koppa",'\u03DF'],["\\\\Colon",'\u2237'],["\\\\gescc",'\u2AA9'],["\\\\oplus",'\u2295'],["\\\\asymp",'\u224D'],["\\\\isinE",'\u22F9'],["\\\\Elzrl",'\u027C'],["\\\\Sampi",'\u03E0'],["\\\\sampi",'\u03E1'],["\\\\doteq",'\u2250'],["\\\\slash",'\u2215'],["\\\\gnsim",'\u22E7'],["\\\\libra",'\u264E'],["\\\\gsiml",'\u2A90'],["\\\\wedge",'\u2227'],["\\\\dbend",'\uFFFD'],["\\\\dashV",'\u2AE3'],["\\\\Dashv",'\u2AE4'],["\\\\DashV",'\u2AE5'],["\\\\Sigma",'\u03A3'],["\\\\lsimg",'\u2A8F'],["\\\\gsime",'\u2A8E'],["\\\\lsime",'\u2A8D'],["\\\\Equiv",'\u2263'],["\\\\dicev",'\u2684'],["\\\\Gamma",'\u0393'],["\\\\\\^\\\\j",'\u0135'],["\\\\gtcir",'\u2A7A'],["\\\\ltcir",'\u2A79'],["\\\\jmath",'\u0237'],['\\\\ularc','\u25DC'],["\\\\gneqq",'\u2269'],["\\\\gimel",'\u2137'],["\\\\lneqq",'\u2268'],["\\\\Omega",'\u03A9'],["\\\\Equal",'\u2A75'],["\\\\\\^\\\\i",'\xEE'],["\\\\aleph",'\u2135'],["\\\\nabla",'\u2207'],["\\\\lescc",'\u2AA8'],["\\\\simgE",'\u2AA0'],["\\\\sharp",'\u266F'],["\\\\imath",'\uD835\uDEA4'],["\\\\simlE",'\u2A9F'],["\\\\Delta",'\u0394'],['\\\\urarc','\u25DD'],["\\\\alpha",'\u03B1'],["\\\\gamma",'\u03B3'],["\\\\eqdot",'\u2A66'],["\\\\Euler",'\u2107'],["\\\\lrarc",'\u25DE'],["\\\\late",'\u2AAD'],["\\\\v\\ d",'\u010F'],["\\\\hash",'\u22D5'],["\\\\circ",'\u2218'],["\\\\Game",'\u2141'],["\\\\surd",'\u221A'],["\\\\v\\ D",'\u010E'],["\\\\Lbag",'\u27C5'],["\\\\beth",'\u2136'],["\\\\lnot",'\xAC'],["\\\\Finv",'\u2132'],["\\\\~\\\\i",'\u0129'],["\\\\csub",'\u2ACF'],["\\\\csup",'\u2AD0'],["\\\\succ",'\u227B'],["\\\\prec",'\u227A'],["\\\\Vert",'\u2016'],["\\\\nmid",'\u2224'],["\\\\c\\ C",'\xC7'],["\\\\c\\ g",'\u0123'],["\\\\c\\ G",'\u0122'],["\\\\not<",'\u226E'],["\\\\dlsh",'\u21B2'],["\\\\Barv",'\u2AE7'],["\\\\cdot",'\xB7'],["\\\\vBar",'\u2AE8'],["\\\\lang",'\u27EA'],["\\\\rang",'\u27EB'],["\\\\Zbar",'\u01B5'],["\\\\star",'\u22C6'],["\\\\psur",'\u2900'],["\\\\v\\ z",'\u017E'],["\\\\v\\ Z",'\u017D'],["\\\\pinj",'\u2914'],["\\\\finj",'\u2915'],["\\\\bNot",'\u2AED'],['\\\\u\\ e','\u0115'],['\\\\u\\ g','\u011F'],["\\\\spot",'\u2981'],["\\\\H\\ u",'\u0171'],['\\\\u\\ a','\u0103'],["\\\\limg",'\u2987'],["\\\\rimg",'\u2988'],["\\\\H\\ U",'\u0170'],['\\\\u\\ A','\u0102'],["\\\\obot",'\u29BA'],['\\\\u\\ u','\u016D'],['\\\\u\\ U','\u016C'],["\\\\cirE",'\u29C3'],['\\\\u\\ G','\u011E'],["\\\\XBox",'\u2612'],["\\\\v\\ t",'\u0165'],["\\\\v\\ T",'\u0164'],["\\\\c\\ t",'\u0163'],["\\\\c\\ T",'\u0162'],["\\\\v\\ s",'\u0161'],["\\\\v\\ S",'\u0160'],["\\\\perp",'\u22A5'],["\\\\c\\ s",'\u015F'],["\\\\c\\ S",'\u015E'],["\\\\leqq",'\u2266'],["\\\\dsol",'\u29F6'],["\\\\Rbag",'\u27C6'],["\\\\xsol",'\u29F8'],["\\\\v\\ C",'\u010C'],["\\\\v\\ r",'\u0159'],["\\\\odot",'\u2299'],["\\\\v\\ R",'\u0158'],["\\\\c\\ r",'\u0157'],["\\\\c\\ R",'\u0156'],["\\\\flat",'\u266D'],["\\\\LVec",'\u20D6'],["\\\\H\\ o",'\u0151'],["\\\\H\\ O",'\u0150'],['\\\\u\\ o','\u014F'],['\\\\u\\ O','\u014E'],["\\\\intx",'\u2A18'],["\\\\lvec",'\u20D0'],["\\\\Join",'\u2A1D'],["\\\\zcmp",'\u2A1F'],["\\\\pfun",'\u21F8'],["\\\\cong",'\u2245'],["\\\\smte",'\u2AAC'],["\\\\v\\ N",'\u0147'],["\\\\ffun",'\u21FB'],["\\\\c\\ n",'\u0146'],["\\\\c\\ N",'\u0145'],['\\\\u\\ E','\u0114'],["\\\\odiv",'\u2A38'],["\\\\fcmp",'\u2A3E'],["\\\\mlcp",'\u2ADB'],["\\\\v\\ l",'\u013E'],["\\\\v\\ L",'\u013D'],["\\\\c\\ l",'\u013C'],["\\\\c\\ L",'\u013B'],["\\\\\"\\\\i",'\xEF'],["\\\\v\\ e",'\u011B'],["\\\\ElOr",'\u2A56'],["\\\\dsub",'\u2A64'],["\\\\rsub",'\u2A65'],["\\\\oint",'\u222E'],["\\\\'\\\\i",'\xED'],["\\\\`\\\\i",'\xEC'],["\\\\c\\ k",'\u0137'],["\\\\Same",'\u2A76'],["\\\\c\\ K",'\u0136'],["\\\\geqq",'\u2267'],["\\\\c\\ c",'\xE7'],["\\\\prod",'\u220F'],["\\\\v\\ E",'\u011A'],["\\\\lneq",'\u2A87'],["\\\\gneq",'\u2A88'],['\\\\upin','\u27D2'],['\\\\u\\ I','\u012C'],["\\\\not>",'\u226F'],["_\\\\ast",'\u2217'],["\\\\iota",'\u03B9'],["\\\\zeta",'\u03B6'],["\\\\beta",'\u03B2'],["\\\\male",'\u2642'],["\\\\nisd",'\u22FA'],["\\\\quad",'\u2001'],["\\\\v\\ c",'\u010D'],["\\\\v\\ n",'\u0148'],["\\\\glj",'\u2AA4'],["\\\\int",'\u222B'],["\\\\cup",'\u222A'],["\\\\QED",'\u220E'],["\\\\cap",'\u2229'],["\\\\gla",'\u2AA5'],["\\\\Psi",'\u03A8'],["\\\\Phi",'\u03A6'],["\\\\sum",'\u2211'],["\\\\Rsh",'\u21B1'],["\\\\vee",'\u2228'],["\\\\Lsh",'\u21B0'],["\\\\sim",'\u223C'],["\\\\lhd",'\u25C1'],["\\\\LHD",'\u25C0'],["\\\\rhd",'\u25B7'],["\\\\phi",'\u03D5'],["\\\\lgE",'\u2A91'],["\\\\glE",'\u2A92'],["\\\\RHD",'\u25B6'],["\\\\cat",'\u2040'],["\\\\Yup",'\u2144'],["\\\\vec",'\u20D1'],["\\\\div",'\xF7'],["\\\\mid",'\u2223'],["\\\\mho",'\u2127'],["\\\\psi",'\u03C8'],["\\\\chi",'\u03C7'],["\\\\top",'\u22A4'],["\\\\Not",'\u2AEC'],["\\\\tau",'\u03C4'],["\\\\smt",'\u2AAA'],["\\\\rho",'\u03C1'],["\\\\sun",'\u263C'],["\\\\Cap",'\u22D2'],["\\\\lat",'\u2AAB'],["\\\\leo",'\u264C'],["\\\\Sun",'\u2609'],["\\\\Cup",'\u22D3'],["\\\\eta",'\u03B7'],["\\\\Top",'\u2AEA'],["\\\\bij",'\u2916'],["\\\\eth",'\u01AA'],["\\\\geq",'\u2265'],["\\\\nis",'\u22FC'],["\\\\leq",'\u2264'],["\\\\ll",'\u226A'],["\\\\dj",'\u0111'],["\\\\in",'\u2208'],["\\\\\\-",'\xAD'],["\\\\th",'\xFE'],["\\\\wp",'\u2118'],["\\\\aa",'\xE5'],["\\\\ss",'\xDF'],["\\\\ae",'\xE6'],["\\\\ng",'\u014B'],["\\\\mu",'\u03BC'],["''''",'\u2057'],["\\\\pi",'\u03C0'],["\\\\gg",'\u226B'],["\\\\xi",'\u03BE'],["\\\\ni",'\u220B'],["\\\\nu",'\u03BD'],["\\\\pm",'\xB1'],["\\\\mp",'\u2213'],["\\\\wr",'\u2240'],["\\\\\\.",'\u0307'],["\\\\dh",'\xF0'],["\\\\oe",'\u0153'],['\\\\url','\\XXurl'],['\\\\u','\u0306'],["\\\\XXurl",'\\url'],["\\\\L",'\u0141'],["\\\\c",'\xB8'],["\\\\i",'\u0131'],["\\\\k",'\u02DB'],["\\\\H",'\u02DD'],["\\\\\"",'\u0308'],["\\\\v",'\u030C'],["\\\\o",'\xF8'],["\\\\`",'\u0300'],["\\\\'",'\u0301'],["\\\\~",'\u0303'],["\\\\r",'\u02DA'],["\\\\O",'\xD8'],["\\\\=",'\u0304'],["\\\\l",'\u0142'],["'''",'\u2034'],["\\\\textasciitilde",'\\~']]);
 
-},{}],131:[function(require,module,exports){
+},{}],128:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -25525,7 +24901,7 @@ var BibLatexLiteralParser = exports.BibLatexLiteralParser = function () {
     return BibLatexLiteralParser;
 }();
 
-},{"babel-runtime/core-js/get-iterator":7,"babel-runtime/helpers/classCallCheck":15,"babel-runtime/helpers/createClass":16}],132:[function(require,module,exports){
+},{"babel-runtime/core-js/get-iterator":7,"babel-runtime/helpers/classCallCheck":15,"babel-runtime/helpers/createClass":16}],129:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28008,7 +27384,7 @@ var BibLatexNameParser = exports.BibLatexNameParser = function () {
     return BibLatexNameParser;
 }();
 
-},{"./literal-parser":131,"babel-runtime/helpers/classCallCheck":15,"babel-runtime/helpers/createClass":16}],133:[function(require,module,exports){
+},{"./literal-parser":128,"babel-runtime/helpers/classCallCheck":15,"babel-runtime/helpers/createClass":16}],130:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28487,7 +27863,7 @@ function splitTeXString(texString) {
     return output;
 }
 
-},{}],134:[function(require,module,exports){
+},{}],131:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28561,4 +27937,13 @@ Object.defineProperty(exports, "BibTypes", {
   }
 });
 
-},{"./const":125,"./export/biblatex":126,"./export/csl":128,"./import/biblatex":129}]},{},[1]);
+var _edtf = require("./edtf");
+
+Object.defineProperty(exports, "edtfParse", {
+  enumerable: true,
+  get: function get() {
+    return _edtf.edtfParse;
+  }
+});
+
+},{"./const":121,"./edtf":122,"./export/biblatex":123,"./export/csl":125,"./import/biblatex":126}]},{},[1]);
