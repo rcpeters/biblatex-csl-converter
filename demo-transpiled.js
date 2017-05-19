@@ -572,17 +572,17 @@ function _interopRequireDefault(obj) {
         return Infinity;
       } }, { "name": "L1X$string$1", "symbols": [{ "literal": "-" }, { "literal": "X" }, { "literal": "X" }], "postprocess": function joiner(d) {
         return d.join('');
-      } }, { "name": "L1X", "symbols": ["d4", { "literal": "-" }, "md", "L1X$string$1"], "postprocess": masked() }, { "name": "L1X$string$2", "symbols": [{ "literal": "-" }, { "literal": "X" }, { "literal": "X" }, { "literal": "-" }, { "literal": "X" }, { "literal": "X" }], "postprocess": function joiner(d) {
+      } }, { "name": "L1X", "symbols": ["nd4", { "literal": "-" }, "md", "L1X$string$1"], "postprocess": masked() }, { "name": "L1X$string$2", "symbols": [{ "literal": "-" }, { "literal": "X" }, { "literal": "X" }, { "literal": "-" }, { "literal": "X" }, { "literal": "X" }], "postprocess": function joiner(d) {
         return d.join('');
-      } }, { "name": "L1X", "symbols": ["d4", "L1X$string$2"], "postprocess": masked() }, { "name": "L1X$string$3", "symbols": [{ "literal": "X" }, { "literal": "X" }, { "literal": "X" }, { "literal": "X" }, { "literal": "-" }, { "literal": "X" }, { "literal": "X" }, { "literal": "-" }, { "literal": "X" }, { "literal": "X" }], "postprocess": function joiner(d) {
+      } }, { "name": "L1X", "symbols": ["nd4", "L1X$string$2"], "postprocess": masked() }, { "name": "L1X$string$3", "symbols": [{ "literal": "X" }, { "literal": "X" }, { "literal": "X" }, { "literal": "X" }, { "literal": "-" }, { "literal": "X" }, { "literal": "X" }, { "literal": "-" }, { "literal": "X" }, { "literal": "X" }], "postprocess": function joiner(d) {
         return d.join('');
       } }, { "name": "L1X", "symbols": ["L1X$string$3"], "postprocess": masked() }, { "name": "L1X$string$4", "symbols": [{ "literal": "-" }, { "literal": "X" }, { "literal": "X" }], "postprocess": function joiner(d) {
         return d.join('');
-      } }, { "name": "L1X", "symbols": ["d4", "L1X$string$4"], "postprocess": masked() }, { "name": "L1X$string$5", "symbols": [{ "literal": "X" }, { "literal": "X" }, { "literal": "X" }, { "literal": "X" }, { "literal": "-" }, { "literal": "X" }, { "literal": "X" }], "postprocess": function joiner(d) {
+      } }, { "name": "L1X", "symbols": ["nd4", "L1X$string$4"], "postprocess": masked() }, { "name": "L1X$string$5", "symbols": [{ "literal": "X" }, { "literal": "X" }, { "literal": "X" }, { "literal": "X" }, { "literal": "-" }, { "literal": "X" }, { "literal": "X" }], "postprocess": function joiner(d) {
         return d.join('');
       } }, { "name": "L1X", "symbols": ["L1X$string$5"], "postprocess": masked() }, { "name": "L1X$string$6", "symbols": [{ "literal": "X" }, { "literal": "X" }], "postprocess": function joiner(d) {
         return d.join('');
-      } }, { "name": "L1X", "symbols": ["d2", "L1X$string$6"], "postprocess": masked() }, { "name": "L1X", "symbols": ["d3", { "literal": "X" }], "postprocess": masked() }, { "name": "L1X$string$7", "symbols": [{ "literal": "X" }, { "literal": "X" }, { "literal": "X" }, { "literal": "X" }], "postprocess": function joiner(d) {
+      } }, { "name": "L1X", "symbols": ["nd2", "L1X$string$6"], "postprocess": masked() }, { "name": "L1X", "symbols": ["nd3", { "literal": "X" }], "postprocess": masked() }, { "name": "L1X$string$7", "symbols": [{ "literal": "X" }, { "literal": "X" }, { "literal": "X" }, { "literal": "X" }], "postprocess": function joiner(d) {
         return d.join('');
       } }, { "name": "L1X", "symbols": ["L1X$string$7"], "postprocess": masked() }, { "name": "L1Y", "symbols": [{ "literal": "Y" }, "d5+"], "postprocess": function postprocess(data) {
         return year([num(data[1])], 1);
@@ -694,7 +694,7 @@ function _interopRequireDefault(obj) {
         return d.join('');
       } }, { "name": "consecutives", "symbols": ["year", "consecutives$string$3", "year"], "postprocess": function postprocess(d) {
         return [date([d[0]]), date([d[2]])];
-      } }, { "name": "digit", "symbols": ["positive_digit"], "postprocess": id }, { "name": "digit", "symbols": [{ "literal": "0" }], "postprocess": id }, { "name": "digits", "symbols": ["digit"], "postprocess": id }, { "name": "digits", "symbols": ["digits", "digit"], "postprocess": join }, { "name": "d4", "symbols": ["d2", "d2"], "postprocess": join }, { "name": "d3", "symbols": ["d2", "digit"], "postprocess": join }, { "name": "d2", "symbols": ["digit", "digit"], "postprocess": join }, { "name": "d5+", "symbols": ["positive_digit", "d3", "digits"], "postprocess": num }, { "name": "d1x", "symbols": [/[1-9X]/], "postprocess": id }, { "name": "dx", "symbols": ["d1x"], "postprocess": id }, { "name": "dx", "symbols": [{ "literal": "0" }], "postprocess": id }, { "name": "dx2", "symbols": ["dx", "dx"], "postprocess": join }, { "name": "dx4", "symbols": ["dx2", "dx2"], "postprocess": join }, { "name": "md", "symbols": ["m31"], "postprocess": id }, { "name": "md", "symbols": ["m30"], "postprocess": id }, { "name": "md$string$1", "symbols": [{ "literal": "0" }, { "literal": "2" }], "postprocess": function joiner(d) {
+      } }, { "name": "digit", "symbols": ["positive_digit"], "postprocess": id }, { "name": "digit", "symbols": [{ "literal": "0" }], "postprocess": id }, { "name": "digits", "symbols": ["digit"], "postprocess": id }, { "name": "digits", "symbols": ["digits", "digit"], "postprocess": join }, { "name": "nd4", "symbols": ["d4"] }, { "name": "nd4", "symbols": [{ "literal": "-" }, "d4"], "postprocess": join }, { "name": "nd3", "symbols": ["d3"] }, { "name": "nd3", "symbols": [{ "literal": "-" }, "d3"], "postprocess": join }, { "name": "nd2", "symbols": ["d2"] }, { "name": "nd2", "symbols": [{ "literal": "-" }, "d2"], "postprocess": join }, { "name": "d4", "symbols": ["d2", "d2"], "postprocess": join }, { "name": "d3", "symbols": ["d2", "digit"], "postprocess": join }, { "name": "d2", "symbols": ["digit", "digit"], "postprocess": join }, { "name": "d5+", "symbols": ["positive_digit", "d3", "digits"], "postprocess": num }, { "name": "d1x", "symbols": [/[1-9X]/], "postprocess": id }, { "name": "dx", "symbols": ["d1x"], "postprocess": id }, { "name": "dx", "symbols": [{ "literal": "0" }], "postprocess": id }, { "name": "dx2", "symbols": ["dx", "dx"], "postprocess": join }, { "name": "dx4", "symbols": ["dx2", "dx2"], "postprocess": join }, { "name": "dx4", "symbols": [{ "literal": "-" }, "dx2", "dx2"], "postprocess": join }, { "name": "md", "symbols": ["m31"], "postprocess": id }, { "name": "md", "symbols": ["m30"], "postprocess": id }, { "name": "md$string$1", "symbols": [{ "literal": "0" }, { "literal": "2" }], "postprocess": function joiner(d) {
         return d.join('');
       } }, { "name": "md", "symbols": ["md$string$1"], "postprocess": id }, { "name": "mx", "symbols": [{ "literal": "0" }, "d1x"], "postprocess": join }, { "name": "mx", "symbols": [/[1X]/, /[012X]/], "postprocess": join }, { "name": "m31x", "symbols": [/[0X]/, /[13578X]/], "postprocess": join }, { "name": "m31x", "symbols": [/[1X]/, /[02]/], "postprocess": join }, { "name": "m31x$string$1", "symbols": [{ "literal": "1" }, { "literal": "X" }], "postprocess": function joiner(d) {
         return d.join('');
@@ -902,11 +902,18 @@ var util = {
     var symbol = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'X';
 
     return function (data, _, reject) {
-      var mask = data.join('').replace(/-/g, '');
+      data = data.join('');
 
-      return mask.indexOf(symbol) === -1 ? reject : (0, _defineProperty3.default)({
-        values: Bitmask.values(mask)
-      }, type, Bitmask.compute(mask));
+      var negative = data.startsWith('-');
+      var mask = data.replace(/-/g, '');
+
+      if (mask.indexOf(symbol) === -1) return reject;
+
+      var values = Bitmask.values(mask, 0);
+      if (negative) values[0] = -values[0];
+
+      return (0, _defineProperty3.default)({
+        values: values }, type, Bitmask.compute(mask));
     };
   },
   date: function date(values) {
@@ -2762,18 +2769,27 @@ for(var collections = ['NodeList', 'DOMTokenList', 'MediaList', 'StyleSheetList'
   Iterators[NAME] = Iterators.Array;
 }
 },{"./_global":55,"./_hide":57,"./_iterators":69,"./_wks":103,"./es6.array.iterator":108}],120:[function(require,module,exports){
-(function () {
+(function(root, factory) {
+    if (typeof module === 'object' && module.exports) {
+        module.exports = factory();
+    } else {
+        root.nearley = factory();
+    }
+}(this, function() {
+
 function Rule(name, symbols, postprocess) {
+    this.id = ++Rule.highestId;
     this.name = name;
     this.symbols = symbols;        // a list of literal | regex class | nonterminal
     this.postprocess = postprocess;
     return this;
 }
+Rule.highestId = 0;
 
 Rule.prototype.toString = function(withCursorAt) {
     function stringifySymbolSequence (e) {
-        return (e.literal) ? JSON.stringify(e.literal)
-                           : e.toString();
+        return e.literal ? JSON.stringify(e.literal) :
+               e.type ? '%' + e.type : e.toString();
     }
     var symbolSequence = (typeof withCursorAt === "undefined")
                          ? this.symbols.map(stringifySymbolSequence).join(' ')
@@ -2785,235 +2801,273 @@ Rule.prototype.toString = function(withCursorAt) {
 
 
 // a State is a rule at a position from a given starting point in the input stream (reference)
-function State(rule, expect, reference) {
+function State(rule, dot, reference, wantedBy) {
     this.rule = rule;
-    this.expect = expect;
+    this.dot = dot;
     this.reference = reference;
     this.data = [];
+    this.wantedBy = wantedBy;
+    this.isComplete = this.dot === rule.symbols.length;
 }
 
 State.prototype.toString = function() {
-    return "{" + this.rule.toString(this.expect) + "}, from: " + (this.reference || 0);
+    return "{" + this.rule.toString(this.dot) + "}, from: " + (this.reference || 0);
 };
 
-State.prototype.nextState = function(data) {
-    var state = new State(this.rule, this.expect + 1, this.reference);
-    state.data = this.data.slice(0);  // make a cheap copy of currentState's data
-    state.data.push(data);            // append the passed data
+State.prototype.nextState = function(child) {
+    var state = new State(this.rule, this.dot + 1, this.reference, this.wantedBy);
+    state.left = this;
+    state.right = child;
+    if (state.isComplete) {
+        state.data = state.build();
+    }
     return state;
 };
 
-State.prototype.consumeTerminal = function(inp) {
-    var val = false;
-    if (this.rule.symbols[this.expect]) {                  // is there a symbol to test?
-       if (this.rule.symbols[this.expect].test) {          // is the symbol a regex?
-          if (this.rule.symbols[this.expect].test(inp)) {  // does the regex match
-             val = this.nextState(inp);  // nextState on a successful regex match
-          }
-       } else {   // not a regex, must be a literal
-          if (this.rule.symbols[this.expect].literal === inp) {
-             val = this.nextState(inp);  // nextState on a successful literal match
-          }
-       }
-    }
-    return val;
+State.prototype.build = function() {
+    var children = [];
+    var node = this;
+    do {
+        children.push(node.right.data);
+        node = node.left;
+    } while (node.left);
+    children.reverse();
+    return children;
 };
 
-State.prototype.consumeNonTerminal = function(inp) {
-    if (this.rule.symbols[this.expect] === inp) {
-        return this.nextState(inp);
+State.prototype.finish = function() {
+    if (this.rule.postprocess) {
+        this.data = this.rule.postprocess(this.data, this.reference, Parser.fail);
     }
-    return false;
 };
 
-State.prototype.process = function(location, ind, table, rules, addedRules) {
-    if (this.expect === this.rule.symbols.length) {
-        // I have completed a rule
-        if (this.rule.postprocess) {
-            this.data = this.rule.postprocess(this.data, this.reference, Parser.fail);
-        }
-        if (!(this.data === Parser.fail)) {
-            var findLeo;
-            // LEO THE LION SAYS GER
-            findLeo = function findLeo(idx, rulename, finalData) {
-                // performance optimization, avoid high order functions(map/filter) in hotspot code.
-                var items = [];
-                var row = table[idx];
-                for (var col = 0; col < row.length; col++) {
-                    var s = row[col].consumeNonTerminal(rulename);
-                    if (s && s.isComplete() && s.rule.name === rulename) {
-                        items.push(s);
-                    }
-                }
-                if (items.length === 1) {
-                    var item = items[0];
-                    item.data[item.data.length-1] = finalData;
-                    if (item.reference === idx) {
-                        return item;
-                    }
-                    var newdata = item.data;
-                    if (item.rule.postprocess) {
-                        newdata = item.rule.postprocess(item.data, item.reference, Parser.fail);
-                    }
-                    if (newdata === Parser.fail) {
-                        return false;
-                    }
-                    return findLeo(item.reference, item.rule.name, newdata) || item;
-                } else {
-                    return false;
-                }
-            };
 
-            var leo = findLeo(this.reference, this.rule.name, this.data);
-            if (leo) {
-                leo.epsilonClosure(location, ind, table);
-                return;
+function Column(grammar, index) {
+    this.grammar = grammar;
+    this.index = index;
+    this.states = [];
+    this.wants = {}; // states indexed by the non-terminal they expect
+    this.scannable = []; // list of states that expect a token
+    this.completed = {}; // states that are nullable
+}
+
+
+Column.prototype.process = function(nextColumn) {
+    var states = this.states;
+    var wants = this.wants;
+    var completed = this.completed;
+
+    for (var w = 0; w < states.length; w++) { // nb. we push() during iteration
+        var state = states[w];
+
+        if (state.isComplete) {
+            state.finish();
+            if (state.data !== Parser.fail) {
+                // complete
+                var wantedBy = state.wantedBy;
+                for (var i = wantedBy.length; i--; ) { // this line is hot
+                    var left = wantedBy[i];
+                    this.complete(left, state);
+                }
+
+                // special-case nullables
+                if (state.reference === this.index) {
+                    // make sure future predictors of this rule get completed.
+                    var exp = state.rule.name;
+                    (this.completed[exp] = this.completed[exp] || []).push(state);
+                }
             }
 
-            var w = 0;
-            // We need a while here because the empty rule will
-            // modify table[reference]. (when location === reference)
-            var s,x;
-            while (w < table[this.reference].length) {
-                s = table[this.reference][w];
-                x = s.consumeNonTerminal(this.rule.name);
-                if (x && !(leo && x.isComplete())) { // ignore leo-ey terms
-                    x.data[x.data.length-1] = this.data;
-                    x.epsilonClosure(location, ind, table);
-                }
-                w++;
+        } else {
+            // queue scannable states
+            var exp = state.rule.symbols[state.dot];
+            if (typeof exp !== 'string') {
+                this.scannable.push(state);
+                continue;
             }
 
-            // --- The comment below is OUTDATED. It's left so that future
-            // editors know not to try and do that.
+            // predict
+            if (wants[exp]) {
+                wants[exp].push(state);
 
-            // Remove this rule from "addedRules" so that another one can be
-            // added if some future added rule requires it.
-            // Note: I can be optimized by someone clever and not-lazy. Somehow
-            // queue rules so that everything that this completion "spawns" can
-            // affect the rest of the rules yet-to-be-added-to-the-table.
-            // Maybe.
-
-            // I repeat, this is a *bad* idea.
-
-            // var i = addedRules.indexOf(this.rule);
-            // if (i !== -1) {
-            //     addedRules.splice(i, 1);
-            // }
+                if (completed.hasOwnProperty(exp)) {
+                    var nulls = completed[exp];
+                    for (var i = 0; i < nulls.length; i++) {
+                        var right = nulls[i];
+                        this.complete(state, right);
+                    }
+                }
+            } else {
+                wants[exp] = [state];
+                this.predict(exp);
+            }
         }
+    }
+}
+
+Column.prototype.predict = function(exp) {
+    var rules = this.grammar.byName[exp] || [];
+
+    for (var i = 0; i < rules.length; i++) {
+        var r = rules[i];
+        var wantedBy = this.wants[exp];
+        var s = new State(r, 0, this.index, wantedBy);
+        this.states.push(s);
+    }
+}
+
+Column.prototype.complete = function(left, right) {
+    var inp = right.rule.name;
+    if (left.rule.symbols[left.dot] === inp) {
+        var copy = left.nextState(right);
+        this.states.push(copy);
+    }
+}
+
+
+function Grammar(rules, start) {
+    this.rules = rules;
+    this.start = start || this.rules[0].name;
+    var byName = this.byName = {};
+    this.rules.forEach(function(rule) {
+        if (!byName.hasOwnProperty(rule.name)) {
+            byName[rule.name] = [];
+        }
+        byName[rule.name].push(rule);
+    });
+}
+
+// So we can allow passing (rules, start) directly to Parser for backwards compatibility
+Grammar.fromCompiled = function(rules, start) {
+    var lexer = rules.Lexer;
+    if (rules.ParserStart) {
+      start = rules.ParserStart;
+      rules = rules.ParserRules;
+    }
+    var rules = rules.map(function (r) { return (new Rule(r.name, r.symbols, r.postprocess)); });
+    var g = new Grammar(rules, start);
+    g.lexer = lexer; // nb. storing lexer on Grammar is iffy, but unavoidable
+    return g;
+}
+
+
+function StreamLexer() {
+  this.reset("");
+}
+
+StreamLexer.prototype.reset = function(data, state) {
+    this.buffer = data;
+    this.index = 0;
+    this.line = state ? state.line : 1;
+    this.lastLineBreak = state ? -state.col : 0;
+}
+
+StreamLexer.prototype.next = function() {
+    if (this.index < this.buffer.length) {
+        var ch = this.buffer[this.index++];
+        if (ch === '\n') {
+          this.line += 1;
+          this.lastLineBreak = this.index;
+        }
+        return {value: ch};
+    }
+}
+
+StreamLexer.prototype.save = function() {
+  return {
+    line: this.line,
+    col: this.index - this.lastLineBreak,
+  }
+}
+
+StreamLexer.prototype.formatError = function(token, message) {
+    // nb. this gets called after consuming the offending token,
+    // so the culprit is index-1
+    var buffer = this.buffer;
+    if (typeof buffer === 'string') {
+        var nextLineBreak = buffer.indexOf('\n', this.index);
+        if (nextLineBreak === -1) nextLineBreak = buffer.length;
+        var line = buffer.substring(this.lastLineBreak, nextLineBreak)
+        var col = this.index - this.lastLineBreak;
+        message += " at line " + this.line + " col " + col + ":\n\n";
+        message += "  " + line + "\n"
+        message += "  " + Array(col).join(" ") + "^"
+        return message;
     } else {
-        // I'm not done, but I can predict something
-        var exp = this.rule.symbols[this.expect];
-
-        // for each rule
-        // implemented as for instead of forEach for performance
-        for(var rule = 0; rule < rules.length; ++rule) {
-            var r = rules[rule];
-            // if I expect it, and it hasn't been added already
-            if (r.name === exp && addedRules.indexOf(r) === -1) {
-                // Make a note that you've added it already, and don't need to
-                // add it again; otherwise left recursive rules are going to go
-                // into an infinite loop by adding themselves over and over
-                // again.
-
-                // If it's the null rule, however, you don't do this because it
-                // affects the current table row, so you might need it to be
-                // called again later. Instead, I just insert a copy whose
-                // state has been advanced one position (since that's all the
-                // null rule means anyway)
-
-                if (r.symbols.length > 0) {
-                    addedRules.push(r);
-                    new State(r, 0, location).epsilonClosure(location, ind, table);
-                } else {
-                    // Empty rule
-                    // This is special
-                    var copy = this.consumeNonTerminal(r.name);
-                    if (r.postprocess) {
-                        copy.data[copy.data.length-1] = r.postprocess([], this.reference);
-                    } else {
-                        copy.data[copy.data.length-1] = [];
-                    }
-                    copy.epsilonClosure(location, ind, table);
-                }
-            }
-        }
-    }
-};
-
-State.prototype.isComplete = function() {
-    return this.expect === this.rule.symbols.length;
-}
-
-/**
- * Computes all possible epsilon-steps from the current state at
- * given location. States 0 through ind-1 in location are considered
- * for possible nullables.
- */
-State.prototype.epsilonClosure = function(location, ind, table, result) {
-    var col = table[location];
-    if (!result) result = table[location]; // convenient common case
-
-    result.push(this);
-
-    if (!this.isComplete()) {
-        for (var i = 0; i < ind; i++) {
-            var state = col[i];
-            if (state.isComplete() && state.reference === location) {
-                var x = this.consumeNonTerminal(state.rule.name);
-                if (x) {
-                    x.data[x.data.length-1] = state.data;
-                    x.epsilonClosure(location, ind, table);
-                }
-            }
-        }
+        return message + " at index " + (this.index - 1);
     }
 }
 
 
-function Parser(rules, start) {
-    var table = this.table = [];
-    this.rules = rules.map(function (r) { return (new Rule(r.name, r.symbols, r.postprocess)); });
-    this.start = start = start || this.rules[0].name;
+function Parser(rules, start, options) {
+    if (rules instanceof Grammar) {
+        var grammar = rules;
+        var options = start;
+    } else {
+        var grammar = Grammar.fromCompiled(rules, start);
+    }
+    this.grammar = grammar;
+
+    // Read options
+    this.options = {
+        keepHistory: false,
+        lexer: grammar.lexer || new StreamLexer,
+    };
+    for (var key in (options || {})) {
+        this.options[key] = options[key];
+    }
+
+    // Setup lexer
+    this.lexer = this.options.lexer;
+    this.lexerState = undefined;
+
     // Setup a table
-    var addedRules = [];
-    this.table.push([]);
+    var column = new Column(grammar, 0);
+    var table = this.table = [column];
+
     // I could be expecting anything.
-    this.rules.forEach(function (r) {
-        if (r.name === start) {  // add all rules named start
-            addedRules.push(r);
-            table[0].push(new State(r, 0, 0));
-        }});  // this should refer to this object, not each rule inside the forEach
-    this.advanceTo(0, addedRules);
-    this.current = 0;
+    column.wants[grammar.start] = [];
+    column.predict(grammar.start);
+    // TODO what if start rule is nullable?
+    column.process();
+    this.current = 0; // token index
 }
 
 // create a reserved token for indicating a parse fail
 Parser.fail = {};
 
-Parser.prototype.advanceTo = function(n, addedRules) {
-    // Advance a table, take the closure of .process for location n in the input stream
-    var w = 0;
-    while (w < this.table[n].length) {
-        (this.table[n][w]).process(n, w, this.table, this.rules, addedRules);
-        w++;
-    }
-}
-
 Parser.prototype.feed = function(chunk) {
-    for (var chunkPos = 0; chunkPos < chunk.length; chunkPos++) {
+    var lexer = this.lexer;
+    lexer.reset(chunk, this.lexerState);
+
+    while (token = lexer.next()) {
         // We add new states to table[current+1]
-        this.table.push([]);
+        var column = this.table[this.current];
+
+        // GC unused states
+        if (!this.options.keepHistory) {
+            delete this.table[this.current - 1];
+        }
+
+        var n = this.current + 1;
+        var nextColumn = new Column(this.grammar, n);
+        this.table.push(nextColumn);
 
         // Advance all tokens that expect the symbol
-        // So for each state in the previous row,
-
-        for (var w = 0; w < this.table[this.current + chunkPos].length; w++) {
-            var s = this.table[this.current + chunkPos][w];
-            var x = s.consumeTerminal(chunk[chunkPos]);      // Try to consume the token
-            if (x) {
-                // And then add it
-                this.table[this.current + chunkPos + 1].push(x);
+        var literal = token.value;
+        var value = lexer.constructor === StreamLexer ? token.value : token;
+        var scannable = column.scannable;
+        for (var w = scannable.length; w--; ) {
+            var state = scannable[w];
+            var expect = state.rule.symbols[state.dot];
+            // Try to consume the token
+            // either regex or literal
+            if (expect.test ? expect.test(value) :
+                expect.type ? expect.type === token.type
+                            : expect.literal === literal) {
+                // Add it
+                var next = state.nextState({data: value, token: token, isToken: true, reference: n - 1});
+                nextColumn.states.push(next);
             }
         }
 
@@ -3025,22 +3079,31 @@ Parser.prototype.feed = function(chunk) {
         // To prevent duplication, we also keep track of rules we have already
         // added
 
-        var addedRules = [];
-        this.advanceTo(this.current + chunkPos + 1, addedRules);
+        nextColumn.process();
 
         // If needed, throw an error:
-        if (this.table[this.table.length-1].length === 0) {
+        if (nextColumn.states.length === 0) {
             // No states at all! This is not good.
-            var err = new Error(
-                "nearley: No possible parsings (@" + (this.current + chunkPos)
-                    + ": '" + chunk[chunkPos] + "')."
-            );
-            err.offset = this.current + chunkPos;
+            var message = this.lexer.formatError(token, "invalid syntax") + "\n";
+            message += "Unexpected " + (token.type ? token.type + " token: " : "");
+            message += JSON.stringify(token.value !== undefined ? token.value : token) + "\n";
+            var err = new Error(message);
+            err.offset = this.current;
+            err.token = token;
             throw err;
         }
+
+        // maybe save lexer state
+        if (this.options.keepHistory) {
+          column.lexerState = lexer.save()
+        }
+
+        this.current++;
+    }
+    if (column) {
+      this.lexerState = lexer.save()
     }
 
-    this.current += chunkPos;
     // Incrementally keep track of results
     this.results = this.finish();
 
@@ -3048,13 +3111,41 @@ Parser.prototype.feed = function(chunk) {
     return this;
 };
 
+Parser.prototype.save = function() {
+    var column = this.table[this.current];
+    column.lexerState = this.lexerState;
+    return column;
+};
+
+Parser.prototype.restore = function(column) {
+    var index = column.index;
+    this.current = index;
+    this.table[index] = column;
+    this.table.splice(index + 1);
+    this.lexerState = column.lexerState;
+
+    // Incrementally keep track of results
+    this.results = this.finish();
+};
+
+// nb. deprecated: use save/restore instead!
+Parser.prototype.rewind = function(index) {
+    if (!this.options.keepHistory) {
+        throw new Error('set option `keepHistory` to enable rewinding')
+    }
+    // nb. recall column (table) indicies fall between token indicies.
+    //        col 0   --   token 0   --   col 1
+    this.restore(this.table[index]);
+};
+
 Parser.prototype.finish = function() {
     // Return the possible parsings
     var considerations = [];
-    var myself = this;
-    this.table[this.table.length-1].forEach(function (t) {
-        if (t.rule.name === myself.start
-                && t.expect === t.rule.symbols.length
+    var start = this.grammar.start;
+    var column = this.table[this.table.length - 1]
+    column.states.forEach(function (t) {
+        if (t.rule.name === start
+                && t.dot === t.rule.symbols.length
                 && t.reference === 0
                 && t.data !== Parser.fail) {
             considerations.push(t);
@@ -3063,17 +3154,13 @@ Parser.prototype.finish = function() {
     return considerations.map(function(c) {return c.data; });
 };
 
-var nearley = {
+return {
     Parser: Parser,
-    Rule: Rule
+    Grammar: Grammar,
+    Rule: Rule,
 };
 
-if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-   module.exports = nearley;
-} else {
-   window.nearley = nearley;
-}
-})();
+}));
 
 },{}],121:[function(require,module,exports){
 "use strict";
@@ -4101,7 +4188,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var cov_pryn4smbr = function () {
     var path = '/home/travis/build/fiduswriter/biblatex-csl-converter/src/edtf.js',
-        hash = 'b8289d6ab5f0aa2f6df89e633f6f28791fb10f5c',
+        hash = '2d9f178160895e3cc4b5c5d0f8785d88b3aa8a97',
         global = new Function('return this')(),
         gcv = '__coverage__',
         coverageData = {
@@ -4200,7 +4287,8 @@ var cov_pryn4smbr = function () {
                         line: 12,
                         column: 1
                     }
-                }
+                },
+                line: 3
             },
             '1': {
                 name: 'edtfCheck',
@@ -4223,7 +4311,8 @@ var cov_pryn4smbr = function () {
                         line: 32,
                         column: 1
                     }
-                }
+                },
+                line: 14
             }
         },
         branchMap: {
@@ -4257,7 +4346,8 @@ var cov_pryn4smbr = function () {
                         line: 28,
                         column: 9
                     }
-                }]
+                }],
+                line: 18
             },
             '1': {
                 loc: {
@@ -4343,7 +4433,8 @@ var cov_pryn4smbr = function () {
                         line: 22,
                         column: 98
                     }
-                }]
+                }],
+                line: 19
             }
         },
         s: {
@@ -4437,7 +4528,7 @@ var _createClass3 = _interopRequireDefault(_createClass2);
 
 var cov_18eh2feipe = function () {
     var path = "/home/travis/build/fiduswriter/biblatex-csl-converter/src/export/biblatex.js",
-        hash = "bb5b3b34740ce3c778f6eed5b7c7f785d9cb87d6",
+        hash = "e80c3a4187fa66af13588c321684086a7f90b494",
         global = new Function('return this')(),
         gcv = "__coverage__",
         coverageData = {
@@ -5499,7 +5590,7 @@ var cov_18eh2feipe = function () {
                     column: 8
                 },
                 end: {
-                    line: 261,
+                    line: 257,
                     column: 10
                 }
             },
@@ -5656,151 +5747,151 @@ var cov_18eh2feipe = function () {
             "121": {
                 start: {
                     line: 223,
-                    column: 26
+                    column: 12
                 },
                 end: {
-                    line: 223,
-                    column: 31
+                    line: 233,
+                    column: 14
                 }
             },
             "122": {
                 start: {
                     line: 224,
-                    column: 12
+                    column: 28
                 },
                 end: {
-                    line: 237,
-                    column: 14
+                    line: 224,
+                    column: 57
                 }
             },
             "123": {
                 start: {
                     line: 225,
-                    column: 28
+                    column: 16
                 },
                 end: {
-                    line: 225,
-                    column: 53
+                    line: 231,
+                    column: 17
                 }
             },
             "124": {
                 start: {
                     line: 226,
-                    column: 16
+                    column: 20
                 },
                 end: {
-                    line: 228,
-                    column: 17
+                    line: 226,
+                    column: 45
                 }
             },
             "125": {
                 start: {
-                    line: 227,
+                    line: 228,
                     column: 20
                 },
                 end: {
-                    line: 227,
-                    column: 34
+                    line: 230,
+                    column: 21
                 }
             },
             "126": {
                 start: {
                     line: 229,
-                    column: 16
+                    column: 24
                 },
                 end: {
-                    line: 235,
-                    column: 17
+                    line: 229,
+                    column: 36
                 }
             },
             "127": {
                 start: {
-                    line: 230,
-                    column: 20
+                    line: 235,
+                    column: 26
                 },
                 end: {
-                    line: 230,
-                    column: 45
+                    line: 235,
+                    column: 31
                 }
             },
             "128": {
                 start: {
-                    line: 232,
-                    column: 20
+                    line: 235,
+                    column: 44
                 },
                 end: {
-                    line: 234,
-                    column: 21
+                    line: 235,
+                    column: 49
                 }
             },
             "129": {
                 start: {
-                    line: 233,
-                    column: 24
+                    line: 236,
+                    column: 12
                 },
                 end: {
-                    line: 233,
-                    column: 36
+                    line: 250,
+                    column: 14
                 }
             },
             "130": {
                 start: {
-                    line: 239,
-                    column: 26
+                    line: 237,
+                    column: 16
                 },
                 end: {
                     line: 239,
-                    column: 31
+                    column: 17
                 }
             },
             "131": {
                 start: {
-                    line: 239,
-                    column: 44
+                    line: 238,
+                    column: 20
                 },
                 end: {
-                    line: 239,
-                    column: 49
+                    line: 238,
+                    column: 34
                 }
             },
             "132": {
                 start: {
                     line: 240,
-                    column: 12
-                },
-                end: {
-                    line: 254,
-                    column: 14
-                }
-            },
-            "133": {
-                start: {
-                    line: 241,
                     column: 16
                 },
                 end: {
-                    line: 243,
+                    line: 249,
                     column: 17
                 }
             },
-            "134": {
+            "133": {
                 start: {
                     line: 242,
                     column: 20
                 },
                 end: {
-                    line: 242,
-                    column: 34
+                    line: 244,
+                    column: 21
+                }
+            },
+            "134": {
+                start: {
+                    line: 243,
+                    column: 24
+                },
+                end: {
+                    line: 243,
+                    column: 36
                 }
             },
             "135": {
                 start: {
-                    line: 244,
-                    column: 16
+                    line: 245,
+                    column: 20
                 },
                 end: {
-                    line: 253,
-                    column: 17
+                    line: 245,
+                    column: 44
                 }
             },
             "136": {
@@ -5820,137 +5911,137 @@ var cov_18eh2feipe = function () {
                 },
                 end: {
                     line: 247,
-                    column: 36
+                    column: 39
                 }
             },
             "138": {
                 start: {
-                    line: 249,
-                    column: 20
+                    line: 251,
+                    column: 12
                 },
                 end: {
-                    line: 249,
-                    column: 44
+                    line: 255,
+                    column: 13
                 }
             },
             "139": {
                 start: {
-                    line: 250,
-                    column: 20
+                    line: 252,
+                    column: 16
                 },
                 end: {
                     line: 252,
-                    column: 21
+                    column: 34
                 }
             },
             "140": {
                 start: {
-                    line: 251,
-                    column: 24
+                    line: 254,
+                    column: 16
                 },
                 end: {
-                    line: 251,
-                    column: 39
+                    line: 254,
+                    column: 51
                 }
             },
             "141": {
                 start: {
-                    line: 255,
+                    line: 256,
                     column: 12
                 },
                 end: {
-                    line: 259,
-                    column: 13
+                    line: 256,
+                    column: 32
                 }
             },
             "142": {
                 start: {
-                    line: 256,
-                    column: 16
+                    line: 259,
+                    column: 8
                 },
                 end: {
-                    line: 256,
-                    column: 34
+                    line: 261,
+                    column: 10
                 }
             },
             "143": {
                 start: {
-                    line: 258,
-                    column: 16
+                    line: 260,
+                    column: 12
                 },
                 end: {
-                    line: 258,
-                    column: 51
+                    line: 260,
+                    column: 37
                 }
             },
             "144": {
                 start: {
-                    line: 260,
-                    column: 12
+                    line: 262,
+                    column: 8
                 },
                 end: {
-                    line: 260,
-                    column: 32
+                    line: 262,
+                    column: 20
                 }
             },
             "145": {
                 start: {
-                    line: 263,
-                    column: 8
+                    line: 266,
+                    column: 18
                 },
                 end: {
-                    line: 265,
-                    column: 10
+                    line: 266,
+                    column: 32
                 }
             },
             "146": {
                 start: {
-                    line: 264,
-                    column: 12
+                    line: 267,
+                    column: 18
                 },
                 end: {
-                    line: 264,
-                    column: 37
+                    line: 267,
+                    column: 20
                 }
             },
             "147": {
                 start: {
-                    line: 266,
+                    line: 268,
                     column: 8
                 },
                 end: {
-                    line: 266,
-                    column: 20
+                    line: 279,
+                    column: 9
                 }
             },
             "148": {
                 start: {
-                    line: 270,
-                    column: 18
+                    line: 269,
+                    column: 12
                 },
                 end: {
-                    line: 270,
-                    column: 32
+                    line: 271,
+                    column: 13
                 }
             },
             "149": {
                 start: {
-                    line: 271,
-                    column: 18
+                    line: 270,
+                    column: 16
                 },
                 end: {
-                    line: 271,
-                    column: 20
+                    line: 270,
+                    column: 29
                 }
             },
             "150": {
                 start: {
                     line: 272,
-                    column: 8
+                    column: 23
                 },
                 end: {
-                    line: 283,
-                    column: 9
+                    line: 272,
+                    column: 33
                 }
             },
             "151": {
@@ -5959,37 +6050,37 @@ var cov_18eh2feipe = function () {
                     column: 12
                 },
                 end: {
-                    line: 275,
-                    column: 13
+                    line: 273,
+                    column: 46
                 }
             },
             "152": {
                 start: {
                     line: 274,
-                    column: 16
-                },
-                end: {
-                    line: 274,
-                    column: 29
-                }
-            },
-            "153": {
-                start: {
-                    line: 276,
-                    column: 23
-                },
-                end: {
-                    line: 276,
-                    column: 33
-                }
-            },
-            "154": {
-                start: {
-                    line: 277,
                     column: 12
                 },
                 end: {
                     line: 277,
+                    column: 13
+                }
+            },
+            "153": {
+                start: {
+                    line: 275,
+                    column: 28
+                },
+                end: {
+                    line: 275,
+                    column: 99
+                }
+            },
+            "154": {
+                start: {
+                    line: 276,
+                    column: 16
+                },
+                end: {
+                    line: 276,
                     column: 46
                 }
             },
@@ -5999,47 +6090,17 @@ var cov_18eh2feipe = function () {
                     column: 12
                 },
                 end: {
-                    line: 281,
-                    column: 13
+                    line: 278,
+                    column: 24
                 }
             },
             "156": {
                 start: {
-                    line: 279,
-                    column: 28
-                },
-                end: {
-                    line: 279,
-                    column: 99
-                }
-            },
-            "157": {
-                start: {
                     line: 280,
-                    column: 16
-                },
-                end: {
-                    line: 280,
-                    column: 46
-                }
-            },
-            "158": {
-                start: {
-                    line: 282,
-                    column: 12
-                },
-                end: {
-                    line: 282,
-                    column: 24
-                }
-            },
-            "159": {
-                start: {
-                    line: 284,
                     column: 8
                 },
                 end: {
-                    line: 284,
+                    line: 280,
                     column: 18
                 }
             }
@@ -6066,7 +6127,8 @@ var cov_18eh2feipe = function () {
                         line: 32,
                         column: 5
                     }
-                }
+                },
+                line: 23
             },
             "1": {
                 name: "(anonymous_1)",
@@ -6089,7 +6151,8 @@ var cov_18eh2feipe = function () {
                         line: 102,
                         column: 5
                     }
-                }
+                },
+                line: 34
             },
             "2": {
                 name: "(anonymous_2)",
@@ -6112,7 +6175,8 @@ var cov_18eh2feipe = function () {
                         line: 81,
                         column: 106
                     }
-                }
+                },
+                line: 81
             },
             "3": {
                 name: "(anonymous_3)",
@@ -6135,7 +6199,8 @@ var cov_18eh2feipe = function () {
                         line: 84,
                         column: 89
                     }
-                }
+                },
+                line: 84
             },
             "4": {
                 name: "(anonymous_4)",
@@ -6158,7 +6223,8 @@ var cov_18eh2feipe = function () {
                         line: 115,
                         column: 5
                     }
-                }
+                },
+                line: 104
             },
             "5": {
                 name: "(anonymous_5)",
@@ -6181,7 +6247,8 @@ var cov_18eh2feipe = function () {
                         line: 122,
                         column: 5
                     }
-                }
+                },
+                line: 117
             },
             "6": {
                 name: "(anonymous_6)",
@@ -6204,7 +6271,8 @@ var cov_18eh2feipe = function () {
                         line: 121,
                         column: 9
                     }
-                }
+                },
+                line: 119
             },
             "7": {
                 name: "(anonymous_7)",
@@ -6227,7 +6295,8 @@ var cov_18eh2feipe = function () {
                         line: 120,
                         column: 66
                     }
-                }
+                },
+                line: 120
             },
             "8": {
                 name: "(anonymous_8)",
@@ -6250,7 +6319,8 @@ var cov_18eh2feipe = function () {
                         line: 166,
                         column: 5
                     }
-                }
+                },
+                line: 124
             },
             "9": {
                 name: "(anonymous_9)",
@@ -6273,7 +6343,8 @@ var cov_18eh2feipe = function () {
                         line: 164,
                         column: 9
                     }
-                }
+                },
+                line: 126
             },
             "10": {
                 name: "(anonymous_10)",
@@ -6296,7 +6367,8 @@ var cov_18eh2feipe = function () {
                         line: 174,
                         column: 5
                     }
-                }
+                },
+                line: 168
             },
             "11": {
                 name: "(anonymous_11)",
@@ -6319,7 +6391,8 @@ var cov_18eh2feipe = function () {
                         line: 188,
                         column: 5
                     }
-                }
+                },
+                line: 176
             },
             "12": {
                 name: "(anonymous_12)",
@@ -6339,10 +6412,11 @@ var cov_18eh2feipe = function () {
                         column: 26
                     },
                     end: {
-                        line: 267,
+                        line: 263,
                         column: 5
                     }
-                }
+                },
+                line: 190
             },
             "13": {
                 name: "(anonymous_13)",
@@ -6362,10 +6436,11 @@ var cov_18eh2feipe = function () {
                         column: 33
                     },
                     end: {
-                        line: 261,
+                        line: 257,
                         column: 9
                     }
-                }
+                },
+                line: 192
             },
             "14": {
                 name: "(anonymous_14)",
@@ -6388,99 +6463,104 @@ var cov_18eh2feipe = function () {
                         line: 219,
                         column: 17
                     }
-                }
+                },
+                line: 207
             },
             "15": {
                 name: "(anonymous_15)",
                 decl: {
                     start: {
-                        line: 224,
+                        line: 223,
                         column: 48
                     },
                     end: {
-                        line: 224,
+                        line: 223,
                         column: 49
                     }
                 },
                 loc: {
                     start: {
-                        line: 224,
+                        line: 223,
                         column: 64
                     },
                     end: {
-                        line: 237,
+                        line: 233,
                         column: 13
                     }
-                }
+                },
+                line: 223
             },
             "16": {
                 name: "(anonymous_16)",
                 decl: {
                     start: {
-                        line: 240,
+                        line: 236,
                         column: 29
                     },
                     end: {
-                        line: 240,
+                        line: 236,
                         column: 30
                     }
                 },
                 loc: {
                     start: {
-                        line: 240,
+                        line: 236,
                         column: 44
                     },
                     end: {
-                        line: 254,
+                        line: 250,
                         column: 13
                     }
-                }
+                },
+                line: 236
             },
             "17": {
                 name: "(anonymous_17)",
                 decl: {
                     start: {
-                        line: 263,
+                        line: 259,
                         column: 44
                     },
                     end: {
-                        line: 263,
+                        line: 259,
                         column: 45
                     }
                 },
                 loc: {
                     start: {
-                        line: 263,
+                        line: 259,
                         column: 52
                     },
                     end: {
-                        line: 265,
+                        line: 261,
                         column: 9
                     }
-                }
+                },
+                line: 259
             },
             "18": {
                 name: "(anonymous_18)",
                 decl: {
                     start: {
-                        line: 269,
+                        line: 265,
                         column: 4
                     },
                     end: {
-                        line: 269,
+                        line: 265,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 269,
+                        line: 265,
                         column: 30
                     },
                     end: {
-                        line: 285,
+                        line: 281,
                         column: 5
                     }
-                }
+                },
+                line: 265
             }
         },
         branchMap: {
@@ -6505,7 +6585,8 @@ var cov_18eh2feipe = function () {
                         line: 23,
                         column: 34
                     }
-                }]
+                }],
+                line: 23
             },
             "1": {
                 loc: {
@@ -6528,7 +6609,8 @@ var cov_18eh2feipe = function () {
                         line: 23,
                         column: 47
                     }
-                }]
+                }],
+                line: 23
             },
             "2": {
                 loc: {
@@ -6560,7 +6642,8 @@ var cov_18eh2feipe = function () {
                         line: 29,
                         column: 9
                     }
-                }]
+                }],
+                line: 25
             },
             "3": {
                 loc: {
@@ -6592,7 +6675,8 @@ var cov_18eh2feipe = function () {
                         line: 46,
                         column: 79
                     }
-                }]
+                }],
+                line: 46
             },
             "4": {
                 loc: {
@@ -6624,7 +6708,8 @@ var cov_18eh2feipe = function () {
                         line: 52,
                         column: 17
                     }
-                }]
+                }],
+                line: 50
             },
             "5": {
                 loc: {
@@ -6764,7 +6849,8 @@ var cov_18eh2feipe = function () {
                         line: 93,
                         column: 68
                     }
-                }]
+                }],
+                line: 56
             },
             "6": {
                 loc: {
@@ -6796,7 +6882,8 @@ var cov_18eh2feipe = function () {
                         line: 114,
                         column: 9
                     }
-                }]
+                }],
+                line: 105
             },
             "7": {
                 loc: {
@@ -6828,7 +6915,8 @@ var cov_18eh2feipe = function () {
                         line: 111,
                         column: 13
                     }
-                }]
+                }],
+                line: 107
             },
             "8": {
                 loc: {
@@ -6860,7 +6948,8 @@ var cov_18eh2feipe = function () {
                         line: 163,
                         column: 13
                     }
-                }]
+                }],
+                line: 127
             },
             "9": {
                 loc: {
@@ -6892,7 +6981,8 @@ var cov_18eh2feipe = function () {
                         line: 131,
                         column: 77
                     }
-                }]
+                }],
+                line: 131
             },
             "10": {
                 loc: {
@@ -6924,7 +7014,8 @@ var cov_18eh2feipe = function () {
                         line: 132,
                         column: 73
                     }
-                }]
+                }],
+                line: 132
             },
             "11": {
                 loc: {
@@ -6956,7 +7047,8 @@ var cov_18eh2feipe = function () {
                         line: 133,
                         column: 80
                     }
-                }]
+                }],
+                line: 133
             },
             "12": {
                 loc: {
@@ -6988,7 +7080,8 @@ var cov_18eh2feipe = function () {
                         line: 134,
                         column: 80
                     }
-                }]
+                }],
+                line: 134
             },
             "13": {
                 loc: {
@@ -7020,7 +7113,8 @@ var cov_18eh2feipe = function () {
                         line: 135,
                         column: 70
                     }
-                }]
+                }],
+                line: 135
             },
             "14": {
                 loc: {
@@ -7052,7 +7146,8 @@ var cov_18eh2feipe = function () {
                         line: 162,
                         column: 17
                     }
-                }]
+                }],
+                line: 136
             },
             "15": {
                 loc: {
@@ -7084,7 +7179,8 @@ var cov_18eh2feipe = function () {
                         line: 145,
                         column: 21
                     }
-                }]
+                }],
+                line: 137
             },
             "16": {
                 loc: {
@@ -7116,7 +7212,8 @@ var cov_18eh2feipe = function () {
                         line: 137,
                         column: 40
                     }
-                }]
+                }],
+                line: 137
             },
             "17": {
                 loc: {
@@ -7148,7 +7245,8 @@ var cov_18eh2feipe = function () {
                         line: 145,
                         column: 21
                     }
-                }]
+                }],
+                line: 139
             },
             "18": {
                 loc: {
@@ -7180,7 +7278,8 @@ var cov_18eh2feipe = function () {
                         line: 145,
                         column: 21
                     }
-                }]
+                }],
+                line: 141
             },
             "19": {
                 loc: {
@@ -7212,7 +7311,8 @@ var cov_18eh2feipe = function () {
                         line: 150,
                         column: 21
                     }
-                }]
+                }],
+                line: 148
             },
             "20": {
                 loc: {
@@ -7244,7 +7344,8 @@ var cov_18eh2feipe = function () {
                         line: 153,
                         column: 21
                     }
-                }]
+                }],
+                line: 151
             },
             "21": {
                 loc: {
@@ -7276,7 +7377,8 @@ var cov_18eh2feipe = function () {
                         line: 156,
                         column: 21
                     }
-                }]
+                }],
+                line: 154
             },
             "22": {
                 loc: {
@@ -7308,7 +7410,8 @@ var cov_18eh2feipe = function () {
                         line: 160,
                         column: 21
                     }
-                }]
+                }],
+                line: 157
             },
             "23": {
                 loc: {
@@ -7340,7 +7443,8 @@ var cov_18eh2feipe = function () {
                         line: 173,
                         column: 9
                     }
-                }]
+                }],
+                line: 169
             },
             "24": {
                 loc: {
@@ -7372,7 +7476,8 @@ var cov_18eh2feipe = function () {
                         line: 179,
                         column: 9
                     }
-                }]
+                }],
+                line: 177
             },
             "25": {
                 loc: {
@@ -7404,7 +7509,8 @@ var cov_18eh2feipe = function () {
                         line: 203,
                         column: 13
                     }
-                }]
+                }],
+                line: 193
             },
             "26": {
                 loc: {
@@ -7436,7 +7542,8 @@ var cov_18eh2feipe = function () {
                         line: 220,
                         column: 13
                     }
-                }]
+                }],
+                line: 205
             },
             "27": {
                 loc: {
@@ -7468,7 +7575,8 @@ var cov_18eh2feipe = function () {
                         line: 218,
                         column: 21
                     }
-                }]
+                }],
+                line: 209
             },
             "28": {
                 loc: {
@@ -7509,7 +7617,8 @@ var cov_18eh2feipe = function () {
                         line: 209,
                         column: 81
                     }
-                }]
+                }],
+                line: 209
             },
             "29": {
                 loc: {
@@ -7541,359 +7650,338 @@ var cov_18eh2feipe = function () {
                         line: 218,
                         column: 21
                     }
-                }]
+                }],
+                line: 213
             },
             "30": {
                 loc: {
                     start: {
-                        line: 226,
+                        line: 225,
                         column: 16
                     },
                     end: {
-                        line: 228,
+                        line: 231,
                         column: 17
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 226,
+                        line: 225,
                         column: 16
                     },
                     end: {
-                        line: 228,
+                        line: 231,
                         column: 17
                     }
                 }, {
                     start: {
-                        line: 226,
+                        line: 225,
                         column: 16
                     },
                     end: {
-                        line: 228,
+                        line: 231,
                         column: 17
                     }
-                }]
+                }],
+                line: 225
             },
             "31": {
                 loc: {
                     start: {
-                        line: 229,
-                        column: 16
+                        line: 228,
+                        column: 20
                     },
                     end: {
-                        line: 235,
-                        column: 17
+                        line: 230,
+                        column: 21
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 229,
-                        column: 16
+                        line: 228,
+                        column: 20
                     },
                     end: {
-                        line: 235,
-                        column: 17
+                        line: 230,
+                        column: 21
                     }
                 }, {
                     start: {
-                        line: 229,
-                        column: 16
+                        line: 228,
+                        column: 20
                     },
                     end: {
-                        line: 235,
-                        column: 17
+                        line: 230,
+                        column: 21
                     }
-                }]
+                }],
+                line: 228
             },
             "32": {
                 loc: {
                     start: {
-                        line: 232,
-                        column: 20
-                    },
-                    end: {
-                        line: 234,
-                        column: 21
-                    }
-                },
-                type: "if",
-                locations: [{
-                    start: {
-                        line: 232,
-                        column: 20
-                    },
-                    end: {
-                        line: 234,
-                        column: 21
-                    }
-                }, {
-                    start: {
-                        line: 232,
-                        column: 20
-                    },
-                    end: {
-                        line: 234,
-                        column: 21
-                    }
-                }]
-            },
-            "33": {
-                loc: {
-                    start: {
-                        line: 232,
+                        line: 228,
                         column: 24
                     },
                     end: {
-                        line: 232,
+                        line: 228,
                         column: 80
                     }
                 },
                 type: "binary-expr",
                 locations: [{
                     start: {
-                        line: 232,
+                        line: 228,
                         column: 24
                     },
                     end: {
-                        line: 232,
+                        line: 228,
                         column: 49
                     }
                 }, {
                     start: {
-                        line: 232,
+                        line: 228,
                         column: 53
                     },
                     end: {
-                        line: 232,
+                        line: 228,
                         column: 80
                     }
-                }]
+                }],
+                line: 228
+            },
+            "33": {
+                loc: {
+                    start: {
+                        line: 237,
+                        column: 16
+                    },
+                    end: {
+                        line: 239,
+                        column: 17
+                    }
+                },
+                type: "if",
+                locations: [{
+                    start: {
+                        line: 237,
+                        column: 16
+                    },
+                    end: {
+                        line: 239,
+                        column: 17
+                    }
+                }, {
+                    start: {
+                        line: 237,
+                        column: 16
+                    },
+                    end: {
+                        line: 239,
+                        column: 17
+                    }
+                }],
+                line: 237
             },
             "34": {
                 loc: {
                     start: {
-                        line: 241,
+                        line: 240,
                         column: 16
                     },
                     end: {
-                        line: 243,
+                        line: 249,
                         column: 17
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 241,
+                        line: 240,
                         column: 16
                     },
                     end: {
-                        line: 243,
+                        line: 249,
                         column: 17
                     }
                 }, {
                     start: {
-                        line: 241,
+                        line: 240,
                         column: 16
                     },
                     end: {
-                        line: 243,
+                        line: 249,
                         column: 17
                     }
-                }]
+                }],
+                line: 240
             },
             "35": {
                 loc: {
                     start: {
-                        line: 244,
-                        column: 16
+                        line: 242,
+                        column: 20
                     },
                     end: {
-                        line: 253,
-                        column: 17
+                        line: 244,
+                        column: 21
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 244,
-                        column: 16
+                        line: 242,
+                        column: 20
                     },
                     end: {
-                        line: 253,
-                        column: 17
+                        line: 244,
+                        column: 21
                     }
                 }, {
                     start: {
-                        line: 244,
-                        column: 16
+                        line: 242,
+                        column: 20
                     },
                     end: {
-                        line: 253,
-                        column: 17
+                        line: 244,
+                        column: 21
                     }
-                }]
+                }],
+                line: 242
             },
             "36": {
                 loc: {
                     start: {
-                        line: 246,
-                        column: 20
+                        line: 242,
+                        column: 24
                     },
                     end: {
-                        line: 248,
-                        column: 21
+                        line: 242,
+                        column: 79
                     }
                 },
-                type: "if",
+                type: "binary-expr",
                 locations: [{
                     start: {
-                        line: 246,
-                        column: 20
+                        line: 242,
+                        column: 24
                     },
                     end: {
-                        line: 248,
-                        column: 21
+                        line: 242,
+                        column: 48
                     }
                 }, {
                     start: {
-                        line: 246,
-                        column: 20
+                        line: 242,
+                        column: 52
                     },
                     end: {
-                        line: 248,
-                        column: 21
+                        line: 242,
+                        column: 79
                     }
-                }]
+                }],
+                line: 242
             },
             "37": {
                 loc: {
                     start: {
                         line: 246,
-                        column: 24
+                        column: 20
                     },
                     end: {
-                        line: 246,
-                        column: 79
+                        line: 248,
+                        column: 21
                     }
                 },
-                type: "binary-expr",
+                type: "if",
                 locations: [{
                     start: {
                         line: 246,
-                        column: 24
+                        column: 20
                     },
                     end: {
-                        line: 246,
-                        column: 48
+                        line: 248,
+                        column: 21
                     }
                 }, {
                     start: {
                         line: 246,
-                        column: 52
+                        column: 20
                     },
                     end: {
-                        line: 246,
-                        column: 79
+                        line: 248,
+                        column: 21
                     }
-                }]
+                }],
+                line: 246
             },
             "38": {
                 loc: {
                     start: {
-                        line: 250,
-                        column: 20
+                        line: 251,
+                        column: 12
                     },
                     end: {
-                        line: 252,
-                        column: 21
+                        line: 255,
+                        column: 13
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 250,
-                        column: 20
+                        line: 251,
+                        column: 12
                     },
                     end: {
-                        line: 252,
-                        column: 21
+                        line: 255,
+                        column: 13
                     }
                 }, {
                     start: {
-                        line: 250,
-                        column: 20
+                        line: 251,
+                        column: 12
                     },
                     end: {
-                        line: 252,
-                        column: 21
+                        line: 255,
+                        column: 13
                     }
-                }]
+                }],
+                line: 251
             },
             "39": {
                 loc: {
                     start: {
-                        line: 255,
+                        line: 269,
                         column: 12
                     },
                     end: {
-                        line: 259,
+                        line: 271,
                         column: 13
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 255,
+                        line: 269,
                         column: 12
                     },
                     end: {
-                        line: 259,
+                        line: 271,
                         column: 13
                     }
                 }, {
                     start: {
-                        line: 255,
+                        line: 269,
                         column: 12
                     },
                     end: {
-                        line: 259,
+                        line: 271,
                         column: 13
                     }
-                }]
-            },
-            "40": {
-                loc: {
-                    start: {
-                        line: 273,
-                        column: 12
-                    },
-                    end: {
-                        line: 275,
-                        column: 13
-                    }
-                },
-                type: "if",
-                locations: [{
-                    start: {
-                        line: 273,
-                        column: 12
-                    },
-                    end: {
-                        line: 275,
-                        column: 13
-                    }
-                }, {
-                    start: {
-                        line: 273,
-                        column: 12
-                    },
-                    end: {
-                        line: 275,
-                        column: 13
-                    }
-                }]
+                }],
+                line: 269
             }
         },
         s: {
@@ -8053,10 +8141,7 @@ var cov_18eh2feipe = function () {
             "153": 0,
             "154": 0,
             "155": 0,
-            "156": 0,
-            "157": 0,
-            "158": 0,
-            "159": 0
+            "156": 0
         },
         f: {
             "0": 0,
@@ -8119,8 +8204,7 @@ var cov_18eh2feipe = function () {
             "36": [0, 0],
             "37": [0, 0],
             "38": [0, 0],
-            "39": [0, 0],
-            "40": [0, 0]
+            "39": [0, 0]
         },
         _coverageSchema: "332fd63041d2c1bcb487cc26dd0d5f7d97098a6c"
     },
@@ -8421,152 +8505,140 @@ var BibLatexExporter = exports.BibLatexExporter = function () {
                 var newMarks = (++cov_18eh2feipe.s[110], []);
                 ++cov_18eh2feipe.s[111];
                 if (node.marks) {
-                    (function () {
-                        ++cov_18eh2feipe.b[26][0];
+                    ++cov_18eh2feipe.b[26][0];
 
-                        var mathMode = (++cov_18eh2feipe.s[112], false);
-                        ++cov_18eh2feipe.s[113];
-                        node.marks.forEach(function (mark) {
-                            ++cov_18eh2feipe.f[14];
-                            ++cov_18eh2feipe.s[114];
+                    var mathMode = (++cov_18eh2feipe.s[112], false);
+                    ++cov_18eh2feipe.s[113];
+                    node.marks.forEach(function (mark) {
+                        ++cov_18eh2feipe.f[14];
+                        ++cov_18eh2feipe.s[114];
 
-                            // We need to activate mathmode for the lowest level sub/sup node.
-                            if (((++cov_18eh2feipe.b[28][0], mark.type === 'sup') || (++cov_18eh2feipe.b[28][1], mark.type === 'sub')) && (++cov_18eh2feipe.b[28][2], !mathMode)) {
-                                ++cov_18eh2feipe.b[27][0];
-                                ++cov_18eh2feipe.s[115];
+                        // We need to activate mathmode for the lowest level sub/sup node.
+                        if (((++cov_18eh2feipe.b[28][0], mark.type === 'sup') || (++cov_18eh2feipe.b[28][1], mark.type === 'sub')) && (++cov_18eh2feipe.b[28][2], !mathMode)) {
+                            ++cov_18eh2feipe.b[27][0];
+                            ++cov_18eh2feipe.s[115];
 
-                                newMarks.push('math');
-                                ++cov_18eh2feipe.s[116];
-                                newMarks.push(mark.type);
-                                ++cov_18eh2feipe.s[117];
-                                mathMode = true;
-                            } else {
-                                    ++cov_18eh2feipe.b[27][1];
-                                    ++cov_18eh2feipe.s[118];
-                                    if (mark.type === 'nocase') {
-                                        ++cov_18eh2feipe.b[29][0];
-                                        ++cov_18eh2feipe.s[119];
+                            newMarks.push('math');
+                            ++cov_18eh2feipe.s[116];
+                            newMarks.push(mark.type);
+                            ++cov_18eh2feipe.s[117];
+                            mathMode = true;
+                        } else {
+                                ++cov_18eh2feipe.b[27][1];
+                                ++cov_18eh2feipe.s[118];
+                                if (mark.type === 'nocase') {
+                                    ++cov_18eh2feipe.b[29][0];
+                                    ++cov_18eh2feipe.s[119];
 
-                                        // No case has to be applied at the top level to be effective.
-                                        newMarks.unshift(mark.type);
-                                    } else {
-                                        ++cov_18eh2feipe.b[29][1];
-                                        ++cov_18eh2feipe.s[120];
+                                    // No case has to be applied at the top level to be effective.
+                                    newMarks.unshift(mark.type);
+                                } else {
+                                    ++cov_18eh2feipe.b[29][1];
+                                    ++cov_18eh2feipe.s[120];
 
-                                        newMarks.push(mark.type);
-                                    }
+                                    newMarks.push(mark.type);
                                 }
-                        });
-                    })();
+                            }
+                    });
                 } else {
                     ++cov_18eh2feipe.b[26][1];
                 }
                 // close all tags that are not present in current text node.
                 // Go through last marksd in revrse order to close innermost tags first.
-                var closing = (++cov_18eh2feipe.s[121], false);
-                ++cov_18eh2feipe.s[122];
+                ++cov_18eh2feipe.s[121];
                 lastMarks.slice().reverse().forEach(function (mark, rIndex) {
                     ++cov_18eh2feipe.f[15];
 
-                    var index = (++cov_18eh2feipe.s[123], lastMarks.length - rIndex);
-                    ++cov_18eh2feipe.s[124];
+                    var index = (++cov_18eh2feipe.s[122], lastMarks.length - rIndex - 1);
+                    ++cov_18eh2feipe.s[123];
                     if (mark != newMarks[index]) {
                         ++cov_18eh2feipe.b[30][0];
-                        ++cov_18eh2feipe.s[125];
-
-                        closing = true;
-                    } else {
-                        ++cov_18eh2feipe.b[30][1];
-                    }
-                    ++cov_18eh2feipe.s[126];
-                    if (closing) {
-                        ++cov_18eh2feipe.b[31][0];
-                        ++cov_18eh2feipe.s[127];
+                        ++cov_18eh2feipe.s[124];
 
                         latex += TAGS[mark].close;
                         // If not inside of a nocase, add a protective brace around tag.
-                        ++cov_18eh2feipe.s[128];
-                        if ((++cov_18eh2feipe.b[33][0], lastMarks[0] !== 'nocase') && (++cov_18eh2feipe.b[33][1], TAGS[mark].open[0] === '\\')) {
-                            ++cov_18eh2feipe.b[32][0];
-                            ++cov_18eh2feipe.s[129];
+                        ++cov_18eh2feipe.s[125];
+                        if ((++cov_18eh2feipe.b[32][0], lastMarks[0] !== 'nocase') && (++cov_18eh2feipe.b[32][1], TAGS[mark].open[0] === '\\')) {
+                            ++cov_18eh2feipe.b[31][0];
+                            ++cov_18eh2feipe.s[126];
 
                             latex += '}';
                         } else {
-                            ++cov_18eh2feipe.b[32][1];
+                            ++cov_18eh2feipe.b[31][1];
                         }
                     } else {
-                        ++cov_18eh2feipe.b[31][1];
+                        ++cov_18eh2feipe.b[30][1];
                     }
                 });
                 // open all new tags that were not present in the last text node.
-                var opening = (++cov_18eh2feipe.s[130], false),
-                    verbatim = (++cov_18eh2feipe.s[131], false);
-                ++cov_18eh2feipe.s[132];
+                var opening = (++cov_18eh2feipe.s[127], false),
+                    verbatim = (++cov_18eh2feipe.s[128], false);
+                ++cov_18eh2feipe.s[129];
                 newMarks.forEach(function (mark, index) {
                     ++cov_18eh2feipe.f[16];
-                    ++cov_18eh2feipe.s[133];
+                    ++cov_18eh2feipe.s[130];
 
                     if (mark != lastMarks[index]) {
-                        ++cov_18eh2feipe.b[34][0];
-                        ++cov_18eh2feipe.s[134];
+                        ++cov_18eh2feipe.b[33][0];
+                        ++cov_18eh2feipe.s[131];
 
                         opening = true;
                     } else {
-                        ++cov_18eh2feipe.b[34][1];
+                        ++cov_18eh2feipe.b[33][1];
                     }
-                    ++cov_18eh2feipe.s[135];
+                    ++cov_18eh2feipe.s[132];
                     if (opening) {
-                        ++cov_18eh2feipe.b[35][0];
-                        ++cov_18eh2feipe.s[136];
+                        ++cov_18eh2feipe.b[34][0];
+                        ++cov_18eh2feipe.s[133];
 
                         // If not inside of a nocase, add a protective brace around tag.
-                        if ((++cov_18eh2feipe.b[37][0], newMarks[0] !== 'nocase') && (++cov_18eh2feipe.b[37][1], TAGS[mark].open[0] === '\\')) {
-                            ++cov_18eh2feipe.b[36][0];
-                            ++cov_18eh2feipe.s[137];
+                        if ((++cov_18eh2feipe.b[36][0], newMarks[0] !== 'nocase') && (++cov_18eh2feipe.b[36][1], TAGS[mark].open[0] === '\\')) {
+                            ++cov_18eh2feipe.b[35][0];
+                            ++cov_18eh2feipe.s[134];
 
                             latex += '{';
                         } else {
-                            ++cov_18eh2feipe.b[36][1];
+                            ++cov_18eh2feipe.b[35][1];
                         }
-                        ++cov_18eh2feipe.s[138];
+                        ++cov_18eh2feipe.s[135];
                         latex += TAGS[mark].open;
-                        ++cov_18eh2feipe.s[139];
+                        ++cov_18eh2feipe.s[136];
                         if (TAGS[mark].verbatim) {
-                            ++cov_18eh2feipe.b[38][0];
-                            ++cov_18eh2feipe.s[140];
+                            ++cov_18eh2feipe.b[37][0];
+                            ++cov_18eh2feipe.s[137];
 
                             verbatim = true;
                         } else {
-                            ++cov_18eh2feipe.b[38][1];
+                            ++cov_18eh2feipe.b[37][1];
                         }
                     } else {
-                        ++cov_18eh2feipe.b[35][1];
+                        ++cov_18eh2feipe.b[34][1];
                     }
                 });
-                ++cov_18eh2feipe.s[141];
+                ++cov_18eh2feipe.s[138];
                 if (verbatim) {
-                    ++cov_18eh2feipe.b[39][0];
-                    ++cov_18eh2feipe.s[142];
+                    ++cov_18eh2feipe.b[38][0];
+                    ++cov_18eh2feipe.s[139];
 
                     latex += node.text;
                 } else {
-                    ++cov_18eh2feipe.b[39][1];
-                    ++cov_18eh2feipe.s[143];
+                    ++cov_18eh2feipe.b[38][1];
+                    ++cov_18eh2feipe.s[140];
 
                     latex += that._escapeTeX(node.text);
                 }
-                ++cov_18eh2feipe.s[144];
+                ++cov_18eh2feipe.s[141];
                 lastMarks = newMarks;
             });
             // Close all still open tags
-            ++cov_18eh2feipe.s[145];
+            ++cov_18eh2feipe.s[142];
             lastMarks.slice().reverse().forEach(function (mark) {
                 ++cov_18eh2feipe.f[17];
-                ++cov_18eh2feipe.s[146];
+                ++cov_18eh2feipe.s[143];
 
                 latex += TAGS[mark].close;
             });
-            ++cov_18eh2feipe.s[147];
+            ++cov_18eh2feipe.s[144];
             return latex;
         }
     }, {
@@ -8574,33 +8646,33 @@ var BibLatexExporter = exports.BibLatexExporter = function () {
         value: function _getBibtexString(biblist) {
             ++cov_18eh2feipe.f[18];
 
-            var len = (++cov_18eh2feipe.s[148], biblist.length),
-                str = (++cov_18eh2feipe.s[149], '');
-            ++cov_18eh2feipe.s[150];
+            var len = (++cov_18eh2feipe.s[145], biblist.length),
+                str = (++cov_18eh2feipe.s[146], '');
+            ++cov_18eh2feipe.s[147];
             for (var i = 0; i < len; i++) {
-                ++cov_18eh2feipe.s[151];
+                ++cov_18eh2feipe.s[148];
 
                 if (0 < i) {
-                    ++cov_18eh2feipe.b[40][0];
-                    ++cov_18eh2feipe.s[152];
+                    ++cov_18eh2feipe.b[39][0];
+                    ++cov_18eh2feipe.s[149];
 
                     str += '\n\n';
                 } else {
-                    ++cov_18eh2feipe.b[40][1];
+                    ++cov_18eh2feipe.b[39][1];
                 }
-                var data = (++cov_18eh2feipe.s[153], biblist[i]);
-                ++cov_18eh2feipe.s[154];
+                var data = (++cov_18eh2feipe.s[150], biblist[i]);
+                ++cov_18eh2feipe.s[151];
                 str += "@" + data.type + "{" + data.key;
-                ++cov_18eh2feipe.s[155];
+                ++cov_18eh2feipe.s[152];
                 for (var vKey in data.values) {
-                    var value = (++cov_18eh2feipe.s[156], ("{" + data.values[vKey] + "}").replace(/\{\} \# /g, '').replace(/\# \{\}/g, ''));
-                    ++cov_18eh2feipe.s[157];
+                    var value = (++cov_18eh2feipe.s[153], ("{" + data.values[vKey] + "}").replace(/\{\} \# /g, '').replace(/\# \{\}/g, ''));
+                    ++cov_18eh2feipe.s[154];
                     str += ",\n" + vKey + " = " + value;
                 }
-                ++cov_18eh2feipe.s[158];
+                ++cov_18eh2feipe.s[155];
                 str += "\n}";
             }
-            ++cov_18eh2feipe.s[159];
+            ++cov_18eh2feipe.s[156];
             return str;
         }
     }, {
@@ -8745,9 +8817,9 @@ var BibLatexExporter = exports.BibLatexExporter = function () {
                 };
 
                 for (var fKey in bib.fields) {
-                    var _ret2 = _loop(fKey);
+                    var _ret = _loop(fKey);
 
-                    if (_ret2 === "continue") continue;
+                    if (_ret === "continue") continue;
                 }
                 ++cov_18eh2feipe.s[48];
                 bibEntry.values = fValues;
@@ -8833,7 +8905,7 @@ var _createClass3 = _interopRequireDefault(_createClass2);
 
 var cov_2dpcoexk8q = function () {
     var path = "/home/travis/build/fiduswriter/biblatex-csl-converter/src/export/csl.js",
-        hash = "0179d513386c34e283cd5baac1e89aac1f28c219",
+        hash = "518b35e4660e9b9b16fda570f1e7ce95a7da4570",
         global = new Function('return this')(),
         gcv = "__coverage__",
         coverageData = {
@@ -9525,7 +9597,7 @@ var cov_2dpcoexk8q = function () {
                     column: 8
                 },
                 end: {
-                    line: 174,
+                    line: 171,
                     column: 10
                 }
             },
@@ -9625,7 +9697,7 @@ var cov_2dpcoexk8q = function () {
                     column: 12
                 },
                 end: {
-                    line: 161,
+                    line: 158,
                     column: 14
                 }
             },
@@ -9636,7 +9708,7 @@ var cov_2dpcoexk8q = function () {
                 },
                 end: {
                     line: 154,
-                    column: 53
+                    column: 57
                 }
             },
             "80": {
@@ -9656,47 +9728,47 @@ var cov_2dpcoexk8q = function () {
                 },
                 end: {
                     line: 156,
-                    column: 34
+                    column: 44
                 }
             },
             "82": {
                 start: {
-                    line: 158,
-                    column: 16
+                    line: 160,
+                    column: 26
                 },
                 end: {
                     line: 160,
-                    column: 17
+                    column: 31
                 }
             },
             "83": {
                 start: {
-                    line: 159,
-                    column: 20
+                    line: 161,
+                    column: 12
                 },
                 end: {
-                    line: 159,
-                    column: 44
+                    line: 168,
+                    column: 14
                 }
             },
             "84": {
                 start: {
-                    line: 163,
-                    column: 26
+                    line: 162,
+                    column: 16
                 },
                 end: {
-                    line: 163,
-                    column: 31
+                    line: 164,
+                    column: 17
                 }
             },
             "85": {
                 start: {
-                    line: 164,
-                    column: 12
+                    line: 163,
+                    column: 20
                 },
                 end: {
-                    line: 171,
-                    column: 14
+                    line: 163,
+                    column: 34
                 }
             },
             "86": {
@@ -9716,47 +9788,47 @@ var cov_2dpcoexk8q = function () {
                 },
                 end: {
                     line: 166,
-                    column: 34
+                    column: 43
                 }
             },
             "88": {
                 start: {
-                    line: 168,
-                    column: 16
+                    line: 169,
+                    column: 12
                 },
                 end: {
-                    line: 170,
-                    column: 17
+                    line: 169,
+                    column: 29
                 }
             },
             "89": {
                 start: {
-                    line: 169,
-                    column: 20
+                    line: 170,
+                    column: 12
                 },
                 end: {
-                    line: 169,
-                    column: 43
+                    line: 170,
+                    column: 32
                 }
             },
             "90": {
                 start: {
-                    line: 172,
-                    column: 12
+                    line: 173,
+                    column: 8
                 },
                 end: {
-                    line: 172,
-                    column: 29
+                    line: 175,
+                    column: 10
                 }
             },
             "91": {
                 start: {
-                    line: 173,
+                    line: 174,
                     column: 12
                 },
                 end: {
-                    line: 173,
-                    column: 32
+                    line: 174,
+                    column: 36
                 }
             },
             "92": {
@@ -9765,68 +9837,68 @@ var cov_2dpcoexk8q = function () {
                     column: 8
                 },
                 end: {
-                    line: 178,
-                    column: 10
+                    line: 176,
+                    column: 19
                 }
             },
             "93": {
                 start: {
-                    line: 177,
-                    column: 12
+                    line: 180,
+                    column: 22
                 },
                 end: {
-                    line: 177,
-                    column: 36
+                    line: 180,
+                    column: 40
                 }
             },
             "94": {
                 start: {
-                    line: 179,
+                    line: 181,
                     column: 8
                 },
                 end: {
-                    line: 179,
-                    column: 19
+                    line: 192,
+                    column: 9
                 }
             },
             "95": {
                 start: {
-                    line: 183,
-                    column: 22
+                    line: 182,
+                    column: 12
                 },
                 end: {
-                    line: 183,
-                    column: 40
+                    line: 187,
+                    column: 13
                 }
             },
             "96": {
                 start: {
-                    line: 184,
-                    column: 8
+                    line: 189,
+                    column: 12
                 },
                 end: {
-                    line: 195,
-                    column: 9
+                    line: 191,
+                    column: 13
                 }
             },
             "97": {
                 start: {
-                    line: 185,
-                    column: 12
+                    line: 197,
+                    column: 8
                 },
                 end: {
-                    line: 190,
-                    column: 13
+                    line: 199,
+                    column: 9
                 }
             },
             "98": {
                 start: {
-                    line: 192,
+                    line: 198,
                     column: 12
                 },
                 end: {
-                    line: 194,
-                    column: 13
+                    line: 198,
+                    column: 43
                 }
             },
             "99": {
@@ -9835,78 +9907,78 @@ var cov_2dpcoexk8q = function () {
                     column: 8
                 },
                 end: {
-                    line: 202,
-                    column: 9
+                    line: 200,
+                    column: 24
                 }
             },
             "100": {
                 start: {
-                    line: 201,
-                    column: 12
+                    line: 204,
+                    column: 28
                 },
                 end: {
-                    line: 201,
-                    column: 43
+                    line: 204,
+                    column: 30
                 }
             },
             "101": {
                 start: {
-                    line: 203,
-                    column: 8
+                    line: 204,
+                    column: 39
                 },
                 end: {
-                    line: 203,
-                    column: 24
+                    line: 204,
+                    column: 43
                 }
             },
             "102": {
                 start: {
-                    line: 207,
-                    column: 28
+                    line: 205,
+                    column: 8
                 },
                 end: {
-                    line: 207,
-                    column: 30
+                    line: 225,
+                    column: 10
                 }
             },
             "103": {
                 start: {
-                    line: 207,
-                    column: 39
+                    line: 206,
+                    column: 31
                 },
                 end: {
-                    line: 207,
-                    column: 43
+                    line: 206,
+                    column: 33
                 }
             },
             "104": {
                 start: {
-                    line: 208,
-                    column: 8
+                    line: 207,
+                    column: 12
                 },
                 end: {
-                    line: 228,
-                    column: 10
+                    line: 223,
+                    column: 13
                 }
             },
             "105": {
                 start: {
-                    line: 209,
-                    column: 31
+                    line: 208,
+                    column: 16
                 },
                 end: {
-                    line: 209,
-                    column: 33
+                    line: 208,
+                    column: 72
                 }
             },
             "106": {
                 start: {
                     line: 210,
-                    column: 12
+                    column: 16
                 },
                 end: {
-                    line: 226,
-                    column: 13
+                    line: 210,
+                    column: 68
                 }
             },
             "107": {
@@ -9916,27 +9988,27 @@ var cov_2dpcoexk8q = function () {
                 },
                 end: {
                     line: 211,
-                    column: 72
+                    column: 70
                 }
             },
             "108": {
                 start: {
-                    line: 213,
+                    line: 212,
                     column: 16
                 },
                 end: {
-                    line: 213,
-                    column: 68
+                    line: 214,
+                    column: 17
                 }
             },
             "109": {
                 start: {
-                    line: 214,
-                    column: 16
+                    line: 213,
+                    column: 20
                 },
                 end: {
-                    line: 214,
-                    column: 70
+                    line: 213,
+                    column: 74
                 }
             },
             "110": {
@@ -9945,7 +10017,7 @@ var cov_2dpcoexk8q = function () {
                     column: 16
                 },
                 end: {
-                    line: 217,
+                    line: 221,
                     column: 17
                 }
             },
@@ -9955,77 +10027,57 @@ var cov_2dpcoexk8q = function () {
                     column: 20
                 },
                 end: {
-                    line: 216,
-                    column: 74
+                    line: 220,
+                    column: 21
                 }
             },
             "112": {
                 start: {
-                    line: 218,
-                    column: 16
+                    line: 217,
+                    column: 24
                 },
                 end: {
-                    line: 224,
-                    column: 17
+                    line: 217,
+                    column: 93
                 }
             },
             "113": {
                 start: {
                     line: 219,
-                    column: 20
+                    column: 24
                 },
                 end: {
-                    line: 223,
-                    column: 21
+                    line: 219,
+                    column: 89
                 }
             },
             "114": {
                 start: {
-                    line: 220,
-                    column: 24
+                    line: 222,
+                    column: 16
                 },
                 end: {
-                    line: 220,
-                    column: 93
+                    line: 222,
+                    column: 73
                 }
             },
             "115": {
                 start: {
-                    line: 222,
-                    column: 24
+                    line: 224,
+                    column: 12
                 },
                 end: {
-                    line: 222,
-                    column: 89
+                    line: 224,
+                    column: 44
                 }
             },
             "116": {
                 start: {
-                    line: 225,
-                    column: 16
-                },
-                end: {
-                    line: 225,
-                    column: 73
-                }
-            },
-            "117": {
-                start: {
-                    line: 227,
-                    column: 12
-                },
-                end: {
-                    line: 227,
-                    column: 44
-                }
-            },
-            "118": {
-                start: {
-                    line: 229,
+                    line: 226,
                     column: 8
                 },
                 end: {
-                    line: 229,
+                    line: 226,
                     column: 28
                 }
             }
@@ -10052,7 +10104,8 @@ var cov_2dpcoexk8q = function () {
                         line: 30,
                         column: 5
                     }
-                }
+                },
+                line: 21
             },
             "1": {
                 name: "(anonymous_1)",
@@ -10075,7 +10128,8 @@ var cov_2dpcoexk8q = function () {
                         line: 40,
                         column: 5
                     }
-                }
+                },
+                line: 32
             },
             "2": {
                 name: "(anonymous_2)",
@@ -10098,7 +10152,8 @@ var cov_2dpcoexk8q = function () {
                         line: 99,
                         column: 5
                     }
-                }
+                },
+                line: 45
             },
             "3": {
                 name: "(anonymous_3)",
@@ -10121,7 +10176,8 @@ var cov_2dpcoexk8q = function () {
                         line: 77,
                         column: 90
                     }
-                }
+                },
+                line: 77
             },
             "4": {
                 name: "(anonymous_4)",
@@ -10144,7 +10200,8 @@ var cov_2dpcoexk8q = function () {
                         line: 83,
                         column: 25
                     }
-                }
+                },
+                line: 81
             },
             "5": {
                 name: "(anonymous_5)",
@@ -10167,7 +10224,8 @@ var cov_2dpcoexk8q = function () {
                         line: 112,
                         column: 5
                     }
-                }
+                },
+                line: 101
             },
             "6": {
                 name: "(anonymous_6)",
@@ -10190,7 +10248,8 @@ var cov_2dpcoexk8q = function () {
                         line: 119,
                         column: 5
                     }
-                }
+                },
+                line: 114
             },
             "7": {
                 name: "(anonymous_7)",
@@ -10213,7 +10272,8 @@ var cov_2dpcoexk8q = function () {
                         line: 118,
                         column: 9
                     }
-                }
+                },
+                line: 116
             },
             "8": {
                 name: "(anonymous_8)",
@@ -10236,7 +10296,8 @@ var cov_2dpcoexk8q = function () {
                         line: 117,
                         column: 66
                     }
-                }
+                },
+                line: 117
             },
             "9": {
                 name: "(anonymous_9)",
@@ -10259,7 +10320,8 @@ var cov_2dpcoexk8q = function () {
                         line: 128,
                         column: 5
                     }
-                }
+                },
+                line: 121
             },
             "10": {
                 name: "(anonymous_10)",
@@ -10279,10 +10341,11 @@ var cov_2dpcoexk8q = function () {
                         column: 26
                     },
                     end: {
-                        line: 180,
+                        line: 177,
                         column: 5
                     }
-                }
+                },
+                line: 130
             },
             "11": {
                 name: "(anonymous_11)",
@@ -10302,10 +10365,11 @@ var cov_2dpcoexk8q = function () {
                         column: 33
                     },
                     end: {
-                        line: 174,
+                        line: 171,
                         column: 9
                     }
-                }
+                },
+                line: 132
             },
             "12": {
                 name: "(anonymous_12)",
@@ -10328,7 +10392,8 @@ var cov_2dpcoexk8q = function () {
                         line: 148,
                         column: 17
                     }
-                }
+                },
+                line: 146
             },
             "13": {
                 name: "(anonymous_13)",
@@ -10348,148 +10413,155 @@ var cov_2dpcoexk8q = function () {
                         column: 64
                     },
                     end: {
-                        line: 161,
+                        line: 158,
                         column: 13
                     }
-                }
+                },
+                line: 153
             },
             "14": {
                 name: "(anonymous_14)",
                 decl: {
                     start: {
-                        line: 164,
+                        line: 161,
                         column: 29
                     },
                     end: {
-                        line: 164,
+                        line: 161,
                         column: 30
                     }
                 },
                 loc: {
                     start: {
-                        line: 164,
+                        line: 161,
                         column: 44
                     },
                     end: {
-                        line: 171,
+                        line: 168,
                         column: 13
                     }
-                }
+                },
+                line: 161
             },
             "15": {
                 name: "(anonymous_15)",
                 decl: {
                     start: {
-                        line: 176,
+                        line: 173,
                         column: 44
                     },
                     end: {
-                        line: 176,
+                        line: 173,
                         column: 45
                     }
                 },
                 loc: {
                     start: {
-                        line: 176,
+                        line: 173,
                         column: 52
                     },
                     end: {
-                        line: 178,
+                        line: 175,
                         column: 9
                     }
-                }
+                },
+                line: 173
             },
             "16": {
                 name: "(anonymous_16)",
                 decl: {
                     start: {
-                        line: 182,
+                        line: 179,
                         column: 4
                     },
                     end: {
-                        line: 182,
+                        line: 179,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 182,
+                        line: 179,
                         column: 25
                     },
                     end: {
-                        line: 196,
+                        line: 193,
                         column: 5
                     }
-                }
+                },
+                line: 179
             },
             "17": {
                 name: "(anonymous_17)",
                 decl: {
                     start: {
-                        line: 198,
+                        line: 195,
                         column: 4
                     },
                     end: {
-                        line: 198,
+                        line: 195,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 198,
+                        line: 195,
                         column: 26
                     },
                     end: {
-                        line: 204,
+                        line: 201,
                         column: 5
                     }
-                }
+                },
+                line: 195
             },
             "18": {
                 name: "(anonymous_18)",
                 decl: {
                     start: {
-                        line: 206,
+                        line: 203,
                         column: 4
                     },
                     end: {
-                        line: 206,
+                        line: 203,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 206,
+                        line: 203,
                         column: 26
                     },
                     end: {
-                        line: 230,
+                        line: 227,
                         column: 5
                     }
-                }
+                },
+                line: 203
             },
             "19": {
                 name: "(anonymous_19)",
                 decl: {
                     start: {
-                        line: 208,
+                        line: 205,
                         column: 25
                     },
                     end: {
-                        line: 208,
+                        line: 205,
                         column: 26
                     }
                 },
                 loc: {
                     start: {
-                        line: 208,
+                        line: 205,
                         column: 35
                     },
                     end: {
-                        line: 228,
+                        line: 225,
                         column: 9
                     }
-                }
+                },
+                line: 205
             }
         },
         branchMap: {
@@ -10523,7 +10595,8 @@ var cov_2dpcoexk8q = function () {
                         line: 27,
                         column: 9
                     }
-                }]
+                }],
+                line: 23
             },
             "1": {
                 loc: {
@@ -10555,7 +10628,8 @@ var cov_2dpcoexk8q = function () {
                         line: 37,
                         column: 13
                     }
-                }]
+                }],
+                line: 34
             },
             "2": {
                 loc: {
@@ -10587,7 +10661,8 @@ var cov_2dpcoexk8q = function () {
                         line: 95,
                         column: 13
                     }
-                }]
+                }],
+                line: 48
             },
             "3": {
                 loc: {
@@ -10628,7 +10703,8 @@ var cov_2dpcoexk8q = function () {
                         line: 48,
                         column: 96
                     }
-                }]
+                }],
+                line: 48
             },
             "4": {
                 loc: {
@@ -10768,7 +10844,8 @@ var cov_2dpcoexk8q = function () {
                         line: 93,
                         column: 68
                     }
-                }]
+                }],
+                line: 52
             },
             "5": {
                 loc: {
@@ -10800,7 +10877,8 @@ var cov_2dpcoexk8q = function () {
                         line: 111,
                         column: 9
                     }
-                }]
+                }],
+                line: 102
             },
             "6": {
                 loc: {
@@ -10832,7 +10910,8 @@ var cov_2dpcoexk8q = function () {
                         line: 108,
                         column: 13
                     }
-                }]
+                }],
+                line: 104
             },
             "7": {
                 loc: {
@@ -10864,7 +10943,8 @@ var cov_2dpcoexk8q = function () {
                         line: 126,
                         column: 9
                     }
-                }]
+                }],
+                line: 124
             },
             "8": {
                 loc: {
@@ -10896,7 +10976,8 @@ var cov_2dpcoexk8q = function () {
                         line: 143,
                         column: 13
                     }
-                }]
+                }],
+                line: 133
             },
             "9": {
                 loc: {
@@ -10928,7 +11009,8 @@ var cov_2dpcoexk8q = function () {
                         line: 149,
                         column: 13
                     }
-                }]
+                }],
+                line: 145
             },
             "10": {
                 loc: {
@@ -10960,39 +11042,41 @@ var cov_2dpcoexk8q = function () {
                         line: 157,
                         column: 17
                     }
-                }]
+                }],
+                line: 155
             },
             "11": {
                 loc: {
                     start: {
-                        line: 158,
+                        line: 162,
                         column: 16
                     },
                     end: {
-                        line: 160,
+                        line: 164,
                         column: 17
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 158,
+                        line: 162,
                         column: 16
                     },
                     end: {
-                        line: 160,
+                        line: 164,
                         column: 17
                     }
                 }, {
                     start: {
-                        line: 158,
+                        line: 162,
                         column: 16
                     },
                     end: {
-                        line: 160,
+                        line: 164,
                         column: 17
                     }
-                }]
+                }],
+                line: 162
             },
             "12": {
                 loc: {
@@ -11024,135 +11108,140 @@ var cov_2dpcoexk8q = function () {
                         line: 167,
                         column: 17
                     }
-                }]
+                }],
+                line: 165
             },
             "13": {
                 loc: {
                     start: {
-                        line: 168,
-                        column: 16
+                        line: 181,
+                        column: 8
                     },
                     end: {
-                        line: 170,
-                        column: 17
+                        line: 192,
+                        column: 9
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 168,
-                        column: 16
+                        line: 181,
+                        column: 8
                     },
                     end: {
-                        line: 170,
-                        column: 17
+                        line: 192,
+                        column: 9
                     }
                 }, {
                     start: {
-                        line: 168,
-                        column: 16
+                        line: 181,
+                        column: 8
                     },
                     end: {
-                        line: 170,
-                        column: 17
+                        line: 192,
+                        column: 9
                     }
-                }]
+                }],
+                line: 181
             },
             "14": {
                 loc: {
                     start: {
-                        line: 184,
+                        line: 197,
                         column: 8
                     },
                     end: {
-                        line: 195,
+                        line: 199,
                         column: 9
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 184,
+                        line: 197,
                         column: 8
                     },
                     end: {
-                        line: 195,
+                        line: 199,
                         column: 9
                     }
                 }, {
                     start: {
-                        line: 184,
+                        line: 197,
                         column: 8
                     },
                     end: {
-                        line: 195,
+                        line: 199,
                         column: 9
                     }
-                }]
+                }],
+                line: 197
             },
             "15": {
                 loc: {
                     start: {
-                        line: 200,
-                        column: 8
+                        line: 207,
+                        column: 12
                     },
                     end: {
-                        line: 202,
-                        column: 9
+                        line: 223,
+                        column: 13
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 200,
-                        column: 8
+                        line: 207,
+                        column: 12
                     },
                     end: {
-                        line: 202,
-                        column: 9
+                        line: 223,
+                        column: 13
                     }
                 }, {
                     start: {
-                        line: 200,
-                        column: 8
+                        line: 207,
+                        column: 12
                     },
                     end: {
-                        line: 202,
-                        column: 9
+                        line: 223,
+                        column: 13
                     }
-                }]
+                }],
+                line: 207
             },
             "16": {
                 loc: {
                     start: {
-                        line: 210,
-                        column: 12
+                        line: 212,
+                        column: 16
                     },
                     end: {
-                        line: 226,
-                        column: 13
+                        line: 214,
+                        column: 17
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 210,
-                        column: 12
+                        line: 212,
+                        column: 16
                     },
                     end: {
-                        line: 226,
-                        column: 13
+                        line: 214,
+                        column: 17
                     }
                 }, {
                     start: {
-                        line: 210,
-                        column: 12
+                        line: 212,
+                        column: 16
                     },
                     end: {
-                        line: 226,
-                        column: 13
+                        line: 214,
+                        column: 17
                     }
-                }]
+                }],
+                line: 212
             },
             "17": {
                 loc: {
@@ -11161,7 +11250,7 @@ var cov_2dpcoexk8q = function () {
                         column: 16
                     },
                     end: {
-                        line: 217,
+                        line: 221,
                         column: 17
                     }
                 },
@@ -11172,7 +11261,7 @@ var cov_2dpcoexk8q = function () {
                         column: 16
                     },
                     end: {
-                        line: 217,
+                        line: 221,
                         column: 17
                     }
                 }, {
@@ -11181,74 +11270,44 @@ var cov_2dpcoexk8q = function () {
                         column: 16
                     },
                     end: {
-                        line: 217,
+                        line: 221,
                         column: 17
                     }
-                }]
+                }],
+                line: 215
             },
             "18": {
                 loc: {
                     start: {
-                        line: 218,
-                        column: 16
-                    },
-                    end: {
-                        line: 224,
-                        column: 17
-                    }
-                },
-                type: "if",
-                locations: [{
-                    start: {
-                        line: 218,
-                        column: 16
-                    },
-                    end: {
-                        line: 224,
-                        column: 17
-                    }
-                }, {
-                    start: {
-                        line: 218,
-                        column: 16
-                    },
-                    end: {
-                        line: 224,
-                        column: 17
-                    }
-                }]
-            },
-            "19": {
-                loc: {
-                    start: {
-                        line: 219,
+                        line: 216,
                         column: 20
                     },
                     end: {
-                        line: 223,
+                        line: 220,
                         column: 21
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 219,
+                        line: 216,
                         column: 20
                     },
                     end: {
-                        line: 223,
+                        line: 220,
                         column: 21
                     }
                 }, {
                     start: {
-                        line: 219,
+                        line: 216,
                         column: 20
                     },
                     end: {
-                        line: 223,
+                        line: 220,
                         column: 21
                     }
-                }]
+                }],
+                line: 216
             }
         },
         s: {
@@ -11368,9 +11427,7 @@ var cov_2dpcoexk8q = function () {
             "113": 0,
             "114": 0,
             "115": 0,
-            "116": 0,
-            "117": 0,
-            "118": 0
+            "116": 0
         },
         f: {
             "0": 0,
@@ -11413,8 +11470,7 @@ var cov_2dpcoexk8q = function () {
             "15": [0, 0],
             "16": [0, 0],
             "17": [0, 0],
-            "18": [0, 0],
-            "19": [0, 0]
+            "18": [0, 0]
         },
         _coverageSchema: "332fd63041d2c1bcb487cc26dd0d5f7d97098a6c"
     },
@@ -11502,111 +11558,108 @@ var CSLExporter = exports.CSLExporter = function () {
                     var fType = (++cov_2dpcoexk8q.s[18], _const.BibFieldTypes[fKey]['type']);
                     var key = (++cov_2dpcoexk8q.s[19], _const.BibFieldTypes[fKey]['csl']);
                     ++cov_2dpcoexk8q.s[20];
+                    switch (fType) {
+                        case 'f_date':
+                            ++cov_2dpcoexk8q.b[4][0];
+                            ++cov_2dpcoexk8q.s[21];
 
-                    (function () {
-                        switch (fType) {
-                            case 'f_date':
-                                ++cov_2dpcoexk8q.b[4][0];
-                                ++cov_2dpcoexk8q.s[21];
+                            fValues[key] = _this._reformDate(fValue);
+                            ++cov_2dpcoexk8q.s[22];
+                            break;
+                        case 'f_integer':
+                            ++cov_2dpcoexk8q.b[4][1];
+                            ++cov_2dpcoexk8q.s[23];
 
-                                fValues[key] = _this._reformDate(fValue);
-                                ++cov_2dpcoexk8q.s[22];
-                                break;
-                            case 'f_integer':
-                                ++cov_2dpcoexk8q.b[4][1];
-                                ++cov_2dpcoexk8q.s[23];
+                            fValues[key] = _this._reformInteger(fValue);
+                            ++cov_2dpcoexk8q.s[24];
+                            break;
+                        case 'f_key':
+                            ++cov_2dpcoexk8q.b[4][2];
+                            ++cov_2dpcoexk8q.s[25];
 
-                                fValues[key] = _this._reformInteger(fValue);
-                                ++cov_2dpcoexk8q.s[24];
-                                break;
-                            case 'f_key':
-                                ++cov_2dpcoexk8q.b[4][2];
-                                ++cov_2dpcoexk8q.s[25];
+                            fValues[key] = _this._reformKey(fValue, fKey);
+                            ++cov_2dpcoexk8q.s[26];
+                            break;
+                        case 'f_literal':
+                            ++cov_2dpcoexk8q.b[4][3];
 
-                                fValues[key] = _this._reformKey(fValue, fKey);
-                                ++cov_2dpcoexk8q.s[26];
-                                break;
-                            case 'f_literal':
-                                ++cov_2dpcoexk8q.b[4][3];
+                        case 'f_long_literal':
+                            ++cov_2dpcoexk8q.b[4][4];
+                            ++cov_2dpcoexk8q.s[27];
 
-                            case 'f_long_literal':
-                                ++cov_2dpcoexk8q.b[4][4];
-                                ++cov_2dpcoexk8q.s[27];
+                            fValues[key] = _this._reformText(fValue);
+                            ++cov_2dpcoexk8q.s[28];
+                            break;
+                        case 'l_range':
+                            ++cov_2dpcoexk8q.b[4][5];
+                            ++cov_2dpcoexk8q.s[29];
 
-                                fValues[key] = _this._reformText(fValue);
-                                ++cov_2dpcoexk8q.s[28];
-                                break;
-                            case 'l_range':
-                                ++cov_2dpcoexk8q.b[4][5];
-                                ++cov_2dpcoexk8q.s[29];
+                            fValues[key] = _this._reformRange(fValue);
+                            ++cov_2dpcoexk8q.s[30];
+                            break;
+                        case 'f_title':
+                            ++cov_2dpcoexk8q.b[4][6];
+                            ++cov_2dpcoexk8q.s[31];
 
-                                fValues[key] = _this._reformRange(fValue);
-                                ++cov_2dpcoexk8q.s[30];
-                                break;
-                            case 'f_title':
-                                ++cov_2dpcoexk8q.b[4][6];
-                                ++cov_2dpcoexk8q.s[31];
+                            fValues[key] = _this._reformText(fValue);
+                            ++cov_2dpcoexk8q.s[32];
+                            break;
+                        case 'f_uri':
+                            ++cov_2dpcoexk8q.b[4][7];
 
-                                fValues[key] = _this._reformText(fValue);
-                                ++cov_2dpcoexk8q.s[32];
-                                break;
-                            case 'f_uri':
-                                ++cov_2dpcoexk8q.b[4][7];
+                        case 'f_verbatim':
+                            ++cov_2dpcoexk8q.b[4][8];
+                            ++cov_2dpcoexk8q.s[33];
 
-                            case 'f_verbatim':
-                                ++cov_2dpcoexk8q.b[4][8];
-                                ++cov_2dpcoexk8q.s[33];
+                            fValues[key] = fValue;
+                            ++cov_2dpcoexk8q.s[34];
+                            break;
+                        case 'l_key':
+                            ++cov_2dpcoexk8q.b[4][9];
+                            ++cov_2dpcoexk8q.s[35];
 
-                                fValues[key] = fValue;
-                                ++cov_2dpcoexk8q.s[34];
-                                break;
-                            case 'l_key':
-                                ++cov_2dpcoexk8q.b[4][9];
-                                ++cov_2dpcoexk8q.s[35];
+                            fValues[key] = fValue.map(function (key) {
+                                ++cov_2dpcoexk8q.f[3];
+                                ++cov_2dpcoexk8q.s[36];
+                                return that._reformKey(key, fKey);
+                            }).join(' and ');
+                            ++cov_2dpcoexk8q.s[37];
+                            break;
+                        case 'l_literal':
+                            ++cov_2dpcoexk8q.b[4][10];
 
-                                fValues[key] = fValue.map(function (key) {
-                                    ++cov_2dpcoexk8q.f[3];
-                                    ++cov_2dpcoexk8q.s[36];
-                                    return that._reformKey(key, fKey);
-                                }).join(' and ');
-                                ++cov_2dpcoexk8q.s[37];
-                                break;
-                            case 'l_literal':
-                                ++cov_2dpcoexk8q.b[4][10];
+                            var reformedTexts = (++cov_2dpcoexk8q.s[38], []);
+                            ++cov_2dpcoexk8q.s[39];
+                            fValue.forEach(function (text) {
+                                ++cov_2dpcoexk8q.f[4];
+                                ++cov_2dpcoexk8q.s[40];
 
-                                var reformedTexts = (++cov_2dpcoexk8q.s[38], []);
-                                ++cov_2dpcoexk8q.s[39];
-                                fValue.forEach(function (text) {
-                                    ++cov_2dpcoexk8q.f[4];
-                                    ++cov_2dpcoexk8q.s[40];
+                                reformedTexts.push(that._reformText(text));
+                            });
+                            ++cov_2dpcoexk8q.s[41];
+                            fValues[key] = reformedTexts.join(', ');
+                            ++cov_2dpcoexk8q.s[42];
+                            break;
+                        case 'l_name':
+                            ++cov_2dpcoexk8q.b[4][11];
+                            ++cov_2dpcoexk8q.s[43];
 
-                                    reformedTexts.push(that._reformText(text));
-                                });
-                                ++cov_2dpcoexk8q.s[41];
-                                fValues[key] = reformedTexts.join(', ');
-                                ++cov_2dpcoexk8q.s[42];
-                                break;
-                            case 'l_name':
-                                ++cov_2dpcoexk8q.b[4][11];
-                                ++cov_2dpcoexk8q.s[43];
+                            fValues[key] = _this._reformName(fValue);
+                            ++cov_2dpcoexk8q.s[44];
+                            break;
+                        case 'l_tag':
+                            ++cov_2dpcoexk8q.b[4][12];
+                            ++cov_2dpcoexk8q.s[45];
 
-                                fValues[key] = _this._reformName(fValue);
-                                ++cov_2dpcoexk8q.s[44];
-                                break;
-                            case 'l_tag':
-                                ++cov_2dpcoexk8q.b[4][12];
-                                ++cov_2dpcoexk8q.s[45];
+                            fValues[key] = fValue.join(', ');
+                            ++cov_2dpcoexk8q.s[46];
+                            break;
+                        default:
+                            ++cov_2dpcoexk8q.b[4][13];
+                            ++cov_2dpcoexk8q.s[47];
 
-                                fValues[key] = fValue.join(', ');
-                                ++cov_2dpcoexk8q.s[46];
-                                break;
-                            default:
-                                ++cov_2dpcoexk8q.b[4][13];
-                                ++cov_2dpcoexk8q.s[47];
-
-                                console.warn("Unrecognized type: " + fType + "!");
-                        }
-                    })();
+                            console.warn("Unrecognized type: " + fType + "!");
+                    }
                 } else {
                     ++cov_2dpcoexk8q.b[2][1];
                 }
@@ -11737,71 +11790,62 @@ var CSLExporter = exports.CSLExporter = function () {
                     ++cov_2dpcoexk8q.b[9][1];
                 }
                 // close all tags that are not present in current text node.
-                // Go through last marksd in reverse order to close innermost tags first.
+                // Go through last marks in reverse order to close innermost tags first.
                 var closing = (++cov_2dpcoexk8q.s[77], false);
                 ++cov_2dpcoexk8q.s[78];
                 lastMarks.slice().reverse().forEach(function (mark, rIndex) {
                     ++cov_2dpcoexk8q.f[13];
 
-                    var index = (++cov_2dpcoexk8q.s[79], lastMarks.length - rIndex);
+                    var index = (++cov_2dpcoexk8q.s[79], lastMarks.length - rIndex - 1);
                     ++cov_2dpcoexk8q.s[80];
                     if (mark != newMarks[index]) {
                         ++cov_2dpcoexk8q.b[10][0];
                         ++cov_2dpcoexk8q.s[81];
 
-                        closing = true;
+                        html += TAGS[mark].close;
                     } else {
                         ++cov_2dpcoexk8q.b[10][1];
                     }
-                    ++cov_2dpcoexk8q.s[82];
-                    if (closing) {
-                        ++cov_2dpcoexk8q.b[11][0];
-                        ++cov_2dpcoexk8q.s[83];
-
-                        html += TAGS[mark].close;
-                    } else {
-                        ++cov_2dpcoexk8q.b[11][1];
-                    }
                 });
                 // open all new tags that were not present in the last text node.
-                var opening = (++cov_2dpcoexk8q.s[84], false);
-                ++cov_2dpcoexk8q.s[85];
+                var opening = (++cov_2dpcoexk8q.s[82], false);
+                ++cov_2dpcoexk8q.s[83];
                 newMarks.forEach(function (mark, index) {
                     ++cov_2dpcoexk8q.f[14];
-                    ++cov_2dpcoexk8q.s[86];
+                    ++cov_2dpcoexk8q.s[84];
 
                     if (mark != lastMarks[index]) {
-                        ++cov_2dpcoexk8q.b[12][0];
-                        ++cov_2dpcoexk8q.s[87];
+                        ++cov_2dpcoexk8q.b[11][0];
+                        ++cov_2dpcoexk8q.s[85];
 
                         opening = true;
                     } else {
-                        ++cov_2dpcoexk8q.b[12][1];
+                        ++cov_2dpcoexk8q.b[11][1];
                     }
-                    ++cov_2dpcoexk8q.s[88];
+                    ++cov_2dpcoexk8q.s[86];
                     if (opening) {
-                        ++cov_2dpcoexk8q.b[13][0];
-                        ++cov_2dpcoexk8q.s[89];
+                        ++cov_2dpcoexk8q.b[12][0];
+                        ++cov_2dpcoexk8q.s[87];
 
                         html += TAGS[mark].open;
                     } else {
-                        ++cov_2dpcoexk8q.b[13][1];
+                        ++cov_2dpcoexk8q.b[12][1];
                     }
                 });
-                ++cov_2dpcoexk8q.s[90];
+                ++cov_2dpcoexk8q.s[88];
                 html += node.text;
-                ++cov_2dpcoexk8q.s[91];
+                ++cov_2dpcoexk8q.s[89];
                 lastMarks = newMarks;
             });
             // Close all still open tags
-            ++cov_2dpcoexk8q.s[92];
+            ++cov_2dpcoexk8q.s[90];
             lastMarks.slice().reverse().forEach(function (mark) {
                 ++cov_2dpcoexk8q.f[15];
-                ++cov_2dpcoexk8q.s[93];
+                ++cov_2dpcoexk8q.s[91];
 
                 html += TAGS[mark].close;
             });
-            ++cov_2dpcoexk8q.s[94];
+            ++cov_2dpcoexk8q.s[92];
             return html;
         }
     }, {
@@ -11809,18 +11853,18 @@ var CSLExporter = exports.CSLExporter = function () {
         value: function _reformDate(dateStr) {
             ++cov_2dpcoexk8q.f[16];
 
-            var dateObj = (++cov_2dpcoexk8q.s[95], (0, _edtf.edtfParse)(dateStr));
-            ++cov_2dpcoexk8q.s[96];
+            var dateObj = (++cov_2dpcoexk8q.s[93], (0, _edtf.edtfParse)(dateStr));
+            ++cov_2dpcoexk8q.s[94];
             if (dateObj.type === 'Interval') {
-                ++cov_2dpcoexk8q.b[14][0];
-                ++cov_2dpcoexk8q.s[97];
+                ++cov_2dpcoexk8q.b[13][0];
+                ++cov_2dpcoexk8q.s[95];
 
                 return {
                     'date-parts': [this._edtfToCSL(dateObj.values[0].values.slice(0, 3)), this._edtfToCSL(dateObj.values[1].values.slice(0, 3))]
                 };
             } else {
-                ++cov_2dpcoexk8q.b[14][1];
-                ++cov_2dpcoexk8q.s[98];
+                ++cov_2dpcoexk8q.b[13][1];
+                ++cov_2dpcoexk8q.s[96];
 
                 return {
                     'date-parts': [this._edtfToCSL(dateObj.values.slice(0, 3))]
@@ -11831,18 +11875,18 @@ var CSLExporter = exports.CSLExporter = function () {
         key: "_edtfToCSL",
         value: function _edtfToCSL(dateArray) {
             ++cov_2dpcoexk8q.f[17];
-            ++cov_2dpcoexk8q.s[99];
+            ++cov_2dpcoexk8q.s[97];
 
             // Add 1 to month (0-11 in edtf.js === 1-12 in CSL json)
             if (dateArray.length > 1) {
-                ++cov_2dpcoexk8q.b[15][0];
-                ++cov_2dpcoexk8q.s[100];
+                ++cov_2dpcoexk8q.b[14][0];
+                ++cov_2dpcoexk8q.s[98];
 
                 dateArray[1] = dateArray[1] + 1;
             } else {
-                ++cov_2dpcoexk8q.b[15][1];
+                ++cov_2dpcoexk8q.b[14][1];
             }
-            ++cov_2dpcoexk8q.s[101];
+            ++cov_2dpcoexk8q.s[99];
             return dateArray;
         }
     }, {
@@ -11850,61 +11894,61 @@ var CSLExporter = exports.CSLExporter = function () {
         value: function _reformName(theNames) {
             ++cov_2dpcoexk8q.f[18];
 
-            var reformedNames = (++cov_2dpcoexk8q.s[102], []),
-                that = (++cov_2dpcoexk8q.s[103], this);
-            ++cov_2dpcoexk8q.s[104];
+            var reformedNames = (++cov_2dpcoexk8q.s[100], []),
+                that = (++cov_2dpcoexk8q.s[101], this);
+            ++cov_2dpcoexk8q.s[102];
             theNames.forEach(function (name) {
                 ++cov_2dpcoexk8q.f[19];
 
-                var reformedName = (++cov_2dpcoexk8q.s[105], {});
-                ++cov_2dpcoexk8q.s[106];
+                var reformedName = (++cov_2dpcoexk8q.s[103], {});
+                ++cov_2dpcoexk8q.s[104];
                 if (name.literal) {
-                    ++cov_2dpcoexk8q.b[16][0];
-                    ++cov_2dpcoexk8q.s[107];
+                    ++cov_2dpcoexk8q.b[15][0];
+                    ++cov_2dpcoexk8q.s[105];
 
                     reformedName['literal'] = that._reformText(name.literal);
                 } else {
-                    ++cov_2dpcoexk8q.b[16][1];
-                    ++cov_2dpcoexk8q.s[108];
+                    ++cov_2dpcoexk8q.b[15][1];
+                    ++cov_2dpcoexk8q.s[106];
 
                     reformedName['given'] = that._reformText(name.given);
-                    ++cov_2dpcoexk8q.s[109];
+                    ++cov_2dpcoexk8q.s[107];
                     reformedName['family'] = that._reformText(name.family);
-                    ++cov_2dpcoexk8q.s[110];
+                    ++cov_2dpcoexk8q.s[108];
                     if (name.suffix) {
-                        ++cov_2dpcoexk8q.b[17][0];
-                        ++cov_2dpcoexk8q.s[111];
+                        ++cov_2dpcoexk8q.b[16][0];
+                        ++cov_2dpcoexk8q.s[109];
 
                         reformedName['suffix'] = that._reformText(name.suffix);
                     } else {
-                        ++cov_2dpcoexk8q.b[17][1];
+                        ++cov_2dpcoexk8q.b[16][1];
                     }
-                    ++cov_2dpcoexk8q.s[112];
+                    ++cov_2dpcoexk8q.s[110];
                     if (name.prefix) {
-                        ++cov_2dpcoexk8q.b[18][0];
-                        ++cov_2dpcoexk8q.s[113];
+                        ++cov_2dpcoexk8q.b[17][0];
+                        ++cov_2dpcoexk8q.s[111];
 
                         if (name.useprefix === true) {
-                            ++cov_2dpcoexk8q.b[19][0];
-                            ++cov_2dpcoexk8q.s[114];
+                            ++cov_2dpcoexk8q.b[18][0];
+                            ++cov_2dpcoexk8q.s[112];
 
                             reformedName['non-dropping-particle'] = that._reformText(name.prefix);
                         } else {
-                            ++cov_2dpcoexk8q.b[19][1];
-                            ++cov_2dpcoexk8q.s[115];
+                            ++cov_2dpcoexk8q.b[18][1];
+                            ++cov_2dpcoexk8q.s[113];
 
                             reformedName['dropping-particle'] = that._reformText(name.prefix);
                         }
                     } else {
-                        ++cov_2dpcoexk8q.b[18][1];
+                        ++cov_2dpcoexk8q.b[17][1];
                     }
-                    ++cov_2dpcoexk8q.s[116];
+                    ++cov_2dpcoexk8q.s[114];
                     reformedName['family'] = that._reformText(name['family']);
                 }
-                ++cov_2dpcoexk8q.s[117];
+                ++cov_2dpcoexk8q.s[115];
                 reformedNames.push(reformedName);
             });
-            ++cov_2dpcoexk8q.s[118];
+            ++cov_2dpcoexk8q.s[116];
             return reformedNames;
         }
     }, {
@@ -11972,7 +12016,7 @@ var _createClass3 = _interopRequireDefault(_createClass2);
 
 var cov_1nqd9talwx = function () {
     var path = "/home/travis/build/fiduswriter/biblatex-csl-converter/src/import/biblatex.js",
-        hash = "8a5d717444929ea29b127abe1793e1d7b5787b53",
+        hash = "a2c1064f321abd9b9aa9784b232ecba1cde9d462",
         global = new Function('return this')(),
         gcv = "__coverage__",
         coverageData = {
@@ -15511,7 +15555,8 @@ var cov_1nqd9talwx = function () {
                         line: 91,
                         column: 5
                     }
-                }
+                },
+                line: 65
             },
             "1": {
                 name: "(anonymous_1)",
@@ -15534,7 +15579,8 @@ var cov_1nqd9talwx = function () {
                         line: 95,
                         column: 5
                     }
-                }
+                },
+                line: 93
             },
             "2": {
                 name: "(anonymous_2)",
@@ -15557,7 +15603,8 @@ var cov_1nqd9talwx = function () {
                         line: 110,
                         column: 5
                     }
-                }
+                },
+                line: 97
             },
             "3": {
                 name: "(anonymous_3)",
@@ -15580,7 +15627,8 @@ var cov_1nqd9talwx = function () {
                         line: 120,
                         column: 5
                     }
-                }
+                },
+                line: 112
             },
             "4": {
                 name: "(anonymous_4)",
@@ -15603,7 +15651,8 @@ var cov_1nqd9talwx = function () {
                         line: 132,
                         column: 5
                     }
-                }
+                },
+                line: 122
             },
             "5": {
                 name: "(anonymous_5)",
@@ -15626,7 +15675,8 @@ var cov_1nqd9talwx = function () {
                         line: 144,
                         column: 5
                     }
-                }
+                },
+                line: 134
             },
             "6": {
                 name: "(anonymous_6)",
@@ -15649,7 +15699,8 @@ var cov_1nqd9talwx = function () {
                         line: 168,
                         column: 5
                     }
-                }
+                },
+                line: 146
             },
             "7": {
                 name: "(anonymous_7)",
@@ -15672,7 +15723,8 @@ var cov_1nqd9talwx = function () {
                         line: 186,
                         column: 5
                     }
-                }
+                },
+                line: 170
             },
             "8": {
                 name: "(anonymous_8)",
@@ -15695,7 +15747,8 @@ var cov_1nqd9talwx = function () {
                         line: 210,
                         column: 5
                     }
-                }
+                },
+                line: 188
             },
             "9": {
                 name: "(anonymous_9)",
@@ -15718,7 +15771,8 @@ var cov_1nqd9talwx = function () {
                         line: 220,
                         column: 5
                     }
-                }
+                },
+                line: 212
             },
             "10": {
                 name: "(anonymous_10)",
@@ -15741,7 +15795,8 @@ var cov_1nqd9talwx = function () {
                         line: 239,
                         column: 5
                     }
-                }
+                },
+                line: 222
             },
             "11": {
                 name: "(anonymous_11)",
@@ -15764,7 +15819,8 @@ var cov_1nqd9talwx = function () {
                         line: 264,
                         column: 5
                     }
-                }
+                },
+                line: 241
             },
             "12": {
                 name: "(anonymous_12)",
@@ -15787,7 +15843,8 @@ var cov_1nqd9talwx = function () {
                         line: 292,
                         column: 5
                     }
-                }
+                },
+                line: 266
             },
             "13": {
                 name: "(anonymous_13)",
@@ -15810,7 +15867,8 @@ var cov_1nqd9talwx = function () {
                         line: 505,
                         column: 5
                     }
-                }
+                },
+                line: 294
             },
             "14": {
                 name: "(anonymous_14)",
@@ -15833,7 +15891,8 @@ var cov_1nqd9talwx = function () {
                         line: 345,
                         column: 77
                     }
-                }
+                },
+                line: 345
             },
             "15": {
                 name: "(anonymous_15)",
@@ -15856,7 +15915,8 @@ var cov_1nqd9talwx = function () {
                         line: 386,
                         column: 17
                     }
-                }
+                },
+                line: 384
             },
             "16": {
                 name: "(anonymous_16)",
@@ -15879,7 +15939,8 @@ var cov_1nqd9talwx = function () {
                         line: 390,
                         column: 17
                     }
-                }
+                },
+                line: 388
             },
             "17": {
                 name: "(anonymous_17)",
@@ -15902,7 +15963,8 @@ var cov_1nqd9talwx = function () {
                         line: 484,
                         column: 113
                     }
-                }
+                },
+                line: 484
             },
             "18": {
                 name: "(anonymous_18)",
@@ -15925,7 +15987,8 @@ var cov_1nqd9talwx = function () {
                         line: 487,
                         column: 90
                     }
-                }
+                },
+                line: 487
             },
             "19": {
                 name: "(anonymous_19)",
@@ -15948,7 +16011,8 @@ var cov_1nqd9talwx = function () {
                         line: 494,
                         column: 21
                     }
-                }
+                },
+                line: 492
             },
             "20": {
                 name: "(anonymous_20)",
@@ -15971,7 +16035,8 @@ var cov_1nqd9talwx = function () {
                         line: 538,
                         column: 5
                     }
-                }
+                },
+                line: 507
             },
             "21": {
                 name: "(anonymous_21)",
@@ -15994,7 +16059,8 @@ var cov_1nqd9talwx = function () {
                         line: 521,
                         column: 17
                     }
-                }
+                },
+                line: 519
             },
             "22": {
                 name: "(anonymous_22)",
@@ -16017,7 +16083,8 @@ var cov_1nqd9talwx = function () {
                         line: 545,
                         column: 5
                     }
-                }
+                },
+                line: 540
             },
             "23": {
                 name: "(anonymous_23)",
@@ -16040,7 +16107,8 @@ var cov_1nqd9talwx = function () {
                         line: 553,
                         column: 5
                     }
-                }
+                },
+                line: 547
             },
             "24": {
                 name: "(anonymous_24)",
@@ -16063,7 +16131,8 @@ var cov_1nqd9talwx = function () {
                         line: 552,
                         column: 9
                     }
-                }
+                },
+                line: 549
             },
             "25": {
                 name: "(anonymous_25)",
@@ -16086,7 +16155,8 @@ var cov_1nqd9talwx = function () {
                         line: 567,
                         column: 5
                     }
-                }
+                },
+                line: 555
             },
             "26": {
                 name: "(anonymous_26)",
@@ -16109,7 +16179,8 @@ var cov_1nqd9talwx = function () {
                         line: 566,
                         column: 9
                     }
-                }
+                },
+                line: 556
             },
             "27": {
                 name: "(anonymous_27)",
@@ -16132,7 +16203,8 @@ var cov_1nqd9talwx = function () {
                         line: 571,
                         column: 5
                     }
-                }
+                },
+                line: 569
             },
             "28": {
                 name: "(anonymous_28)",
@@ -16155,7 +16227,8 @@ var cov_1nqd9talwx = function () {
                         line: 576,
                         column: 5
                     }
-                }
+                },
+                line: 573
             },
             "29": {
                 name: "(anonymous_29)",
@@ -16178,7 +16251,8 @@ var cov_1nqd9talwx = function () {
                         line: 597,
                         column: 5
                     }
-                }
+                },
+                line: 578
             },
             "30": {
                 name: "(anonymous_30)",
@@ -16201,7 +16275,8 @@ var cov_1nqd9talwx = function () {
                         line: 586,
                         column: 9
                     }
-                }
+                },
+                line: 584
             },
             "31": {
                 name: "(anonymous_31)",
@@ -16224,7 +16299,8 @@ var cov_1nqd9talwx = function () {
                         line: 618,
                         column: 5
                     }
-                }
+                },
+                line: 599
             },
             "32": {
                 name: "(anonymous_32)",
@@ -16247,7 +16323,8 @@ var cov_1nqd9talwx = function () {
                         line: 624,
                         column: 5
                     }
-                }
+                },
+                line: 620
             },
             "33": {
                 name: "(anonymous_33)",
@@ -16270,7 +16347,8 @@ var cov_1nqd9talwx = function () {
                         line: 629,
                         column: 5
                     }
-                }
+                },
+                line: 626
             },
             "34": {
                 name: "(anonymous_34)",
@@ -16293,7 +16371,8 @@ var cov_1nqd9talwx = function () {
                         line: 633,
                         column: 5
                     }
-                }
+                },
+                line: 631
             },
             "35": {
                 name: "(anonymous_35)",
@@ -16316,7 +16395,8 @@ var cov_1nqd9talwx = function () {
                         line: 647,
                         column: 5
                     }
-                }
+                },
+                line: 636
             },
             "36": {
                 name: "(anonymous_36)",
@@ -16339,7 +16419,8 @@ var cov_1nqd9talwx = function () {
                         line: 664,
                         column: 5
                     }
-                }
+                },
+                line: 649
             },
             "37": {
                 name: "(anonymous_37)",
@@ -16362,7 +16443,8 @@ var cov_1nqd9talwx = function () {
                         line: 759,
                         column: 5
                     }
-                }
+                },
+                line: 666
             },
             "38": {
                 name: "(anonymous_38)",
@@ -16385,7 +16467,8 @@ var cov_1nqd9talwx = function () {
                         line: 714,
                         column: 7
                     }
-                }
+                },
+                line: 712
             },
             "39": {
                 name: "(anonymous_39)",
@@ -16408,7 +16491,8 @@ var cov_1nqd9talwx = function () {
                         line: 723,
                         column: 78
                     }
-                }
+                },
+                line: 723
             },
             "40": {
                 name: "(anonymous_40)",
@@ -16431,7 +16515,8 @@ var cov_1nqd9talwx = function () {
                         line: 749,
                         column: 120
                     }
-                }
+                },
+                line: 749
             },
             "41": {
                 name: "(anonymous_41)",
@@ -16454,7 +16539,8 @@ var cov_1nqd9talwx = function () {
                         line: 766,
                         column: 5
                     }
-                }
+                },
+                line: 761
             },
             "42": {
                 name: "(anonymous_42)",
@@ -16477,7 +16563,8 @@ var cov_1nqd9talwx = function () {
                         line: 765,
                         column: 9
                     }
-                }
+                },
+                line: 763
             },
             "43": {
                 name: "(anonymous_43)",
@@ -16500,7 +16587,8 @@ var cov_1nqd9talwx = function () {
                         line: 773,
                         column: 5
                     }
-                }
+                },
+                line: 768
             }
         },
         branchMap: {
@@ -16525,7 +16613,8 @@ var cov_1nqd9talwx = function () {
                         line: 65,
                         column: 34
                     }
-                }]
+                }],
+                line: 65
             },
             "1": {
                 loc: {
@@ -16575,7 +16664,8 @@ var cov_1nqd9talwx = function () {
                         line: 94,
                         column: 63
                     }
-                }]
+                }],
+                line: 94
             },
             "2": {
                 loc: {
@@ -16607,7 +16697,8 @@ var cov_1nqd9talwx = function () {
                         line: 108,
                         column: 9
                     }
-                }]
+                }],
+                line: 99
             },
             "3": {
                 loc: {
@@ -16639,7 +16730,8 @@ var cov_1nqd9talwx = function () {
                         line: 118,
                         column: 9
                     }
-                }]
+                }],
+                line: 114
             },
             "4": {
                 loc: {
@@ -16671,7 +16763,8 @@ var cov_1nqd9talwx = function () {
                         line: 131,
                         column: 9
                     }
-                }]
+                }],
+                line: 126
             },
             "5": {
                 loc: {
@@ -16703,7 +16796,8 @@ var cov_1nqd9talwx = function () {
                         line: 136,
                         column: 15
                     }
-                }]
+                }],
+                line: 135
             },
             "6": {
                 loc: {
@@ -16735,7 +16829,8 @@ var cov_1nqd9talwx = function () {
                         line: 143,
                         column: 9
                     }
-                }]
+                }],
+                line: 139
             },
             "7": {
                 loc: {
@@ -16767,7 +16862,8 @@ var cov_1nqd9talwx = function () {
                         line: 165,
                         column: 13
                     }
-                }]
+                }],
+                line: 151
             },
             "8": {
                 loc: {
@@ -16799,7 +16895,8 @@ var cov_1nqd9talwx = function () {
                         line: 152,
                         column: 20
                     }
-                }]
+                }],
+                line: 151
             },
             "9": {
                 loc: {
@@ -16831,7 +16928,8 @@ var cov_1nqd9talwx = function () {
                         line: 159,
                         column: 17
                     }
-                }]
+                }],
+                line: 153
             },
             "10": {
                 loc: {
@@ -16863,7 +16961,8 @@ var cov_1nqd9talwx = function () {
                         line: 165,
                         column: 13
                     }
-                }]
+                }],
+                line: 160
             },
             "11": {
                 loc: {
@@ -16895,7 +16994,8 @@ var cov_1nqd9talwx = function () {
                         line: 161,
                         column: 20
                     }
-                }]
+                }],
+                line: 160
             },
             "12": {
                 loc: {
@@ -16927,7 +17027,8 @@ var cov_1nqd9talwx = function () {
                         line: 165,
                         column: 13
                     }
-                }]
+                }],
+                line: 163
             },
             "13": {
                 loc: {
@@ -16959,7 +17060,8 @@ var cov_1nqd9talwx = function () {
                         line: 183,
                         column: 13
                     }
-                }]
+                }],
+                line: 174
             },
             "14": {
                 loc: {
@@ -16991,7 +17093,8 @@ var cov_1nqd9talwx = function () {
                         line: 174,
                         column: 80
                     }
-                }]
+                }],
+                line: 174
             },
             "15": {
                 loc: {
@@ -17023,7 +17126,8 @@ var cov_1nqd9talwx = function () {
                         line: 183,
                         column: 13
                     }
-                }]
+                }],
+                line: 178
             },
             "16": {
                 loc: {
@@ -17055,7 +17159,8 @@ var cov_1nqd9talwx = function () {
                         line: 209,
                         column: 9
                     }
-                }]
+                }],
+                line: 190
             },
             "17": {
                 loc: {
@@ -17087,7 +17192,8 @@ var cov_1nqd9talwx = function () {
                         line: 209,
                         column: 9
                     }
-                }]
+                }],
+                line: 192
             },
             "18": {
                 loc: {
@@ -17119,7 +17225,8 @@ var cov_1nqd9talwx = function () {
                         line: 208,
                         column: 13
                     }
-                }]
+                }],
+                line: 196
             },
             "19": {
                 loc: {
@@ -17151,7 +17258,8 @@ var cov_1nqd9talwx = function () {
                         line: 208,
                         column: 13
                     }
-                }]
+                }],
+                line: 198
             },
             "20": {
                 loc: {
@@ -17183,7 +17291,8 @@ var cov_1nqd9talwx = function () {
                         line: 228,
                         column: 13
                     }
-                }]
+                }],
+                line: 225
             },
             "21": {
                 loc: {
@@ -17215,7 +17324,8 @@ var cov_1nqd9talwx = function () {
                         line: 237,
                         column: 13
                     }
-                }]
+                }],
+                line: 229
             },
             "22": {
                 loc: {
@@ -17247,7 +17357,8 @@ var cov_1nqd9talwx = function () {
                         line: 233,
                         column: 17
                     }
-                }]
+                }],
+                line: 230
             },
             "23": {
                 loc: {
@@ -17279,7 +17390,8 @@ var cov_1nqd9talwx = function () {
                         line: 230,
                         column: 59
                     }
-                }]
+                }],
+                line: 230
             },
             "24": {
                 loc: {
@@ -17311,7 +17423,8 @@ var cov_1nqd9talwx = function () {
                         line: 251,
                         column: 9
                     }
-                }]
+                }],
+                line: 243
             },
             "25": {
                 loc: {
@@ -17343,7 +17456,8 @@ var cov_1nqd9talwx = function () {
                         line: 263,
                         column: 9
                     }
-                }]
+                }],
+                line: 253
             },
             "26": {
                 loc: {
@@ -17375,7 +17489,8 @@ var cov_1nqd9talwx = function () {
                         line: 273,
                         column: 9
                     }
-                }]
+                }],
+                line: 268
             },
             "27": {
                 loc: {
@@ -17407,7 +17522,8 @@ var cov_1nqd9talwx = function () {
                         line: 281,
                         column: 13
                     }
-                }]
+                }],
+                line: 279
             },
             "28": {
                 loc: {
@@ -17439,7 +17555,8 @@ var cov_1nqd9talwx = function () {
                         line: 289,
                         column: 13
                     }
-                }]
+                }],
+                line: 283
             },
             "29": {
                 loc: {
@@ -17471,7 +17588,8 @@ var cov_1nqd9talwx = function () {
                         line: 312,
                         column: 9
                     }
-                }]
+                }],
+                line: 305
             },
             "30": {
                 loc: {
@@ -17503,7 +17621,8 @@ var cov_1nqd9talwx = function () {
                         line: 312,
                         column: 9
                     }
-                }]
+                }],
+                line: 308
             },
             "31": {
                 loc: {
@@ -17535,7 +17654,8 @@ var cov_1nqd9talwx = function () {
                         line: 308,
                         column: 52
                     }
-                }]
+                }],
+                line: 308
             },
             "32": {
                 loc: {
@@ -17567,7 +17687,8 @@ var cov_1nqd9talwx = function () {
                         line: 312,
                         column: 9
                     }
-                }]
+                }],
+                line: 310
             },
             "33": {
                 loc: {
@@ -17599,7 +17720,8 @@ var cov_1nqd9talwx = function () {
                         line: 338,
                         column: 9
                     }
-                }]
+                }],
+                line: 313
             },
             "34": {
                 loc: {
@@ -17631,7 +17753,8 @@ var cov_1nqd9talwx = function () {
                         line: 337,
                         column: 13
                     }
-                }]
+                }],
+                line: 314
             },
             "35": {
                 loc: {
@@ -17663,7 +17786,8 @@ var cov_1nqd9talwx = function () {
                         line: 330,
                         column: 17
                     }
-                }]
+                }],
+                line: 318
             },
             "36": {
                 loc: {
@@ -17695,7 +17819,8 @@ var cov_1nqd9talwx = function () {
                         line: 330,
                         column: 17
                     }
-                }]
+                }],
+                line: 322
             },
             "37": {
                 loc: {
@@ -17727,7 +17852,8 @@ var cov_1nqd9talwx = function () {
                         line: 322,
                         column: 60
                     }
-                }]
+                }],
+                line: 322
             },
             "38": {
                 loc: {
@@ -17759,7 +17885,8 @@ var cov_1nqd9talwx = function () {
                         line: 360,
                         column: 9
                     }
-                }]
+                }],
+                line: 342
             },
             "39": {
                 loc: {
@@ -17791,7 +17918,8 @@ var cov_1nqd9talwx = function () {
                         line: 342,
                         column: 55
                     }
-                }]
+                }],
+                line: 342
             },
             "40": {
                 loc: {
@@ -17823,7 +17951,8 @@ var cov_1nqd9talwx = function () {
                         line: 347,
                         column: 13
                     }
-                }]
+                }],
+                line: 345
             },
             "41": {
                 loc: {
@@ -17855,7 +17984,8 @@ var cov_1nqd9talwx = function () {
                         line: 360,
                         column: 9
                     }
-                }]
+                }],
+                line: 348
             },
             "42": {
                 loc: {
@@ -17887,7 +18017,8 @@ var cov_1nqd9talwx = function () {
                         line: 359,
                         column: 13
                     }
-                }]
+                }],
+                line: 354
             },
             "43": {
                 loc: {
@@ -17919,7 +18050,8 @@ var cov_1nqd9talwx = function () {
                         line: 358,
                         column: 17
                     }
-                }]
+                }],
+                line: 356
             },
             "44": {
                 loc: {
@@ -17951,7 +18083,8 @@ var cov_1nqd9talwx = function () {
                         line: 367,
                         column: 13
                     }
-                }]
+                }],
+                line: 364
             },
             "45": {
                 loc: {
@@ -17992,7 +18125,8 @@ var cov_1nqd9talwx = function () {
                         line: 364,
                         column: 96
                     }
-                }]
+                }],
+                line: 364
             },
             "46": {
                 loc: {
@@ -18024,7 +18158,8 @@ var cov_1nqd9talwx = function () {
                         line: 391,
                         column: 13
                     }
-                }]
+                }],
+                line: 371
             },
             "47": {
                 loc: {
@@ -18056,7 +18191,8 @@ var cov_1nqd9talwx = function () {
                         line: 382,
                         column: 17
                     }
-                }]
+                }],
+                line: 372
             },
             "48": {
                 loc: {
@@ -18088,7 +18224,8 @@ var cov_1nqd9talwx = function () {
                         line: 432,
                         column: 13
                     }
-                }]
+                }],
+                line: 396
             },
             "49": {
                 loc: {
@@ -18120,7 +18257,8 @@ var cov_1nqd9talwx = function () {
                         line: 404,
                         column: 17
                     }
-                }]
+                }],
+                line: 402
             },
             "50": {
                 loc: {
@@ -18152,7 +18290,8 @@ var cov_1nqd9talwx = function () {
                         line: 407,
                         column: 17
                     }
-                }]
+                }],
+                line: 405
             },
             "51": {
                 loc: {
@@ -18184,7 +18323,8 @@ var cov_1nqd9talwx = function () {
                         line: 409,
                         column: 105
                     }
-                }]
+                }],
+                line: 409
             },
             "52": {
                 loc: {
@@ -18216,7 +18356,8 @@ var cov_1nqd9talwx = function () {
                         line: 432,
                         column: 13
                     }
-                }]
+                }],
+                line: 411
             },
             "53": {
                 loc: {
@@ -18257,7 +18398,8 @@ var cov_1nqd9talwx = function () {
                         line: 414,
                         column: 48
                     }
-                }]
+                }],
+                line: 412
             },
             "54": {
                 loc: {
@@ -18289,7 +18431,8 @@ var cov_1nqd9talwx = function () {
                         line: 426,
                         column: 17
                     }
-                }]
+                }],
+                line: 424
             },
             "55": {
                 loc: {
@@ -18321,7 +18464,8 @@ var cov_1nqd9talwx = function () {
                         line: 429,
                         column: 17
                     }
-                }]
+                }],
+                line: 427
             },
             "56": {
                 loc: {
@@ -18461,7 +18605,8 @@ var cov_1nqd9talwx = function () {
                         line: 501,
                         column: 64
                     }
-                }]
+                }],
+                line: 436
             },
             "57": {
                 loc: {
@@ -18493,7 +18638,8 @@ var cov_1nqd9talwx = function () {
                         line: 447,
                         column: 21
                     }
-                }]
+                }],
+                line: 438
             },
             "58": {
                 loc: {
@@ -18525,7 +18671,8 @@ var cov_1nqd9talwx = function () {
                         line: 456,
                         column: 21
                     }
-                }]
+                }],
+                line: 454
             },
             "59": {
                 loc: {
@@ -18557,7 +18704,8 @@ var cov_1nqd9talwx = function () {
                         line: 478,
                         column: 21
                     }
-                }]
+                }],
+                line: 469
             },
             "60": {
                 loc: {
@@ -18589,7 +18737,8 @@ var cov_1nqd9talwx = function () {
                         line: 512,
                         column: 9
                     }
-                }]
+                }],
+                line: 510
             },
             "61": {
                 loc: {
@@ -18621,7 +18770,8 @@ var cov_1nqd9talwx = function () {
                         line: 510,
                         column: 78
                     }
-                }]
+                }],
+                line: 510
             },
             "62": {
                 loc: {
@@ -18653,7 +18803,8 @@ var cov_1nqd9talwx = function () {
                         line: 526,
                         column: 9
                     }
-                }]
+                }],
+                line: 513
             },
             "63": {
                 loc: {
@@ -18685,7 +18836,8 @@ var cov_1nqd9talwx = function () {
                         line: 525,
                         column: 13
                     }
-                }]
+                }],
+                line: 514
             },
             "64": {
                 loc: {
@@ -18717,7 +18869,8 @@ var cov_1nqd9talwx = function () {
                         line: 517,
                         column: 17
                     }
-                }]
+                }],
+                line: 515
             },
             "65": {
                 loc: {
@@ -18749,7 +18902,8 @@ var cov_1nqd9talwx = function () {
                         line: 524,
                         column: 17
                     }
-                }]
+                }],
+                line: 522
             },
             "66": {
                 loc: {
@@ -18781,7 +18935,8 @@ var cov_1nqd9talwx = function () {
                         line: 535,
                         column: 9
                     }
-                }]
+                }],
+                line: 527
             },
             "67": {
                 loc: {
@@ -18813,7 +18968,8 @@ var cov_1nqd9talwx = function () {
                         line: 565,
                         column: 13
                     }
-                }]
+                }],
+                line: 558
             },
             "68": {
                 loc: {
@@ -18845,7 +19001,8 @@ var cov_1nqd9talwx = function () {
                         line: 582,
                         column: 9
                     }
-                }]
+                }],
+                line: 580
             },
             "69": {
                 loc: {
@@ -18877,7 +19034,8 @@ var cov_1nqd9talwx = function () {
                         line: 594,
                         column: 9
                     }
-                }]
+                }],
+                line: 588
             },
             "70": {
                 loc: {
@@ -18909,7 +19067,8 @@ var cov_1nqd9talwx = function () {
                         line: 608,
                         column: 9
                     }
-                }]
+                }],
+                line: 606
             },
             "71": {
                 loc: {
@@ -18941,7 +19100,8 @@ var cov_1nqd9talwx = function () {
                         line: 612,
                         column: 9
                     }
-                }]
+                }],
+                line: 610
             },
             "72": {
                 loc: {
@@ -18973,7 +19133,8 @@ var cov_1nqd9talwx = function () {
                         line: 616,
                         column: 9
                     }
-                }]
+                }],
+                line: 614
             },
             "73": {
                 loc: {
@@ -19005,7 +19166,8 @@ var cov_1nqd9talwx = function () {
                         line: 661,
                         column: 13
                     }
-                }]
+                }],
+                line: 653
             },
             "74": {
                 loc: {
@@ -19037,7 +19199,8 @@ var cov_1nqd9talwx = function () {
                         line: 661,
                         column: 13
                     }
-                }]
+                }],
+                line: 655
             },
             "75": {
                 loc: {
@@ -19069,7 +19232,8 @@ var cov_1nqd9talwx = function () {
                         line: 661,
                         column: 13
                     }
-                }]
+                }],
+                line: 657
             },
             "76": {
                 loc: {
@@ -19101,7 +19265,8 @@ var cov_1nqd9talwx = function () {
                         line: 669,
                         column: 29
                     }
-                }]
+                }],
+                line: 669
             },
             "77": {
                 loc: {
@@ -19133,7 +19298,8 @@ var cov_1nqd9talwx = function () {
                         line: 687,
                         column: 90
                     }
-                }]
+                }],
+                line: 687
             },
             "78": {
                 loc: {
@@ -19165,7 +19331,8 @@ var cov_1nqd9talwx = function () {
                         line: 691,
                         column: 55
                     }
-                }]
+                }],
+                line: 691
             },
             "79": {
                 loc: {
@@ -19197,7 +19364,8 @@ var cov_1nqd9talwx = function () {
                         line: 697,
                         column: 23
                     }
-                }]
+                }],
+                line: 692
             },
             "80": {
                 loc: {
@@ -19229,7 +19397,8 @@ var cov_1nqd9talwx = function () {
                         line: 703,
                         column: 34
                     }
-                }]
+                }],
+                line: 703
             },
             "81": {
                 loc: {
@@ -19261,7 +19430,8 @@ var cov_1nqd9talwx = function () {
                         line: 717,
                         column: 37
                     }
-                }]
+                }],
+                line: 717
             },
             "82": {
                 loc: {
@@ -19293,7 +19463,8 @@ var cov_1nqd9talwx = function () {
                         line: 719,
                         column: 30
                     }
-                }]
+                }],
+                line: 719
             },
             "83": {
                 loc: {
@@ -19325,7 +19496,8 @@ var cov_1nqd9talwx = function () {
                         line: 723,
                         column: 84
                     }
-                }]
+                }],
+                line: 723
             },
             "84": {
                 loc: {
@@ -19357,7 +19529,8 @@ var cov_1nqd9talwx = function () {
                         line: 728,
                         column: 37
                     }
-                }]
+                }],
+                line: 728
             },
             "85": {
                 loc: {
@@ -19389,7 +19562,8 @@ var cov_1nqd9talwx = function () {
                         line: 741,
                         column: 9
                     }
-                }]
+                }],
+                line: 736
             },
             "86": {
                 loc: {
@@ -19430,7 +19604,8 @@ var cov_1nqd9talwx = function () {
                         line: 754,
                         column: 17
                     }
-                }]
+                }],
+                line: 743
             }
         },
         s: {
@@ -20568,25 +20743,23 @@ var BibLatexParser = exports.BibLatexParser = function () {
             var langEnglish = (++cov_1nqd9talwx.s[137], true); // By default we assume everything to be written in English.
             ++cov_1nqd9talwx.s[138];
             if ((++cov_1nqd9talwx.b[39][0], rawFields.langid) && (++cov_1nqd9talwx.b[39][1], rawFields.langid.length)) {
-                (function () {
-                    ++cov_1nqd9talwx.b[38][0];
+                ++cov_1nqd9talwx.b[38][0];
 
-                    var langString = (++cov_1nqd9talwx.s[139], rawFields.langid.toLowerCase().trim());
-                    var englishOptions = (++cov_1nqd9talwx.s[140], ['english', 'american', 'british', 'usenglish', 'ukenglish', 'canadian', 'australian', 'newzealand']);
-                    ++cov_1nqd9talwx.s[141];
-                    if (!englishOptions.some(function (option) {
-                        ++cov_1nqd9talwx.f[14];
-                        ++cov_1nqd9talwx.s[142];
-                        return langString === option;
-                    })) {
-                        ++cov_1nqd9talwx.b[40][0];
-                        ++cov_1nqd9talwx.s[143];
+                var langString = (++cov_1nqd9talwx.s[139], rawFields.langid.toLowerCase().trim());
+                var englishOptions = (++cov_1nqd9talwx.s[140], ['english', 'american', 'british', 'usenglish', 'ukenglish', 'canadian', 'australian', 'newzealand']);
+                ++cov_1nqd9talwx.s[141];
+                if (!englishOptions.some(function (option) {
+                    ++cov_1nqd9talwx.f[14];
+                    ++cov_1nqd9talwx.s[142];
+                    return langString === option;
+                })) {
+                    ++cov_1nqd9talwx.b[40][0];
+                    ++cov_1nqd9talwx.s[143];
 
-                        langEnglish = false;
-                    } else {
-                        ++cov_1nqd9talwx.b[40][1];
-                    }
-                })();
+                    langEnglish = false;
+                } else {
+                    ++cov_1nqd9talwx.b[40][1];
+                }
             } else {
                     ++cov_1nqd9talwx.b[38][1];
                     ++cov_1nqd9talwx.s[144];
@@ -20915,9 +21088,9 @@ var BibLatexParser = exports.BibLatexParser = function () {
             };
 
             iterateFields: for (var bKey in rawFields) {
-                var _ret2 = _loop(bKey);
+                var _ret = _loop(bKey);
 
-                if (_ret2 === "continue|iterateFields") continue iterateFields;
+                if (_ret === "continue|iterateFields") continue iterateFields;
             }
         }
     }, {
@@ -21436,14 +21609,14 @@ var BibLatexParser = exports.BibLatexParser = function () {
                 };
 
                 for (var _iterator = (0, _getIterator3.default)(lines), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                    var _ret3 = _loop2();
+                    var _ret2 = _loop2();
 
-                    switch (_ret3) {
+                    switch (_ret2) {
                         case "continue":
                             continue;
 
                         default:
-                            if ((typeof _ret3 === "undefined" ? "undefined" : (0, _typeof3.default)(_ret3)) === "object") return _ret3.v;
+                            if ((typeof _ret2 === "undefined" ? "undefined" : (0, _typeof3.default)(_ret2)) === "object") return _ret2.v;
                     }
                 }
             } catch (err) {
@@ -21701,7 +21874,7 @@ var _createClass3 = _interopRequireDefault(_createClass2);
 
 var cov_1nxm1be8cv = function () {
     var path = '/home/travis/build/fiduswriter/biblatex-csl-converter/src/import/literal-parser.js',
-        hash = 'e1362e7f543327cdbea8a4fcf08c21ceceb3914d',
+        hash = 'fe46b3b13f0474d620abf665a54a4517921ada3a',
         global = new Function('return this')(),
         gcv = '__coverage__',
         coverageData = {
@@ -23290,7 +23463,8 @@ var cov_1nxm1be8cv = function () {
                         line: 45,
                         column: 5
                     }
-                }
+                },
+                line: 34
             },
             '1': {
                 name: '(anonymous_1)',
@@ -23313,7 +23487,8 @@ var cov_1nxm1be8cv = function () {
                         line: 52,
                         column: 5
                     }
-                }
+                },
+                line: 48
             },
             '2': {
                 name: '(anonymous_2)',
@@ -23336,7 +23511,8 @@ var cov_1nxm1be8cv = function () {
                         line: 60,
                         column: 5
                     }
-                }
+                },
+                line: 54
             },
             '3': {
                 name: '(anonymous_3)',
@@ -23359,7 +23535,8 @@ var cov_1nxm1be8cv = function () {
                         line: 65,
                         column: 5
                     }
-                }
+                },
+                line: 62
             },
             '4': {
                 name: '(anonymous_4)',
@@ -23382,7 +23559,8 @@ var cov_1nxm1be8cv = function () {
                         line: 289,
                         column: 5
                     }
-                }
+                },
+                line: 67
             },
             '5': {
                 name: '(anonymous_5)',
@@ -23405,7 +23583,8 @@ var cov_1nxm1be8cv = function () {
                         line: 293,
                         column: 5
                     }
-                }
+                },
+                line: 291
             }
         },
         branchMap: {
@@ -23430,7 +23609,8 @@ var cov_1nxm1be8cv = function () {
                         line: 34,
                         column: 38
                     }
-                }]
+                }],
+                line: 34
             },
             '1': {
                 loc: {
@@ -23462,7 +23642,8 @@ var cov_1nxm1be8cv = function () {
                         line: 51,
                         column: 9
                     }
-                }]
+                }],
+                line: 49
             },
             '2': {
                 loc: {
@@ -23494,7 +23675,8 @@ var cov_1nxm1be8cv = function () {
                         line: 59,
                         column: 9
                     }
-                }]
+                }],
+                line: 55
             },
             '3': {
                 loc: {
@@ -23607,7 +23789,8 @@ var cov_1nxm1be8cv = function () {
                         line: 276,
                         column: 29
                     }
-                }]
+                }],
+                line: 71
             },
             '4': {
                 loc: {
@@ -23639,7 +23822,8 @@ var cov_1nxm1be8cv = function () {
                         line: 99,
                         column: 25
                     }
-                }]
+                }],
+                line: 74
             },
             '5': {
                 loc: {
@@ -23671,7 +23855,8 @@ var cov_1nxm1be8cv = function () {
                         line: 94,
                         column: 29
                     }
-                }]
+                }],
+                line: 78
             },
             '6': {
                 loc: {
@@ -23703,7 +23888,8 @@ var cov_1nxm1be8cv = function () {
                         line: 93,
                         column: 33
                     }
-                }]
+                }],
+                line: 81
             },
             '7': {
                 loc: {
@@ -23744,7 +23930,8 @@ var cov_1nxm1be8cv = function () {
                         line: 84,
                         column: 99
                     }
-                }]
+                }],
+                line: 82
             },
             '8': {
                 loc: {
@@ -23776,7 +23963,8 @@ var cov_1nxm1be8cv = function () {
                         line: 130,
                         column: 25
                     }
-                }]
+                }],
+                line: 102
             },
             '9': {
                 loc: {
@@ -23817,7 +24005,8 @@ var cov_1nxm1be8cv = function () {
                         line: 113,
                         column: 58
                     }
-                }]
+                }],
+                line: 110
             },
             '10': {
                 loc: {
@@ -23849,7 +24038,8 @@ var cov_1nxm1be8cv = function () {
                         line: 122,
                         column: 45
                     }
-                }]
+                }],
+                line: 116
             },
             '11': {
                 loc: {
@@ -23881,7 +24071,8 @@ var cov_1nxm1be8cv = function () {
                         line: 148,
                         column: 21
                     }
-                }]
+                }],
+                line: 132
             },
             '12': {
                 loc: {
@@ -23913,7 +24104,8 @@ var cov_1nxm1be8cv = function () {
                         line: 138,
                         column: 92
                     }
-                }]
+                }],
+                line: 138
             },
             '13': {
                 loc: {
@@ -23945,7 +24137,8 @@ var cov_1nxm1be8cv = function () {
                         line: 147,
                         column: 25
                     }
-                }]
+                }],
+                line: 143
             },
             '14': {
                 loc: {
@@ -23986,7 +24179,8 @@ var cov_1nxm1be8cv = function () {
                         line: 171,
                         column: 40
                     }
-                }]
+                }],
+                line: 151
             },
             '15': {
                 loc: {
@@ -24027,7 +24221,8 @@ var cov_1nxm1be8cv = function () {
                         line: 195,
                         column: 40
                     }
-                }]
+                }],
+                line: 175
             },
             '16': {
                 loc: {
@@ -24059,7 +24254,8 @@ var cov_1nxm1be8cv = function () {
                         line: 209,
                         column: 21
                     }
-                }]
+                }],
+                line: 200
             },
             '17': {
                 loc: {
@@ -24091,7 +24287,8 @@ var cov_1nxm1be8cv = function () {
                         line: 200,
                         column: 59
                     }
-                }]
+                }],
+                line: 200
             },
             '18': {
                 loc: {
@@ -24123,7 +24320,8 @@ var cov_1nxm1be8cv = function () {
                         line: 236,
                         column: 21
                     }
-                }]
+                }],
+                line: 214
             },
             '19': {
                 loc: {
@@ -24155,7 +24353,8 @@ var cov_1nxm1be8cv = function () {
                         line: 230,
                         column: 25
                     }
-                }]
+                }],
+                line: 216
             },
             '20': {
                 loc: {
@@ -24187,7 +24386,8 @@ var cov_1nxm1be8cv = function () {
                         line: 226,
                         column: 29
                     }
-                }]
+                }],
+                line: 219
             },
             '21': {
                 loc: {
@@ -24219,7 +24419,8 @@ var cov_1nxm1be8cv = function () {
                         line: 223,
                         column: 92
                     }
-                }]
+                }],
+                line: 223
             },
             '22': {
                 loc: {
@@ -24251,7 +24452,8 @@ var cov_1nxm1be8cv = function () {
                         line: 229,
                         column: 29
                     }
-                }]
+                }],
+                line: 227
             },
             '23': {
                 loc: {
@@ -24283,7 +24485,8 @@ var cov_1nxm1be8cv = function () {
                         line: 251,
                         column: 68
                     }
-                }]
+                }],
+                line: 251
             },
             '24': {
                 loc: {
@@ -24315,7 +24518,8 @@ var cov_1nxm1be8cv = function () {
                         line: 271,
                         column: 21
                     }
-                }]
+                }],
+                line: 263
             },
             '25': {
                 loc: {
@@ -24356,7 +24560,8 @@ var cov_1nxm1be8cv = function () {
                         line: 265,
                         column: 84
                     }
-                }]
+                }],
+                line: 263
             },
             '26': {
                 loc: {
@@ -24388,7 +24593,8 @@ var cov_1nxm1be8cv = function () {
                         line: 283,
                         column: 9
                     }
-                }]
+                }],
+                line: 280
             }
         },
         s: {
@@ -25205,7 +25411,7 @@ var _createClass3 = _interopRequireDefault(_createClass2);
 
 var cov_wwcio7ipy = function () {
     var path = '/home/travis/build/fiduswriter/biblatex-csl-converter/src/import/name-parser.js',
-        hash = '96a62f62b4bb7b4194863423314656917f8aff55',
+        hash = 'c0eedebd32b8e71ebc5b779e8966c0718a84f80e',
         global = new Function('return this')(),
         gcv = '__coverage__',
         coverageData = {
@@ -26134,7 +26340,8 @@ var cov_wwcio7ipy = function () {
                         line: 10,
                         column: 5
                     }
-                }
+                },
+                line: 5
             },
             '1': {
                 name: '(anonymous_1)',
@@ -26157,7 +26364,8 @@ var cov_wwcio7ipy = function () {
                         line: 45,
                         column: 5
                     }
-                }
+                },
+                line: 12
             },
             '2': {
                 name: '(anonymous_2)',
@@ -26180,7 +26388,8 @@ var cov_wwcio7ipy = function () {
                         line: 62,
                         column: 5
                     }
-                }
+                },
+                line: 47
             },
             '3': {
                 name: '(anonymous_3)',
@@ -26203,7 +26412,8 @@ var cov_wwcio7ipy = function () {
                         line: 61,
                         column: 9
                     }
-                }
+                },
+                line: 49
             },
             '4': {
                 name: '(anonymous_4)',
@@ -26226,7 +26436,8 @@ var cov_wwcio7ipy = function () {
                         line: 67,
                         column: 5
                     }
-                }
+                },
+                line: 64
             },
             '5': {
                 name: '(anonymous_5)',
@@ -26249,7 +26460,8 @@ var cov_wwcio7ipy = function () {
                         line: 111,
                         column: 5
                     }
-                }
+                },
+                line: 69
             },
             '6': {
                 name: '(anonymous_6)',
@@ -26272,7 +26484,8 @@ var cov_wwcio7ipy = function () {
                         line: 115,
                         column: 5
                     }
-                }
+                },
+                line: 113
             },
             '7': {
                 name: '(anonymous_7)',
@@ -26295,7 +26508,8 @@ var cov_wwcio7ipy = function () {
                         line: 132,
                         column: 5
                     }
-                }
+                },
+                line: 117
             },
             '8': {
                 name: '(anonymous_8)',
@@ -26318,7 +26532,8 @@ var cov_wwcio7ipy = function () {
                         line: 143,
                         column: 5
                     }
-                }
+                },
+                line: 134
             },
             '9': {
                 name: '(anonymous_9)',
@@ -26341,7 +26556,8 @@ var cov_wwcio7ipy = function () {
                         line: 150,
                         column: 5
                     }
-                }
+                },
+                line: 145
             },
             '10': {
                 name: '(anonymous_10)',
@@ -26364,7 +26580,8 @@ var cov_wwcio7ipy = function () {
                         line: 156,
                         column: 5
                     }
-                }
+                },
+                line: 152
             },
             '11': {
                 name: '(anonymous_11)',
@@ -26387,7 +26604,8 @@ var cov_wwcio7ipy = function () {
                         line: 161,
                         column: 5
                     }
-                }
+                },
+                line: 158
             }
         },
         branchMap: {
@@ -26421,7 +26639,8 @@ var cov_wwcio7ipy = function () {
                         line: 44,
                         column: 9
                     }
-                }]
+                }],
+                line: 14
             },
             '1': {
                 loc: {
@@ -26453,7 +26672,8 @@ var cov_wwcio7ipy = function () {
                         line: 14,
                         column: 61
                     }
-                }]
+                }],
+                line: 14
             },
             '2': {
                 loc: {
@@ -26485,7 +26705,8 @@ var cov_wwcio7ipy = function () {
                         line: 44,
                         column: 9
                     }
-                }]
+                }],
+                line: 17
             },
             '3': {
                 loc: {
@@ -26517,7 +26738,8 @@ var cov_wwcio7ipy = function () {
                         line: 44,
                         column: 9
                     }
-                }]
+                }],
+                line: 23
             },
             '4': {
                 loc: {
@@ -26549,7 +26771,8 @@ var cov_wwcio7ipy = function () {
                         line: 44,
                         column: 9
                     }
-                }]
+                }],
+                line: 26
             },
             '5': {
                 loc: {
@@ -26581,7 +26804,8 @@ var cov_wwcio7ipy = function () {
                         line: 40,
                         column: 13
                     }
-                }]
+                }],
+                line: 28
             },
             '6': {
                 loc: {
@@ -26613,7 +26837,8 @@ var cov_wwcio7ipy = function () {
                         line: 37,
                         column: 17
                     }
-                }]
+                }],
+                line: 34
             },
             '7': {
                 loc: {
@@ -26645,7 +26870,8 @@ var cov_wwcio7ipy = function () {
                         line: 34,
                         column: 66
                     }
-                }]
+                }],
+                line: 34
             },
             '8': {
                 loc: {
@@ -26677,7 +26903,8 @@ var cov_wwcio7ipy = function () {
                         line: 60,
                         column: 13
                     }
-                }]
+                }],
+                line: 52
             },
             '9': {
                 loc: {
@@ -26709,7 +26936,8 @@ var cov_wwcio7ipy = function () {
                         line: 60,
                         column: 13
                     }
-                }]
+                }],
+                line: 54
             },
             '10': {
                 loc: {
@@ -26741,7 +26969,8 @@ var cov_wwcio7ipy = function () {
                         line: 59,
                         column: 17
                     }
-                }]
+                }],
+                line: 55
             },
             '11': {
                 loc: {
@@ -26764,7 +26993,8 @@ var cov_wwcio7ipy = function () {
                         line: 69,
                         column: 40
                     }
-                }]
+                }],
+                line: 69
             },
             '12': {
                 loc: {
@@ -26823,7 +27053,8 @@ var cov_wwcio7ipy = function () {
                         line: 102,
                         column: 21
                     }
-                }]
+                }],
+                line: 78
             },
             '13': {
                 loc: {
@@ -26855,7 +27086,8 @@ var cov_wwcio7ipy = function () {
                         line: 102,
                         column: 21
                     }
-                }]
+                }],
+                line: 93
             },
             '14': {
                 loc: {
@@ -26896,7 +27128,8 @@ var cov_wwcio7ipy = function () {
                         line: 93,
                         column: 73
                     }
-                }]
+                }],
+                line: 93
             },
             '15': {
                 loc: {
@@ -26928,7 +27161,8 @@ var cov_wwcio7ipy = function () {
                         line: 101,
                         column: 25
                     }
-                }]
+                }],
+                line: 95
             },
             '16': {
                 loc: {
@@ -26960,7 +27194,8 @@ var cov_wwcio7ipy = function () {
                         line: 100,
                         column: 29
                     }
-                }]
+                }],
+                line: 97
             },
             '17': {
                 loc: {
@@ -26992,7 +27227,8 @@ var cov_wwcio7ipy = function () {
                         line: 109,
                         column: 9
                     }
-                }]
+                }],
+                line: 107
             },
             '18': {
                 loc: {
@@ -27015,7 +27251,8 @@ var cov_wwcio7ipy = function () {
                         line: 117,
                         column: 36
                     }
-                }]
+                }],
+                line: 117
             },
             '19': {
                 loc: {
@@ -27047,7 +27284,8 @@ var cov_wwcio7ipy = function () {
                         line: 123,
                         column: 9
                     }
-                }]
+                }],
+                line: 121
             },
             '20': {
                 loc: {
@@ -27079,7 +27317,8 @@ var cov_wwcio7ipy = function () {
                         line: 121,
                         column: 24
                     }
-                }]
+                }],
+                line: 121
             },
             '21': {
                 loc: {
@@ -27111,7 +27350,8 @@ var cov_wwcio7ipy = function () {
                         line: 127,
                         column: 9
                     }
-                }]
+                }],
+                line: 124
             },
             '22': {
                 loc: {
@@ -27143,7 +27383,8 @@ var cov_wwcio7ipy = function () {
                         line: 130,
                         column: 9
                     }
-                }]
+                }],
+                line: 128
             },
             '23': {
                 loc: {
@@ -27175,7 +27416,8 @@ var cov_wwcio7ipy = function () {
                         line: 140,
                         column: 13
                     }
-                }]
+                }],
+                line: 138
             }
         },
         s: {
@@ -27679,7 +27921,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var cov_20ypcm9kfp = function () {
     var path = '/home/travis/build/fiduswriter/biblatex-csl-converter/src/import/tools.js',
-        hash = '9a5f618b83a96f9adac8ac55c11c54aa808fbef0',
+        hash = '6a382533fd6b9f3622bafd0978e47337070d3edc',
         global = new Function('return this')(),
         gcv = '__coverage__',
         coverageData = {
@@ -27898,7 +28140,8 @@ var cov_20ypcm9kfp = function () {
                         line: 32,
                         column: 1
                     }
-                }
+                },
+                line: 2
             }
         },
         branchMap: {
@@ -27923,7 +28166,8 @@ var cov_20ypcm9kfp = function () {
                         line: 2,
                         column: 58
                     }
-                }]
+                }],
+                line: 2
             },
             '1': {
                 loc: {
@@ -27955,7 +28199,8 @@ var cov_20ypcm9kfp = function () {
                         line: 12,
                         column: 9
                     }
-                }]
+                }],
+                line: 10
             },
             '2': {
                 loc: {
@@ -28005,7 +28250,8 @@ var cov_20ypcm9kfp = function () {
                         line: 28,
                         column: 34
                     }
-                }]
+                }],
+                line: 13
             },
             '3': {
                 loc: {
@@ -28037,7 +28283,8 @@ var cov_20ypcm9kfp = function () {
                         line: 25,
                         column: 17
                     }
-                }]
+                }],
+                line: 21
             }
         },
         s: {
