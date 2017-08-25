@@ -22203,7 +22203,7 @@ var BiblatexFieldAliasTypes = exports.BiblatexFieldAliasTypes = (cov_1eryzo4kra.
     'electronic': 'online',
     'mastersthesis': 'thesis',
     'phdthesis': 'thesis',
-    'techreport': 'thesis',
+    'techreport': 'report',
     'www': 'online'
 });
 
