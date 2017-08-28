@@ -12400,7 +12400,7 @@ var _createClass3 = _interopRequireDefault(_createClass2);
 
 var cov_1nqd9talwx = function () {
     var path = "/home/travis/build/fiduswriter/biblatex-csl-converter/src/import/biblatex.js",
-        hash = "f7e9077e99cc9c6c07fdf1c168ae26d4b0ecc012",
+        hash = "3dc9740bb5675c19e6ccdbc2a4534173e3a2898e",
         global = new Function('return this')(),
         gcv = "__coverage__",
         coverageData = {
@@ -12903,7 +12903,7 @@ var cov_1nqd9talwx = function () {
                 },
                 end: {
                     line: 168,
-                    column: 37
+                    column: 44
                 }
             },
             "50": {
@@ -13173,7 +13173,7 @@ var cov_1nqd9talwx = function () {
                 },
                 end: {
                     line: 210,
-                    column: 33
+                    column: 40
                 }
             },
             "77": {
@@ -17681,7 +17681,7 @@ var cov_1nqd9talwx = function () {
                     },
                     end: {
                         line: 210,
-                        column: 33
+                        column: 40
                     }
                 }, {
                     start: {
@@ -21078,7 +21078,7 @@ var BibLatexParser = exports.BibLatexParser = function () {
 
                             this.match("}");
                             cov_1nqd9talwx.s[49]++;
-                            return string;
+                            return string.trim();
                         } else {
                             cov_1nqd9talwx.b[10][1]++;
                         }
@@ -21172,7 +21172,7 @@ var BibLatexParser = exports.BibLatexParser = function () {
 
                         this.match('"');
                         cov_1nqd9talwx.s[76]++;
-                        return string;
+                        return string.trim();
                     case '%':
                         cov_1nqd9talwx.b[11][3]++;
                         cov_1nqd9talwx.s[77]++;
