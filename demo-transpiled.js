@@ -12400,7 +12400,7 @@ var _createClass3 = _interopRequireDefault(_createClass2);
 
 var cov_1nqd9talwx = function () {
     var path = "/home/travis/build/fiduswriter/biblatex-csl-converter/src/import/biblatex.js",
-        hash = "5aadc052e9086fd6825b14bbc4310840a3ceab94",
+        hash = "bd272af175431a9d3e674f6951803fe7e8b0c931",
         global = new Function('return this')(),
         gcv = "__coverage__",
         coverageData = {
@@ -14673,7 +14673,7 @@ var cov_1nqd9talwx = function () {
                 },
                 end: {
                     line: 501,
-                    column: 69
+                    column: 76
                 }
             },
             "227": {
@@ -21482,7 +21482,7 @@ var BibLatexParser = exports.BibLatexParser = function () {
                             cov_1nqd9talwx.f[19]++;
                             cov_1nqd9talwx.s[226]++;
 
-                            oFields[fKey].push(_this._reformLiteral(item));
+                            oFields[fKey].push(_this._reformLiteral(item.trim()));
                         });
                         cov_1nqd9talwx.s[227]++;
                         break;
