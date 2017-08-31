@@ -12400,7 +12400,7 @@ var _createClass3 = _interopRequireDefault(_createClass2);
 
 var cov_1nqd9talwx = function () {
     var path = "/home/travis/build/fiduswriter/biblatex-csl-converter/src/import/biblatex.js",
-        hash = "bd272af175431a9d3e674f6951803fe7e8b0c931",
+        hash = "17616285f197960227c48ee5a08545859914fb3b",
         global = new Function('return this')(),
         gcv = "__coverage__",
         coverageData = {
@@ -15982,57 +15982,57 @@ var cov_1nqd9talwx = function () {
                     column: 8
                 },
                 end: {
-                    line: 784,
+                    line: 785,
                     column: 10
                 }
             },
             "358": {
                 start: {
-                    line: 783,
+                    line: 784,
                     column: 12
                 },
                 end: {
-                    line: 783,
-                    column: 37
+                    line: 784,
+                    column: 41
                 }
             },
             "359": {
                 start: {
-                    line: 788,
+                    line: 789,
                     column: 8
                 },
                 end: {
-                    line: 788,
+                    line: 789,
                     column: 30
                 }
             },
             "360": {
                 start: {
-                    line: 789,
+                    line: 790,
                     column: 8
                 },
                 end: {
-                    line: 789,
+                    line: 790,
                     column: 32
                 }
             },
             "361": {
                 start: {
-                    line: 790,
+                    line: 791,
                     column: 8
                 },
                 end: {
-                    line: 790,
+                    line: 791,
                     column: 26
                 }
             },
             "362": {
                 start: {
-                    line: 791,
+                    line: 792,
                     column: 8
                 },
                 end: {
-                    line: 791,
+                    line: 792,
                     column: 25
                 }
             }
@@ -17064,7 +17064,7 @@ var cov_1nqd9talwx = function () {
                         column: 18
                     },
                     end: {
-                        line: 785,
+                        line: 786,
                         column: 5
                     }
                 },
@@ -17088,7 +17088,7 @@ var cov_1nqd9talwx = function () {
                         column: 46
                     },
                     end: {
-                        line: 784,
+                        line: 785,
                         column: 9
                     }
                 },
@@ -17098,25 +17098,25 @@ var cov_1nqd9talwx = function () {
                 name: "(anonymous_44)",
                 decl: {
                     start: {
-                        line: 787,
+                        line: 788,
                         column: 4
                     },
                     end: {
-                        line: 787,
+                        line: 788,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 787,
+                        line: 788,
                         column: 17
                     },
                     end: {
-                        line: 792,
+                        line: 793,
                         column: 5
                     }
                 },
-                line: 787
+                line: 788
             }
         },
         branchMap: {
@@ -22074,7 +22074,8 @@ var BibLatexParser = exports.BibLatexParser = function () {
                 cov_1nqd9talwx.f[43]++;
                 cov_1nqd9talwx.s[358]++;
 
-                that.bibDB[index] = entry;
+                // Start index from 1 to create less issues with testing
+                that.bibDB[index + 1] = entry;
             });
         }
     }, {
