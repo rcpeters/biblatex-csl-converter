@@ -22285,7 +22285,7 @@ var _createClass3 = _interopRequireDefault(_createClass2);
 
 var cov_1nxm1be8cv = function () {
     var path = '/home/travis/build/fiduswriter/biblatex-csl-converter/src/import/literal-parser.js',
-        hash = '6cfc436010a94d02b1f0737b77bb347cff4bdf44',
+        hash = '538c2e3a4a9d9f2b7c28602eb74eaf411ae7fceb',
         global = new Function('return this')(),
         gcv = '__coverage__',
         coverageData = {
@@ -22497,7 +22497,7 @@ var cov_1nxm1be8cv = function () {
                     column: 8
                 },
                 end: {
-                    line: 334,
+                    line: 333,
                     column: 9
                 }
             },
@@ -22507,7 +22507,7 @@ var cov_1nxm1be8cv = function () {
                     column: 21
                 },
                 end: {
-                    line: 334,
+                    line: 333,
                     column: 9
                 }
             },
@@ -22517,7 +22517,7 @@ var cov_1nxm1be8cv = function () {
                     column: 12
                 },
                 end: {
-                    line: 333,
+                    line: 332,
                     column: 13
                 }
             },
@@ -24077,127 +24077,127 @@ var cov_1nxm1be8cv = function () {
                     column: 20
                 },
                 end: {
-                    line: 327,
+                    line: 326,
                     column: 21
                 }
             },
             '179': {
                 start: {
-                    line: 321,
+                    line: 320,
                     column: 24
                 },
                 end: {
-                    line: 321,
-                    column: 50
+                    line: 320,
+                    column: 52
                 }
             },
             '180': {
                 start: {
-                    line: 322,
+                    line: 321,
                     column: 27
                 },
                 end: {
-                    line: 327,
+                    line: 326,
                     column: 21
                 }
             },
             '181': {
                 start: {
-                    line: 326,
+                    line: 325,
                     column: 24
                 },
                 end: {
-                    line: 326,
+                    line: 325,
                     column: 49
                 }
             },
             '182': {
                 start: {
-                    line: 328,
+                    line: 327,
                     column: 20
                 },
                 end: {
-                    line: 328,
+                    line: 327,
                     column: 29
                 }
             },
             '183': {
                 start: {
-                    line: 329,
+                    line: 328,
                     column: 20
                 },
                 end: {
-                    line: 329,
+                    line: 328,
                     column: 25
                 }
             },
             '184': {
                 start: {
-                    line: 331,
+                    line: 330,
                     column: 20
                 },
                 end: {
-                    line: 331,
+                    line: 330,
                     column: 62
                 }
             },
             '185': {
                 start: {
-                    line: 332,
+                    line: 331,
                     column: 20
                 },
                 end: {
-                    line: 332,
+                    line: 331,
                     column: 29
                 }
             },
             '186': {
                 start: {
-                    line: 336,
+                    line: 335,
                     column: 8
                 },
                 end: {
-                    line: 339,
+                    line: 338,
                     column: 9
                 }
             },
             '187': {
                 start: {
-                    line: 338,
+                    line: 337,
                     column: 12
                 },
                 end: {
-                    line: 338,
+                    line: 337,
                     column: 54
                 }
             },
             '188': {
                 start: {
-                    line: 341,
+                    line: 340,
                     column: 8
                 },
                 end: {
-                    line: 341,
+                    line: 340,
                     column: 36
                 }
             },
             '189': {
                 start: {
-                    line: 344,
+                    line: 343,
                     column: 8
                 },
                 end: {
-                    line: 344,
+                    line: 343,
                     column: 24
                 }
             },
             '190': {
                 start: {
-                    line: 348,
+                    line: 347,
                     column: 8
                 },
                 end: {
-                    line: 348,
+                    line: 347,
                     column: 34
                 }
             }
@@ -24317,7 +24317,7 @@ var cov_1nxm1be8cv = function () {
                         column: 19
                     },
                     end: {
-                        line: 345,
+                        line: 344,
                         column: 5
                     }
                 },
@@ -24327,25 +24327,25 @@ var cov_1nxm1be8cv = function () {
                 name: '(anonymous_5)',
                 decl: {
                     start: {
-                        line: 347,
+                        line: 346,
                         column: 4
                     },
                     end: {
-                        line: 347,
+                        line: 346,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 347,
+                        line: 346,
                         column: 17
                     },
                     end: {
-                        line: 349,
+                        line: 348,
                         column: 5
                     }
                 },
-                line: 347
+                line: 346
             }
         },
         branchMap: {
@@ -24446,7 +24446,7 @@ var cov_1nxm1be8cv = function () {
                         column: 12
                     },
                     end: {
-                        line: 333,
+                        line: 332,
                         column: 13
                     }
                 },
@@ -24556,16 +24556,16 @@ var cov_1nxm1be8cv = function () {
                         column: 16
                     },
                     end: {
-                        line: 329,
+                        line: 328,
                         column: 25
                     }
                 }, {
                     start: {
-                        line: 330,
+                        line: 329,
                         column: 16
                     },
                     end: {
-                        line: 332,
+                        line: 331,
                         column: 29
                     }
                 }],
@@ -25538,7 +25538,7 @@ var cov_1nxm1be8cv = function () {
                         column: 20
                     },
                     end: {
-                        line: 327,
+                        line: 326,
                         column: 21
                     }
                 },
@@ -25549,7 +25549,7 @@ var cov_1nxm1be8cv = function () {
                         column: 20
                     },
                     end: {
-                        line: 327,
+                        line: 326,
                         column: 21
                     }
                 }, {
@@ -25558,7 +25558,7 @@ var cov_1nxm1be8cv = function () {
                         column: 20
                     },
                     end: {
-                        line: 327,
+                        line: 326,
                         column: 21
                     }
                 }],
@@ -25567,143 +25567,134 @@ var cov_1nxm1be8cv = function () {
             '33': {
                 loc: {
                     start: {
-                        line: 316,
+                        line: 317,
                         column: 24
                     },
                     end: {
-                        line: 319,
-                        column: 25
+                        line: 318,
+                        column: 55
                     }
                 },
                 type: 'binary-expr',
                 locations: [{
                     start: {
-                        line: 316,
+                        line: 317,
                         column: 24
                     },
                     end: {
-                        line: 316,
+                        line: 317,
                         column: 68
                     }
                 }, {
                     start: {
-                        line: 317,
-                        column: 28
-                    },
-                    end: {
-                        line: 317,
-                        column: 53
-                    }
-                }, {
-                    start: {
                         line: 318,
-                        column: 28
+                        column: 24
                     },
                     end: {
                         line: 318,
-                        column: 84
+                        column: 55
                     }
                 }],
-                line: 316
+                line: 317
             },
             '34': {
                 loc: {
                     start: {
-                        line: 322,
+                        line: 321,
                         column: 27
                     },
                     end: {
-                        line: 327,
+                        line: 326,
                         column: 21
                     }
                 },
                 type: 'if',
                 locations: [{
                     start: {
-                        line: 322,
+                        line: 321,
                         column: 27
                     },
                     end: {
-                        line: 327,
+                        line: 326,
                         column: 21
                     }
                 }, {
                     start: {
-                        line: 322,
+                        line: 321,
                         column: 27
                     },
                     end: {
-                        line: 327,
+                        line: 326,
                         column: 21
                     }
                 }],
-                line: 322
+                line: 321
             },
             '35': {
                 loc: {
                     start: {
-                        line: 323,
+                        line: 322,
                         column: 24
                     },
                     end: {
-                        line: 324,
+                        line: 323,
                         column: 57
                     }
                 },
                 type: 'binary-expr',
                 locations: [{
                     start: {
-                        line: 323,
+                        line: 322,
                         column: 24
                     },
                     end: {
-                        line: 323,
+                        line: 322,
                         column: 57
                     }
                 }, {
                     start: {
-                        line: 324,
+                        line: 323,
                         column: 24
                     },
                     end: {
-                        line: 324,
+                        line: 323,
                         column: 57
                     }
                 }],
-                line: 323
+                line: 322
             },
             '36': {
                 loc: {
                     start: {
-                        line: 336,
+                        line: 335,
                         column: 8
                     },
                     end: {
-                        line: 339,
+                        line: 338,
                         column: 9
                     }
                 },
                 type: 'if',
                 locations: [{
                     start: {
-                        line: 336,
+                        line: 335,
                         column: 8
                     },
                     end: {
-                        line: 339,
+                        line: 338,
                         column: 9
                     }
                 }, {
                     start: {
-                        line: 336,
+                        line: 335,
                         column: 8
                     },
                     end: {
-                        line: 339,
+                        line: 338,
                         column: 9
                     }
                 }],
-                line: 336
+                line: 335
             }
         },
         s: {
@@ -25941,7 +25932,7 @@ var cov_1nxm1be8cv = function () {
             '30': [0, 0],
             '31': [0, 0],
             '32': [0, 0],
-            '33': [0, 0, 0],
+            '33': [0, 0],
             '34': [0, 0],
             '35': [0, 0],
             '36': [0, 0]
@@ -26613,11 +26604,11 @@ var BibLatexLiteralParser = exports.BibLatexLiteralParser = function () {
                         cov_1nxm1be8cv.b[3][11]++;
                         cov_1nxm1be8cv.s[178]++;
 
-                        if ((cov_1nxm1be8cv.b[33][0]++, ['\r', '\n'].includes(this.string[this.si + 1])) || (cov_1nxm1be8cv.b[33][1]++, this.textNode.text.length) && (cov_1nxm1be8cv.b[33][2]++, this.textNode.text[this.textNode.text.length - 1] === '\n')) {
+                        if ((cov_1nxm1be8cv.b[33][0]++, ['\r', '\n'].includes(this.string[this.si + 1])) && (cov_1nxm1be8cv.b[33][1]++, this.string[this.si - 1] !== '\n')) {
                             cov_1nxm1be8cv.b[32][0]++;
                             cov_1nxm1be8cv.s[179]++;
 
-                            this.textNode.text += '\n';
+                            this.textNode.text += '\n\n';
                         } else {
                                 cov_1nxm1be8cv.b[32][1]++;
                                 cov_1nxm1be8cv.s[180]++;
