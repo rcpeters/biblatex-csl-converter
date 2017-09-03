@@ -12370,14 +12370,6 @@ var _stringify = require("babel-runtime/core-js/json/stringify");
 
 var _stringify2 = _interopRequireDefault(_stringify);
 
-var _set = require("babel-runtime/core-js/set");
-
-var _set2 = _interopRequireDefault(_set);
-
-var _toConsumableArray2 = require("babel-runtime/helpers/toConsumableArray");
-
-var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
-
 var _typeof2 = require("babel-runtime/helpers/typeof");
 
 var _typeof3 = _interopRequireDefault(_typeof2);
@@ -12385,6 +12377,14 @@ var _typeof3 = _interopRequireDefault(_typeof2);
 var _getIterator2 = require("babel-runtime/core-js/get-iterator");
 
 var _getIterator3 = _interopRequireDefault(_getIterator2);
+
+var _set = require("babel-runtime/core-js/set");
+
+var _set2 = _interopRequireDefault(_set);
+
+var _toConsumableArray2 = require("babel-runtime/helpers/toConsumableArray");
+
+var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
 var _keys = require("babel-runtime/core-js/object/keys");
 
@@ -21980,109 +21980,111 @@ var BibLatexParser = exports.BibLatexParser = function () {
             });
             var levels = (cov_1nqd9talwx.s[328]++, { '0': { references: [], groups: [] } });
             cov_1nqd9talwx.s[329]++;
+
+            var _loop2 = function _loop2(line) {
+                cov_1nqd9talwx.s[330]++;
+
+                if (line === '') {
+                    cov_1nqd9talwx.b[76][0]++;
+                    cov_1nqd9talwx.s[331]++;
+                    return "continue";
+                } else {
+                    cov_1nqd9talwx.b[76][1]++;
+                }
+                var match = (cov_1nqd9talwx.s[332]++, line.match(/^([0-9])\s+([^:]+):(.*)/));
+                cov_1nqd9talwx.s[333]++;
+                if (!match) {
+                    cov_1nqd9talwx.b[77][0]++;
+                    cov_1nqd9talwx.s[334]++;
+                    return {
+                        v: void 0
+                    };
+                } else {
+                    cov_1nqd9talwx.b[77][1]++;
+                }
+                var level = (cov_1nqd9talwx.s[335]++, parseInt(match[1]));
+                var type = (cov_1nqd9talwx.s[336]++, match[2]);
+                var references = (cov_1nqd9talwx.s[337]++, match[3]);
+                cov_1nqd9talwx.s[338]++;
+                references = references ? (cov_1nqd9talwx.b[78][0]++, references.split("\u2004").filter(function (key) {
+                    cov_1nqd9talwx.f[40]++;
+                    cov_1nqd9talwx.s[339]++;
+                    return key;
+                })) : (cov_1nqd9talwx.b[78][1]++, []);
+                var name = (cov_1nqd9talwx.s[340]++, references.shift());
+                var intersection = (cov_1nqd9talwx.s[341]++, references.shift()); // 0 = independent, 1 = intersection, 2 = union
+
+                // ignore root level, has no refs anyway in the comment
+                cov_1nqd9talwx.s[342]++;
+                if (level === 0) {
+                    cov_1nqd9talwx.b[79][0]++;
+                    cov_1nqd9talwx.s[343]++;
+                    return "continue";
+                } else {
+                    cov_1nqd9talwx.b[79][1]++;
+                }
+
+                // remember this group as the current `level` level, so that any following `level + 1` levels can find it
+                cov_1nqd9talwx.s[344]++;
+                levels[level] = { name: name, groups: [], references: references
+                    // and add it to its parent
+                };cov_1nqd9talwx.s[345]++;
+                levels[level - 1].groups.push(levels[level]);
+
+                // treat all groups as explicit
+                cov_1nqd9talwx.s[346]++;
+                if (type != 'ExplicitGroup') {
+                    cov_1nqd9talwx.b[80][0]++;
+                    cov_1nqd9talwx.s[347]++;
+
+                    _this3.warnings.push({
+                        type: 'unsupported_jabref_group',
+                        group_type: type
+                    });
+                } else {
+                    cov_1nqd9talwx.b[80][1]++;
+                }
+
+                cov_1nqd9talwx.s[348]++;
+                switch (intersection) {
+                    case '0':
+                        cov_1nqd9talwx.b[81][0]++;
+                        cov_1nqd9talwx.s[349]++;
+
+                        // do nothing more
+                        break;
+                    case '1':
+                        cov_1nqd9talwx.b[81][1]++;
+                        cov_1nqd9talwx.s[350]++;
+
+                        // intersect with parent. Hardly ever used.
+                        levels[level].references = levels[level].references.filter(function (key) {
+                            cov_1nqd9talwx.f[41]++;
+                            cov_1nqd9talwx.s[351]++;
+                            return levels[level - 1].references.includes(key);
+                        });
+                        cov_1nqd9talwx.s[352]++;
+                        break;
+                    case '2':
+                        cov_1nqd9talwx.b[81][2]++;
+                        cov_1nqd9talwx.s[353]++;
+
+                        // union with parent
+                        levels[level].references = [].concat((0, _toConsumableArray3.default)(new _set2.default([].concat((0, _toConsumableArray3.default)(levels[level].references), (0, _toConsumableArray3.default)(levels[level - 1].references)))));
+                        cov_1nqd9talwx.s[354]++;
+                        break;
+                }
+            };
+
             var _iteratorNormalCompletion = true;
             var _didIteratorError = false;
             var _iteratorError = undefined;
 
             try {
-                var _loop2 = function _loop2() {
-                    var line = _step.value;
-                    cov_1nqd9talwx.s[330]++;
-
-                    if (line === '') {
-                        cov_1nqd9talwx.b[76][0]++;
-                        cov_1nqd9talwx.s[331]++;
-                        return "continue";
-                    } else {
-                        cov_1nqd9talwx.b[76][1]++;
-                    }
-                    var match = (cov_1nqd9talwx.s[332]++, line.match(/^([0-9])\s+([^:]+):(.*)/));
-                    cov_1nqd9talwx.s[333]++;
-                    if (!match) {
-                        cov_1nqd9talwx.b[77][0]++;
-                        cov_1nqd9talwx.s[334]++;
-                        return {
-                            v: void 0
-                        };
-                    } else {
-                        cov_1nqd9talwx.b[77][1]++;
-                    }
-                    var level = (cov_1nqd9talwx.s[335]++, parseInt(match[1]));
-                    var type = (cov_1nqd9talwx.s[336]++, match[2]);
-                    var references = (cov_1nqd9talwx.s[337]++, match[3]);
-                    cov_1nqd9talwx.s[338]++;
-                    references = references ? (cov_1nqd9talwx.b[78][0]++, references.split("\u2004").filter(function (key) {
-                        cov_1nqd9talwx.f[40]++;
-                        cov_1nqd9talwx.s[339]++;
-                        return key;
-                    })) : (cov_1nqd9talwx.b[78][1]++, []);
-                    var name = (cov_1nqd9talwx.s[340]++, references.shift());
-                    var intersection = (cov_1nqd9talwx.s[341]++, references.shift()); // 0 = independent, 1 = intersection, 2 = union
-
-                    // ignore root level, has no refs anyway in the comment
-                    cov_1nqd9talwx.s[342]++;
-                    if (level === 0) {
-                        cov_1nqd9talwx.b[79][0]++;
-                        cov_1nqd9talwx.s[343]++;
-                        return "continue";
-                    } else {
-                        cov_1nqd9talwx.b[79][1]++;
-                    }
-
-                    // remember this group as the current `level` level, so that any following `level + 1` levels can find it
-                    cov_1nqd9talwx.s[344]++;
-                    levels[level] = { name: name, groups: [], references: references
-                        // and add it to its parent
-                    };cov_1nqd9talwx.s[345]++;
-                    levels[level - 1].groups.push(levels[level]);
-
-                    // treat all groups as explicit
-                    cov_1nqd9talwx.s[346]++;
-                    if (type != 'ExplicitGroup') {
-                        cov_1nqd9talwx.b[80][0]++;
-                        cov_1nqd9talwx.s[347]++;
-
-                        _this3.warnings.push({
-                            type: 'unsupported_jabref_group',
-                            group_type: type
-                        });
-                    } else {
-                        cov_1nqd9talwx.b[80][1]++;
-                    }
-
-                    cov_1nqd9talwx.s[348]++;
-                    switch (intersection) {
-                        case '0':
-                            cov_1nqd9talwx.b[81][0]++;
-                            cov_1nqd9talwx.s[349]++;
-
-                            // do nothing more
-                            break;
-                        case '1':
-                            cov_1nqd9talwx.b[81][1]++;
-                            cov_1nqd9talwx.s[350]++;
-
-                            // intersect with parent. Hardly ever used.
-                            levels[level].references = levels[level].references.filter(function (key) {
-                                cov_1nqd9talwx.f[41]++;
-                                cov_1nqd9talwx.s[351]++;
-                                return levels[level - 1].references.includes(key);
-                            });
-                            cov_1nqd9talwx.s[352]++;
-                            break;
-                        case '2':
-                            cov_1nqd9talwx.b[81][2]++;
-                            cov_1nqd9talwx.s[353]++;
-
-                            // union with parent
-                            levels[level].references = [].concat((0, _toConsumableArray3.default)(new _set2.default([].concat((0, _toConsumableArray3.default)(levels[level].references), (0, _toConsumableArray3.default)(levels[level - 1].references)))));
-                            cov_1nqd9talwx.s[354]++;
-                            break;
-                    }
-                };
-
                 for (var _iterator = (0, _getIterator3.default)(lines), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                    var _ret2 = _loop2();
+                    var line = _step.value;
+
+                    var _ret2 = _loop2(line);
 
                     switch (_ret2) {
                         case "continue":
