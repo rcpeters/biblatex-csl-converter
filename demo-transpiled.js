@@ -22211,7 +22211,7 @@ var BibLatexParser = exports.BibLatexParser = function () {
             cov_1nqd9talwx.f[44]++;
             cov_1nqd9talwx.s[362]++;
 
-            this.bibDB = JSON.parse((0, _stringify2.default)(this.bibDB).replace(/\u0871/, '\\') // Backslashes placed outside of literal fields
+            this.bibDB = JSON.parse((0, _stringify2.default)(this.bibDB).replace(/\u0871/, '\\\\') // Backslashes placed outside of literal fields
             .replace(/\u0870/, '') // variable start/end outside of literal fields
             );
         }
