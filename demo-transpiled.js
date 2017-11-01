@@ -12385,7 +12385,7 @@ var _createClass3 = _interopRequireDefault(_createClass2);
 
 var cov_1nqd9talwx = function () {
     var path = "/home/travis/build/fiduswriter/biblatex-csl-converter/src/import/biblatex.js",
-        hash = "bcd93bccf6733b2616e31889a3ed141c3a74e76c",
+        hash = "3fe3cf777d477958e1a31893ab6c7791fa066fc0",
         global = new Function('return this')(),
         gcv = "__coverage__",
         coverageData = {
@@ -13664,61 +13664,61 @@ var cov_1nqd9talwx = function () {
             "127": {
                 start: {
                     line: 309,
-                    column: 19
+                    column: 24
                 },
                 end: {
                     line: 309,
-                    column: 23
+                    column: 45
                 }
             },
             "128": {
                 start: {
                     line: 310,
-                    column: 24
+                    column: 21
                 },
                 end: {
                     line: 310,
-                    column: 45
+                    column: 48
                 }
             },
             "129": {
                 start: {
-                    line: 311,
-                    column: 21
+                    line: 318,
+                    column: 8
                 },
                 end: {
-                    line: 311,
-                    column: 48
+                    line: 329,
+                    column: 9
                 }
             },
             "130": {
                 start: {
-                    line: 319,
-                    column: 8
+                    line: 320,
+                    column: 12
                 },
                 end: {
-                    line: 326,
-                    column: 9
+                    line: 320,
+                    column: 33
                 }
             },
             "131": {
                 start: {
                     line: 321,
-                    column: 12
+                    column: 15
                 },
                 end: {
-                    line: 321,
-                    column: 33
+                    line: 329,
+                    column: 9
                 }
             },
             "132": {
                 start: {
                     line: 322,
-                    column: 15
+                    column: 12
                 },
                 end: {
-                    line: 326,
-                    column: 9
+                    line: 322,
+                    column: 35
                 }
             },
             "133": {
@@ -13727,37 +13727,37 @@ var cov_1nqd9talwx = function () {
                     column: 12
                 },
                 end: {
-                    line: 323,
-                    column: 57
+                    line: 325,
+                    column: 13
                 }
             },
             "134": {
                 start: {
                     line: 324,
-                    column: 15
+                    column: 16
                 },
                 end: {
-                    line: 326,
-                    column: 9
+                    line: 324,
+                    column: 59
                 }
             },
             "135": {
                 start: {
-                    line: 325,
+                    line: 326,
                     column: 12
                 },
                 end: {
-                    line: 325,
-                    column: 38
+                    line: 326,
+                    column: 47
                 }
             },
             "136": {
                 start: {
                     line: 327,
-                    column: 8
+                    column: 15
                 },
                 end: {
-                    line: 354,
+                    line: 329,
                     column: 9
                 }
             },
@@ -13767,118 +13767,118 @@ var cov_1nqd9talwx = function () {
                     column: 12
                 },
                 end: {
-                    line: 353,
-                    column: 13
+                    line: 328,
+                    column: 38
                 }
             },
             "138": {
                 start: {
-                    line: 329,
-                    column: 16
+                    line: 330,
+                    column: 8
                 },
                 end: {
-                    line: 329,
-                    column: 37
+                    line: 357,
+                    column: 9
                 }
             },
             "139": {
                 start: {
-                    line: 330,
-                    column: 16
+                    line: 331,
+                    column: 12
                 },
                 end: {
-                    line: 330,
-                    column: 37
+                    line: 356,
+                    column: 13
                 }
             },
             "140": {
                 start: {
-                    line: 331,
+                    line: 332,
                     column: 16
                 },
                 end: {
-                    line: 331,
-                    column: 38
+                    line: 332,
+                    column: 37
                 }
             },
             "141": {
+                start: {
+                    line: 333,
+                    column: 16
+                },
+                end: {
+                    line: 333,
+                    column: 37
+                }
+            },
+            "142": {
                 start: {
                     line: 334,
                     column: 16
                 },
                 end: {
-                    line: 346,
-                    column: 17
-                }
-            },
-            "142": {
-                start: {
-                    line: 335,
-                    column: 20
-                },
-                end: {
-                    line: 335,
+                    line: 334,
                     column: 38
                 }
             },
             "143": {
                 start: {
-                    line: 336,
-                    column: 20
+                    line: 337,
+                    column: 16
                 },
                 end: {
-                    line: 336,
-                    column: 42
+                    line: 349,
+                    column: 17
                 }
             },
             "144": {
                 start: {
-                    line: 337,
+                    line: 338,
                     column: 20
                 },
                 end: {
-                    line: 337,
-                    column: 43
+                    line: 338,
+                    column: 38
                 }
             },
             "145": {
                 start: {
-                    line: 338,
-                    column: 23
+                    line: 339,
+                    column: 20
                 },
                 end: {
-                    line: 346,
-                    column: 17
+                    line: 339,
+                    column: 42
                 }
             },
             "146": {
                 start: {
-                    line: 339,
+                    line: 340,
                     column: 20
                 },
                 end: {
-                    line: 339,
-                    column: 44
+                    line: 340,
+                    column: 43
                 }
             },
             "147": {
                 start: {
-                    line: 340,
-                    column: 20
+                    line: 341,
+                    column: 23
                 },
                 end: {
-                    line: 340,
-                    column: 61
+                    line: 349,
+                    column: 17
                 }
             },
             "148": {
                 start: {
-                    line: 341,
+                    line: 342,
                     column: 20
                 },
                 end: {
-                    line: 341,
-                    column: 45
+                    line: 342,
+                    column: 44
                 }
             },
             "149": {
@@ -13888,7 +13888,7 @@ var cov_1nqd9talwx = function () {
                 },
                 end: {
                     line: 343,
-                    column: 38
+                    column: 61
                 }
             },
             "150": {
@@ -13898,337 +13898,337 @@ var cov_1nqd9talwx = function () {
                 },
                 end: {
                     line: 344,
-                    column: 42
+                    column: 45
                 }
             },
             "151": {
                 start: {
-                    line: 345,
+                    line: 346,
                     column: 20
                 },
                 end: {
-                    line: 345,
-                    column: 45
+                    line: 346,
+                    column: 38
                 }
             },
             "152": {
                 start: {
                     line: 347,
-                    column: 16
+                    column: 20
                 },
                 end: {
-                    line: 352,
-                    column: 18
+                    line: 347,
+                    column: 42
                 }
             },
             "153": {
                 start: {
-                    line: 357,
-                    column: 26
+                    line: 348,
+                    column: 20
                 },
                 end: {
-                    line: 357,
-                    column: 30
+                    line: 348,
+                    column: 45
                 }
             },
             "154": {
                 start: {
-                    line: 358,
-                    column: 8
+                    line: 350,
+                    column: 16
                 },
                 end: {
-                    line: 376,
-                    column: 9
+                    line: 355,
+                    column: 18
                 }
             },
             "155": {
                 start: {
-                    line: 359,
-                    column: 29
+                    line: 360,
+                    column: 26
                 },
                 end: {
-                    line: 359,
-                    column: 66
+                    line: 360,
+                    column: 30
                 }
             },
             "156": {
                 start: {
-                    line: 360,
-                    column: 33
+                    line: 361,
+                    column: 8
                 },
                 end: {
-                    line: 360,
-                    column: 133
+                    line: 379,
+                    column: 9
                 }
             },
             "157": {
                 start: {
-                    line: 361,
-                    column: 12
+                    line: 362,
+                    column: 29
                 },
                 end: {
-                    line: 363,
-                    column: 13
+                    line: 362,
+                    column: 66
                 }
             },
             "158": {
                 start: {
-                    line: 361,
-                    column: 48
+                    line: 363,
+                    column: 33
                 },
                 end: {
-                    line: 361,
-                    column: 76
+                    line: 363,
+                    column: 133
                 }
             },
             "159": {
                 start: {
-                    line: 362,
-                    column: 16
+                    line: 364,
+                    column: 12
                 },
                 end: {
-                    line: 362,
-                    column: 35
+                    line: 366,
+                    column: 13
                 }
             },
             "160": {
                 start: {
                     line: 364,
-                    column: 15
+                    column: 48
                 },
                 end: {
-                    line: 376,
-                    column: 9
+                    line: 364,
+                    column: 76
                 }
             },
             "161": {
                 start: {
-                    line: 369,
-                    column: 25
+                    line: 365,
+                    column: 16
                 },
                 end: {
-                    line: 369,
-                    column: 70
+                    line: 365,
+                    column: 35
                 }
             },
             "162": {
                 start: {
-                    line: 370,
-                    column: 12
+                    line: 367,
+                    column: 15
                 },
                 end: {
-                    line: 375,
-                    column: 13
+                    line: 379,
+                    column: 9
                 }
             },
             "163": {
                 start: {
-                    line: 371,
-                    column: 16
+                    line: 372,
+                    column: 25
                 },
                 end: {
-                    line: 371,
-                    column: 41
+                    line: 372,
+                    column: 70
                 }
             },
             "164": {
                 start: {
-                    line: 372,
-                    column: 16
+                    line: 373,
+                    column: 12
                 },
                 end: {
-                    line: 374,
-                    column: 17
+                    line: 378,
+                    column: 13
                 }
             },
             "165": {
                 start: {
-                    line: 373,
-                    column: 20
+                    line: 374,
+                    column: 16
                 },
                 end: {
-                    line: 373,
-                    column: 39
+                    line: 374,
+                    column: 41
                 }
             },
             "166": {
                 start: {
-                    line: 378,
-                    column: 8
+                    line: 375,
+                    column: 16
                 },
                 end: {
-                    line: 519,
-                    column: 9
+                    line: 377,
+                    column: 17
                 }
             },
             "167": {
                 start: {
-                    line: 378,
-                    column: 23
+                    line: 376,
+                    column: 20
                 },
                 end: {
-                    line: 519,
-                    column: 9
+                    line: 376,
+                    column: 39
                 }
             },
             "168": {
                 start: {
-                    line: 380,
-                    column: 12
+                    line: 381,
+                    column: 8
                 },
                 end: {
-                    line: 383,
-                    column: 13
+                    line: 522,
+                    column: 9
                 }
             },
             "169": {
                 start: {
-                    line: 382,
-                    column: 16
+                    line: 381,
+                    column: 23
                 },
                 end: {
-                    line: 382,
-                    column: 38
+                    line: 522,
+                    column: 9
                 }
             },
             "170": {
                 start: {
-                    line: 386,
-                    column: 27
+                    line: 383,
+                    column: 12
                 },
                 end: {
                     line: 386,
-                    column: 56
+                    column: 13
                 }
             },
             "171": {
                 start: {
-                    line: 387,
-                    column: 12
+                    line: 385,
+                    column: 16
                 },
                 end: {
-                    line: 407,
-                    column: 13
+                    line: 385,
+                    column: 38
                 }
             },
             "172": {
                 start: {
-                    line: 388,
-                    column: 16
+                    line: 389,
+                    column: 27
                 },
                 end: {
-                    line: 398,
-                    column: 17
+                    line: 389,
+                    column: 56
                 }
             },
             "173": {
                 start: {
-                    line: 389,
-                    column: 20
+                    line: 390,
+                    column: 12
                 },
                 end: {
-                    line: 396,
-                    column: 22
+                    line: 410,
+                    column: 13
                 }
             },
             "174": {
                 start: {
-                    line: 397,
-                    column: 20
+                    line: 391,
+                    column: 16
                 },
                 end: {
-                    line: 397,
-                    column: 42
+                    line: 401,
+                    column: 17
                 }
             },
             "175": {
                 start: {
-                    line: 400,
-                    column: 16
+                    line: 392,
+                    column: 20
                 },
                 end: {
-                    line: 402,
-                    column: 18
+                    line: 399,
+                    column: 22
                 }
             },
             "176": {
                 start: {
-                    line: 401,
+                    line: 400,
                     column: 20
                 },
                 end: {
-                    line: 401,
-                    column: 66
+                    line: 400,
+                    column: 42
                 }
             },
             "177": {
                 start: {
-                    line: 404,
+                    line: 403,
                     column: 16
                 },
                 end: {
-                    line: 406,
+                    line: 405,
                     column: 18
                 }
             },
             "178": {
                 start: {
-                    line: 405,
+                    line: 404,
                     column: 20
                 },
                 end: {
-                    line: 405,
-                    column: 62
+                    line: 404,
+                    column: 66
                 }
             },
             "179": {
                 start: {
-                    line: 410,
-                    column: 24
+                    line: 407,
+                    column: 16
                 },
                 end: {
-                    line: 410,
-                    column: 63
+                    line: 409,
+                    column: 18
                 }
             },
             "180": {
                 start: {
-                    line: 412,
-                    column: 12
+                    line: 408,
+                    column: 20
                 },
                 end: {
-                    line: 448,
-                    column: 13
+                    line: 408,
+                    column: 62
                 }
             },
             "181": {
                 start: {
                     line: 413,
-                    column: 16
+                    column: 24
                 },
                 end: {
-                    line: 417,
-                    column: 18
+                    line: 413,
+                    column: 63
                 }
             },
             "182": {
                 start: {
-                    line: 418,
-                    column: 16
+                    line: 415,
+                    column: 12
                 },
                 end: {
-                    line: 420,
-                    column: 17
+                    line: 451,
+                    column: 13
                 }
             },
             "183": {
                 start: {
-                    line: 419,
-                    column: 20
+                    line: 416,
+                    column: 16
                 },
                 end: {
-                    line: 419,
-                    column: 42
+                    line: 420,
+                    column: 18
                 }
             },
             "184": {
@@ -14248,7 +14248,7 @@ var cov_1nqd9talwx = function () {
                 },
                 end: {
                     line: 422,
-                    column: 60
+                    column: 42
                 }
             },
             "186": {
@@ -14257,58 +14257,58 @@ var cov_1nqd9talwx = function () {
                     column: 16
                 },
                 end: {
-                    line: 424,
-                    column: 61
+                    line: 426,
+                    column: 17
                 }
             },
             "187": {
                 start: {
                     line: 425,
-                    column: 16
+                    column: 20
                 },
                 end: {
                     line: 425,
-                    column: 105
+                    column: 60
                 }
             },
             "188": {
                 start: {
-                    line: 426,
+                    line: 427,
                     column: 16
                 },
                 end: {
-                    line: 426,
-                    column: 27
+                    line: 427,
+                    column: 61
                 }
             },
             "189": {
                 start: {
-                    line: 427,
-                    column: 19
+                    line: 428,
+                    column: 16
                 },
                 end: {
-                    line: 448,
-                    column: 13
+                    line: 428,
+                    column: 105
                 }
             },
             "190": {
                 start: {
-                    line: 432,
+                    line: 429,
                     column: 16
                 },
                 end: {
-                    line: 432,
-                    column: 32
+                    line: 429,
+                    column: 27
                 }
             },
             "191": {
                 start: {
-                    line: 433,
-                    column: 16
+                    line: 430,
+                    column: 19
                 },
                 end: {
-                    line: 433,
-                    column: 51
+                    line: 451,
+                    column: 13
                 }
             },
             "192": {
@@ -14317,28 +14317,28 @@ var cov_1nqd9talwx = function () {
                     column: 16
                 },
                 end: {
-                    line: 439,
-                    column: 18
+                    line: 435,
+                    column: 32
                 }
             },
             "193": {
                 start: {
-                    line: 440,
+                    line: 436,
                     column: 16
                 },
                 end: {
-                    line: 442,
-                    column: 17
+                    line: 436,
+                    column: 51
                 }
             },
             "194": {
                 start: {
-                    line: 441,
-                    column: 20
+                    line: 438,
+                    column: 16
                 },
                 end: {
-                    line: 441,
-                    column: 42
+                    line: 442,
+                    column: 18
                 }
             },
             "195": {
@@ -14358,7 +14358,7 @@ var cov_1nqd9talwx = function () {
                 },
                 end: {
                     line: 444,
-                    column: 63
+                    column: 42
                 }
             },
             "197": {
@@ -14367,88 +14367,88 @@ var cov_1nqd9talwx = function () {
                     column: 16
                 },
                 end: {
-                    line: 446,
-                    column: 64
+                    line: 448,
+                    column: 17
                 }
             },
             "198": {
                 start: {
                     line: 447,
-                    column: 16
+                    column: 20
                 },
                 end: {
                     line: 447,
-                    column: 51
+                    column: 63
                 }
             },
             "199": {
                 start: {
-                    line: 451,
-                    column: 25
+                    line: 449,
+                    column: 16
                 },
                 end: {
-                    line: 451,
-                    column: 40
+                    line: 449,
+                    column: 64
                 }
             },
             "200": {
                 start: {
-                    line: 452,
-                    column: 12
+                    line: 450,
+                    column: 16
                 },
                 end: {
-                    line: 518,
-                    column: 13
+                    line: 450,
+                    column: 51
                 }
             },
             "201": {
                 start: {
                     line: 454,
-                    column: 20
+                    column: 25
                 },
                 end: {
-                    line: 463,
-                    column: 21
+                    line: 454,
+                    column: 40
                 }
             },
             "202": {
                 start: {
                     line: 455,
-                    column: 24
+                    column: 12
                 },
                 end: {
-                    line: 455,
-                    column: 46
+                    line: 521,
+                    column: 13
                 }
             },
             "203": {
                 start: {
                     line: 457,
-                    column: 24
+                    column: 20
                 },
                 end: {
-                    line: 462,
-                    column: 26
+                    line: 466,
+                    column: 21
                 }
             },
             "204": {
                 start: {
-                    line: 464,
-                    column: 20
+                    line: 458,
+                    column: 24
                 },
                 end: {
-                    line: 464,
-                    column: 25
+                    line: 458,
+                    column: 46
                 }
             },
             "205": {
                 start: {
-                    line: 466,
-                    column: 20
+                    line: 460,
+                    column: 24
                 },
                 end: {
-                    line: 466,
-                    column: 63
+                    line: 465,
+                    column: 26
                 }
             },
             "206": {
@@ -14464,11 +14464,11 @@ var cov_1nqd9talwx = function () {
             "207": {
                 start: {
                     line: 469,
-                    column: 38
+                    column: 20
                 },
                 end: {
                     line: 469,
-                    column: 67
+                    column: 63
                 }
             },
             "208": {
@@ -14477,18 +14477,18 @@ var cov_1nqd9talwx = function () {
                     column: 20
                 },
                 end: {
-                    line: 472,
-                    column: 21
+                    line: 470,
+                    column: 25
                 }
             },
             "209": {
                 start: {
-                    line: 471,
-                    column: 24
+                    line: 472,
+                    column: 38
                 },
                 end: {
-                    line: 471,
-                    column: 51
+                    line: 472,
+                    column: 67
                 }
             },
             "210": {
@@ -14497,27 +14497,27 @@ var cov_1nqd9talwx = function () {
                     column: 20
                 },
                 end: {
-                    line: 473,
-                    column: 25
+                    line: 475,
+                    column: 21
                 }
             },
             "211": {
                 start: {
-                    line: 476,
-                    column: 20
+                    line: 474,
+                    column: 24
                 },
                 end: {
-                    line: 476,
-                    column: 63
+                    line: 474,
+                    column: 51
                 }
             },
             "212": {
                 start: {
-                    line: 477,
+                    line: 476,
                     column: 20
                 },
                 end: {
-                    line: 477,
+                    line: 476,
                     column: 25
                 }
             },
@@ -14528,7 +14528,7 @@ var cov_1nqd9talwx = function () {
                 },
                 end: {
                     line: 479,
-                    column: 61
+                    column: 63
                 }
             },
             "214": {
@@ -14548,7 +14548,7 @@ var cov_1nqd9talwx = function () {
                 },
                 end: {
                     line: 482,
-                    column: 76
+                    column: 61
                 }
             },
             "216": {
@@ -14567,48 +14567,48 @@ var cov_1nqd9talwx = function () {
                     column: 20
                 },
                 end: {
-                    line: 494,
-                    column: 21
+                    line: 485,
+                    column: 76
                 }
             },
             "218": {
                 start: {
                     line: 486,
-                    column: 24
+                    column: 20
                 },
                 end: {
                     line: 486,
-                    column: 63
+                    column: 25
                 }
             },
             "219": {
                 start: {
                     line: 488,
-                    column: 24
+                    column: 20
                 },
                 end: {
-                    line: 493,
-                    column: 26
+                    line: 497,
+                    column: 21
                 }
             },
             "220": {
                 start: {
-                    line: 495,
-                    column: 20
+                    line: 489,
+                    column: 24
                 },
                 end: {
-                    line: 495,
-                    column: 25
+                    line: 489,
+                    column: 63
                 }
             },
             "221": {
                 start: {
-                    line: 497,
-                    column: 20
+                    line: 491,
+                    column: 24
                 },
                 end: {
-                    line: 497,
-                    column: 42
+                    line: 496,
+                    column: 26
                 }
             },
             "222": {
@@ -14628,20 +14628,10 @@ var cov_1nqd9talwx = function () {
                 },
                 end: {
                     line: 500,
-                    column: 114
+                    column: 42
                 }
             },
             "224": {
-                start: {
-                    line: 500,
-                    column: 74
-                },
-                end: {
-                    line: 500,
-                    column: 112
-                }
-            },
-            "225": {
                 start: {
                     line: 501,
                     column: 20
@@ -14649,29 +14639,29 @@ var cov_1nqd9talwx = function () {
                 end: {
                     line: 501,
                     column: 25
+                }
+            },
+            "225": {
+                start: {
+                    line: 503,
+                    column: 20
+                },
+                end: {
+                    line: 503,
+                    column: 106
                 }
             },
             "226": {
                 start: {
                     line: 503,
-                    column: 20
+                    column: 74
                 },
                 end: {
                     line: 503,
-                    column: 94
+                    column: 105
                 }
             },
             "227": {
-                start: {
-                    line: 503,
-                    column: 72
-                },
-                end: {
-                    line: 503,
-                    column: 92
-                }
-            },
-            "228": {
                 start: {
                     line: 504,
                     column: 20
@@ -14681,14 +14671,24 @@ var cov_1nqd9talwx = function () {
                     column: 25
                 }
             },
-            "229": {
+            "228": {
                 start: {
                     line: 506,
-                    column: 32
+                    column: 20
                 },
                 end: {
                     line: 506,
-                    column: 54
+                    column: 85
+                }
+            },
+            "229": {
+                start: {
+                    line: 506,
+                    column: 71
+                },
+                end: {
+                    line: 506,
+                    column: 84
                 }
             },
             "230": {
@@ -14698,27 +14698,27 @@ var cov_1nqd9talwx = function () {
                 },
                 end: {
                     line: 507,
-                    column: 38
+                    column: 25
                 }
             },
             "231": {
                 start: {
-                    line: 508,
-                    column: 20
+                    line: 509,
+                    column: 32
                 },
                 end: {
-                    line: 510,
-                    column: 22
+                    line: 509,
+                    column: 54
                 }
             },
             "232": {
                 start: {
-                    line: 509,
-                    column: 24
+                    line: 510,
+                    column: 20
                 },
                 end: {
-                    line: 509,
-                    column: 76
+                    line: 510,
+                    column: 38
                 }
             },
             "233": {
@@ -14727,18 +14727,18 @@ var cov_1nqd9talwx = function () {
                     column: 20
                 },
                 end: {
-                    line: 511,
-                    column: 25
+                    line: 513,
+                    column: 22
                 }
             },
             "234": {
                 start: {
-                    line: 513,
-                    column: 20
+                    line: 512,
+                    column: 24
                 },
                 end: {
-                    line: 513,
-                    column: 64
+                    line: 512,
+                    column: 76
                 }
             },
             "235": {
@@ -14753,52 +14753,52 @@ var cov_1nqd9talwx = function () {
             },
             "236": {
                 start: {
-                    line: 517,
+                    line: 516,
                     column: 20
                 },
                 end: {
-                    line: 517,
+                    line: 516,
                     column: 64
                 }
             },
             "237": {
                 start: {
-                    line: 524,
-                    column: 23
+                    line: 517,
+                    column: 20
                 },
                 end: {
-                    line: 524,
-                    column: 53
+                    line: 517,
+                    column: 25
                 }
             },
             "238": {
                 start: {
-                    line: 525,
-                    column: 24
+                    line: 520,
+                    column: 20
                 },
                 end: {
-                    line: 525,
-                    column: 43
+                    line: 520,
+                    column: 64
                 }
             },
             "239": {
                 start: {
-                    line: 526,
-                    column: 8
+                    line: 527,
+                    column: 23
                 },
                 end: {
-                    line: 528,
-                    column: 9
+                    line: 527,
+                    column: 53
                 }
             },
             "240": {
                 start: {
-                    line: 527,
-                    column: 12
+                    line: 528,
+                    column: 24
                 },
                 end: {
-                    line: 527,
-                    column: 59
+                    line: 528,
+                    column: 43
                 }
             },
             "241": {
@@ -14807,7 +14807,7 @@ var cov_1nqd9talwx = function () {
                     column: 8
                 },
                 end: {
-                    line: 542,
+                    line: 531,
                     column: 9
                 }
             },
@@ -14817,58 +14817,58 @@ var cov_1nqd9talwx = function () {
                     column: 12
                 },
                 end: {
-                    line: 541,
-                    column: 13
+                    line: 530,
+                    column: 59
                 }
             },
             "243": {
                 start: {
-                    line: 531,
-                    column: 16
+                    line: 532,
+                    column: 8
                 },
                 end: {
-                    line: 533,
-                    column: 17
+                    line: 545,
+                    column: 9
                 }
             },
             "244": {
                 start: {
-                    line: 532,
-                    column: 20
+                    line: 533,
+                    column: 12
                 },
                 end: {
-                    line: 532,
-                    column: 35
+                    line: 544,
+                    column: 13
                 }
             },
             "245": {
                 start: {
-                    line: 535,
-                    column: 34
+                    line: 534,
+                    column: 16
                 },
                 end: {
-                    line: 537,
-                    column: 18
+                    line: 536,
+                    column: 17
                 }
             },
             "246": {
                 start: {
-                    line: 536,
+                    line: 535,
                     column: 20
                 },
                 end: {
-                    line: 536,
-                    column: 77
+                    line: 535,
+                    column: 35
                 }
             },
             "247": {
                 start: {
                     line: 538,
-                    column: 16
+                    column: 34
                 },
                 end: {
                     line: 540,
-                    column: 17
+                    column: 18
                 }
             },
             "248": {
@@ -14878,357 +14878,357 @@ var cov_1nqd9talwx = function () {
                 },
                 end: {
                     line: 539,
-                    column: 38
+                    column: 77
                 }
             },
             "249": {
                 start: {
-                    line: 543,
-                    column: 8
+                    line: 541,
+                    column: 16
                 },
                 end: {
-                    line: 551,
-                    column: 9
+                    line: 543,
+                    column: 17
                 }
             },
             "250": {
                 start: {
-                    line: 544,
-                    column: 12
+                    line: 542,
+                    column: 20
                 },
                 end: {
-                    line: 549,
-                    column: 14
+                    line: 542,
+                    column: 38
                 }
             },
             "251": {
                 start: {
-                    line: 550,
-                    column: 12
+                    line: 546,
+                    column: 8
                 },
                 end: {
-                    line: 550,
-                    column: 24
+                    line: 554,
+                    column: 9
                 }
             },
             "252": {
                 start: {
-                    line: 552,
-                    column: 8
+                    line: 547,
+                    column: 12
                 },
                 end: {
                     line: 552,
-                    column: 45
+                    column: 14
                 }
             },
             "253": {
                 start: {
-                    line: 560,
-                    column: 8
+                    line: 553,
+                    column: 12
                 },
                 end: {
-                    line: 560,
-                    column: 489
+                    line: 553,
+                    column: 24
                 }
             },
             "254": {
                 start: {
-                    line: 564,
+                    line: 555,
                     column: 8
                 },
                 end: {
-                    line: 564,
-                    column: 42
+                    line: 555,
+                    column: 45
                 }
             },
             "255": {
                 start: {
-                    line: 568,
-                    column: 21
+                    line: 563,
+                    column: 8
                 },
                 end: {
-                    line: 568,
-                    column: 47
+                    line: 563,
+                    column: 489
                 }
             },
             "256": {
                 start: {
-                    line: 569,
+                    line: 567,
                     column: 8
                 },
                 end: {
-                    line: 572,
-                    column: 10
+                    line: 567,
+                    column: 42
                 }
             },
             "257": {
                 start: {
-                    line: 570,
-                    column: 29
+                    line: 571,
+                    column: 21
                 },
                 end: {
-                    line: 570,
-                    column: 59
+                    line: 571,
+                    column: 47
                 }
             },
             "258": {
                 start: {
-                    line: 571,
-                    column: 12
+                    line: 572,
+                    column: 8
                 },
                 end: {
-                    line: 571,
-                    column: 36
+                    line: 575,
+                    column: 10
                 }
             },
             "259": {
                 start: {
-                    line: 576,
-                    column: 8
+                    line: 573,
+                    column: 29
                 },
                 end: {
-                    line: 594,
-                    column: 10
+                    line: 573,
+                    column: 59
                 }
             },
             "260": {
                 start: {
-                    line: 577,
-                    column: 24
+                    line: 574,
+                    column: 12
                 },
                 end: {
-                    line: 577,
-                    column: 42
+                    line: 574,
+                    column: 36
                 }
             },
             "261": {
                 start: {
-                    line: 578,
-                    column: 12
+                    line: 579,
+                    column: 8
                 },
                 end: {
-                    line: 593,
-                    column: 13
+                    line: 597,
+                    column: 10
                 }
             },
             "262": {
                 start: {
-                    line: 579,
-                    column: 16
+                    line: 580,
+                    column: 24
                 },
                 end: {
-                    line: 582,
-                    column: 17
+                    line: 580,
+                    column: 42
                 }
             },
             "263": {
                 start: {
-                    line: 584,
-                    column: 16
+                    line: 581,
+                    column: 12
                 },
                 end: {
-                    line: 584,
-                    column: 41
+                    line: 596,
+                    column: 13
                 }
             },
             "264": {
                 start: {
-                    line: 585,
+                    line: 582,
                     column: 16
                 },
                 end: {
-                    line: 592,
+                    line: 585,
                     column: 17
                 }
             },
             "265": {
                 start: {
-                    line: 586,
-                    column: 20
+                    line: 587,
+                    column: 16
                 },
                 end: {
-                    line: 589,
-                    column: 21
+                    line: 587,
+                    column: 41
                 }
             },
             "266": {
                 start: {
-                    line: 591,
-                    column: 20
+                    line: 588,
+                    column: 16
                 },
                 end: {
-                    line: 591,
-                    column: 63
+                    line: 595,
+                    column: 17
                 }
             },
             "267": {
                 start: {
-                    line: 598,
-                    column: 8
+                    line: 589,
+                    column: 20
                 },
                 end: {
-                    line: 598,
-                    column: 33
+                    line: 592,
+                    column: 21
                 }
             },
             "268": {
                 start: {
-                    line: 602,
-                    column: 21
+                    line: 594,
+                    column: 20
                 },
                 end: {
-                    line: 602,
-                    column: 64
+                    line: 594,
+                    column: 63
                 }
             },
             "269": {
                 start: {
-                    line: 603,
+                    line: 601,
                     column: 8
                 },
                 end: {
-                    line: 603,
-                    column: 28
+                    line: 601,
+                    column: 33
                 }
             },
             "270": {
                 start: {
-                    line: 607,
-                    column: 27
+                    line: 605,
+                    column: 21
                 },
                 end: {
-                    line: 607,
-                    column: 43
+                    line: 605,
+                    column: 64
                 }
             },
             "271": {
                 start: {
-                    line: 608,
+                    line: 606,
                     column: 8
                 },
                 end: {
-                    line: 610,
-                    column: 9
+                    line: 606,
+                    column: 28
                 }
             },
             "272": {
                 start: {
-                    line: 609,
-                    column: 12
+                    line: 610,
+                    column: 27
                 },
                 end: {
-                    line: 609,
-                    column: 59
+                    line: 610,
+                    column: 43
                 }
             },
             "273": {
                 start: {
-                    line: 612,
-                    column: 22
+                    line: 611,
+                    column: 8
                 },
                 end: {
-                    line: 614,
-                    column: 10
+                    line: 613,
+                    column: 9
                 }
             },
             "274": {
                 start: {
-                    line: 613,
+                    line: 612,
                     column: 12
                 },
                 end: {
-                    line: 613,
-                    column: 63
+                    line: 612,
+                    column: 59
                 }
             },
             "275": {
                 start: {
-                    line: 616,
-                    column: 8
+                    line: 615,
+                    column: 22
                 },
                 end: {
-                    line: 622,
-                    column: 9
+                    line: 617,
+                    column: 10
                 }
             },
             "276": {
                 start: {
-                    line: 617,
+                    line: 616,
                     column: 12
                 },
                 end: {
-                    line: 620,
-                    column: 14
+                    line: 616,
+                    column: 63
                 }
             },
             "277": {
                 start: {
-                    line: 621,
-                    column: 12
+                    line: 619,
+                    column: 8
                 },
                 end: {
-                    line: 621,
-                    column: 28
+                    line: 625,
+                    column: 9
                 }
             },
             "278": {
                 start: {
-                    line: 624,
-                    column: 8
+                    line: 620,
+                    column: 12
                 },
                 end: {
-                    line: 624,
-                    column: 22
+                    line: 623,
+                    column: 14
                 }
             },
             "279": {
                 start: {
-                    line: 628,
-                    column: 8
+                    line: 624,
+                    column: 12
                 },
                 end: {
-                    line: 632,
-                    column: 9
+                    line: 624,
+                    column: 28
                 }
             },
             "280": {
                 start: {
-                    line: 633,
+                    line: 627,
                     column: 8
                 },
                 end: {
-                    line: 633,
-                    column: 34
+                    line: 627,
+                    column: 22
                 }
             },
             "281": {
                 start: {
-                    line: 634,
+                    line: 631,
                     column: 8
                 },
                 end: {
-                    line: 634,
-                    column: 44
+                    line: 635,
+                    column: 9
                 }
             },
             "282": {
                 start: {
-                    line: 635,
+                    line: 636,
                     column: 8
                 },
                 end: {
-                    line: 637,
-                    column: 9
+                    line: 636,
+                    column: 34
                 }
             },
             "283": {
                 start: {
-                    line: 636,
-                    column: 12
+                    line: 637,
+                    column: 8
                 },
                 end: {
-                    line: 636,
-                    column: 27
+                    line: 637,
+                    column: 44
                 }
             },
             "284": {
@@ -15237,28 +15237,28 @@ var cov_1nqd9talwx = function () {
                     column: 8
                 },
                 end: {
-                    line: 638,
-                    column: 27
+                    line: 640,
+                    column: 9
                 }
             },
             "285": {
                 start: {
                     line: 639,
-                    column: 8
+                    column: 12
                 },
                 end: {
-                    line: 641,
-                    column: 9
+                    line: 639,
+                    column: 27
                 }
             },
             "286": {
                 start: {
-                    line: 640,
-                    column: 12
+                    line: 641,
+                    column: 8
                 },
                 end: {
-                    line: 640,
-                    column: 47
+                    line: 641,
+                    column: 27
                 }
             },
             "287": {
@@ -15267,318 +15267,318 @@ var cov_1nqd9talwx = function () {
                     column: 8
                 },
                 end: {
-                    line: 642,
-                    column: 28
+                    line: 644,
+                    column: 9
                 }
             },
             "288": {
                 start: {
-                    line: 646,
-                    column: 8
+                    line: 643,
+                    column: 12
                 },
                 end: {
-                    line: 646,
-                    column: 23
+                    line: 643,
+                    column: 47
                 }
             },
             "289": {
                 start: {
-                    line: 647,
+                    line: 645,
                     column: 8
                 },
                 end: {
-                    line: 647,
-                    column: 51
+                    line: 645,
+                    column: 28
                 }
             },
             "290": {
                 start: {
-                    line: 648,
+                    line: 649,
                     column: 8
                 },
                 end: {
-                    line: 648,
-                    column: 37
+                    line: 649,
+                    column: 23
                 }
             },
             "291": {
                 start: {
-                    line: 652,
-                    column: 17
+                    line: 650,
+                    column: 8
                 },
                 end: {
-                    line: 652,
-                    column: 38
+                    line: 650,
+                    column: 51
                 }
             },
             "292": {
                 start: {
-                    line: 653,
+                    line: 651,
                     column: 8
                 },
                 end: {
-                    line: 653,
-                    column: 51
+                    line: 651,
+                    column: 37
                 }
             },
             "293": {
                 start: {
-                    line: 657,
-                    column: 8
+                    line: 655,
+                    column: 17
                 },
                 end: {
-                    line: 657,
-                    column: 20
+                    line: 655,
+                    column: 38
                 }
             },
             "294": {
                 start: {
-                    line: 662,
-                    column: 20
+                    line: 656,
+                    column: 8
                 },
                 end: {
-                    line: 662,
-                    column: 30
+                    line: 656,
+                    column: 51
                 }
             },
             "295": {
                 start: {
-                    line: 663,
-                    column: 18
+                    line: 660,
+                    column: 8
                 },
                 end: {
-                    line: 663,
-                    column: 40
+                    line: 660,
+                    column: 20
                 }
             },
             "296": {
                 start: {
-                    line: 664,
-                    column: 8
+                    line: 665,
+                    column: 20
                 },
                 end: {
-                    line: 670,
-                    column: 9
+                    line: 665,
+                    column: 30
                 }
             },
             "297": {
                 start: {
-                    line: 665,
-                    column: 26
+                    line: 666,
+                    column: 18
                 },
                 end: {
-                    line: 665,
-                    column: 44
+                    line: 666,
+                    column: 40
                 }
             },
             "298": {
                 start: {
-                    line: 666,
-                    column: 28
+                    line: 667,
+                    column: 8
                 },
                 end: {
-                    line: 668,
-                    column: 81
+                    line: 673,
+                    column: 9
                 }
             },
             "299": {
                 start: {
-                    line: 669,
-                    column: 12
+                    line: 668,
+                    column: 26
                 },
                 end: {
-                    line: 669,
-                    column: 56
+                    line: 668,
+                    column: 44
                 }
             },
             "300": {
                 start: {
-                    line: 672,
-                    column: 8
+                    line: 669,
+                    column: 28
                 },
                 end: {
-                    line: 672,
-                    column: 50
+                    line: 671,
+                    column: 81
                 }
             },
             "301": {
                 start: {
-                    line: 673,
-                    column: 8
+                    line: 672,
+                    column: 12
                 },
                 end: {
-                    line: 673,
-                    column: 14
+                    line: 672,
+                    column: 56
                 }
             },
             "302": {
                 start: {
-                    line: 677,
+                    line: 675,
                     column: 8
                 },
                 end: {
-                    line: 690,
-                    column: 9
+                    line: 675,
+                    column: 50
                 }
             },
             "303": {
                 start: {
-                    line: 678,
-                    column: 20
+                    line: 676,
+                    column: 8
                 },
                 end: {
-                    line: 678,
-                    column: 36
+                    line: 676,
+                    column: 14
                 }
             },
             "304": {
                 start: {
-                    line: 679,
-                    column: 12
+                    line: 680,
+                    column: 8
                 },
                 end: {
-                    line: 679,
-                    column: 27
+                    line: 693,
+                    column: 9
                 }
             },
             "305": {
                 start: {
-                    line: 680,
-                    column: 12
+                    line: 681,
+                    column: 20
                 },
                 end: {
-                    line: 688,
-                    column: 13
+                    line: 681,
+                    column: 36
                 }
             },
             "306": {
                 start: {
-                    line: 681,
-                    column: 16
+                    line: 682,
+                    column: 12
                 },
                 end: {
-                    line: 681,
-                    column: 29
+                    line: 682,
+                    column: 27
                 }
             },
             "307": {
                 start: {
-                    line: 682,
-                    column: 19
+                    line: 683,
+                    column: 12
                 },
                 end: {
-                    line: 688,
+                    line: 691,
                     column: 13
                 }
             },
             "308": {
                 start: {
-                    line: 683,
+                    line: 684,
                     column: 16
                 },
                 end: {
-                    line: 683,
-                    column: 31
+                    line: 684,
+                    column: 29
                 }
             },
             "309": {
                 start: {
-                    line: 684,
+                    line: 685,
                     column: 19
                 },
                 end: {
-                    line: 688,
+                    line: 691,
                     column: 13
                 }
             },
             "310": {
                 start: {
-                    line: 685,
+                    line: 686,
                     column: 16
                 },
                 end: {
-                    line: 685,
-                    column: 35
+                    line: 686,
+                    column: 31
                 }
             },
             "311": {
                 start: {
                     line: 687,
-                    column: 16
+                    column: 19
                 },
                 end: {
-                    line: 687,
-                    column: 37
+                    line: 691,
+                    column: 13
                 }
             },
             "312": {
                 start: {
-                    line: 689,
-                    column: 12
+                    line: 688,
+                    column: 16
                 },
                 end: {
-                    line: 689,
-                    column: 27
+                    line: 688,
+                    column: 35
                 }
             },
             "313": {
                 start: {
-                    line: 694,
-                    column: 20
+                    line: 690,
+                    column: 16
                 },
                 end: {
-                    line: 694,
-                    column: 28
+                    line: 690,
+                    column: 37
                 }
             },
             "314": {
                 start: {
-                    line: 695,
-                    column: 21
+                    line: 692,
+                    column: 12
                 },
                 end: {
-                    line: 695,
-                    column: 22
+                    line: 692,
+                    column: 27
                 }
             },
             "315": {
                 start: {
-                    line: 696,
-                    column: 8
+                    line: 697,
+                    column: 20
                 },
                 end: {
-                    line: 705,
-                    column: 9
+                    line: 697,
+                    column: 28
                 }
             },
             "316": {
                 start: {
-                    line: 697,
-                    column: 10
+                    line: 698,
+                    column: 21
                 },
                 end: {
-                    line: 703,
-                    column: 11
+                    line: 698,
+                    column: 22
                 }
             },
             "317": {
                 start: {
                     line: 699,
-                    column: 14
+                    column: 8
                 },
                 end: {
-                    line: 699,
-                    column: 25
+                    line: 708,
+                    column: 9
                 }
             },
             "318": {
                 start: {
                     line: 700,
-                    column: 14
+                    column: 10
                 },
                 end: {
-                    line: 700,
-                    column: 19
+                    line: 706,
+                    column: 11
                 }
             },
             "319": {
@@ -15593,32 +15593,32 @@ var cov_1nqd9talwx = function () {
             },
             "320": {
                 start: {
-                    line: 704,
-                    column: 10
+                    line: 703,
+                    column: 14
                 },
                 end: {
-                    line: 704,
-                    column: 20
+                    line: 703,
+                    column: 19
                 }
             },
             "321": {
                 start: {
-                    line: 708,
-                    column: 8
+                    line: 705,
+                    column: 14
                 },
                 end: {
-                    line: 708,
-                    column: 36
+                    line: 705,
+                    column: 25
                 }
             },
             "322": {
                 start: {
-                    line: 708,
-                    column: 28
+                    line: 707,
+                    column: 10
                 },
                 end: {
-                    line: 708,
-                    column: 34
+                    line: 707,
+                    column: 20
                 }
             },
             "323": {
@@ -15628,136 +15628,146 @@ var cov_1nqd9talwx = function () {
                 },
                 end: {
                     line: 711,
-                    column: 18
+                    column: 36
                 }
             },
             "324": {
                 start: {
-                    line: 712,
-                    column: 22
+                    line: 711,
+                    column: 28
                 },
                 end: {
-                    line: 712,
-                    column: 59
+                    line: 711,
+                    column: 34
                 }
             },
             "325": {
-                start: {
-                    line: 713,
-                    column: 8
-                },
-                end: {
-                    line: 713,
-                    column: 45
-                }
-            },
-            "326": {
                 start: {
                     line: 714,
                     column: 8
                 },
                 end: {
-                    line: 716,
-                    column: 9
+                    line: 714,
+                    column: 18
+                }
+            },
+            "326": {
+                start: {
+                    line: 715,
+                    column: 22
+                },
+                end: {
+                    line: 715,
+                    column: 59
                 }
             },
             "327": {
                 start: {
-                    line: 715,
-                    column: 12
+                    line: 716,
+                    column: 8
                 },
                 end: {
-                    line: 715,
-                    column: 49
+                    line: 716,
+                    column: 45
                 }
             },
             "328": {
                 start: {
-                    line: 720,
-                    column: 19
+                    line: 717,
+                    column: 8
                 },
                 end: {
-                    line: 720,
-                    column: 23
+                    line: 719,
+                    column: 9
                 }
             },
             "329": {
                 start: {
-                    line: 721,
-                    column: 8
+                    line: 718,
+                    column: 12
                 },
                 end: {
-                    line: 724,
-                    column: 10
+                    line: 718,
+                    column: 49
                 }
             },
             "330": {
                 start: {
                     line: 723,
-                    column: 12
+                    column: 8
                 },
                 end: {
-                    line: 723,
-                    column: 41
+                    line: 726,
+                    column: 10
                 }
             },
             "331": {
                 start: {
-                    line: 728,
-                    column: 8
+                    line: 725,
+                    column: 12
                 },
                 end: {
-                    line: 732,
-                    column: 9
+                    line: 725,
+                    column: 41
                 }
             },
             "332": {
                 start: {
-                    line: 736,
+                    line: 730,
                     column: 8
                 },
                 end: {
-                    line: 736,
-                    column: 30
+                    line: 734,
+                    column: 9
                 }
             },
             "333": {
                 start: {
-                    line: 737,
+                    line: 738,
                     column: 8
                 },
                 end: {
-                    line: 737,
-                    column: 32
+                    line: 738,
+                    column: 30
                 }
             },
             "334": {
                 start: {
-                    line: 738,
+                    line: 739,
                     column: 8
                 },
                 end: {
-                    line: 738,
-                    column: 26
+                    line: 739,
+                    column: 32
                 }
             },
             "335": {
                 start: {
-                    line: 739,
+                    line: 740,
                     column: 8
                 },
                 end: {
-                    line: 739,
-                    column: 22
+                    line: 740,
+                    column: 26
                 }
             },
             "336": {
                 start: {
-                    line: 740,
+                    line: 741,
                     column: 8
                 },
                 end: {
-                    line: 740,
+                    line: 741,
+                    column: 22
+                }
+            },
+            "337": {
+                start: {
+                    line: 742,
+                    column: 8
+                },
+                end: {
+                    line: 742,
                     column: 25
                 }
             }
@@ -16093,7 +16103,7 @@ var cov_1nqd9talwx = function () {
                         column: 20
                     },
                     end: {
-                        line: 521,
+                        line: 524,
                         column: 5
                     }
                 },
@@ -16103,697 +16113,697 @@ var cov_1nqd9talwx = function () {
                 name: "(anonymous_14)",
                 decl: {
                     start: {
-                        line: 361,
+                        line: 364,
                         column: 37
                     },
                     end: {
-                        line: 361,
+                        line: 364,
                         column: 38
                     }
                 },
                 loc: {
                     start: {
-                        line: 361,
+                        line: 364,
                         column: 47
                     },
                     end: {
-                        line: 361,
+                        line: 364,
                         column: 77
                     }
                 },
-                line: 361
+                line: 364
             },
             "15": {
                 name: "(anonymous_15)",
                 decl: {
                     start: {
-                        line: 400,
+                        line: 403,
                         column: 55
                     },
                     end: {
-                        line: 400,
+                        line: 403,
                         column: 56
                     }
                 },
                 loc: {
                     start: {
-                        line: 400,
+                        line: 403,
                         column: 61
                     },
                     end: {
-                        line: 402,
+                        line: 405,
                         column: 17
                     }
                 },
-                line: 400
+                line: 403
             },
             "16": {
                 name: "(anonymous_16)",
                 decl: {
                     start: {
-                        line: 404,
+                        line: 407,
                         column: 55
                     },
                     end: {
-                        line: 404,
+                        line: 407,
                         column: 56
                     }
                 },
                 loc: {
                     start: {
-                        line: 404,
+                        line: 407,
                         column: 61
                     },
                     end: {
-                        line: 406,
+                        line: 409,
                         column: 17
                     }
                 },
-                line: 404
+                line: 407
             },
             "17": {
                 name: "(anonymous_17)",
                 decl: {
                     start: {
-                        line: 500,
+                        line: 503,
                         column: 63
                     },
                     end: {
-                        line: 500,
+                        line: 503,
                         column: 64
                     }
                 },
                 loc: {
                     start: {
-                        line: 500,
-                        column: 73
+                        line: 503,
+                        column: 74
                     },
                     end: {
-                        line: 500,
-                        column: 113
+                        line: 503,
+                        column: 105
                     }
                 },
-                line: 500
+                line: 503
             },
             "18": {
                 name: "(anonymous_18)",
                 decl: {
                     start: {
-                        line: 503,
+                        line: 506,
                         column: 61
                     },
                     end: {
-                        line: 503,
+                        line: 506,
                         column: 62
                     }
                 },
                 loc: {
                     start: {
-                        line: 503,
+                        line: 506,
                         column: 71
                     },
                     end: {
-                        line: 503,
-                        column: 93
+                        line: 506,
+                        column: 84
                     }
                 },
-                line: 503
+                line: 506
             },
             "19": {
                 name: "(anonymous_19)",
                 decl: {
                     start: {
-                        line: 508,
+                        line: 511,
                         column: 34
                     },
                     end: {
-                        line: 508,
+                        line: 511,
                         column: 35
                     }
                 },
                 loc: {
                     start: {
-                        line: 508,
+                        line: 511,
                         column: 44
                     },
                     end: {
-                        line: 510,
+                        line: 513,
                         column: 21
                     }
                 },
-                line: 508
+                line: 511
             },
             "20": {
                 name: "(anonymous_20)",
                 decl: {
                     start: {
-                        line: 523,
+                        line: 526,
                         column: 4
                     },
                     end: {
-                        line: 523,
+                        line: 526,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 523,
+                        line: 526,
                         column: 32
                     },
                     end: {
-                        line: 554,
+                        line: 557,
                         column: 5
                     }
                 },
-                line: 523
+                line: 526
             },
             "21": {
                 name: "(anonymous_21)",
                 decl: {
                     start: {
-                        line: 535,
+                        line: 538,
                         column: 73
                     },
                     end: {
-                        line: 535,
+                        line: 538,
                         column: 74
                     }
                 },
                 loc: {
                     start: {
-                        line: 535,
+                        line: 538,
                         column: 80
                     },
                     end: {
-                        line: 537,
+                        line: 540,
                         column: 17
                     }
                 },
-                line: 535
+                line: 538
             },
             "22": {
                 name: "(anonymous_22)",
                 decl: {
                     start: {
-                        line: 556,
+                        line: 559,
                         column: 4
                     },
                     end: {
-                        line: 556,
+                        line: 559,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 556,
+                        line: 559,
                         column: 25
                     },
                     end: {
-                        line: 561,
+                        line: 564,
                         column: 5
                     }
                 },
-                line: 556
+                line: 559
             },
             "23": {
                 name: "(anonymous_23)",
                 decl: {
                     start: {
-                        line: 563,
+                        line: 566,
                         column: 4
                     },
                     end: {
-                        line: 563,
+                        line: 566,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 563,
+                        line: 566,
                         column: 26
                     },
                     end: {
-                        line: 565,
+                        line: 568,
                         column: 5
                     }
                 },
-                line: 563
+                line: 566
             },
             "24": {
                 name: "(anonymous_24)",
                 decl: {
                     start: {
-                        line: 567,
+                        line: 570,
                         column: 4
                     },
                     end: {
-                        line: 567,
+                        line: 570,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 567,
+                        line: 570,
                         column: 32
                     },
                     end: {
-                        line: 573,
+                        line: 576,
                         column: 5
                     }
                 },
-                line: 567
+                line: 570
             },
             "25": {
                 name: "(anonymous_25)",
                 decl: {
                     start: {
-                        line: 569,
+                        line: 572,
                         column: 26
                     },
                     end: {
-                        line: 569,
+                        line: 572,
                         column: 27
                     }
                 },
                 loc: {
                     start: {
-                        line: 569,
+                        line: 572,
                         column: 36
                     },
                     end: {
-                        line: 572,
+                        line: 575,
                         column: 9
                     }
                 },
-                line: 569
+                line: 572
             },
             "26": {
                 name: "(anonymous_26)",
                 decl: {
                     start: {
-                        line: 575,
+                        line: 578,
                         column: 4
                     },
                     end: {
-                        line: 575,
+                        line: 578,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 575,
+                        line: 578,
                         column: 30
                     },
                     end: {
-                        line: 595,
+                        line: 598,
                         column: 5
                     }
                 },
-                line: 575
+                line: 578
             },
             "27": {
                 name: "(anonymous_27)",
                 decl: {
                     start: {
-                        line: 576,
+                        line: 579,
                         column: 42
                     },
                     end: {
-                        line: 576,
+                        line: 579,
                         column: 43
                     }
                 },
                 loc: {
                     start: {
-                        line: 576,
+                        line: 579,
                         column: 52
                     },
                     end: {
-                        line: 594,
+                        line: 597,
                         column: 9
                     }
                 },
-                line: 576
+                line: 579
             },
             "28": {
                 name: "(anonymous_28)",
                 decl: {
                     start: {
-                        line: 597,
+                        line: 600,
                         column: 4
                     },
                     end: {
-                        line: 597,
+                        line: 600,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 597,
+                        line: 600,
                         column: 24
                     },
                     end: {
-                        line: 599,
+                        line: 602,
                         column: 5
                     }
                 },
-                line: 597
+                line: 600
             },
             "29": {
                 name: "(anonymous_29)",
                 decl: {
                     start: {
-                        line: 601,
+                        line: 604,
                         column: 4
-                    },
-                    end: {
-                        line: 601,
-                        column: 5
-                    }
-                },
-                loc: {
-                    start: {
-                        line: 601,
-                        column: 37
                     },
                     end: {
                         line: 604,
                         column: 5
                     }
                 },
-                line: 601
+                loc: {
+                    start: {
+                        line: 604,
+                        column: 37
+                    },
+                    end: {
+                        line: 607,
+                        column: 5
+                    }
+                },
+                line: 604
             },
             "30": {
                 name: "(anonymous_30)",
                 decl: {
                     start: {
-                        line: 606,
+                        line: 609,
                         column: 4
                     },
                     end: {
-                        line: 606,
+                        line: 609,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 606,
+                        line: 609,
                         column: 14
                     },
                     end: {
-                        line: 625,
+                        line: 628,
                         column: 5
                     }
                 },
-                line: 606
+                line: 609
             },
             "31": {
                 name: "(anonymous_31)",
                 decl: {
                     start: {
-                        line: 612,
+                        line: 615,
                         column: 49
                     },
                     end: {
-                        line: 612,
+                        line: 615,
                         column: 50
                     }
                 },
                 loc: {
                     start: {
-                        line: 612,
+                        line: 615,
                         column: 60
                     },
                     end: {
-                        line: 614,
+                        line: 617,
                         column: 9
                     }
                 },
-                line: 612
+                line: 615
             },
             "32": {
                 name: "(anonymous_32)",
                 decl: {
                     start: {
-                        line: 627,
+                        line: 630,
                         column: 4
                     },
                     end: {
-                        line: 627,
+                        line: 630,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 627,
+                        line: 630,
                         column: 21
                     },
                     end: {
-                        line: 643,
+                        line: 646,
                         column: 5
                     }
                 },
-                line: 627
+                line: 630
             },
             "33": {
                 name: "(anonymous_33)",
                 decl: {
                     start: {
-                        line: 645,
+                        line: 648,
                         column: 4
                     },
                     end: {
-                        line: 645,
+                        line: 648,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 645,
+                        line: 648,
                         column: 16
                     },
                     end: {
-                        line: 649,
+                        line: 652,
                         column: 5
                     }
                 },
-                line: 645
+                line: 648
             },
             "34": {
                 name: "(anonymous_34)",
                 decl: {
                     start: {
-                        line: 651,
+                        line: 654,
                         column: 4
-                    },
-                    end: {
-                        line: 651,
-                        column: 5
-                    }
-                },
-                loc: {
-                    start: {
-                        line: 651,
-                        column: 13
                     },
                     end: {
                         line: 654,
                         column: 5
                     }
                 },
-                line: 651
+                loc: {
+                    start: {
+                        line: 654,
+                        column: 13
+                    },
+                    end: {
+                        line: 657,
+                        column: 5
+                    }
+                },
+                line: 654
             },
             "35": {
                 name: "(anonymous_35)",
                 decl: {
                     start: {
-                        line: 656,
+                        line: 659,
                         column: 4
                     },
                     end: {
-                        line: 656,
+                        line: 659,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 656,
+                        line: 659,
                         column: 15
                     },
                     end: {
-                        line: 658,
+                        line: 661,
                         column: 5
                     }
                 },
-                line: 656
+                line: 659
             },
             "36": {
                 name: "(anonymous_36)",
                 decl: {
                     start: {
-                        line: 661,
+                        line: 664,
                         column: 4
                     },
                     end: {
-                        line: 661,
+                        line: 664,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 661,
+                        line: 664,
                         column: 22
                     },
                     end: {
-                        line: 674,
+                        line: 677,
                         column: 5
                     }
                 },
-                line: 661
+                line: 664
             },
             "37": {
                 name: "(anonymous_37)",
                 decl: {
                     start: {
-                        line: 676,
+                        line: 679,
                         column: 4
                     },
                     end: {
-                        line: 676,
+                        line: 679,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 676,
+                        line: 679,
                         column: 24
                     },
                     end: {
-                        line: 691,
+                        line: 694,
                         column: 5
                     }
                 },
-                line: 676
+                line: 679
             },
             "38": {
                 name: "(anonymous_38)",
                 decl: {
                     start: {
-                        line: 693,
+                        line: 696,
                         column: 4
                     },
                     end: {
-                        line: 693,
+                        line: 696,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 693,
+                        line: 696,
                         column: 19
                     },
                     end: {
-                        line: 717,
+                        line: 720,
                         column: 5
                     }
                 },
-                line: 693
+                line: 696
             },
             "39": {
                 name: "(anonymous_39)",
                 decl: {
                     start: {
-                        line: 719,
+                        line: 722,
                         column: 4
                     },
                     end: {
-                        line: 719,
+                        line: 722,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 719,
+                        line: 722,
                         column: 18
                     },
                     end: {
-                        line: 725,
+                        line: 727,
                         column: 5
                     }
                 },
-                line: 719
+                line: 722
             },
             "40": {
                 name: "(anonymous_40)",
                 decl: {
                     start: {
-                        line: 721,
+                        line: 723,
                         column: 29
                     },
                     end: {
-                        line: 721,
+                        line: 723,
                         column: 30
                     }
                 },
                 loc: {
                     start: {
-                        line: 721,
+                        line: 723,
                         column: 46
                     },
                     end: {
-                        line: 724,
+                        line: 726,
                         column: 9
                     }
                 },
-                line: 721
+                line: 723
             },
             "41": {
                 name: "(anonymous_41)",
                 decl: {
                     start: {
-                        line: 727,
+                        line: 729,
                         column: 4
                     },
                     end: {
-                        line: 727,
+                        line: 729,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 727,
+                        line: 729,
                         column: 14
                     },
                     end: {
-                        line: 733,
+                        line: 735,
                         column: 5
                     }
                 },
-                line: 727
+                line: 729
             },
             "42": {
                 name: "(anonymous_42)",
                 decl: {
                     start: {
-                        line: 735,
+                        line: 737,
                         column: 4
                     },
                     end: {
-                        line: 735,
+                        line: 737,
                         column: 5
                     }
                 },
                 loc: {
                     start: {
-                        line: 735,
+                        line: 737,
                         column: 17
                     },
                     end: {
-                        line: 741,
+                        line: 743,
                         column: 5
                     }
                 },
-                line: 735
+                line: 737
             }
         },
         branchMap: {
@@ -17628,143 +17638,176 @@ var cov_1nqd9talwx = function () {
             "24": {
                 loc: {
                     start: {
-                        line: 319,
+                        line: 318,
                         column: 8
                     },
                     end: {
-                        line: 326,
+                        line: 329,
                         column: 9
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 319,
+                        line: 318,
                         column: 8
                     },
                     end: {
-                        line: 326,
+                        line: 329,
                         column: 9
                     }
                 }, {
                     start: {
-                        line: 319,
+                        line: 318,
                         column: 8
                     },
                     end: {
-                        line: 326,
+                        line: 329,
                         column: 9
                     }
                 }],
-                line: 319
+                line: 318
             },
             "25": {
                 loc: {
                     start: {
-                        line: 322,
+                        line: 321,
                         column: 15
                     },
                     end: {
-                        line: 326,
+                        line: 329,
                         column: 9
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 322,
+                        line: 321,
                         column: 15
                     },
                     end: {
-                        line: 326,
+                        line: 329,
                         column: 9
                     }
                 }, {
                     start: {
-                        line: 322,
+                        line: 321,
                         column: 15
                     },
                     end: {
-                        line: 326,
+                        line: 329,
                         column: 9
                     }
                 }],
-                line: 322
+                line: 321
             },
             "26": {
                 loc: {
                     start: {
-                        line: 322,
+                        line: 321,
                         column: 19
                     },
                     end: {
-                        line: 322,
+                        line: 321,
                         column: 52
                     }
                 },
                 type: "binary-expr",
                 locations: [{
                     start: {
-                        line: 322,
+                        line: 321,
                         column: 19
                     },
                     end: {
-                        line: 322,
+                        line: 321,
                         column: 33
                     }
                 }, {
                     start: {
-                        line: 322,
+                        line: 321,
                         column: 37
                     },
                     end: {
-                        line: 322,
+                        line: 321,
                         column: 52
                     }
                 }],
-                line: 322
+                line: 321
             },
             "27": {
                 loc: {
                     start: {
-                        line: 324,
-                        column: 15
+                        line: 323,
+                        column: 12
                     },
                     end: {
-                        line: 326,
-                        column: 9
+                        line: 325,
+                        column: 13
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 324,
-                        column: 15
+                        line: 323,
+                        column: 12
                     },
                     end: {
-                        line: 326,
-                        column: 9
+                        line: 325,
+                        column: 13
                     }
                 }, {
                     start: {
-                        line: 324,
-                        column: 15
+                        line: 323,
+                        column: 12
                     },
                     end: {
-                        line: 326,
-                        column: 9
+                        line: 325,
+                        column: 13
                     }
                 }],
-                line: 324
+                line: 323
             },
             "28": {
                 loc: {
                     start: {
-                        line: 327,
-                        column: 8
+                        line: 323,
+                        column: 16
                     },
                     end: {
-                        line: 354,
+                        line: 323,
+                        column: 77
+                    }
+                },
+                type: "binary-expr",
+                locations: [{
+                    start: {
+                        line: 323,
+                        column: 16
+                    },
+                    end: {
+                        line: 323,
+                        column: 38
+                    }
+                }, {
+                    start: {
+                        line: 323,
+                        column: 42
+                    },
+                    end: {
+                        line: 323,
+                        column: 77
+                    }
+                }],
+                line: 323
+            },
+            "29": {
+                loc: {
+                    start: {
+                        line: 327,
+                        column: 15
+                    },
+                    end: {
+                        line: 329,
                         column: 9
                     }
                 },
@@ -17772,251 +17815,218 @@ var cov_1nqd9talwx = function () {
                 locations: [{
                     start: {
                         line: 327,
-                        column: 8
+                        column: 15
                     },
                     end: {
-                        line: 354,
+                        line: 329,
                         column: 9
                     }
                 }, {
                     start: {
                         line: 327,
-                        column: 8
+                        column: 15
                     },
                     end: {
-                        line: 354,
+                        line: 329,
                         column: 9
                     }
                 }],
                 line: 327
             },
-            "29": {
-                loc: {
-                    start: {
-                        line: 328,
-                        column: 12
-                    },
-                    end: {
-                        line: 353,
-                        column: 13
-                    }
-                },
-                type: "if",
-                locations: [{
-                    start: {
-                        line: 328,
-                        column: 12
-                    },
-                    end: {
-                        line: 353,
-                        column: 13
-                    }
-                }, {
-                    start: {
-                        line: 328,
-                        column: 12
-                    },
-                    end: {
-                        line: 353,
-                        column: 13
-                    }
-                }],
-                line: 328
-            },
             "30": {
                 loc: {
                     start: {
-                        line: 334,
-                        column: 16
+                        line: 330,
+                        column: 8
                     },
                     end: {
-                        line: 346,
-                        column: 17
+                        line: 357,
+                        column: 9
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 334,
-                        column: 16
+                        line: 330,
+                        column: 8
                     },
                     end: {
-                        line: 346,
-                        column: 17
+                        line: 357,
+                        column: 9
                     }
                 }, {
                     start: {
-                        line: 334,
-                        column: 16
+                        line: 330,
+                        column: 8
                     },
                     end: {
-                        line: 346,
-                        column: 17
+                        line: 357,
+                        column: 9
                     }
                 }],
-                line: 334
+                line: 330
             },
             "31": {
                 loc: {
                     start: {
-                        line: 338,
-                        column: 23
+                        line: 331,
+                        column: 12
                     },
                     end: {
-                        line: 346,
-                        column: 17
+                        line: 356,
+                        column: 13
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 338,
-                        column: 23
+                        line: 331,
+                        column: 12
                     },
                     end: {
-                        line: 346,
-                        column: 17
+                        line: 356,
+                        column: 13
                     }
                 }, {
                     start: {
-                        line: 338,
-                        column: 23
+                        line: 331,
+                        column: 12
                     },
                     end: {
-                        line: 346,
-                        column: 17
+                        line: 356,
+                        column: 13
                     }
                 }],
-                line: 338
+                line: 331
             },
             "32": {
                 loc: {
                     start: {
-                        line: 338,
-                        column: 27
+                        line: 337,
+                        column: 16
                     },
                     end: {
-                        line: 338,
-                        column: 60
-                    }
-                },
-                type: "binary-expr",
-                locations: [{
-                    start: {
-                        line: 338,
-                        column: 27
-                    },
-                    end: {
-                        line: 338,
-                        column: 41
-                    }
-                }, {
-                    start: {
-                        line: 338,
-                        column: 45
-                    },
-                    end: {
-                        line: 338,
-                        column: 60
-                    }
-                }],
-                line: 338
-            },
-            "33": {
-                loc: {
-                    start: {
-                        line: 358,
-                        column: 8
-                    },
-                    end: {
-                        line: 376,
-                        column: 9
+                        line: 349,
+                        column: 17
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 358,
-                        column: 8
+                        line: 337,
+                        column: 16
                     },
                     end: {
-                        line: 376,
-                        column: 9
+                        line: 349,
+                        column: 17
                     }
                 }, {
                     start: {
-                        line: 358,
-                        column: 8
+                        line: 337,
+                        column: 16
                     },
                     end: {
-                        line: 376,
-                        column: 9
+                        line: 349,
+                        column: 17
                     }
                 }],
-                line: 358
+                line: 337
+            },
+            "33": {
+                loc: {
+                    start: {
+                        line: 341,
+                        column: 23
+                    },
+                    end: {
+                        line: 349,
+                        column: 17
+                    }
+                },
+                type: "if",
+                locations: [{
+                    start: {
+                        line: 341,
+                        column: 23
+                    },
+                    end: {
+                        line: 349,
+                        column: 17
+                    }
+                }, {
+                    start: {
+                        line: 341,
+                        column: 23
+                    },
+                    end: {
+                        line: 349,
+                        column: 17
+                    }
+                }],
+                line: 341
             },
             "34": {
                 loc: {
                     start: {
-                        line: 358,
-                        column: 12
+                        line: 341,
+                        column: 27
                     },
                     end: {
-                        line: 358,
-                        column: 55
+                        line: 341,
+                        column: 60
                     }
                 },
                 type: "binary-expr",
                 locations: [{
                     start: {
-                        line: 358,
-                        column: 12
+                        line: 341,
+                        column: 27
                     },
                     end: {
-                        line: 358,
-                        column: 28
+                        line: 341,
+                        column: 41
                     }
                 }, {
                     start: {
-                        line: 358,
-                        column: 32
+                        line: 341,
+                        column: 45
                     },
                     end: {
-                        line: 358,
-                        column: 55
+                        line: 341,
+                        column: 60
                     }
                 }],
-                line: 358
+                line: 341
             },
             "35": {
                 loc: {
                     start: {
                         line: 361,
-                        column: 12
+                        column: 8
                     },
                     end: {
-                        line: 363,
-                        column: 13
+                        line: 379,
+                        column: 9
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
                         line: 361,
-                        column: 12
+                        column: 8
                     },
                     end: {
-                        line: 363,
-                        column: 13
+                        line: 379,
+                        column: 9
                     }
                 }, {
                     start: {
                         line: 361,
-                        column: 12
+                        column: 8
                     },
                     end: {
-                        line: 363,
-                        column: 13
+                        line: 379,
+                        column: 9
                     }
                 }],
                 line: 361
@@ -18024,310 +18034,343 @@ var cov_1nqd9talwx = function () {
             "36": {
                 loc: {
                     start: {
-                        line: 364,
-                        column: 15
+                        line: 361,
+                        column: 12
                     },
                     end: {
-                        line: 376,
-                        column: 9
+                        line: 361,
+                        column: 55
                     }
                 },
-                type: "if",
+                type: "binary-expr",
                 locations: [{
                     start: {
-                        line: 364,
-                        column: 15
+                        line: 361,
+                        column: 12
                     },
                     end: {
-                        line: 376,
-                        column: 9
+                        line: 361,
+                        column: 28
                     }
                 }, {
                     start: {
-                        line: 364,
-                        column: 15
+                        line: 361,
+                        column: 32
                     },
                     end: {
-                        line: 376,
-                        column: 9
+                        line: 361,
+                        column: 55
                     }
                 }],
-                line: 364
+                line: 361
             },
             "37": {
                 loc: {
                     start: {
-                        line: 370,
+                        line: 364,
                         column: 12
                     },
                     end: {
-                        line: 375,
+                        line: 366,
                         column: 13
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 370,
+                        line: 364,
                         column: 12
                     },
                     end: {
-                        line: 375,
+                        line: 366,
                         column: 13
                     }
                 }, {
                     start: {
-                        line: 370,
+                        line: 364,
                         column: 12
                     },
                     end: {
-                        line: 375,
+                        line: 366,
                         column: 13
                     }
                 }],
-                line: 370
+                line: 364
             },
             "38": {
                 loc: {
                     start: {
-                        line: 372,
-                        column: 16
+                        line: 367,
+                        column: 15
                     },
                     end: {
-                        line: 374,
-                        column: 17
+                        line: 379,
+                        column: 9
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 372,
-                        column: 16
+                        line: 367,
+                        column: 15
                     },
                     end: {
-                        line: 374,
-                        column: 17
+                        line: 379,
+                        column: 9
                     }
                 }, {
                     start: {
-                        line: 372,
-                        column: 16
+                        line: 367,
+                        column: 15
                     },
                     end: {
-                        line: 374,
-                        column: 17
+                        line: 379,
+                        column: 9
                     }
                 }],
-                line: 372
+                line: 367
             },
             "39": {
                 loc: {
                     start: {
-                        line: 380,
+                        line: 373,
                         column: 12
                     },
                     end: {
-                        line: 383,
+                        line: 378,
                         column: 13
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 380,
+                        line: 373,
                         column: 12
                     },
                     end: {
-                        line: 383,
+                        line: 378,
                         column: 13
                     }
                 }, {
                     start: {
-                        line: 380,
+                        line: 373,
                         column: 12
                     },
                     end: {
-                        line: 383,
+                        line: 378,
                         column: 13
                     }
                 }],
-                line: 380
+                line: 373
             },
             "40": {
                 loc: {
                     start: {
-                        line: 380,
+                        line: 375,
                         column: 16
                     },
                     end: {
-                        line: 380,
+                        line: 377,
+                        column: 17
+                    }
+                },
+                type: "if",
+                locations: [{
+                    start: {
+                        line: 375,
+                        column: 16
+                    },
+                    end: {
+                        line: 377,
+                        column: 17
+                    }
+                }, {
+                    start: {
+                        line: 375,
+                        column: 16
+                    },
+                    end: {
+                        line: 377,
+                        column: 17
+                    }
+                }],
+                line: 375
+            },
+            "41": {
+                loc: {
+                    start: {
+                        line: 383,
+                        column: 12
+                    },
+                    end: {
+                        line: 386,
+                        column: 13
+                    }
+                },
+                type: "if",
+                locations: [{
+                    start: {
+                        line: 383,
+                        column: 12
+                    },
+                    end: {
+                        line: 386,
+                        column: 13
+                    }
+                }, {
+                    start: {
+                        line: 383,
+                        column: 12
+                    },
+                    end: {
+                        line: 386,
+                        column: 13
+                    }
+                }],
+                line: 383
+            },
+            "42": {
+                loc: {
+                    start: {
+                        line: 383,
+                        column: 16
+                    },
+                    end: {
+                        line: 383,
                         column: 97
                     }
                 },
                 type: "binary-expr",
                 locations: [{
                     start: {
-                        line: 380,
+                        line: 383,
                         column: 16
                     },
                     end: {
-                        line: 380,
+                        line: 383,
                         column: 29
                     }
                 }, {
                     start: {
-                        line: 380,
+                        line: 383,
                         column: 34
                     },
                     end: {
-                        line: 380,
+                        line: 383,
                         column: 65
                     }
                 }, {
                     start: {
-                        line: 380,
+                        line: 383,
                         column: 69
                     },
                     end: {
-                        line: 380,
+                        line: 383,
                         column: 96
                     }
                 }],
-                line: 380
-            },
-            "41": {
-                loc: {
-                    start: {
-                        line: 387,
-                        column: 12
-                    },
-                    end: {
-                        line: 407,
-                        column: 13
-                    }
-                },
-                type: "if",
-                locations: [{
-                    start: {
-                        line: 387,
-                        column: 12
-                    },
-                    end: {
-                        line: 407,
-                        column: 13
-                    }
-                }, {
-                    start: {
-                        line: 387,
-                        column: 12
-                    },
-                    end: {
-                        line: 407,
-                        column: 13
-                    }
-                }],
-                line: 387
-            },
-            "42": {
-                loc: {
-                    start: {
-                        line: 388,
-                        column: 16
-                    },
-                    end: {
-                        line: 398,
-                        column: 17
-                    }
-                },
-                type: "if",
-                locations: [{
-                    start: {
-                        line: 388,
-                        column: 16
-                    },
-                    end: {
-                        line: 398,
-                        column: 17
-                    }
-                }, {
-                    start: {
-                        line: 388,
-                        column: 16
-                    },
-                    end: {
-                        line: 398,
-                        column: 17
-                    }
-                }],
-                line: 388
+                line: 383
             },
             "43": {
                 loc: {
                     start: {
-                        line: 412,
+                        line: 390,
                         column: 12
                     },
                     end: {
-                        line: 448,
+                        line: 410,
                         column: 13
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 412,
+                        line: 390,
                         column: 12
                     },
                     end: {
-                        line: 448,
+                        line: 410,
                         column: 13
                     }
                 }, {
                     start: {
-                        line: 412,
+                        line: 390,
                         column: 12
                     },
                     end: {
-                        line: 448,
+                        line: 410,
                         column: 13
                     }
                 }],
-                line: 412
+                line: 390
             },
             "44": {
                 loc: {
                     start: {
-                        line: 418,
+                        line: 391,
                         column: 16
                     },
                     end: {
-                        line: 420,
+                        line: 401,
                         column: 17
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 418,
+                        line: 391,
                         column: 16
                     },
                     end: {
-                        line: 420,
+                        line: 401,
                         column: 17
                     }
                 }, {
                     start: {
-                        line: 418,
+                        line: 391,
                         column: 16
                     },
                     end: {
-                        line: 420,
+                        line: 401,
                         column: 17
                     }
                 }],
-                line: 418
+                line: 391
             },
             "45": {
+                loc: {
+                    start: {
+                        line: 415,
+                        column: 12
+                    },
+                    end: {
+                        line: 451,
+                        column: 13
+                    }
+                },
+                type: "if",
+                locations: [{
+                    start: {
+                        line: 415,
+                        column: 12
+                    },
+                    end: {
+                        line: 451,
+                        column: 13
+                    }
+                }, {
+                    start: {
+                        line: 415,
+                        column: 12
+                    },
+                    end: {
+                        line: 451,
+                        column: 13
+                    }
+                }],
+                line: 415
+            },
+            "46": {
                 loc: {
                     start: {
                         line: 421,
@@ -18360,110 +18403,68 @@ var cov_1nqd9talwx = function () {
                 }],
                 line: 421
             },
-            "46": {
+            "47": {
                 loc: {
                     start: {
-                        line: 425,
+                        line: 424,
+                        column: 16
+                    },
+                    end: {
+                        line: 426,
+                        column: 17
+                    }
+                },
+                type: "if",
+                locations: [{
+                    start: {
+                        line: 424,
+                        column: 16
+                    },
+                    end: {
+                        line: 426,
+                        column: 17
+                    }
+                }, {
+                    start: {
+                        line: 424,
+                        column: 16
+                    },
+                    end: {
+                        line: 426,
+                        column: 17
+                    }
+                }],
+                line: 424
+            },
+            "48": {
+                loc: {
+                    start: {
+                        line: 428,
                         column: 24
                     },
                     end: {
-                        line: 425,
+                        line: 428,
                         column: 105
                     }
                 },
                 type: "cond-expr",
                 locations: [{
                     start: {
-                        line: 425,
+                        line: 428,
                         column: 59
                     },
                     end: {
-                        line: 425,
+                        line: 428,
                         column: 91
                     }
                 }, {
                     start: {
-                        line: 425,
+                        line: 428,
                         column: 94
                     },
                     end: {
-                        line: 425,
+                        line: 428,
                         column: 105
-                    }
-                }],
-                line: 425
-            },
-            "47": {
-                loc: {
-                    start: {
-                        line: 427,
-                        column: 19
-                    },
-                    end: {
-                        line: 448,
-                        column: 13
-                    }
-                },
-                type: "if",
-                locations: [{
-                    start: {
-                        line: 427,
-                        column: 19
-                    },
-                    end: {
-                        line: 448,
-                        column: 13
-                    }
-                }, {
-                    start: {
-                        line: 427,
-                        column: 19
-                    },
-                    end: {
-                        line: 448,
-                        column: 13
-                    }
-                }],
-                line: 427
-            },
-            "48": {
-                loc: {
-                    start: {
-                        line: 428,
-                        column: 16
-                    },
-                    end: {
-                        line: 430,
-                        column: 48
-                    }
-                },
-                type: "binary-expr",
-                locations: [{
-                    start: {
-                        line: 428,
-                        column: 16
-                    },
-                    end: {
-                        line: 428,
-                        column: 48
-                    }
-                }, {
-                    start: {
-                        line: 429,
-                        column: 16
-                    },
-                    end: {
-                        line: 429,
-                        column: 48
-                    }
-                }, {
-                    start: {
-                        line: 430,
-                        column: 16
-                    },
-                    end: {
-                        line: 430,
-                        column: 48
                     }
                 }],
                 line: 428
@@ -18471,37 +18472,79 @@ var cov_1nqd9talwx = function () {
             "49": {
                 loc: {
                     start: {
-                        line: 440,
-                        column: 16
+                        line: 430,
+                        column: 19
                     },
                     end: {
-                        line: 442,
-                        column: 17
+                        line: 451,
+                        column: 13
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 440,
-                        column: 16
+                        line: 430,
+                        column: 19
                     },
                     end: {
-                        line: 442,
-                        column: 17
+                        line: 451,
+                        column: 13
                     }
                 }, {
                     start: {
-                        line: 440,
+                        line: 430,
+                        column: 19
+                    },
+                    end: {
+                        line: 451,
+                        column: 13
+                    }
+                }],
+                line: 430
+            },
+            "50": {
+                loc: {
+                    start: {
+                        line: 431,
                         column: 16
                     },
                     end: {
-                        line: 442,
-                        column: 17
+                        line: 433,
+                        column: 48
+                    }
+                },
+                type: "binary-expr",
+                locations: [{
+                    start: {
+                        line: 431,
+                        column: 16
+                    },
+                    end: {
+                        line: 431,
+                        column: 48
+                    }
+                }, {
+                    start: {
+                        line: 432,
+                        column: 16
+                    },
+                    end: {
+                        line: 432,
+                        column: 48
+                    }
+                }, {
+                    start: {
+                        line: 433,
+                        column: 16
+                    },
+                    end: {
+                        line: 433,
+                        column: 48
                     }
                 }],
-                line: 440
+                line: 431
             },
-            "50": {
+            "51": {
                 loc: {
                     start: {
                         line: 443,
@@ -18534,30 +18577,54 @@ var cov_1nqd9talwx = function () {
                 }],
                 line: 443
             },
-            "51": {
+            "52": {
                 loc: {
                     start: {
-                        line: 452,
+                        line: 446,
+                        column: 16
+                    },
+                    end: {
+                        line: 448,
+                        column: 17
+                    }
+                },
+                type: "if",
+                locations: [{
+                    start: {
+                        line: 446,
+                        column: 16
+                    },
+                    end: {
+                        line: 448,
+                        column: 17
+                    }
+                }, {
+                    start: {
+                        line: 446,
+                        column: 16
+                    },
+                    end: {
+                        line: 448,
+                        column: 17
+                    }
+                }],
+                line: 446
+            },
+            "53": {
+                loc: {
+                    start: {
+                        line: 455,
                         column: 12
                     },
                     end: {
-                        line: 518,
+                        line: 521,
                         column: 13
                     }
                 },
                 type: "switch",
                 locations: [{
                     start: {
-                        line: 453,
-                        column: 16
-                    },
-                    end: {
-                        line: 464,
-                        column: 25
-                    }
-                }, {
-                    start: {
-                        line: 465,
+                        line: 456,
                         column: 16
                     },
                     end: {
@@ -18570,26 +18637,26 @@ var cov_1nqd9talwx = function () {
                         column: 16
                     },
                     end: {
-                        line: 473,
+                        line: 470,
                         column: 25
                     }
                 }, {
                     start: {
-                        line: 474,
+                        line: 471,
                         column: 16
                     },
                     end: {
-                        line: 474,
-                        column: 33
+                        line: 476,
+                        column: 25
                     }
                 }, {
                     start: {
-                        line: 475,
+                        line: 477,
                         column: 16
                     },
                     end: {
                         line: 477,
-                        column: 25
+                        column: 33
                     }
                 }, {
                     start: {
@@ -18615,12 +18682,12 @@ var cov_1nqd9talwx = function () {
                         column: 16
                     },
                     end: {
-                        line: 495,
+                        line: 486,
                         column: 25
                     }
                 }, {
                     start: {
-                        line: 496,
+                        line: 487,
                         column: 16
                     },
                     end: {
@@ -18651,12 +18718,12 @@ var cov_1nqd9talwx = function () {
                         column: 16
                     },
                     end: {
-                        line: 511,
+                        line: 507,
                         column: 25
                     }
                 }, {
                     start: {
-                        line: 512,
+                        line: 508,
                         column: 16
                     },
                     end: {
@@ -18670,175 +18737,118 @@ var cov_1nqd9talwx = function () {
                     },
                     end: {
                         line: 517,
+                        column: 25
+                    }
+                }, {
+                    start: {
+                        line: 518,
+                        column: 16
+                    },
+                    end: {
+                        line: 520,
                         column: 64
                     }
                 }],
-                line: 452
-            },
-            "52": {
-                loc: {
-                    start: {
-                        line: 454,
-                        column: 20
-                    },
-                    end: {
-                        line: 463,
-                        column: 21
-                    }
-                },
-                type: "if",
-                locations: [{
-                    start: {
-                        line: 454,
-                        column: 20
-                    },
-                    end: {
-                        line: 463,
-                        column: 21
-                    }
-                }, {
-                    start: {
-                        line: 454,
-                        column: 20
-                    },
-                    end: {
-                        line: 463,
-                        column: 21
-                    }
-                }],
-                line: 454
-            },
-            "53": {
-                loc: {
-                    start: {
-                        line: 470,
-                        column: 20
-                    },
-                    end: {
-                        line: 472,
-                        column: 21
-                    }
-                },
-                type: "if",
-                locations: [{
-                    start: {
-                        line: 470,
-                        column: 20
-                    },
-                    end: {
-                        line: 472,
-                        column: 21
-                    }
-                }, {
-                    start: {
-                        line: 470,
-                        column: 20
-                    },
-                    end: {
-                        line: 472,
-                        column: 21
-                    }
-                }],
-                line: 470
+                line: 455
             },
             "54": {
                 loc: {
                     start: {
-                        line: 485,
+                        line: 457,
                         column: 20
                     },
                     end: {
-                        line: 494,
+                        line: 466,
                         column: 21
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 485,
+                        line: 457,
                         column: 20
                     },
                     end: {
-                        line: 494,
+                        line: 466,
                         column: 21
                     }
                 }, {
                     start: {
-                        line: 485,
+                        line: 457,
                         column: 20
                     },
                     end: {
-                        line: 494,
+                        line: 466,
                         column: 21
                     }
                 }],
-                line: 485
+                line: 457
             },
             "55": {
                 loc: {
                     start: {
-                        line: 526,
-                        column: 8
+                        line: 473,
+                        column: 20
                     },
                     end: {
-                        line: 528,
-                        column: 9
+                        line: 475,
+                        column: 21
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 526,
-                        column: 8
+                        line: 473,
+                        column: 20
                     },
                     end: {
-                        line: 528,
-                        column: 9
+                        line: 475,
+                        column: 21
                     }
                 }, {
                     start: {
-                        line: 526,
-                        column: 8
+                        line: 473,
+                        column: 20
                     },
                     end: {
-                        line: 528,
-                        column: 9
+                        line: 475,
+                        column: 21
                     }
                 }],
-                line: 526
+                line: 473
             },
             "56": {
                 loc: {
                     start: {
-                        line: 526,
-                        column: 12
+                        line: 488,
+                        column: 20
                     },
                     end: {
-                        line: 526,
-                        column: 78
+                        line: 497,
+                        column: 21
                     }
                 },
-                type: "binary-expr",
+                type: "if",
                 locations: [{
                     start: {
-                        line: 526,
-                        column: 12
+                        line: 488,
+                        column: 20
                     },
                     end: {
-                        line: 526,
-                        column: 38
+                        line: 497,
+                        column: 21
                     }
                 }, {
                     start: {
-                        line: 526,
-                        column: 42
+                        line: 488,
+                        column: 20
                     },
                     end: {
-                        line: 526,
-                        column: 78
+                        line: 497,
+                        column: 21
                     }
                 }],
-                line: 526
+                line: 488
             },
             "57": {
                 loc: {
@@ -18847,7 +18857,7 @@ var cov_1nqd9talwx = function () {
                         column: 8
                     },
                     end: {
-                        line: 542,
+                        line: 531,
                         column: 9
                     }
                 },
@@ -18858,7 +18868,7 @@ var cov_1nqd9talwx = function () {
                         column: 8
                     },
                     end: {
-                        line: 542,
+                        line: 531,
                         column: 9
                     }
                 }, {
@@ -18867,7 +18877,7 @@ var cov_1nqd9talwx = function () {
                         column: 8
                     },
                     end: {
-                        line: 542,
+                        line: 531,
                         column: 9
                     }
                 }],
@@ -18876,629 +18886,662 @@ var cov_1nqd9talwx = function () {
             "58": {
                 loc: {
                     start: {
-                        line: 530,
+                        line: 529,
                         column: 12
                     },
                     end: {
-                        line: 541,
-                        column: 13
+                        line: 529,
+                        column: 78
                     }
                 },
-                type: "if",
+                type: "binary-expr",
                 locations: [{
                     start: {
-                        line: 530,
+                        line: 529,
                         column: 12
                     },
                     end: {
-                        line: 541,
-                        column: 13
+                        line: 529,
+                        column: 38
                     }
                 }, {
                     start: {
-                        line: 530,
-                        column: 12
+                        line: 529,
+                        column: 42
                     },
                     end: {
-                        line: 541,
-                        column: 13
+                        line: 529,
+                        column: 78
                     }
                 }],
-                line: 530
+                line: 529
             },
             "59": {
                 loc: {
                     start: {
-                        line: 531,
-                        column: 16
+                        line: 532,
+                        column: 8
                     },
                     end: {
-                        line: 533,
-                        column: 17
+                        line: 545,
+                        column: 9
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 531,
-                        column: 16
+                        line: 532,
+                        column: 8
                     },
                     end: {
-                        line: 533,
-                        column: 17
+                        line: 545,
+                        column: 9
                     }
                 }, {
                     start: {
-                        line: 531,
-                        column: 16
+                        line: 532,
+                        column: 8
                     },
                     end: {
-                        line: 533,
-                        column: 17
+                        line: 545,
+                        column: 9
                     }
                 }],
-                line: 531
+                line: 532
             },
             "60": {
                 loc: {
                     start: {
-                        line: 538,
-                        column: 16
+                        line: 533,
+                        column: 12
                     },
                     end: {
-                        line: 540,
-                        column: 17
+                        line: 544,
+                        column: 13
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 538,
-                        column: 16
+                        line: 533,
+                        column: 12
                     },
                     end: {
-                        line: 540,
-                        column: 17
+                        line: 544,
+                        column: 13
                     }
                 }, {
                     start: {
-                        line: 538,
-                        column: 16
+                        line: 533,
+                        column: 12
                     },
                     end: {
-                        line: 540,
-                        column: 17
+                        line: 544,
+                        column: 13
                     }
                 }],
-                line: 538
+                line: 533
             },
             "61": {
                 loc: {
                     start: {
-                        line: 543,
-                        column: 8
+                        line: 534,
+                        column: 16
                     },
                     end: {
-                        line: 551,
-                        column: 9
+                        line: 536,
+                        column: 17
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 543,
-                        column: 8
+                        line: 534,
+                        column: 16
                     },
                     end: {
-                        line: 551,
-                        column: 9
+                        line: 536,
+                        column: 17
                     }
                 }, {
                     start: {
-                        line: 543,
-                        column: 8
+                        line: 534,
+                        column: 16
                     },
                     end: {
-                        line: 551,
-                        column: 9
+                        line: 536,
+                        column: 17
                     }
                 }],
-                line: 543
+                line: 534
             },
             "62": {
                 loc: {
                     start: {
-                        line: 578,
-                        column: 12
+                        line: 541,
+                        column: 16
                     },
                     end: {
-                        line: 593,
-                        column: 13
+                        line: 543,
+                        column: 17
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 578,
-                        column: 12
+                        line: 541,
+                        column: 16
                     },
                     end: {
-                        line: 593,
-                        column: 13
+                        line: 543,
+                        column: 17
                     }
                 }, {
                     start: {
-                        line: 578,
-                        column: 12
+                        line: 541,
+                        column: 16
                     },
                     end: {
-                        line: 593,
-                        column: 13
+                        line: 543,
+                        column: 17
                     }
                 }],
-                line: 578
+                line: 541
             },
             "63": {
                 loc: {
                     start: {
-                        line: 585,
-                        column: 16
+                        line: 546,
+                        column: 8
                     },
                     end: {
-                        line: 592,
-                        column: 17
+                        line: 554,
+                        column: 9
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 585,
-                        column: 16
+                        line: 546,
+                        column: 8
                     },
                     end: {
-                        line: 592,
-                        column: 17
+                        line: 554,
+                        column: 9
                     }
                 }, {
                     start: {
-                        line: 585,
-                        column: 16
+                        line: 546,
+                        column: 8
                     },
                     end: {
-                        line: 592,
-                        column: 17
+                        line: 554,
+                        column: 9
                     }
                 }],
-                line: 585
+                line: 546
             },
             "64": {
                 loc: {
                     start: {
-                        line: 608,
-                        column: 8
+                        line: 581,
+                        column: 12
                     },
                     end: {
-                        line: 610,
-                        column: 9
+                        line: 596,
+                        column: 13
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 608,
-                        column: 8
+                        line: 581,
+                        column: 12
                     },
                     end: {
-                        line: 610,
-                        column: 9
+                        line: 596,
+                        column: 13
                     }
                 }, {
                     start: {
-                        line: 608,
-                        column: 8
+                        line: 581,
+                        column: 12
                     },
                     end: {
-                        line: 610,
-                        column: 9
+                        line: 596,
+                        column: 13
                     }
                 }],
-                line: 608
+                line: 581
             },
             "65": {
                 loc: {
                     start: {
-                        line: 616,
-                        column: 8
+                        line: 588,
+                        column: 16
                     },
                     end: {
-                        line: 622,
-                        column: 9
+                        line: 595,
+                        column: 17
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 616,
-                        column: 8
+                        line: 588,
+                        column: 16
                     },
                     end: {
-                        line: 622,
-                        column: 9
+                        line: 595,
+                        column: 17
                     }
                 }, {
                     start: {
-                        line: 616,
-                        column: 8
+                        line: 588,
+                        column: 16
                     },
                     end: {
-                        line: 622,
-                        column: 9
+                        line: 595,
+                        column: 17
                     }
                 }],
-                line: 616
+                line: 588
             },
             "66": {
                 loc: {
                     start: {
-                        line: 635,
+                        line: 611,
                         column: 8
                     },
                     end: {
-                        line: 637,
+                        line: 613,
                         column: 9
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 635,
+                        line: 611,
                         column: 8
                     },
                     end: {
-                        line: 637,
+                        line: 613,
                         column: 9
                     }
                 }, {
                     start: {
-                        line: 635,
+                        line: 611,
                         column: 8
                     },
                     end: {
-                        line: 637,
+                        line: 613,
                         column: 9
                     }
                 }],
-                line: 635
+                line: 611
             },
             "67": {
                 loc: {
                     start: {
-                        line: 639,
+                        line: 619,
                         column: 8
                     },
                     end: {
-                        line: 641,
+                        line: 625,
                         column: 9
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 639,
+                        line: 619,
                         column: 8
                     },
                     end: {
-                        line: 641,
+                        line: 625,
                         column: 9
                     }
                 }, {
                     start: {
-                        line: 639,
+                        line: 619,
                         column: 8
                     },
                     end: {
-                        line: 641,
+                        line: 625,
                         column: 9
                     }
                 }],
-                line: 639
+                line: 619
             },
             "68": {
                 loc: {
                     start: {
-                        line: 666,
+                        line: 638,
+                        column: 8
+                    },
+                    end: {
+                        line: 640,
+                        column: 9
+                    }
+                },
+                type: "if",
+                locations: [{
+                    start: {
+                        line: 638,
+                        column: 8
+                    },
+                    end: {
+                        line: 640,
+                        column: 9
+                    }
+                }, {
+                    start: {
+                        line: 638,
+                        column: 8
+                    },
+                    end: {
+                        line: 640,
+                        column: 9
+                    }
+                }],
+                line: 638
+            },
+            "69": {
+                loc: {
+                    start: {
+                        line: 642,
+                        column: 8
+                    },
+                    end: {
+                        line: 644,
+                        column: 9
+                    }
+                },
+                type: "if",
+                locations: [{
+                    start: {
+                        line: 642,
+                        column: 8
+                    },
+                    end: {
+                        line: 644,
+                        column: 9
+                    }
+                }, {
+                    start: {
+                        line: 642,
+                        column: 8
+                    },
+                    end: {
+                        line: 644,
+                        column: 9
+                    }
+                }],
+                line: 642
+            },
+            "70": {
+                loc: {
+                    start: {
+                        line: 669,
                         column: 28
                     },
                     end: {
-                        line: 668,
+                        line: 671,
                         column: 81
                     }
                 },
                 type: "cond-expr",
                 locations: [{
                     start: {
-                        line: 667,
+                        line: 670,
                         column: 16
                     },
                     end: {
-                        line: 667,
+                        line: 670,
                         column: 93
                     }
                 }, {
                     start: {
-                        line: 668,
+                        line: 671,
                         column: 16
                     },
                     end: {
-                        line: 668,
+                        line: 671,
                         column: 81
                     }
                 }],
-                line: 666
-            },
-            "69": {
-                loc: {
-                    start: {
-                        line: 680,
-                        column: 12
-                    },
-                    end: {
-                        line: 688,
-                        column: 13
-                    }
-                },
-                type: "if",
-                locations: [{
-                    start: {
-                        line: 680,
-                        column: 12
-                    },
-                    end: {
-                        line: 688,
-                        column: 13
-                    }
-                }, {
-                    start: {
-                        line: 680,
-                        column: 12
-                    },
-                    end: {
-                        line: 688,
-                        column: 13
-                    }
-                }],
-                line: 680
-            },
-            "70": {
-                loc: {
-                    start: {
-                        line: 682,
-                        column: 19
-                    },
-                    end: {
-                        line: 688,
-                        column: 13
-                    }
-                },
-                type: "if",
-                locations: [{
-                    start: {
-                        line: 682,
-                        column: 19
-                    },
-                    end: {
-                        line: 688,
-                        column: 13
-                    }
-                }, {
-                    start: {
-                        line: 682,
-                        column: 19
-                    },
-                    end: {
-                        line: 688,
-                        column: 13
-                    }
-                }],
-                line: 682
+                line: 669
             },
             "71": {
                 loc: {
                     start: {
-                        line: 684,
-                        column: 19
+                        line: 683,
+                        column: 12
                     },
                     end: {
-                        line: 688,
+                        line: 691,
                         column: 13
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 684,
-                        column: 19
+                        line: 683,
+                        column: 12
                     },
                     end: {
-                        line: 688,
+                        line: 691,
                         column: 13
                     }
                 }, {
                     start: {
-                        line: 684,
-                        column: 19
+                        line: 683,
+                        column: 12
                     },
                     end: {
-                        line: 688,
+                        line: 691,
                         column: 13
                     }
                 }],
-                line: 684
+                line: 683
             },
             "72": {
                 loc: {
                     start: {
-                        line: 684,
-                        column: 23
+                        line: 685,
+                        column: 19
                     },
                     end: {
-                        line: 684,
-                        column: 57
+                        line: 691,
+                        column: 13
                     }
                 },
-                type: "binary-expr",
+                type: "if",
                 locations: [{
                     start: {
-                        line: 684,
-                        column: 23
+                        line: 685,
+                        column: 19
                     },
                     end: {
-                        line: 684,
-                        column: 38
+                        line: 691,
+                        column: 13
                     }
                 }, {
                     start: {
-                        line: 684,
-                        column: 42
+                        line: 685,
+                        column: 19
                     },
                     end: {
-                        line: 684,
-                        column: 57
+                        line: 691,
+                        column: 13
                     }
                 }],
-                line: 684
+                line: 685
             },
             "73": {
                 loc: {
                     start: {
-                        line: 696,
+                        line: 687,
+                        column: 19
+                    },
+                    end: {
+                        line: 691,
+                        column: 13
+                    }
+                },
+                type: "if",
+                locations: [{
+                    start: {
+                        line: 687,
+                        column: 19
+                    },
+                    end: {
+                        line: 691,
+                        column: 13
+                    }
+                }, {
+                    start: {
+                        line: 687,
+                        column: 19
+                    },
+                    end: {
+                        line: 691,
+                        column: 13
+                    }
+                }],
+                line: 687
+            },
+            "74": {
+                loc: {
+                    start: {
+                        line: 699,
                         column: 15
                     },
                     end: {
-                        line: 696,
+                        line: 699,
                         column: 57
                     }
                 },
                 type: "binary-expr",
                 locations: [{
                     start: {
-                        line: 696,
+                        line: 699,
                         column: 15
                     },
                     end: {
-                        line: 696,
+                        line: 699,
                         column: 43
                     }
                 }, {
                     start: {
-                        line: 696,
+                        line: 699,
                         column: 47
                     },
                     end: {
-                        line: 696,
+                        line: 699,
                         column: 57
                     }
                 }],
-                line: 696
+                line: 699
             },
-            "74": {
+            "75": {
                 loc: {
                     start: {
-                        line: 697,
+                        line: 700,
                         column: 10
                     },
                     end: {
-                        line: 703,
+                        line: 706,
                         column: 11
                     }
                 },
                 type: "switch",
                 locations: [{
                     start: {
-                        line: 698,
-                        column: 12
-                    },
-                    end: {
-                        line: 700,
-                        column: 19
-                    }
-                }, {
-                    start: {
                         line: 701,
                         column: 12
                     },
                     end: {
-                        line: 702,
-                        column: 25
-                    }
-                }],
-                line: 697
-            },
-            "75": {
-                loc: {
-                    start: {
-                        line: 708,
-                        column: 8
-                    },
-                    end: {
-                        line: 708,
-                        column: 36
-                    }
-                },
-                type: "if",
-                locations: [{
-                    start: {
-                        line: 708,
-                        column: 8
-                    },
-                    end: {
-                        line: 708,
-                        column: 36
+                        line: 703,
+                        column: 19
                     }
                 }, {
                     start: {
-                        line: 708,
-                        column: 8
+                        line: 704,
+                        column: 12
                     },
                     end: {
-                        line: 708,
-                        column: 36
+                        line: 705,
+                        column: 25
                     }
                 }],
-                line: 708
+                line: 700
             },
             "76": {
                 loc: {
                     start: {
-                        line: 714,
+                        line: 711,
                         column: 8
                     },
                     end: {
-                        line: 716,
+                        line: 711,
+                        column: 36
+                    }
+                },
+                type: "if",
+                locations: [{
+                    start: {
+                        line: 711,
+                        column: 8
+                    },
+                    end: {
+                        line: 711,
+                        column: 36
+                    }
+                }, {
+                    start: {
+                        line: 711,
+                        column: 8
+                    },
+                    end: {
+                        line: 711,
+                        column: 36
+                    }
+                }],
+                line: 711
+            },
+            "77": {
+                loc: {
+                    start: {
+                        line: 717,
+                        column: 8
+                    },
+                    end: {
+                        line: 719,
                         column: 9
                     }
                 },
                 type: "if",
                 locations: [{
                     start: {
-                        line: 714,
+                        line: 717,
                         column: 8
                     },
                     end: {
-                        line: 716,
+                        line: 719,
                         column: 9
                     }
                 }, {
                     start: {
-                        line: 714,
+                        line: 717,
                         column: 8
                     },
                     end: {
-                        line: 716,
+                        line: 719,
                         column: 9
                     }
                 }],
-                line: 714
+                line: 717
             }
         },
         s: {
@@ -19838,7 +19881,8 @@ var cov_1nqd9talwx = function () {
             "333": 0,
             "334": 0,
             "335": 0,
-            "336": 0
+            "336": 0,
+            "337": 0
         },
         f: {
             "0": 0,
@@ -19926,20 +19970,20 @@ var cov_1nqd9talwx = function () {
             "37": [0, 0],
             "38": [0, 0],
             "39": [0, 0],
-            "40": [0, 0, 0],
+            "40": [0, 0],
             "41": [0, 0],
-            "42": [0, 0],
+            "42": [0, 0, 0],
             "43": [0, 0],
             "44": [0, 0],
             "45": [0, 0],
             "46": [0, 0],
             "47": [0, 0],
-            "48": [0, 0, 0],
+            "48": [0, 0],
             "49": [0, 0],
-            "50": [0, 0],
-            "51": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            "50": [0, 0, 0],
+            "51": [0, 0],
             "52": [0, 0],
-            "53": [0, 0],
+            "53": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             "54": [0, 0],
             "55": [0, 0],
             "56": [0, 0],
@@ -19962,7 +20006,8 @@ var cov_1nqd9talwx = function () {
             "73": [0, 0],
             "74": [0, 0],
             "75": [0, 0],
-            "76": [0, 0]
+            "76": [0, 0],
+            "77": [0, 0]
         },
         _coverageSchema: "332fd63041d2c1bcb487cc26dd0d5f7d97098a6c"
     },
@@ -20541,96 +20586,107 @@ var BibLatexParser = exports.BibLatexParser = function () {
 
             cov_1nqd9talwx.f[13]++;
 
-            var that = (cov_1nqd9talwx.s[127]++, this);
-            var rawFields = (cov_1nqd9talwx.s[128]++, this.currentRawFields);
-            var fields = (cov_1nqd9talwx.s[129]++, this.currentEntry['fields']);
+            var rawFields = (cov_1nqd9talwx.s[127]++, this.currentRawFields);
+            var fields = (cov_1nqd9talwx.s[128]++, this.currentEntry['fields']);
 
             // date may come either as year, year + month or as date field.
             // We therefore need to catch these hear and transform it to the
             // date field after evaluating all the fields.
             // All other date fields only come in the form of a date string.
 
-            var date = void 0;
-            cov_1nqd9talwx.s[130]++;
+            var date = void 0,
+                month = void 0;
+            cov_1nqd9talwx.s[129]++;
             if (rawFields.date) {
                 cov_1nqd9talwx.b[24][0]++;
-                cov_1nqd9talwx.s[131]++;
+                cov_1nqd9talwx.s[130]++;
 
                 // date string has precedence.
                 date = rawFields.date;
             } else {
                     cov_1nqd9talwx.b[24][1]++;
-                    cov_1nqd9talwx.s[132]++;
+                    cov_1nqd9talwx.s[131]++;
                     if ((cov_1nqd9talwx.b[26][0]++, rawFields.year) && (cov_1nqd9talwx.b[26][1]++, rawFields.month)) {
                         cov_1nqd9talwx.b[25][0]++;
-                        cov_1nqd9talwx.s[133]++;
+                        cov_1nqd9talwx.s[132]++;
 
-                        date = rawFields.year + "-" + rawFields.month;
+                        month = rawFields.month;
+                        cov_1nqd9talwx.s[133]++;
+                        if ((cov_1nqd9talwx.b[28][0]++, isNaN(parseInt(month))) && (cov_1nqd9talwx.b[28][1]++, this.variables[month.toUpperCase()])) {
+                            cov_1nqd9talwx.b[27][0]++;
+                            cov_1nqd9talwx.s[134]++;
+
+                            month = this.variables[month.toUpperCase()];
+                        } else {
+                            cov_1nqd9talwx.b[27][1]++;
+                        }
+                        cov_1nqd9talwx.s[135]++;
+                        date = rawFields.year + "-" + month;
                     } else {
                             cov_1nqd9talwx.b[25][1]++;
-                            cov_1nqd9talwx.s[134]++;
+                            cov_1nqd9talwx.s[136]++;
                             if (rawFields.year) {
-                                cov_1nqd9talwx.b[27][0]++;
-                                cov_1nqd9talwx.s[135]++;
+                                cov_1nqd9talwx.b[29][0]++;
+                                cov_1nqd9talwx.s[137]++;
 
                                 date = "" + rawFields.year;
                             } else {
-                                cov_1nqd9talwx.b[27][1]++;
+                                cov_1nqd9talwx.b[29][1]++;
                             }
                         }
-                }cov_1nqd9talwx.s[136]++;
+                }cov_1nqd9talwx.s[138]++;
             if (date) {
-                cov_1nqd9talwx.b[28][0]++;
-                cov_1nqd9talwx.s[137]++;
+                cov_1nqd9talwx.b[30][0]++;
+                cov_1nqd9talwx.s[139]++;
 
                 if (this._checkDate(date)) {
-                    cov_1nqd9talwx.b[29][0]++;
-                    cov_1nqd9talwx.s[138]++;
+                    cov_1nqd9talwx.b[31][0]++;
+                    cov_1nqd9talwx.s[140]++;
 
                     fields['date'] = date;
-                    cov_1nqd9talwx.s[139]++;
+                    cov_1nqd9talwx.s[141]++;
                     delete rawFields.year;
-                    cov_1nqd9talwx.s[140]++;
+                    cov_1nqd9talwx.s[142]++;
                     delete rawFields.month;
                 } else {
-                    cov_1nqd9talwx.b[29][1]++;
+                    cov_1nqd9talwx.b[31][1]++;
 
                     var fieldName = void 0,
                         value = void 0,
                         errorList = void 0;
-                    cov_1nqd9talwx.s[141]++;
+                    cov_1nqd9talwx.s[143]++;
                     if (rawFields.date) {
-                        cov_1nqd9talwx.b[30][0]++;
-                        cov_1nqd9talwx.s[142]++;
+                        cov_1nqd9talwx.b[32][0]++;
+                        cov_1nqd9talwx.s[144]++;
 
                         fieldName = 'date';
-                        cov_1nqd9talwx.s[143]++;
+                        cov_1nqd9talwx.s[145]++;
                         value = rawFields.date;
-                        cov_1nqd9talwx.s[144]++;
+                        cov_1nqd9talwx.s[146]++;
                         errorList = this.errors;
                     } else {
-                            cov_1nqd9talwx.b[30][1]++;
-                            cov_1nqd9talwx.s[145]++;
-                            if ((cov_1nqd9talwx.b[32][0]++, rawFields.year) && (cov_1nqd9talwx.b[32][1]++, rawFields.month)) {
-                                cov_1nqd9talwx.b[31][0]++;
-                                cov_1nqd9talwx.s[146]++;
+                            cov_1nqd9talwx.b[32][1]++;
+                            cov_1nqd9talwx.s[147]++;
+                            if ((cov_1nqd9talwx.b[34][0]++, rawFields.year) && (cov_1nqd9talwx.b[34][1]++, rawFields.month)) {
+                                cov_1nqd9talwx.b[33][0]++;
+                                cov_1nqd9talwx.s[148]++;
 
                                 fieldName = 'year,month';
-                                cov_1nqd9talwx.s[147]++;
+                                cov_1nqd9talwx.s[149]++;
                                 value = [rawFields.year, rawFields.month];
-                                cov_1nqd9talwx.s[148]++;
+                                cov_1nqd9talwx.s[150]++;
                                 errorList = this.warnings;
                             } else {
-                                cov_1nqd9talwx.b[31][1]++;
-                                cov_1nqd9talwx.s[149]++;
+                                cov_1nqd9talwx.b[33][1]++;
+                                cov_1nqd9talwx.s[151]++;
 
                                 fieldName = 'year';
-                                cov_1nqd9talwx.s[150]++;
+                                cov_1nqd9talwx.s[152]++;
                                 value = rawFields.year;
-                                cov_1nqd9talwx.s[151]++;
+                                cov_1nqd9talwx.s[153]++;
                                 errorList = this.warnings;
                             }
-                        }cov_1nqd9talwx.s[152]++;
+                        }cov_1nqd9talwx.s[154]++;
                     errorList.push({
                         type: 'unknown_date',
                         entry: this.currentEntry['entry_key'],
@@ -20639,90 +20695,90 @@ var BibLatexParser = exports.BibLatexParser = function () {
                     });
                 }
             } else {
-                cov_1nqd9talwx.b[28][1]++;
+                cov_1nqd9talwx.b[30][1]++;
             }
             // Check for English language. If the citation is in English language,
             // titles may use case preservation.
-            var langEnglish = (cov_1nqd9talwx.s[153]++, true); // By default we assume everything to be written in English.
-            cov_1nqd9talwx.s[154]++;
-            if ((cov_1nqd9talwx.b[34][0]++, rawFields.langid) && (cov_1nqd9talwx.b[34][1]++, rawFields.langid.length)) {
-                cov_1nqd9talwx.b[33][0]++;
+            var langEnglish = (cov_1nqd9talwx.s[155]++, true); // By default we assume everything to be written in English.
+            cov_1nqd9talwx.s[156]++;
+            if ((cov_1nqd9talwx.b[36][0]++, rawFields.langid) && (cov_1nqd9talwx.b[36][1]++, rawFields.langid.length)) {
+                cov_1nqd9talwx.b[35][0]++;
 
-                var langString = (cov_1nqd9talwx.s[155]++, rawFields.langid.toLowerCase().trim());
-                var englishOptions = (cov_1nqd9talwx.s[156]++, ['english', 'american', 'british', 'usenglish', 'ukenglish', 'canadian', 'australian', 'newzealand']);
-                cov_1nqd9talwx.s[157]++;
+                var langString = (cov_1nqd9talwx.s[157]++, rawFields.langid.toLowerCase().trim());
+                var englishOptions = (cov_1nqd9talwx.s[158]++, ['english', 'american', 'british', 'usenglish', 'ukenglish', 'canadian', 'australian', 'newzealand']);
+                cov_1nqd9talwx.s[159]++;
                 if (!englishOptions.some(function (option) {
                     cov_1nqd9talwx.f[14]++;
-                    cov_1nqd9talwx.s[158]++;
+                    cov_1nqd9talwx.s[160]++;
                     return langString === option;
                 })) {
-                    cov_1nqd9talwx.b[35][0]++;
-                    cov_1nqd9talwx.s[159]++;
+                    cov_1nqd9talwx.b[37][0]++;
+                    cov_1nqd9talwx.s[161]++;
 
                     langEnglish = false;
                 } else {
-                    cov_1nqd9talwx.b[35][1]++;
+                    cov_1nqd9talwx.b[37][1]++;
                 }
             } else {
-                    cov_1nqd9talwx.b[33][1]++;
-                    cov_1nqd9talwx.s[160]++;
+                    cov_1nqd9talwx.b[35][1]++;
+                    cov_1nqd9talwx.s[162]++;
                     if (rawFields.language) {
-                        cov_1nqd9talwx.b[36][0]++;
+                        cov_1nqd9talwx.b[38][0]++;
 
                         // langid and language. The two mean different things, see discussion https://forums.zotero.org/discussion/33960/biblatex-import-export-csl-language-biblatex-langid
                         // but in bibtex, language is often used for what is essentially langid.
                         // If there is no langid, but a language, and the language happens to be
                         // a known langid, set the langid to be equal to the language.
-                        var langid = (cov_1nqd9talwx.s[161]++, this._reformKey(rawFields.language, 'langid'));
-                        cov_1nqd9talwx.s[162]++;
+                        var langid = (cov_1nqd9talwx.s[163]++, this._reformKey(rawFields.language, 'langid'));
+                        cov_1nqd9talwx.s[164]++;
                         if (langid) {
-                            cov_1nqd9talwx.b[37][0]++;
-                            cov_1nqd9talwx.s[163]++;
+                            cov_1nqd9talwx.b[39][0]++;
+                            cov_1nqd9talwx.s[165]++;
 
                             fields['langid'] = langid;
-                            cov_1nqd9talwx.s[164]++;
+                            cov_1nqd9talwx.s[166]++;
                             if (!['usenglish', 'ukenglish', 'caenglish', 'auenglish', 'nzenglish'].includes(langid)) {
-                                cov_1nqd9talwx.b[38][0]++;
-                                cov_1nqd9talwx.s[165]++;
+                                cov_1nqd9talwx.b[40][0]++;
+                                cov_1nqd9talwx.s[167]++;
 
                                 langEnglish = false;
                             } else {
-                                cov_1nqd9talwx.b[38][1]++;
+                                cov_1nqd9talwx.b[40][1]++;
                             }
                         } else {
-                            cov_1nqd9talwx.b[37][1]++;
+                            cov_1nqd9talwx.b[39][1]++;
                         }
                     } else {
-                        cov_1nqd9talwx.b[36][1]++;
+                        cov_1nqd9talwx.b[38][1]++;
                     }
-                }cov_1nqd9talwx.s[166]++;
-            cov_1nqd9talwx.s[167]++;
+                }cov_1nqd9talwx.s[168]++;
+            cov_1nqd9talwx.s[169]++;
 
             var _loop = function _loop(bKey) {
-                cov_1nqd9talwx.s[168]++;
+                cov_1nqd9talwx.s[170]++;
 
 
-                if ((cov_1nqd9talwx.b[40][0]++, bKey === 'date') || (cov_1nqd9talwx.b[40][1]++, ['year', 'month'].includes(bKey)) && (cov_1nqd9talwx.b[40][2]++, !_this.config.processUnknown)) {
-                    cov_1nqd9talwx.b[39][0]++;
-                    cov_1nqd9talwx.s[169]++;
+                if ((cov_1nqd9talwx.b[42][0]++, bKey === 'date') || (cov_1nqd9talwx.b[42][1]++, ['year', 'month'].includes(bKey)) && (cov_1nqd9talwx.b[42][2]++, !_this.config.processUnknown)) {
+                    cov_1nqd9talwx.b[41][0]++;
+                    cov_1nqd9talwx.s[171]++;
 
                     // Handled above
                     return "continue|iterateFields";
                 } else {
-                    cov_1nqd9talwx.b[39][1]++;
+                    cov_1nqd9talwx.b[41][1]++;
                 }
 
                 // Replace alias fields with their main term.
-                var aliasKey = (cov_1nqd9talwx.s[170]++, _const2.BiblatexFieldAliasTypes[bKey]),
+                var aliasKey = (cov_1nqd9talwx.s[172]++, _const2.BiblatexFieldAliasTypes[bKey]),
                     fKey = void 0;
-                cov_1nqd9talwx.s[171]++;
+                cov_1nqd9talwx.s[173]++;
                 if (aliasKey) {
-                    cov_1nqd9talwx.b[41][0]++;
-                    cov_1nqd9talwx.s[172]++;
+                    cov_1nqd9talwx.b[43][0]++;
+                    cov_1nqd9talwx.s[174]++;
 
                     if (rawFields[aliasKey]) {
-                        cov_1nqd9talwx.b[42][0]++;
-                        cov_1nqd9talwx.s[173]++;
+                        cov_1nqd9talwx.b[44][0]++;
+                        cov_1nqd9talwx.s[175]++;
 
                         _this.warnings.push({
                             type: 'alias_creates_duplicate_field',
@@ -20732,26 +20788,26 @@ var BibLatexParser = exports.BibLatexParser = function () {
                             value: rawFields[bKey],
                             alias_of_value: rawFields[aliasKey]
                         });
-                        cov_1nqd9talwx.s[174]++;
+                        cov_1nqd9talwx.s[176]++;
                         return "continue|iterateFields";
                     } else {
-                        cov_1nqd9talwx.b[42][1]++;
+                        cov_1nqd9talwx.b[44][1]++;
                     }
 
-                    cov_1nqd9talwx.s[175]++;
+                    cov_1nqd9talwx.s[177]++;
                     fKey = (0, _keys2.default)(_const.BibFieldTypes).find(function (ft) {
                         cov_1nqd9talwx.f[15]++;
-                        cov_1nqd9talwx.s[176]++;
+                        cov_1nqd9talwx.s[178]++;
 
                         return _const.BibFieldTypes[ft].biblatex === aliasKey;
                     });
                 } else {
-                    cov_1nqd9talwx.b[41][1]++;
-                    cov_1nqd9talwx.s[177]++;
+                    cov_1nqd9talwx.b[43][1]++;
+                    cov_1nqd9talwx.s[179]++;
 
                     fKey = (0, _keys2.default)(_const.BibFieldTypes).find(function (ft) {
                         cov_1nqd9talwx.f[16]++;
-                        cov_1nqd9talwx.s[178]++;
+                        cov_1nqd9talwx.s[180]++;
 
                         return _const.BibFieldTypes[ft].biblatex === bKey;
                     });
@@ -20759,99 +20815,99 @@ var BibLatexParser = exports.BibLatexParser = function () {
 
                 var oFields = void 0,
                     fType = void 0;
-                var bType = (cov_1nqd9talwx.s[179]++, _const.BibTypes[_this.currentEntry['bib_type']]);
+                var bType = (cov_1nqd9talwx.s[181]++, _const.BibTypes[_this.currentEntry['bib_type']]);
 
-                cov_1nqd9talwx.s[180]++;
+                cov_1nqd9talwx.s[182]++;
                 if ('undefined' == typeof fKey) {
-                    cov_1nqd9talwx.b[43][0]++;
-                    cov_1nqd9talwx.s[181]++;
+                    cov_1nqd9talwx.b[45][0]++;
+                    cov_1nqd9talwx.s[183]++;
 
                     _this.warnings.push({
                         type: 'unknown_field',
                         entry: _this.currentEntry['entry_key'],
                         field_name: bKey
                     });
-                    cov_1nqd9talwx.s[182]++;
+                    cov_1nqd9talwx.s[184]++;
                     if (!_this.config.processUnknown) {
-                        cov_1nqd9talwx.b[44][0]++;
-                        cov_1nqd9talwx.s[183]++;
+                        cov_1nqd9talwx.b[46][0]++;
+                        cov_1nqd9talwx.s[185]++;
 
                         return "continue|iterateFields";
                     } else {
-                        cov_1nqd9talwx.b[44][1]++;
+                        cov_1nqd9talwx.b[46][1]++;
                     }
-                    cov_1nqd9talwx.s[184]++;
+                    cov_1nqd9talwx.s[186]++;
                     if (!_this.currentEntry['unknown_fields']) {
-                        cov_1nqd9talwx.b[45][0]++;
-                        cov_1nqd9talwx.s[185]++;
+                        cov_1nqd9talwx.b[47][0]++;
+                        cov_1nqd9talwx.s[187]++;
 
                         _this.currentEntry['unknown_fields'] = {};
                     } else {
-                        cov_1nqd9talwx.b[45][1]++;
+                        cov_1nqd9talwx.b[47][1]++;
                     }
-                    cov_1nqd9talwx.s[186]++;
-                    oFields = _this.currentEntry['unknown_fields'];
-                    cov_1nqd9talwx.s[187]++;
-                    fType = _this.config.processUnknown[bKey] ? (cov_1nqd9talwx.b[46][0]++, _this.config.processUnknown[bKey]) : (cov_1nqd9talwx.b[46][1]++, 'f_literal');
                     cov_1nqd9talwx.s[188]++;
+                    oFields = _this.currentEntry['unknown_fields'];
+                    cov_1nqd9talwx.s[189]++;
+                    fType = _this.config.processUnknown[bKey] ? (cov_1nqd9talwx.b[48][0]++, _this.config.processUnknown[bKey]) : (cov_1nqd9talwx.b[48][1]++, 'f_literal');
+                    cov_1nqd9talwx.s[190]++;
                     fKey = bKey;
                 } else {
-                        cov_1nqd9talwx.b[43][1]++;
-                        cov_1nqd9talwx.s[189]++;
-                        if ((cov_1nqd9talwx.b[48][0]++, bType['required'].includes(fKey)) || (cov_1nqd9talwx.b[48][1]++, bType['optional'].includes(fKey)) || (cov_1nqd9talwx.b[48][2]++, bType['eitheror'].includes(fKey))) {
-                            cov_1nqd9talwx.b[47][0]++;
-                            cov_1nqd9talwx.s[190]++;
+                        cov_1nqd9talwx.b[45][1]++;
+                        cov_1nqd9talwx.s[191]++;
+                        if ((cov_1nqd9talwx.b[50][0]++, bType['required'].includes(fKey)) || (cov_1nqd9talwx.b[50][1]++, bType['optional'].includes(fKey)) || (cov_1nqd9talwx.b[50][2]++, bType['eitheror'].includes(fKey))) {
+                            cov_1nqd9talwx.b[49][0]++;
+                            cov_1nqd9talwx.s[192]++;
 
                             oFields = fields;
-                            cov_1nqd9talwx.s[191]++;
+                            cov_1nqd9talwx.s[193]++;
                             fType = _const.BibFieldTypes[fKey]['type'];
                         } else {
-                            cov_1nqd9talwx.b[47][1]++;
-                            cov_1nqd9talwx.s[192]++;
+                            cov_1nqd9talwx.b[49][1]++;
+                            cov_1nqd9talwx.s[194]++;
 
                             _this.warnings.push({
                                 type: 'unexpected_field',
                                 entry: _this.currentEntry['entry_key'],
                                 field_name: bKey
                             });
-                            cov_1nqd9talwx.s[193]++;
+                            cov_1nqd9talwx.s[195]++;
                             if (!_this.config.processUnexpected) {
-                                cov_1nqd9talwx.b[49][0]++;
-                                cov_1nqd9talwx.s[194]++;
+                                cov_1nqd9talwx.b[51][0]++;
+                                cov_1nqd9talwx.s[196]++;
 
                                 return "continue|iterateFields";
                             } else {
-                                cov_1nqd9talwx.b[49][1]++;
+                                cov_1nqd9talwx.b[51][1]++;
                             }
-                            cov_1nqd9talwx.s[195]++;
+                            cov_1nqd9talwx.s[197]++;
                             if (!_this.currentEntry['unexpected_fields']) {
-                                cov_1nqd9talwx.b[50][0]++;
-                                cov_1nqd9talwx.s[196]++;
+                                cov_1nqd9talwx.b[52][0]++;
+                                cov_1nqd9talwx.s[198]++;
 
                                 _this.currentEntry['unexpected_fields'] = {};
                             } else {
-                                cov_1nqd9talwx.b[50][1]++;
+                                cov_1nqd9talwx.b[52][1]++;
                             }
-                            cov_1nqd9talwx.s[197]++;
+                            cov_1nqd9talwx.s[199]++;
                             oFields = _this.currentEntry['unexpected_fields'];
-                            cov_1nqd9talwx.s[198]++;
+                            cov_1nqd9talwx.s[200]++;
                             fType = _const.BibFieldTypes[fKey]['type'];
                         }
-                    }var fValue = (cov_1nqd9talwx.s[199]++, rawFields[bKey]);
-                cov_1nqd9talwx.s[200]++;
+                    }var fValue = (cov_1nqd9talwx.s[201]++, rawFields[bKey]);
+                cov_1nqd9talwx.s[202]++;
                 switch (fType) {
                     case 'f_date':
-                        cov_1nqd9talwx.b[51][0]++;
-                        cov_1nqd9talwx.s[201]++;
+                        cov_1nqd9talwx.b[53][0]++;
+                        cov_1nqd9talwx.s[203]++;
 
                         if (_this._checkDate(fValue)) {
-                            cov_1nqd9talwx.b[52][0]++;
-                            cov_1nqd9talwx.s[202]++;
+                            cov_1nqd9talwx.b[54][0]++;
+                            cov_1nqd9talwx.s[204]++;
 
                             oFields[fKey] = fValue;
                         } else {
-                            cov_1nqd9talwx.b[52][1]++;
-                            cov_1nqd9talwx.s[203]++;
+                            cov_1nqd9talwx.b[54][1]++;
+                            cov_1nqd9talwx.s[205]++;
 
                             _this.errors.push({
                                 type: 'unknown_date',
@@ -20860,66 +20916,66 @@ var BibLatexParser = exports.BibLatexParser = function () {
                                 value: fValue
                             });
                         }
-                        cov_1nqd9talwx.s[204]++;
-                        break;
-                    case 'f_integer':
-                        cov_1nqd9talwx.b[51][1]++;
-                        cov_1nqd9talwx.s[205]++;
-
-                        oFields[fKey] = _this._reformLiteral(fValue);
                         cov_1nqd9talwx.s[206]++;
                         break;
-                    case 'f_key':
-                        cov_1nqd9talwx.b[51][2]++;
+                    case 'f_integer':
+                        cov_1nqd9talwx.b[53][1]++;
+                        cov_1nqd9talwx.s[207]++;
 
-                        var reformedKey = (cov_1nqd9talwx.s[207]++, _this._reformKey(fValue, fKey));
+                        oFields[fKey] = _this._reformLiteral(fValue);
                         cov_1nqd9talwx.s[208]++;
+                        break;
+                    case 'f_key':
+                        cov_1nqd9talwx.b[53][2]++;
+
+                        var reformedKey = (cov_1nqd9talwx.s[209]++, _this._reformKey(fValue, fKey));
+                        cov_1nqd9talwx.s[210]++;
                         if (reformedKey !== false) {
-                            cov_1nqd9talwx.b[53][0]++;
-                            cov_1nqd9talwx.s[209]++;
+                            cov_1nqd9talwx.b[55][0]++;
+                            cov_1nqd9talwx.s[211]++;
 
                             oFields[fKey] = reformedKey;
                         } else {
-                            cov_1nqd9talwx.b[53][1]++;
+                            cov_1nqd9talwx.b[55][1]++;
                         }
-                        cov_1nqd9talwx.s[210]++;
-                        break;
-                    case 'f_literal':
-                        cov_1nqd9talwx.b[51][3]++;
-
-                    case 'f_long_literal':
-                        cov_1nqd9talwx.b[51][4]++;
-                        cov_1nqd9talwx.s[211]++;
-
-                        oFields[fKey] = _this._reformLiteral(fValue);
                         cov_1nqd9talwx.s[212]++;
                         break;
-                    case 'l_range':
-                        cov_1nqd9talwx.b[51][5]++;
+                    case 'f_literal':
+                        cov_1nqd9talwx.b[53][3]++;
+
+                    case 'f_long_literal':
+                        cov_1nqd9talwx.b[53][4]++;
                         cov_1nqd9talwx.s[213]++;
 
-                        oFields[fKey] = _this._reformRange(fValue);
+                        oFields[fKey] = _this._reformLiteral(fValue);
                         cov_1nqd9talwx.s[214]++;
                         break;
-                    case 'f_title':
-                        cov_1nqd9talwx.b[51][6]++;
+                    case 'l_range':
+                        cov_1nqd9talwx.b[53][5]++;
                         cov_1nqd9talwx.s[215]++;
 
-                        oFields[fKey] = _this._reformLiteral(fValue, langEnglish);
+                        oFields[fKey] = _this._reformRange(fValue);
                         cov_1nqd9talwx.s[216]++;
                         break;
-                    case 'f_uri':
-                        cov_1nqd9talwx.b[51][7]++;
+                    case 'f_title':
+                        cov_1nqd9talwx.b[53][6]++;
                         cov_1nqd9talwx.s[217]++;
 
+                        oFields[fKey] = _this._reformLiteral(fValue, langEnglish);
+                        cov_1nqd9talwx.s[218]++;
+                        break;
+                    case 'f_uri':
+                        cov_1nqd9talwx.b[53][7]++;
+                        cov_1nqd9talwx.s[219]++;
+
                         if (_this._checkURI(fValue)) {
-                            cov_1nqd9talwx.b[54][0]++;
-                            cov_1nqd9talwx.s[218]++;
+                            cov_1nqd9talwx.b[56][0]++;
+                            cov_1nqd9talwx.s[220]++;
 
                             oFields[fKey] = _this._reformURI(fValue);
                         } else {
-                            cov_1nqd9talwx.b[54][1]++;
-                            cov_1nqd9talwx.s[219]++;
+                            cov_1nqd9talwx.b[56][1]++;
+                            cov_1nqd9talwx.s[221]++;
 
                             _this.errors.push({
                                 type: 'unknown_uri',
@@ -20928,62 +20984,62 @@ var BibLatexParser = exports.BibLatexParser = function () {
                                 value: fValue
                             });
                         }
-                        cov_1nqd9talwx.s[220]++;
-                        break;
-                    case 'f_verbatim':
-                        cov_1nqd9talwx.b[51][8]++;
-                        cov_1nqd9talwx.s[221]++;
-
-                        oFields[fKey] = fValue;
                         cov_1nqd9talwx.s[222]++;
                         break;
-                    case 'l_key':
-                        cov_1nqd9talwx.b[51][9]++;
+                    case 'f_verbatim':
+                        cov_1nqd9talwx.b[53][8]++;
                         cov_1nqd9talwx.s[223]++;
+
+                        oFields[fKey] = fValue;
+                        cov_1nqd9talwx.s[224]++;
+                        break;
+                    case 'l_key':
+                        cov_1nqd9talwx.b[53][9]++;
+                        cov_1nqd9talwx.s[225]++;
 
                         oFields[fKey] = (0, _tools.splitTeXString)(fValue).map(function (keyField) {
                             cov_1nqd9talwx.f[17]++;
-                            cov_1nqd9talwx.s[224]++;
-                            return that._reformKey(keyField, fKey);
+                            cov_1nqd9talwx.s[226]++;
+                            return _this._reformKey(keyField, fKey);
                         });
-                        cov_1nqd9talwx.s[225]++;
+                        cov_1nqd9talwx.s[227]++;
                         break;
                     case 'l_tag':
-                        cov_1nqd9talwx.b[51][10]++;
-                        cov_1nqd9talwx.s[226]++;
+                        cov_1nqd9talwx.b[53][10]++;
+                        cov_1nqd9talwx.s[228]++;
 
                         oFields[fKey] = fValue.split(/[,;]/).map(function (string) {
                             cov_1nqd9talwx.f[18]++;
-                            cov_1nqd9talwx.s[227]++;
+                            cov_1nqd9talwx.s[229]++;
                             return string.trim();
                         });
-                        cov_1nqd9talwx.s[228]++;
+                        cov_1nqd9talwx.s[230]++;
                         break;
                     case 'l_literal':
-                        cov_1nqd9talwx.b[51][11]++;
+                        cov_1nqd9talwx.b[53][11]++;
 
-                        var items = (cov_1nqd9talwx.s[229]++, (0, _tools.splitTeXString)(fValue));
-                        cov_1nqd9talwx.s[230]++;
+                        var items = (cov_1nqd9talwx.s[231]++, (0, _tools.splitTeXString)(fValue));
+                        cov_1nqd9talwx.s[232]++;
                         oFields[fKey] = [];
-                        cov_1nqd9talwx.s[231]++;
+                        cov_1nqd9talwx.s[233]++;
                         items.forEach(function (item) {
                             cov_1nqd9talwx.f[19]++;
-                            cov_1nqd9talwx.s[232]++;
+                            cov_1nqd9talwx.s[234]++;
 
                             oFields[fKey].push(_this._reformLiteral(item.trim()));
                         });
-                        cov_1nqd9talwx.s[233]++;
-                        break;
-                    case 'l_name':
-                        cov_1nqd9talwx.b[51][12]++;
-                        cov_1nqd9talwx.s[234]++;
-
-                        oFields[fKey] = _this._reformNameList(fValue);
                         cov_1nqd9talwx.s[235]++;
                         break;
-                    default:
-                        cov_1nqd9talwx.b[51][13]++;
+                    case 'l_name':
+                        cov_1nqd9talwx.b[53][12]++;
                         cov_1nqd9talwx.s[236]++;
+
+                        oFields[fKey] = _this._reformNameList(fValue);
+                        cov_1nqd9talwx.s[237]++;
+                        break;
+                    default:
+                        cov_1nqd9talwx.b[53][13]++;
+                        cov_1nqd9talwx.s[238]++;
 
                         // Something must be wrong in the code.
                         console.warn("Unrecognized type: " + fType + "!");
@@ -21001,60 +21057,60 @@ var BibLatexParser = exports.BibLatexParser = function () {
         value: function _reformKey(keyString, fKey) {
             cov_1nqd9talwx.f[20]++;
 
-            var keyValue = (cov_1nqd9talwx.s[237]++, keyString.trim().toLowerCase());
-            var fieldType = (cov_1nqd9talwx.s[238]++, _const.BibFieldTypes[fKey]);
-            cov_1nqd9talwx.s[239]++;
-            if ((cov_1nqd9talwx.b[56][0]++, _const2.BiblatexAliasOptions[fKey]) && (cov_1nqd9talwx.b[56][1]++, _const2.BiblatexAliasOptions[fKey][keyValue])) {
-                cov_1nqd9talwx.b[55][0]++;
-                cov_1nqd9talwx.s[240]++;
-
-                keyValue = _const2.BiblatexAliasOptions[fKey][keyValue];
-            } else {
-                cov_1nqd9talwx.b[55][1]++;
-            }
+            var keyValue = (cov_1nqd9talwx.s[239]++, keyString.trim().toLowerCase());
+            var fieldType = (cov_1nqd9talwx.s[240]++, _const.BibFieldTypes[fKey]);
             cov_1nqd9talwx.s[241]++;
-            if (fieldType['options']) {
+            if ((cov_1nqd9talwx.b[58][0]++, _const2.BiblatexAliasOptions[fKey]) && (cov_1nqd9talwx.b[58][1]++, _const2.BiblatexAliasOptions[fKey][keyValue])) {
                 cov_1nqd9talwx.b[57][0]++;
                 cov_1nqd9talwx.s[242]++;
 
-                if (Array.isArray(fieldType['options'])) {
-                    cov_1nqd9talwx.b[58][0]++;
-                    cov_1nqd9talwx.s[243]++;
-
-                    if (fieldType['options'].includes(keyValue)) {
-                        cov_1nqd9talwx.b[59][0]++;
-                        cov_1nqd9talwx.s[244]++;
-
-                        return keyValue;
-                    } else {
-                        cov_1nqd9talwx.b[59][1]++;
-                    }
-                } else {
-                    cov_1nqd9talwx.b[58][1]++;
-
-                    var optionValue = (cov_1nqd9talwx.s[245]++, (0, _keys2.default)(fieldType['options']).find(function (key) {
-                        cov_1nqd9talwx.f[21]++;
-                        cov_1nqd9talwx.s[246]++;
-
-                        return fieldType['options'][key]['biblatex'] === keyValue;
-                    }));
-                    cov_1nqd9talwx.s[247]++;
-                    if (optionValue) {
-                        cov_1nqd9talwx.b[60][0]++;
-                        cov_1nqd9talwx.s[248]++;
-
-                        return optionValue;
-                    } else {
-                        cov_1nqd9talwx.b[60][1]++;
-                    }
-                }
+                keyValue = _const2.BiblatexAliasOptions[fKey][keyValue];
             } else {
                 cov_1nqd9talwx.b[57][1]++;
             }
-            cov_1nqd9talwx.s[249]++;
+            cov_1nqd9talwx.s[243]++;
+            if (fieldType['options']) {
+                cov_1nqd9talwx.b[59][0]++;
+                cov_1nqd9talwx.s[244]++;
+
+                if (Array.isArray(fieldType['options'])) {
+                    cov_1nqd9talwx.b[60][0]++;
+                    cov_1nqd9talwx.s[245]++;
+
+                    if (fieldType['options'].includes(keyValue)) {
+                        cov_1nqd9talwx.b[61][0]++;
+                        cov_1nqd9talwx.s[246]++;
+
+                        return keyValue;
+                    } else {
+                        cov_1nqd9talwx.b[61][1]++;
+                    }
+                } else {
+                    cov_1nqd9talwx.b[60][1]++;
+
+                    var optionValue = (cov_1nqd9talwx.s[247]++, (0, _keys2.default)(fieldType['options']).find(function (key) {
+                        cov_1nqd9talwx.f[21]++;
+                        cov_1nqd9talwx.s[248]++;
+
+                        return fieldType['options'][key]['biblatex'] === keyValue;
+                    }));
+                    cov_1nqd9talwx.s[249]++;
+                    if (optionValue) {
+                        cov_1nqd9talwx.b[62][0]++;
+                        cov_1nqd9talwx.s[250]++;
+
+                        return optionValue;
+                    } else {
+                        cov_1nqd9talwx.b[62][1]++;
+                    }
+                }
+            } else {
+                cov_1nqd9talwx.b[59][1]++;
+            }
+            cov_1nqd9talwx.s[251]++;
             if (fieldType.strict) {
-                cov_1nqd9talwx.b[61][0]++;
-                cov_1nqd9talwx.s[250]++;
+                cov_1nqd9talwx.b[63][0]++;
+                cov_1nqd9talwx.s[252]++;
 
                 this.warnings.push({
                     type: 'unknown_key',
@@ -21062,19 +21118,19 @@ var BibLatexParser = exports.BibLatexParser = function () {
                     field_name: fKey,
                     value: keyString
                 });
-                cov_1nqd9talwx.s[251]++;
+                cov_1nqd9talwx.s[253]++;
                 return false;
             } else {
-                cov_1nqd9talwx.b[61][1]++;
+                cov_1nqd9talwx.b[63][1]++;
             }
-            cov_1nqd9talwx.s[252]++;
+            cov_1nqd9talwx.s[254]++;
             return this._reformLiteral(keyString);
         }
     }, {
         key: "_checkURI",
         value: function _checkURI(uriString) {
             cov_1nqd9talwx.f[22]++;
-            cov_1nqd9talwx.s[253]++;
+            cov_1nqd9talwx.s[255]++;
 
             /* Copyright (c) 2010-2013 Diego Perini, MIT licensed
                https://gist.github.com/dperini/729294
@@ -21086,7 +21142,7 @@ var BibLatexParser = exports.BibLatexParser = function () {
         key: "_reformURI",
         value: function _reformURI(uriString) {
             cov_1nqd9talwx.f[23]++;
-            cov_1nqd9talwx.s[254]++;
+            cov_1nqd9talwx.s[256]++;
 
             return uriString.replace(/\\/g, '');
         }
@@ -21095,13 +21151,13 @@ var BibLatexParser = exports.BibLatexParser = function () {
         value: function _reformNameList(nameString) {
             cov_1nqd9talwx.f[24]++;
 
-            var people = (cov_1nqd9talwx.s[255]++, (0, _tools.splitTeXString)(nameString));
-            cov_1nqd9talwx.s[256]++;
+            var people = (cov_1nqd9talwx.s[257]++, (0, _tools.splitTeXString)(nameString));
+            cov_1nqd9talwx.s[258]++;
             return people.map(function (person) {
                 cov_1nqd9talwx.f[25]++;
 
-                var nameParser = (cov_1nqd9talwx.s[257]++, new _nameParser.BibLatexNameParser(person));
-                cov_1nqd9talwx.s[258]++;
+                var nameParser = (cov_1nqd9talwx.s[259]++, new _nameParser.BibLatexNameParser(person));
+                cov_1nqd9talwx.s[260]++;
                 return nameParser.output;
             });
         }
@@ -21111,32 +21167,32 @@ var BibLatexParser = exports.BibLatexParser = function () {
             var _this2 = this;
 
             cov_1nqd9talwx.f[26]++;
-            cov_1nqd9talwx.s[259]++;
+            cov_1nqd9talwx.s[261]++;
 
             return rangeString.split(',').map(function (string) {
                 cov_1nqd9talwx.f[27]++;
 
-                var parts = (cov_1nqd9talwx.s[260]++, string.split('--'));
-                cov_1nqd9talwx.s[261]++;
+                var parts = (cov_1nqd9talwx.s[262]++, string.split('--'));
+                cov_1nqd9talwx.s[263]++;
                 if (parts.length > 1) {
-                    cov_1nqd9talwx.b[62][0]++;
-                    cov_1nqd9talwx.s[262]++;
+                    cov_1nqd9talwx.b[64][0]++;
+                    cov_1nqd9talwx.s[264]++;
 
                     return [_this2._reformLiteral(parts.shift().trim()), _this2._reformLiteral(parts.join('--').trim())];
                 } else {
-                    cov_1nqd9talwx.b[62][1]++;
-                    cov_1nqd9talwx.s[263]++;
+                    cov_1nqd9talwx.b[64][1]++;
+                    cov_1nqd9talwx.s[265]++;
 
                     parts = string.split('-');
-                    cov_1nqd9talwx.s[264]++;
+                    cov_1nqd9talwx.s[266]++;
                     if (parts.length > 1) {
-                        cov_1nqd9talwx.b[63][0]++;
-                        cov_1nqd9talwx.s[265]++;
+                        cov_1nqd9talwx.b[65][0]++;
+                        cov_1nqd9talwx.s[267]++;
 
                         return [_this2._reformLiteral(parts.shift().trim()), _this2._reformLiteral(parts.join('-').trim())];
                     } else {
-                        cov_1nqd9talwx.b[63][1]++;
-                        cov_1nqd9talwx.s[266]++;
+                        cov_1nqd9talwx.b[65][1]++;
+                        cov_1nqd9talwx.s[268]++;
 
                         return [_this2._reformLiteral(string.trim())];
                     }
@@ -21147,7 +21203,7 @@ var BibLatexParser = exports.BibLatexParser = function () {
         key: "_checkDate",
         value: function _checkDate(dateStr) {
             cov_1nqd9talwx.f[28]++;
-            cov_1nqd9talwx.s[267]++;
+            cov_1nqd9talwx.s[269]++;
 
             return (0, _edtf.edtfCheck)(dateStr);
         }
@@ -21156,8 +21212,8 @@ var BibLatexParser = exports.BibLatexParser = function () {
         value: function _reformLiteral(theValue, cpMode) {
             cov_1nqd9talwx.f[29]++;
 
-            var parser = (cov_1nqd9talwx.s[268]++, new _literalParser.BibLatexLiteralParser(theValue, cpMode));
-            cov_1nqd9talwx.s[269]++;
+            var parser = (cov_1nqd9talwx.s[270]++, new _literalParser.BibLatexLiteralParser(theValue, cpMode));
+            cov_1nqd9talwx.s[271]++;
             return parser.output;
         }
     }, {
@@ -21165,90 +21221,90 @@ var BibLatexParser = exports.BibLatexParser = function () {
         value: function bibType() {
             cov_1nqd9talwx.f[30]++;
 
-            var biblatexType = (cov_1nqd9talwx.s[270]++, this.currentType);
-            cov_1nqd9talwx.s[271]++;
+            var biblatexType = (cov_1nqd9talwx.s[272]++, this.currentType);
+            cov_1nqd9talwx.s[273]++;
             if (_const2.BiblatexAliasTypes[biblatexType]) {
-                cov_1nqd9talwx.b[64][0]++;
-                cov_1nqd9talwx.s[272]++;
+                cov_1nqd9talwx.b[66][0]++;
+                cov_1nqd9talwx.s[274]++;
 
                 biblatexType = _const2.BiblatexAliasTypes[biblatexType];
             } else {
-                cov_1nqd9talwx.b[64][1]++;
+                cov_1nqd9talwx.b[66][1]++;
             }
 
-            var bibType = (cov_1nqd9talwx.s[273]++, (0, _keys2.default)(_const.BibTypes).find(function (bType) {
+            var bibType = (cov_1nqd9talwx.s[275]++, (0, _keys2.default)(_const.BibTypes).find(function (bType) {
                 cov_1nqd9talwx.f[31]++;
-                cov_1nqd9talwx.s[274]++;
+                cov_1nqd9talwx.s[276]++;
 
                 return _const.BibTypes[bType]['biblatex'] === biblatexType;
             }));
 
-            cov_1nqd9talwx.s[275]++;
+            cov_1nqd9talwx.s[277]++;
             if (typeof bibType === 'undefined') {
-                cov_1nqd9talwx.b[65][0]++;
-                cov_1nqd9talwx.s[276]++;
+                cov_1nqd9talwx.b[67][0]++;
+                cov_1nqd9talwx.s[278]++;
 
                 this.warnings.push({
                     type: 'unknown_type',
                     type_name: biblatexType
                 });
-                cov_1nqd9talwx.s[277]++;
+                cov_1nqd9talwx.s[279]++;
                 bibType = 'misc';
             } else {
-                cov_1nqd9talwx.b[65][1]++;
+                cov_1nqd9talwx.b[67][1]++;
             }
 
-            cov_1nqd9talwx.s[278]++;
+            cov_1nqd9talwx.s[280]++;
             return bibType;
         }
     }, {
         key: "createNewEntry",
         value: function createNewEntry() {
             cov_1nqd9talwx.f[32]++;
-            cov_1nqd9talwx.s[279]++;
+            cov_1nqd9talwx.s[281]++;
 
             this.currentEntry = {
                 'bib_type': this.bibType(),
                 'entry_key': this.key(true),
                 'fields': {}
             };
-            cov_1nqd9talwx.s[280]++;
-            this.currentRawFields = {};
-            cov_1nqd9talwx.s[281]++;
-            this.entries.push(this.currentEntry);
             cov_1nqd9talwx.s[282]++;
+            this.currentRawFields = {};
+            cov_1nqd9talwx.s[283]++;
+            this.entries.push(this.currentEntry);
+            cov_1nqd9talwx.s[284]++;
             if (this.currentEntry['entry_key'] !== null) {
-                cov_1nqd9talwx.b[66][0]++;
-                cov_1nqd9talwx.s[283]++;
+                cov_1nqd9talwx.b[68][0]++;
+                cov_1nqd9talwx.s[285]++;
 
                 this.match(",");
             } else {
-                cov_1nqd9talwx.b[66][1]++;
+                cov_1nqd9talwx.b[68][1]++;
             }
-            cov_1nqd9talwx.s[284]++;
+            cov_1nqd9talwx.s[286]++;
             this.keyValueList();
-            cov_1nqd9talwx.s[285]++;
+            cov_1nqd9talwx.s[287]++;
             if (this.currentEntry['entry_key'] === null) {
-                cov_1nqd9talwx.b[67][0]++;
-                cov_1nqd9talwx.s[286]++;
+                cov_1nqd9talwx.b[69][0]++;
+                cov_1nqd9talwx.s[288]++;
 
                 this.currentEntry['entry_key'] = '';
             } else {
-                cov_1nqd9talwx.b[67][1]++;
+                cov_1nqd9talwx.b[69][1]++;
             }
-            cov_1nqd9talwx.s[287]++;
+            cov_1nqd9talwx.s[289]++;
             this.processFields();
         }
     }, {
         key: "directive",
         value: function directive() {
             cov_1nqd9talwx.f[33]++;
-            cov_1nqd9talwx.s[288]++;
+            cov_1nqd9talwx.s[290]++;
 
             this.match("@");
-            cov_1nqd9talwx.s[289]++;
+            cov_1nqd9talwx.s[291]++;
             this.currentType = this.key().toLowerCase();
-            cov_1nqd9talwx.s[290]++;
+            cov_1nqd9talwx.s[292]++;
             return "@" + this.currentType;
         }
     }, {
@@ -21256,15 +21312,15 @@ var BibLatexParser = exports.BibLatexParser = function () {
         value: function string() {
             cov_1nqd9talwx.f[34]++;
 
-            var kv = (cov_1nqd9talwx.s[291]++, this.keyEqualsValue());
-            cov_1nqd9talwx.s[292]++;
+            var kv = (cov_1nqd9talwx.s[293]++, this.keyEqualsValue());
+            cov_1nqd9talwx.s[294]++;
             this.variables[kv[0].toUpperCase()] = kv[1];
         }
     }, {
         key: "preamble",
         value: function preamble() {
             cov_1nqd9talwx.f[35]++;
-            cov_1nqd9talwx.s[293]++;
+            cov_1nqd9talwx.s[295]++;
 
             this.value();
         }
@@ -21273,61 +21329,61 @@ var BibLatexParser = exports.BibLatexParser = function () {
         value: function replaceTeXChars() {
             cov_1nqd9talwx.f[36]++;
 
-            var value = (cov_1nqd9talwx.s[294]++, this.input);
-            var len = (cov_1nqd9talwx.s[295]++, _const2.TeXSpecialChars.length);
-            cov_1nqd9talwx.s[296]++;
+            var value = (cov_1nqd9talwx.s[296]++, this.input);
+            var len = (cov_1nqd9talwx.s[297]++, _const2.TeXSpecialChars.length);
+            cov_1nqd9talwx.s[298]++;
             for (var i = 0; i < len; i++) {
-                var texChar = (cov_1nqd9talwx.s[297]++, _const2.TeXSpecialChars[i]);
-                var texCharRe = (cov_1nqd9talwx.s[298]++, /^[a-zA-Z\\]+$/.test(texChar[0]) ? (cov_1nqd9talwx.b[68][0]++, new RegExp("{(" + texChar[0] + ")}|" + texChar[0] + "\\s|" + texChar[0] + "(?=\\W|\\_)", 'g')) : (cov_1nqd9talwx.b[68][1]++, new RegExp("{(" + texChar[0] + ")}|" + texChar[0] + "{}|" + texChar[0], 'g')));
-                cov_1nqd9talwx.s[299]++;
+                var texChar = (cov_1nqd9talwx.s[299]++, _const2.TeXSpecialChars[i]);
+                var texCharRe = (cov_1nqd9talwx.s[300]++, /^[a-zA-Z\\]+$/.test(texChar[0]) ? (cov_1nqd9talwx.b[70][0]++, new RegExp("{(" + texChar[0] + ")}|" + texChar[0] + "\\s|" + texChar[0] + "(?=\\W|\\_)", 'g')) : (cov_1nqd9talwx.b[70][1]++, new RegExp("{(" + texChar[0] + ")}|" + texChar[0] + "{}|" + texChar[0], 'g')));
+                cov_1nqd9talwx.s[301]++;
                 value = value.replace(texCharRe, texChar[1]);
             }
             // Delete multiple spaces
-            cov_1nqd9talwx.s[300]++;
+            cov_1nqd9talwx.s[302]++;
             this.input = value.replace(/ +(?= )/g, '');
-            cov_1nqd9talwx.s[301]++;
+            cov_1nqd9talwx.s[303]++;
             return;
         }
     }, {
         key: "stepThroughBibtex",
         value: function stepThroughBibtex() {
             cov_1nqd9talwx.f[37]++;
-            cov_1nqd9talwx.s[302]++;
+            cov_1nqd9talwx.s[304]++;
 
             while (this.skipToNext()) {
-                var d = (cov_1nqd9talwx.s[303]++, this.directive());
-                cov_1nqd9talwx.s[304]++;
+                var d = (cov_1nqd9talwx.s[305]++, this.directive());
+                cov_1nqd9talwx.s[306]++;
                 this.match("{");
-                cov_1nqd9talwx.s[305]++;
+                cov_1nqd9talwx.s[307]++;
                 if (d == "@string") {
-                    cov_1nqd9talwx.b[69][0]++;
-                    cov_1nqd9talwx.s[306]++;
+                    cov_1nqd9talwx.b[71][0]++;
+                    cov_1nqd9talwx.s[308]++;
 
                     this.string();
                 } else {
-                        cov_1nqd9talwx.b[69][1]++;
-                        cov_1nqd9talwx.s[307]++;
+                        cov_1nqd9talwx.b[71][1]++;
+                        cov_1nqd9talwx.s[309]++;
                         if (d == "@preamble") {
-                            cov_1nqd9talwx.b[70][0]++;
-                            cov_1nqd9talwx.s[308]++;
+                            cov_1nqd9talwx.b[72][0]++;
+                            cov_1nqd9talwx.s[310]++;
 
                             this.preamble();
                         } else {
-                                cov_1nqd9talwx.b[70][1]++;
-                                cov_1nqd9talwx.s[309]++;
-                                if ((cov_1nqd9talwx.b[72][0]++, d == "@comment") || (cov_1nqd9talwx.b[72][1]++, d == "@Comment")) {
-                                    cov_1nqd9talwx.b[71][0]++;
-                                    cov_1nqd9talwx.s[310]++;
+                                cov_1nqd9talwx.b[72][1]++;
+                                cov_1nqd9talwx.s[311]++;
+                                if (d == "@comment") {
+                                    cov_1nqd9talwx.b[73][0]++;
+                                    cov_1nqd9talwx.s[312]++;
 
                                     this.parseComment();
                                 } else {
-                                    cov_1nqd9talwx.b[71][1]++;
-                                    cov_1nqd9talwx.s[311]++;
+                                    cov_1nqd9talwx.b[73][1]++;
+                                    cov_1nqd9talwx.s[313]++;
 
                                     this.createNewEntry();
                                 }
                             }
-                    }cov_1nqd9talwx.s[312]++;
+                    }cov_1nqd9talwx.s[314]++;
                 this.match("}");
             }
         }
@@ -21336,76 +21392,77 @@ var BibLatexParser = exports.BibLatexParser = function () {
         value: function parseComment() {
             cov_1nqd9talwx.f[38]++;
 
-            var start = (cov_1nqd9talwx.s[313]++, this.pos);
-            var braces = (cov_1nqd9talwx.s[314]++, 1);
-            cov_1nqd9talwx.s[315]++;
-            while ((cov_1nqd9talwx.b[73][0]++, this.input.length > this.pos) && (cov_1nqd9talwx.b[73][1]++, braces > 0)) {
-                cov_1nqd9talwx.s[316]++;
+            var start = (cov_1nqd9talwx.s[315]++, this.pos);
+            var braces = (cov_1nqd9talwx.s[316]++, 1);
+            cov_1nqd9talwx.s[317]++;
+            while ((cov_1nqd9talwx.b[74][0]++, this.input.length > this.pos) && (cov_1nqd9talwx.b[74][1]++, braces > 0)) {
+                cov_1nqd9talwx.s[318]++;
 
                 switch (this.input[this.pos]) {
                     case '{':
-                        cov_1nqd9talwx.b[74][0]++;
-                        cov_1nqd9talwx.s[317]++;
+                        cov_1nqd9talwx.b[75][0]++;
+                        cov_1nqd9talwx.s[319]++;
 
                         braces += 1;
-                        cov_1nqd9talwx.s[318]++;
+                        cov_1nqd9talwx.s[320]++;
                         break;
                     case '}':
-                        cov_1nqd9talwx.b[74][1]++;
-                        cov_1nqd9talwx.s[319]++;
+                        cov_1nqd9talwx.b[75][1]++;
+                        cov_1nqd9talwx.s[321]++;
 
                         braces -= 1;
                 }
-                cov_1nqd9talwx.s[320]++;
+                cov_1nqd9talwx.s[322]++;
                 this.pos++;
             }
 
             // no ending brace found
-            cov_1nqd9talwx.s[321]++;
+            cov_1nqd9talwx.s[323]++;
             if (braces !== 0) {
-                cov_1nqd9talwx.b[75][0]++;
-                cov_1nqd9talwx.s[322]++;
+                cov_1nqd9talwx.b[76][0]++;
+                cov_1nqd9talwx.s[324]++;
                 return;
             } else {
-                cov_1nqd9talwx.b[75][1]++;
+                cov_1nqd9talwx.b[76][1]++;
             }
 
             // leave the ending brace for the main parser to pick up
-            cov_1nqd9talwx.s[323]++;
-            this.pos--;
-            var comment = (cov_1nqd9talwx.s[324]++, this.input.substring(start, this.pos));
             cov_1nqd9talwx.s[325]++;
+            this.pos--;
+            var comment = (cov_1nqd9talwx.s[326]++, this.input.substring(start, this.pos));
+            cov_1nqd9talwx.s[327]++;
             this.groupParser.checkString(comment);
-            cov_1nqd9talwx.s[326]++;
+            cov_1nqd9talwx.s[328]++;
             if (this.groupParser.groups) {
-                cov_1nqd9talwx.b[76][0]++;
-                cov_1nqd9talwx.s[327]++;
+                cov_1nqd9talwx.b[77][0]++;
+                cov_1nqd9talwx.s[329]++;
 
                 this.groups = this.groupParser.groups;
             } else {
-                cov_1nqd9talwx.b[76][1]++;
+                cov_1nqd9talwx.b[77][1]++;
             }
         }
     }, {
         key: "createBibDB",
         value: function createBibDB() {
-            cov_1nqd9talwx.f[39]++;
+            var _this3 = this;
 
-            var that = (cov_1nqd9talwx.s[328]++, this);
-            cov_1nqd9talwx.s[329]++;
+            cov_1nqd9talwx.f[39]++;
+            cov_1nqd9talwx.s[330]++;
+
             this.entries.forEach(function (entry, index) {
                 cov_1nqd9talwx.f[40]++;
-                cov_1nqd9talwx.s[330]++;
+                cov_1nqd9talwx.s[331]++;
 
                 // Start index from 1 to create less issues with testing
-                that.bibDB[index + 1] = entry;
+                _this3.bibDB[index + 1] = entry;
             });
         }
     }, {
         key: "cleanDB",
         value: function cleanDB() {
             cov_1nqd9talwx.f[41]++;
-            cov_1nqd9talwx.s[331]++;
+            cov_1nqd9talwx.s[332]++;
 
             this.bibDB = JSON.parse((0, _stringify2.default)(this.bibDB).replace(/\u0871/, '\\\\') // Backslashes placed outside of literal fields
             .replace(/\u0870/, '') // variable start/end outside of literal fields
@@ -21415,16 +21472,16 @@ var BibLatexParser = exports.BibLatexParser = function () {
         key: "output",
         get: function get() {
             cov_1nqd9talwx.f[42]++;
-            cov_1nqd9talwx.s[332]++;
+            cov_1nqd9talwx.s[333]++;
 
             this.replaceTeXChars();
-            cov_1nqd9talwx.s[333]++;
-            this.stepThroughBibtex();
             cov_1nqd9talwx.s[334]++;
-            this.createBibDB();
+            this.stepThroughBibtex();
             cov_1nqd9talwx.s[335]++;
-            this.cleanDB();
+            this.createBibDB();
             cov_1nqd9talwx.s[336]++;
+            this.cleanDB();
+            cov_1nqd9talwx.s[337]++;
             return this.bibDB;
         }
     }]);
